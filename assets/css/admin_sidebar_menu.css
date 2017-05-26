@@ -1,0 +1,75 @@
+/*-------------------------------------------------------------------------------------------*/
+/* WP Admin */
+/*-------------------------------------------------------------------------------------------*/
+@charset "UTF-8";
+
+#toplevel_page_people-contact-manager .wp-menu-image:before {
+  font-family: "a3-sidebar-menu" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  	display:inline-block;
+  	font-size:17px !important;
+  	font-weight:400;
+  	height: 36px;
+	padding: 8px 0;
+	transition: all 0.1s ease-in-out 0s;
+	width: 20px;
+  
+  content: "\a3" !important;
+}
+#toplevel_page_people-contact-manager .wp-menu-image {
+	text-align:center;
+	background:none;	
+}
+
+.contact_add_shortcode_icon:before {
+  font-family: "a3-sidebar-menu" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  content: "\a3" !important;
+}
+
+.contact_add_shortcode_icon {
+	display: inline-block;
+	height: 18px;
+	margin: 0 2px 0 0;
+	position: relative;
+	vertical-align: middle;
+	width: 18px;
+	font-size:16px;
+	line-height:18px;
+}
+
+.people-contact-shortcode-container label {
+	width:150px;
+	display:inline-block;	
+}
+
+@media screen and ( max-width: 782px ) {
+	.auto-fold #adminmenu #toplevel_page_people-contact-manager a.menu-top {
+		height:auto;	
+	}
+	.contact_add_shortcode_icon {
+		height: 22px;
+		width: 22px;
+		font-size:20px;
+		line-height:22px;
+	}
+	.people-contact-shortcode-container label {
+		width:100%;
+		display:block;	
+	}
+}

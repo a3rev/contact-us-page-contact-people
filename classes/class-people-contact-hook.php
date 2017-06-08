@@ -20,13 +20,13 @@ class People_Contact_Hook_Filter
 		global $query_string, $current_user;
 		$current_user_id = $current_user->user_login;
 
-		$contact_manager = add_menu_page( __('Contact Us', 'cup_cp'), __('Contact Us', 'cup_cp'), 'manage_options', 'people-contact-manager', array( 'People_Contact_Manager_Panel', 'admin_screen' ), null, '27.222');
+		$contact_manager = add_menu_page( __('Contact Us', 'contact-us-page-contact-people' ), __('Contact Us', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact-manager', array( 'People_Contact_Manager_Panel', 'admin_screen' ), null, '27.222');
 
-		$profile = add_submenu_page('people-contact-manager', __( 'Profiles', 'cup_cp' ), __( 'Profiles', 'cup_cp' ), 'manage_options', 'people-contact-manager', array( 'People_Contact_Manager_Panel', 'admin_screen' ) );
+		$profile = add_submenu_page('people-contact-manager', __( 'Profiles', 'contact-us-page-contact-people' ), __( 'Profiles', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact-manager', array( 'People_Contact_Manager_Panel', 'admin_screen' ) );
 
-		$add_new = add_submenu_page('people-contact-manager', __( 'Add New Profile', 'cup_cp' ), __( 'Add New Profile', 'cup_cp' ), 'manage_options', 'people-contact', array( 'People_Contact_AddNew', 'admin_screen_add_edit' ) );
+		$add_new = add_submenu_page('people-contact-manager', __( 'Add New Profile', 'contact-us-page-contact-people' ), __( 'Add New Profile', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact', array( 'People_Contact_AddNew', 'admin_screen_add_edit' ) );
 
-		$categories_page = add_submenu_page('people-contact-manager', __( 'Groups', 'cup_cp' ), __( 'Groups', 'cup_cp' ), 'manage_options', 'people-category-manager', array( 'People_Category_Manager_Panel', 'admin_screen' ) );
+		$categories_page = add_submenu_page('people-contact-manager', __( 'Groups', 'contact-us-page-contact-people' ), __( 'Groups', 'contact-us-page-contact-people' ), 'manage_options', 'people-category-manager', array( 'People_Category_Manager_Panel', 'admin_screen' ) );
 
 		add_action( "admin_print_scripts-" . $contact_manager, array( 'People_Contact_Hook_Filter', 'contact_manager_load_only_script') );
 		add_action( "admin_print_scripts-" . $profile, array( 'People_Contact_Hook_Filter', 'contact_manager_load_only_script') );
@@ -178,19 +178,19 @@ class People_Contact_Hook_Filter
 						send_copy = 1;
 
 					if (c_name.replace(/^\s+|\s+$/g, '') == "") {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Name Error', __('Please enter your Name', 'cup_cp') ); ?>\n";
+						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Name Error', __('Please enter your Name', 'contact-us-page-contact-people' ) ); ?>\n";
 						people_email_inquiry_have_error = true;
 					}
 					if (c_email == "" || !filter.test(c_email)) {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Email Error', __('Please enter valid Email address', 'cup_cp') ); ?>\n";
+						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Email Error', __('Please enter valid Email address', 'contact-us-page-contact-people' ) ); ?>\n";
 						people_email_inquiry_have_error = true;
 					}
 					if (c_phone.replace(/^\s+|\s+$/g, '') == "") {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Phone Error', __('Please enter your Phone', 'cup_cp') ); ?>\n";
+						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Phone Error', __('Please enter your Phone', 'contact-us-page-contact-people' ) ); ?>\n";
 						people_email_inquiry_have_error = true;
 					}
 					if (c_message.replace(/^\s+|\s+$/g, '') == "") {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Message Error', __('Please enter your Message', 'cup_cp') ); ?>\n";
+						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Message Error', __('Please enter your Message', 'contact-us-page-contact-people' ) ); ?>\n";
 						people_email_inquiry_have_error = true;
 					}
 
@@ -311,28 +311,28 @@ class People_Contact_Hook_Filter
 	}
 
 	public static function plugin_extension_box( $boxes = array() ) {
-		$support_box = '<a href="https://wordpress.org/support/plugin/contact-us-page-contact-people" target="_blank" alt="'.__('Go to Support Forum', 'cup_cp').'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/go-to-support-forum.png" /></a>';
+		$support_box = '<a href="https://wordpress.org/support/plugin/contact-us-page-contact-people" target="_blank" alt="'.__('Go to Support Forum', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/go-to-support-forum.png" /></a>';
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-		$free_wordpress_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WordPress Plugins', 'cup_cp').'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/free-wordpress-plugins.png" /></a>';
+		$free_wordpress_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WordPress Plugins', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/free-wordpress-plugins.png" /></a>';
 		$boxes[] = array(
 			'content' => $free_wordpress_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-        $rating_box = '<div style="margin-bottom: 5px; font-size: 12px;"><strong>' . __('Is this plugin is just what you needed? If so', 'cup_cp') . '</strong></div>';
-        $rating_box .= '<a href="https://wordpress.org/support/view/plugin-reviews/contact-us-page-contact-people?filter=5#postform" target="_blank" alt="'.__('Submit Review for Plugin on WordPress', 'cup_cp').'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/a-5-star-rating-would-be-appreciated.png" /></a>';
+        $rating_box = '<div style="margin-bottom: 5px; font-size: 12px;"><strong>' . __('Is this plugin is just what you needed? If so', 'contact-us-page-contact-people' ) . '</strong></div>';
+        $rating_box .= '<a href="https://wordpress.org/support/view/plugin-reviews/contact-us-page-contact-people?filter=5#postform" target="_blank" alt="'.__('Submit Review for Plugin on WordPress', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/a-5-star-rating-would-be-appreciated.png" /></a>';
         $boxes[] = array(
             'content' => $rating_box,
             'css' => 'border: none; padding: 0; background: none;'
         );
 
-        $follow_box = '<div style="margin-bottom: 5px;">' . __('Connect with us via','cup_cp') . '</div>';
-		$follow_box .= '<a href="https://www.facebook.com/a3rev" target="_blank" alt="'.__('a3rev Facebook', 'cup_cp').'" style="margin-right: 5px;"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/follow-facebook.png" /></a> ';
-		$follow_box .= '<a href="https://twitter.com/a3rev" target="_blank" alt="'.__('a3rev Twitter', 'cup_cp').'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/follow-twitter.png" /></a>';
+        $follow_box = '<div style="margin-bottom: 5px;">' . __('Connect with us via', 'contact-us-page-contact-people' ) . '</div>';
+		$follow_box .= '<a href="https://www.facebook.com/a3rev" target="_blank" alt="'.__('a3rev Facebook', 'contact-us-page-contact-people' ).'" style="margin-right: 5px;"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/follow-facebook.png" /></a> ';
+		$follow_box .= '<a href="https://twitter.com/a3rev" target="_blank" alt="'.__('a3rev Twitter', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/follow-twitter.png" /></a>';
 		$boxes[] = array(
 			'content' => $follow_box,
 			'css' => 'border-color: #3a5795;'
@@ -345,13 +345,13 @@ class People_Contact_Hook_Filter
 		if ( $plugin_name != PEOPLE_CONTACT_NAME) {
 			return $links;
 		}
-		$links[] = '<a href="http://docs.a3rev.com/user-guides/plugins-extensions/woocommerce/contact-us-page-contact-people/" target="_blank">'.__('Documentation', 'cup_cp').'</a>';
-		$links[] = '<a href="http://wordpress.org/support/plugin/contact-us-page-contact-people/" target="_blank">'.__('Support', 'cup_cp').'</a>';
+		$links[] = '<a href="http://docs.a3rev.com/user-guides/plugins-extensions/woocommerce/contact-us-page-contact-people/" target="_blank">'.__('Documentation', 'contact-us-page-contact-people' ).'</a>';
+		$links[] = '<a href="http://wordpress.org/support/plugin/contact-us-page-contact-people/" target="_blank">'.__('Support', 'contact-us-page-contact-people' ).'</a>';
 		return $links;
 	}
 
 	public static function settings_plugin_links($actions) {
-		$actions = array_merge( array( 'settings' => '<a href="admin.php?page=people-contact-settings">' . __( 'Settings', 'cup_cp' ) . '</a>' ), $actions );
+		$actions = array_merge( array( 'settings' => '<a href="admin.php?page=people-contact-settings">' . __( 'Settings', 'contact-us-page-contact-people' ) . '</a>' ), $actions );
 
 		return $actions;
 	}

@@ -75,7 +75,7 @@ class People_Contact_Contact_Widget_Tab extends People_Contact_Admin_UI
 		
 		$tab_data = array( 
 			'name'				=> 'contact-widget',
-			'label'				=> __( 'Contact Us Widget', 'cup_cp' ),
+			'label'				=> __( 'Contact Us Widget', 'contact-us-page-contact-people' ),
 			'callback_function'	=> 'people_contact_contact_widget_tab_manager',
 		);
 		

@@ -87,27 +87,27 @@ class People_Contact_AddNew
 		$message             = '';
 		if ( get_option('a3_people_profile_save_failure', 0 ) == 1 ) {
 			$address_error_class = 'input_error';
-			$message             = '<div class="message error"><p>' . __( 'ERROR: A location address must be entered. Please enter a Location Address for this profile.' , 'cup_cp' ) .'</p></div>';
+			$message             = '<div class="message error"><p>' . __( 'ERROR: A location address must be entered. Please enter a Location Address for this profile.' , 'contact-us-page-contact-people' ) .'</p></div>';
 			delete_option( 'a3_people_profile_save_failure' );
 		}
 
 		$bt_type        = 'add_new_contact';
-		$bt_value       = __('Create', 'cup_cp');
-		$title          = __('Add New Profile', 'cup_cp');
+		$bt_value       = __('Create', 'contact-us-page-contact-people' );
+		$title          = __('Add New Profile', 'contact-us-page-contact-people' );
 
 		$center_address = 'Australia';
 		$center_lat     = -25.155123773636443;
 		$center_lng     = 133.77513599999997;
 		$latlng_center  = $latlng = $center_lat.','.$center_lng;
 
-		$bt_cancel      = '<input type="button" class="button" onclick="window.location=\'admin.php?page=people-contact-manager\'" value="'.__('Cancel', 'cup_cp').'" />';
+		$bt_cancel      = '<input type="button" class="button" onclick="window.location=\'admin.php?page=people-contact-manager\'" value="'.__('Cancel', 'contact-us-page-contact-people' ).'" />';
 
 		$data           = array('c_title' => '', 'c_name' => '', 'c_email' => '', 'c_phone' => '', 'c_fax' => '', 'c_mobile' => '', 'c_website' => '', 'c_address' => '', 'c_latitude' => '', 'c_longitude' => '', 'c_shortcode' => '', 'c_avatar' => '', 'c_attachment_id' => 0, 'c_about' => '');
 
 		if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id']) && $_GET['id'] >= 0) {
 			$bt_type = 'update_contact';
 			$data    = People_Contact_Profile_Data::get_row( $_GET['id'], '', 'ARRAY_A' );
-			$title   = __('Edit Profile', 'cup_cp');
+			$title   = __('Edit Profile', 'contact-us-page-contact-people' );
 			if ( (trim($data['c_latitude']) == '' || trim($data['c_longitude']) == '' ) && trim($data['c_address']) != '') {
 				$googleapis_url      = 'http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($data['c_address']).'&sensor=false';
 				$geodata             = file_get_contents($googleapis_url);
@@ -118,7 +118,7 @@ class People_Contact_AddNew
 			if ( trim($data['c_latitude']) != '' && trim($data['c_longitude']) != '' ) {
 				$latlng_center = $latlng = $data['c_latitude'].','.$data['c_longitude'];
 			}
-			$bt_value = __('Update', 'cup_cp');
+			$bt_value = __('Update', 'contact-us-page-contact-people' );
 
 		}
 
@@ -145,20 +145,20 @@ class People_Contact_AddNew
 				<table class="form-table" style="margin-bottom:0;">
 				  <tbody>
 					<tr valign="top">
-					  <th scope="row"><label for="c_title"><?php _e('Title / Position', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_title"><?php _e('Title / Position', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_title'])){ esc_attr_e( stripslashes( $data['c_title'] ) ) ;}?>" id="c_title" name="contact_arr[c_title]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_name"><?php _e('Name', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_name"><?php _e('Name', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_name'])){ esc_attr_e( stripslashes( $data['c_name']));}?>" id="c_name" name="contact_arr[c_name]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_avatar"><?php _e('Profile Image', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_avatar"><?php _e('Profile Image', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td class="profileavatar">
 	                  <?php
 					  global $people_contact_uploader;
 					  ?>
-	                  <?php echo $people_contact_uploader->upload_input( 'c_avatar', 'c_avatar', $data['c_avatar'], $data['c_attachment_id'], '', __('Profile Image', 'cup_cp'), '', 'width:100%;', '<div class="description">'.__("Image format .jpg, .png", 'cup_cp').'</div>' ); ?>
+	                  <?php echo $people_contact_uploader->upload_input( 'c_avatar', 'c_avatar', $data['c_avatar'], $data['c_attachment_id'], '', __('Profile Image', 'contact-us-page-contact-people' ), '', 'width:100%;', '<div class="description">'.__("Image format .jpg, .png", 'contact-us-page-contact-people' ).'</div>' ); ?>
 	                  </td>
 					</tr>
 	        	  </tbody>
@@ -166,8 +166,8 @@ class People_Contact_AddNew
 				<?php
 		        $settings_html = ob_get_clean();
 		        $people_contact_admin_interface->panel_box( $settings_html, array(
-		        	'name' 		=> __( 'Profile Details', 'cup_cp' ),
-		        	'desc'		=> __("Fields left empty will not show on the front end.", 'cup_cp'),
+		        	'name' 		=> __( 'Profile Details', 'contact-us-page-contact-people' ),
+		        	'desc'		=> __("Fields left empty will not show on the front end.", 'contact-us-page-contact-people' ),
 		        	'css'		=> 'margin-top: 5px',
 		        	'id'		=> 'a3_people_profile_details_box',
 					'is_box'	=> true,
@@ -178,28 +178,28 @@ class People_Contact_AddNew
 				<table class="form-table" style="margin-bottom:0;" width="100%">
 				  <tbody>
 					<tr valign="top">
-					  <th scope="row"><label for="c_email"><?php _e('Email', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_email"><?php _e('Email', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_email'])){esc_attr_e( stripslashes( $data['c_email'] ));}?>" id="c_email" name="contact_arr[c_email]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_phone"><?php _e('Phone', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_phone"><?php _e('Phone', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_phone'])){esc_attr_e( stripslashes( $data['c_phone'] ) );}?>" id="c_phone" name="contact_arr[c_phone]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_fax"><?php _e('Fax', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_fax"><?php _e('Fax', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_fax'])){esc_attr_e( stripslashes( $data['c_fax'] ));}?>" id="c_fax" name="contact_arr[c_fax]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_mobile"><?php _e('Mobile', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_mobile"><?php _e('Mobile', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_mobile'])){esc_attr_e( stripslashes( $data['c_mobile'] ));}?>" id="c_mobile" name="contact_arr[c_mobile]"></td>
 					</tr>
 	                <tr valign="top">
-					  <th scope="row"><label for="c_website"><?php _e('Website', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_website"><?php _e('Website', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if( isset( $data['c_website']) && trim($data['c_website']) != '' ) { echo esc_url( stripslashes( $data['c_website'] ) ); } else { echo 'http://'; } ?>" id="c_website" name="contact_arr[c_website]" onfocus="if (this.value == 'http://') {this.value = '';}" onblur="if (this.value == '') {this.value = 'http://';}" /></td>
 					</tr>
 	                <tr valign="top">
 					  <td class="forminp" colspan="2" style="padding-left:0;">
-					   <div class="row_mod" ><label for="c_website"><?php _e('About', 'cup_cp') ?></label></div>
+					   <div class="row_mod" ><label for="c_website"><?php _e('About', 'contact-us-page-contact-people' ) ?></label></div>
 	                  	<?php wp_editor(stripslashes( $data['c_about'] ), 'c_about', array('textarea_name' => 'contact_arr[c_about]', 'wpautop' => true, 'textarea_rows' => 8 ) ); ?>
 	                  </td>
 					</tr>
@@ -208,8 +208,8 @@ class People_Contact_AddNew
 				<?php
 		        $settings_html = ob_get_clean();
 		        $people_contact_admin_interface->panel_box( $settings_html, array(
-		        	'name' 		=> __( 'Contact Details', 'cup_cp' ),
-		        	'desc'		=> __("Fields left empty will not show on the front end.", 'cup_cp'),
+		        	'name' 		=> __( 'Contact Details', 'contact-us-page-contact-people' ),
+		        	'desc'		=> __("Fields left empty will not show on the front end.", 'contact-us-page-contact-people' ),
 		        	'id'		=> 'a3_people_contact_details_box',
 					'is_box'	=> true,
 				) );
@@ -219,7 +219,7 @@ class People_Contact_AddNew
 				<table class="form-table" style="margin-bottom:0;">
 				  <tbody>
 					<tr valign="top">
-					  <th scope="row"><label for="show_on_main_page"><?php _e('Contact Page Display', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="show_on_main_page"><?php _e('Contact Page Display', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td>
 					  	<?php
 					  		if ( ! isset( $data['show_on_main_page'] ) ) {
@@ -230,8 +230,8 @@ class People_Contact_AddNew
 					  		id="show_on_main_page"
 							name="contact_arr[show_on_main_page]"
 							class="a3rev-ui-onoff_checkbox show_on_main_page"
-	                        checked_label="<?php _e( 'ON', 'cup_cp' ); ?>"
-	                        unchecked_label="<?php _e( 'OFF', 'cup_cp' ); ?>"
+	                        checked_label="<?php _e( 'ON', 'contact-us-page-contact-people' ); ?>"
+	                        unchecked_label="<?php _e( 'OFF', 'contact-us-page-contact-people' ); ?>"
 	                        type="checkbox"
 							value="1"
 							<?php checked( 1, $data['show_on_main_page'], true ); ?>
@@ -244,7 +244,7 @@ class People_Contact_AddNew
 					<table class="form-table" style="margin-bottom:0;">
 					  <tbody>
 						<tr valign="top">
-						  <th scope="row"><label for="enable_map_marker"><?php _e('Show on Contact Page map', 'cup_cp') ?></label></th>
+						  <th scope="row"><label for="enable_map_marker"><?php _e('Show on Contact Page map', 'contact-us-page-contact-people' ) ?></label></th>
 						  <td>
 						  	<?php
 						  		if ( ! isset( $data['enable_map_marker'] ) ) {
@@ -255,13 +255,13 @@ class People_Contact_AddNew
 						  		id="enable_map_marker"
 								name="contact_arr[enable_map_marker]"
 								class="a3rev-ui-onoff_checkbox enable_map_marker"
-		                        checked_label="<?php _e( 'ON', 'cup_cp' ); ?>"
-		                        unchecked_label="<?php _e( 'OFF', 'cup_cp' ); ?>"
+		                        checked_label="<?php _e( 'ON', 'contact-us-page-contact-people' ); ?>"
+		                        unchecked_label="<?php _e( 'OFF', 'contact-us-page-contact-people' ); ?>"
 		                        type="checkbox"
 								value="1"
 								<?php checked( 1, $data['enable_map_marker'], true ); ?>
 								/>
-								<span class="description"><?php echo __( 'ON to show this Profile on the Contact Page map', 'cup_cp' ); ?></span>
+								<span class="description"><?php echo __( 'ON to show this Profile on the Contact Page map', 'contact-us-page-contact-people' ); ?></span>
 						  </td>
 						</tr>
 					  </tbody>
@@ -270,8 +270,8 @@ class People_Contact_AddNew
 				<?php
 		        $settings_html = ob_get_clean();
 		        $people_contact_admin_interface->panel_box( $settings_html, array(
-		        	'name' 		=> __( 'Contact Page Profile', 'cup_cp' ),
-		        	'desc'		=> __( 'Switch OFF and this profile will not show on the main Contact Us Page but still can be inserted by shortcode (Pro and Ultimate Versions) and assigned to groups (Ultimate Version) that are inserted by shortcode.', 'cup_cp' ),
+		        	'name' 		=> __( 'Contact Page Profile', 'contact-us-page-contact-people' ),
+		        	'desc'		=> __( 'Switch OFF and this profile will not show on the main Contact Us Page but still can be inserted by shortcode (Pro and Ultimate Versions) and assigned to groups (Ultimate Version) that are inserted by shortcode.', 'contact-us-page-contact-people' ),
 		        	'id'		=> 'a3_people_contact_page_profile_box',
 					'is_box'	=> true,
 				) );
@@ -281,7 +281,7 @@ class People_Contact_AddNew
 					<?php ob_start(); ?>
 		            <table class="form-table" style="margin-bottom:0;">
 		            <tr valign="top">
-						  <th scope="row"><label for="c_shortcode"><?php _e('Enter Form Shortcode', 'cup_cp') ?></label></th>
+						  <th scope="row"><label for="c_shortcode"><?php _e('Enter Form Shortcode', 'contact-us-page-contact-people' ) ?></label></th>
 						  <td>
 		                  <input type="text" class="regular-text" value="" id="c_shortcode" name="contact_arr[c_shortcode]"></td>
 						</tr>
@@ -290,8 +290,8 @@ class People_Contact_AddNew
 					<?php
 			        $settings_html = ob_get_clean();
 			        $people_contact_admin_interface->panel_box( $settings_html, array(
-			        	'name' 		=> __( 'Contact Form by Shortcode', 'cup_cp' ),
-			        	'desc'		=> sprintf( __( 'Add a unique Contact Form for this profile. Supports Contact Form 7 or Gravity Forms plugin shortcodes. Feature must be switched <a href="%s" target="_blank">ON here</a> + Contact Form Type > Create Form by Shortcode switch.', 'cup_cp'), admin_url( 'admin.php?page=people-contact-settings&tab=email-inquiry' ) ),
+			        	'name' 		=> __( 'Contact Form by Shortcode', 'contact-us-page-contact-people' ),
+			        	'desc'		=> sprintf( __( 'Add a unique Contact Form for this profile. Supports Contact Form 7 or Gravity Forms plugin shortcodes. Feature must be switched <a href="%s" target="_blank">ON here</a> + Contact Form Type > Create Form by Shortcode switch.', 'contact-us-page-contact-people' ), admin_url( 'admin.php?page=people-contact-settings&tab=email-inquiry' ) ),
 			        	'class'		=> 'pro_feature_fields',
 			        	'id'		=> 'a3_people_contact_form_shortcode_box',
 						'is_box'	=> true,
@@ -303,7 +303,7 @@ class People_Contact_AddNew
               		<?php ob_start(); ?>
 					<div class="categories_selection">
 		              <?php
-					  	$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'cup_cp') ) );
+					  	$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) ) );
 						if ( is_array($all_categories) && count($all_categories) > 0 ) {
 							foreach ( $all_categories as $category_data ) {
 						?>
@@ -311,8 +311,8 @@ class People_Contact_AddNew
 		                    	<input
 										name="categories_assign[]"
 										class="a3rev-ui-onoff_checkbox"
-		                                checked_label="<?php _e( 'ON', 'cup_cp' ); ?>"
-		                                unchecked_label="<?php _e( 'OFF', 'cup_cp' ); ?>"
+		                                checked_label="<?php _e( 'ON', 'contact-us-page-contact-people' ); ?>"
+		                                unchecked_label="<?php _e( 'OFF', 'contact-us-page-contact-people' ); ?>"
 		                                type="checkbox"
 										value="<?php echo $category_data['id']; ?>"
 										/>
@@ -322,15 +322,15 @@ class People_Contact_AddNew
 		                <?php
 							}
 						} else {
-							_e('No Groups', 'cup_cp');
+							_e('No Groups', 'contact-us-page-contact-people' );
 						}
 					  ?>
               		</div>
               		<?php
 			        $settings_html = ob_get_clean();
 			        $people_contact_admin_interface->panel_box( $settings_html, array(
-			        	'name' 		=> __( 'Assign Profile to Groups', 'cup_cp' ),
-			        	'desc'		=> __( 'Use the ON | OFF switches to assign this profile to any number of Groups', 'cup_cp'),
+			        	'name' 		=> __( 'Assign Profile to Groups', 'contact-us-page-contact-people' ),
+			        	'desc'		=> __( 'Use the ON | OFF switches to assign this profile to any number of Groups', 'contact-us-page-contact-people' ),
 			        	'class'		=> 'pro_feature_fields',
 			        	'id'		=> 'a3_people_groupes_box',
 						'is_box'	=> true,
@@ -344,21 +344,21 @@ class People_Contact_AddNew
 				<table class="form-table" style="margin-bottom:0;">
 				  <tbody>
 					<tr valign="top">
-					  <th scope="row"><label for="c_address"><?php _e('Address', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_address"><?php _e('Address', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text <?php echo $address_error_class; ?>" value="<?php if(isset($data['c_address'])){esc_attr_e( stripslashes( $data['c_address']));}?>" id="c_address" name="contact_arr[c_address]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_latitude"><?php _e('Latitude', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_latitude"><?php _e('Latitude', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" readonly="readonly" class="regular-text" value="<?php if(isset($data['c_latitude'])){echo $data['c_latitude'];}?>" id="c_latitude" name="contact_arr[c_latitude]"></td>
 					</tr>
 					<tr valign="top">
-					  <th scope="row"><label for="c_longitude"><?php _e('Longitude', 'cup_cp') ?></label></th>
+					  <th scope="row"><label for="c_longitude"><?php _e('Longitude', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" readonly="readonly" class="regular-text" value="<?php if(isset($data['c_longitude'])){echo $data['c_longitude'];}?>" id="c_longitude" name="contact_arr[c_longitude]"></td>
 					</tr>
 					<tr>
 						<th></th>
 						<td>
-							<div style="font-size: 13px;"><?php echo __( '* <strong>Tip</strong> - drag and drop the map marker to the required location', 'cup_cp' ); ?></div>
+							<div style="font-size: 13px;"><?php echo __( '* <strong>Tip</strong> - drag and drop the map marker to the required location', 'contact-us-page-contact-people' ); ?></div>
 							<div class="maps_content" style="padding:10px 0px;">
 					    		<div id="map_canvas"></div>
 		              		</div>
@@ -369,8 +369,8 @@ class People_Contact_AddNew
 				<?php
 		        $settings_html = ob_get_clean();
 		        $people_contact_admin_interface->panel_box( $settings_html, array(
-		        	'name' 		=> __( 'Profile Location Address', 'cup_cp' ),
-		        	'desc'		=> __( '<strong>REQUIRED</strong>: All profiles must have a map location set. The location set here is used for this profile on the Contact Us Page map (optional) and any Group map (optional) that the profile has been assigned to.', 'cup_cp' ),
+		        	'name' 		=> __( 'Profile Location Address', 'contact-us-page-contact-people' ),
+		        	'desc'		=> __( '<strong>REQUIRED</strong>: All profiles must have a map location set. The location set here is used for this profile on the Contact Us Page map (optional) and any Group map (optional) that the profile has been assigned to.', 'contact-us-page-contact-people' ),
 		        	'id'		=> 'a3_people_location_address_box',
 					'is_box'	=> true,
 					'alway_open'=> true,

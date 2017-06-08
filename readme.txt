@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 4.7.5
-Stable tag: 3.0.1
+Tested up to: 4.8.0
+Stable tag: 3.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,7 +16,7 @@ Contact Us Page - Contact People allows you to easily transform your themes dull
 	
 Features include:
 	
-= Profiles =
+= PROFILES =
 The first thing the plugin does is allow you to create an unlimited number of profiles. Profiles can be anything you want - People, Head Offices, branch Offices. Profile card are displayed in rows on the Contact Us Page under the Google map if you have activated the map.
 
 Profile Features are:
@@ -29,20 +29,20 @@ Profile Features are:
 * Add Profile unique email address and mail goes directly to them
 * Any Profile Address or contact method can be left off the card
 
-= Profile Cards =
+= PROFILE CARDS =
 
 * Creates a contact card for each profile
 * 3 Card Layout options, Image Left and Content Right or Image Right and Content Left or Image top and content below
 * Full in plugin card style options means no coding required to style the profile cards.
 
-= Contact Form Pop Up =
+= CONTACT POP UP FORMS =
 
 * When click on email link on a profile card the contact form opens is a beatiful Bootstrap Modal pop up
 * Form pop up shows beautifully in PC, tablet and mobile
 * User can send email direct to any profile without leaving the page
  
 		
-= Contact Us Page =
+= CONTACT US PAGE =
 
 The plugin when installed auto creates a stunning contact us page with this huge list of features:
 	
@@ -63,7 +63,7 @@ The plugin when installed auto creates a stunning contact us page with this huge
 * Pop-up submission success confirmation.
 * Mobile device optimized, all tablets and phones.
 		
-= Contact Us Widget =
+= CONTACT US WIDGET =
 	
 The plugin includes a fully customizable Contact Widget that can be used in any theme widgetized area. Features include
 	
@@ -80,38 +80,19 @@ The plugin includes a fully customizable Contact Widget that can be used in any 
 * Full support for WPML
 * Translation ready
 
-= Additional functionality =
+= PREMIUM VERSION =
 	
-This plugin features a an Ultimate version upgrade that adds 3 advanced functionalities:
+This plugin features a an [Ultimate version upgrade](https://a3rev.com/shop/contact-people-ultimate/) that adds 3 advanced functionalities:
 
-= Custom Profile Contact Forms =
+* Custom Profile Contact Forms
+* Profile Cards Shortcode
+* Profile Groups
 
-The free version includes a built in default contact form. Contact forms are a plugin of their own and there are many of them. The Contact People Ultimate plugin has built in support for using the number 1 Free contact plugin Contact Form 7 and the number 1 Premium contact Gravity Forms as the contact form for profiles. These plugins have been in development for years and have many great features all of which can be used to create your profile contact forms.
+= CONTRIBUTE =
 
-* Use Contact Form 7 & Gravity Forms shortcodes to create Profile Contact Forms
-* Use either of these plugins to create a global (applies to all) contact form for profiles.
-* Add unique contact forms for individual profiles.
-	
-= Profile Cards Shortcode =
-	
-* Insert Profile cards by shortcode into any post or page
-* Add one or multiple Contact Profiles cards to a single page.
-* Set Profile card alignment on page, includes text wrap left or right.
-* Set Profile card padding top, bottom, left and right within the content
-* Fully mobile responsive
-	
-= Profile Groups =	
-The Ultimate WordPress plugin for creating and displaying Contact Profiles for Groups of People, Organizations, Commitees, Company Departments, Stores, branch locations and just about any Grouping that you want to create.
-	
-* Create unlimited Groups and assign Profiles to Groups
-* Assign a single Profile to any number of Groups
-* Sort Profile order within each Group
-* Groups shortcode. Insert Groups in any page or post.
-* Insert multiple groups per pages or posts.
-* Shortcode point and click display editor.
-* Set the number of Profiles per row in each group
-* Show or not show Google map with Group
-* Show or not show Group title above Profiles
+When you download Contact Us Page - Contact People, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of this plugin head over to the Contact Us Page - Contact People [GitHub Repository](https://github.com/a3rev/contact-us-page-contact-people) to find out how you can contribute.
+
+Want to add a new language to WP Email Template! You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/contact-us-page-contact-people)
 	
 
 == Installation ==
@@ -147,6 +128,11 @@ The Ultimate WordPress plugin for creating and displaying Contact Profiles for G
 
 
 == Changelog ==
+
+= 3.1.0 - 2017/06/08 =
+* Feature - Launched WP Email Template public Repository
+* Feature - WordPress Translation activation. Add text domain declaration in file header
+* Tweak - Tested for compatibility with WordPress major version 4.8.0
 
 = 3.0.1 - 2017/05/25 =
 * Tweak - Increase z-index of Boostrap Modal pop up so that it takes higher priority then a3 Portfolio Item expander
@@ -446,6 +432,9 @@ The Ultimate WordPress plugin for creating and displaying Contact Profiles for G
 
 
 == Upgrade Notice ==
+
+= 3.1.0 =
+Feature Upgrade. Tweaks for compatibility with WordPress major version 4.8.0 plus launch of plugins public Github repo
 
 = 3.0.1 =
 Maintenance Update. 3 Code tweaks on new Bootstrap Modal pop up for improved user Experience. No option changes are required, just clear caching to see the changes in the pop up

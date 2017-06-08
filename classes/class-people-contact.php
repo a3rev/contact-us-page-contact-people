@@ -46,9 +46,9 @@ class People_Contact {
 		$send_copy = $_REQUEST['send_copy'];
 
 		if(trim($_REQUEST['c_subject']) != ''){
-			$subject = trim($_REQUEST['c_subject']). ' ' . people_ict_t__( 'Email Inquiry - from', __('from', 'cup_cp') ) . ' ' . ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
+			$subject = trim($_REQUEST['c_subject']). ' ' . people_ict_t__( 'Email Inquiry - from', __('from', 'contact-us-page-contact-people' ) ) . ' ' . ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
 		}else{
-			$subject = people_ict_t__( 'Email Inquiry - Contact from', __('Contact from', 'cup_cp') ).' '. ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
+			$subject = people_ict_t__( 'Email Inquiry - Contact from', __('Contact from', 'contact-us-page-contact-people' ) ).' '. ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
 		}
 
 		$profile_data = array(
@@ -74,7 +74,7 @@ class People_Contact {
 		global $people_email_inquiry_global_settings;
 
 		if ( trim( $people_email_inquiry_global_settings['inquiry_contact_text_button'] ) != '') $inquiry_contact_text_button = $people_email_inquiry_global_settings['inquiry_contact_text_button'];
-		else $inquiry_contact_text_button = __('SEND', 'cup_cp');
+		else $inquiry_contact_text_button = __('SEND', 'contact-us-page-contact-people' );
 
 		$inquiry_contact_button_class = apply_filters( 'people_inquiry_contact_button_class', '' );
 		$inquiry_contact_form_class = apply_filters( 'people_inquiry_contact_form_class', '' );
@@ -111,24 +111,24 @@ class People_Contact {
         	<input type="hidden" value="<?php esc_attr_e( stripslashes( $data['c_email'] ) );?>" id="profile_email_<?php echo $contact_id; ?>" name="profile_email" />
         	<input type="hidden" value="<?php esc_attr_e( stripslashes(  $data['c_title']) );?> <?php esc_attr_e( stripslashes( $data['c_name'] ) );?>" id="profile_name_<?php echo $contact_id; ?>" name="profile_name" />
             <div class="people_email_inquiry_field">
-                <label class="people_email_inquiry_label" for="c_name_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Name', __('Name', 'cup_cp') ); ?> <span class="gfield_required">*</span></label>
+                <label class="people_email_inquiry_label" for="c_name_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Name', __('Name', 'contact-us-page-contact-people' ) ); ?> <span class="gfield_required">*</span></label>
                 <input type="text" name="c_name" id="c_name_<?php echo $contact_id; ?>" value="" /></div>
             <div class="people_email_inquiry_field">
-                <label class="people_email_inquiry_label" for="c_email_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Email', __('Email', 'cup_cp') ); ?> <span class="gfield_required">*</span></label>
+                <label class="people_email_inquiry_label" for="c_email_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Email', __('Email', 'contact-us-page-contact-people' ) ); ?> <span class="gfield_required">*</span></label>
                 <input type="text" name="c_email" id="c_email_<?php echo $contact_id; ?>" value="" /></div>
             <div class="people_email_inquiry_field">
-                <label class="people_email_inquiry_label" for="c_phone_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Phone', __('Phone', 'cup_cp') ); ?> <span class="gfield_required">*</span></label>
+                <label class="people_email_inquiry_label" for="c_phone_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Phone', __('Phone', 'contact-us-page-contact-people' ) ); ?> <span class="gfield_required">*</span></label>
                 <input type="text" name="c_phone" id="c_phone_<?php echo $contact_id; ?>" value="" /></div>
             <div class="people_email_inquiry_field">
-                <label class="people_email_inquiry_label" for="c_subject_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Subject', __('Subject', 'cup_cp') ); ?> </label>
+                <label class="people_email_inquiry_label" for="c_subject_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Subject', __('Subject', 'contact-us-page-contact-people' ) ); ?> </label>
                 <input type="text" name="c_subject" id="c_subject_<?php echo $contact_id; ?>" value="" /></div>
             <div class="people_email_inquiry_field">
-                <label class="people_email_inquiry_label" for="c_message_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Message', __('Message', 'cup_cp') ); ?> <span class="gfield_required">*</span></label>
+                <label class="people_email_inquiry_label" for="c_message_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Message', __('Message', 'contact-us-page-contact-people' ) ); ?> <span class="gfield_required">*</span></label>
                 <textarea rows="3" name="c_message" id="c_message_<?php echo $contact_id; ?>"></textarea></div>
             <div class="people_email_inquiry_field">
                 <?php if ( $people_email_inquiry_global_settings['send_copy'] != 'no' ) { ?>
                 <label class="people_email_inquiry_label">&nbsp;</label>
-                <label class="people_email_inquiry_send_copy"><input type="checkbox" name="send_copy" id="send_copy_<?php echo $contact_id; ?>" value="1" checked="checked" /> <?php people_ict_t_e( 'Default Form - Send Copy', __('Send a copy of this email to myself.', 'cup_cp') ); ?></label>
+                <label class="people_email_inquiry_send_copy"><input type="checkbox" name="send_copy" id="send_copy_<?php echo $contact_id; ?>" value="1" checked="checked" /> <?php people_ict_t_e( 'Default Form - Send Copy', __('Send a copy of this email to myself.', 'contact-us-page-contact-people' ) ); ?></label>
                 <?php } ?>
                 <a class="people_email_inquiry_form_button <?php echo $inquiry_contact_button_class; ?>" id="people_email_inquiry_bt_<?php echo $contact_id; ?>" contact_id="<?php echo $contact_id; ?>" from-page-id="<?php echo $from_page_id; ?>"><?php echo $inquiry_contact_text_button; ?></a>
             </div>
@@ -502,7 +502,7 @@ class People_Contact {
 				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.$mobile_icon.'" style="width:auto;height:auto" /></span> '. esc_attr( stripslashes($value['c_mobile'] ) ).'</p>';
 				}
 				if ( trim($value['c_website']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a href="'. esc_url( stripslashes($value['c_website'] ) ).'" target="_blank">'.( function_exists('icl_t') ? icl_t( 'a3 Contact People', 'Profile Cards - Website Link Text', __('Visit Website', 'cup_cp') ) : __('Visit Website', 'cup_cp') ).'</a></p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a href="'. esc_url( stripslashes($value['c_website'] ) ).'" target="_blank">'.( function_exists('icl_t') ? icl_t( 'a3 Contact People', 'Profile Cards - Website Link Text', __('Visit Website', 'contact-us-page-contact-people' ) ) : __('Visit Website', 'contact-us-page-contact-people' ) ).'</a></p>';
 				}
 
 				$have_modal_popup = false;

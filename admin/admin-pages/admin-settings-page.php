@@ -60,8 +60,8 @@ class People_Contact_Settings_Page extends People_Contact_Admin_UI
 		$page_data = array(
 			'type'				=> 'submenu',
 			'parent_slug'		=> 'people-contact-manager',
-			'page_title'		=> __( 'Settings', 'cup_cp' ),
-			'menu_title'		=> __( 'Settings', 'cup_cp' ),
+			'page_title'		=> __( 'Settings', 'contact-us-page-contact-people' ),
+			'menu_title'		=> __( 'Settings', 'contact-us-page-contact-people' ),
 			'capability'		=> 'manage_options',
 			'menu_slug'			=> $this->menu_slug,
 			'function'			=> 'people_contact_settings_page_show',

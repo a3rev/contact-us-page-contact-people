@@ -78,9 +78,9 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 		$this->subtab_init();
 		
 		$this->form_messages = array(
-				'success_message'	=> __( 'Contact Widget Settings successfully saved.', 'cup_cp' ),
-				'error_message'		=> __( 'Error: Contact Widget Settings can not save.', 'cup_cp' ),
-				'reset_message'		=> __( 'Contact Widget Settings successfully reseted.', 'cup_cp' ),
+				'success_message'	=> __( 'Contact Widget Settings successfully saved.', 'contact-us-page-contact-people' ),
+				'error_message'		=> __( 'Error: Contact Widget Settings can not save.', 'contact-us-page-contact-people' ),
+				'reset_message'		=> __( 'Contact Widget Settings successfully reseted.', 'contact-us-page-contact-people' ),
 			);
 		
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );
@@ -133,7 +133,7 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 		
 		$subtab_data = array( 
 			'name'				=> 'global-settings',
-			'label'				=> __( 'Settings', 'cup_cp' ),
+			'label'				=> __( 'Settings', 'contact-us-page-contact-people' ),
 			'callback_function'	=> 'people_contact_contact_widget_global_settings_form',
 		);
 		
@@ -176,70 +176,70 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
 		
 			array(
-            	'name' 		=> __( 'Help Notes', 'cup_cp' ),
+            	'name' 		=> __( 'Help Notes', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'contact_widget_help_notes_box',
                 'is_box'	=> true,
            	),
 			array(
-            	'name' 		=> __( 'Contact Us Widget', 'cup_cp' ),
-				'desc'		=> sprintf( __( 'This plugin includes a <a href="%s" target="_blank">Contact Us Widget</a>. Use it to add Business / Organization Details, information and a general Contact Us form to the Contact Us Page sidebar. All of the Widget settings are here on the Contact Widget tab. Use the plugins built in Contact Form or add a custom form by shortcode from a Contact Form plugin of your choice.', 'cup_cp' ), admin_url('widgets.php') ),
+            	'name' 		=> __( 'Contact Us Widget', 'contact-us-page-contact-people' ),
+				'desc'		=> sprintf( __( 'This plugin includes a <a href="%s" target="_blank">Contact Us Widget</a>. Use it to add Business / Organization Details, information and a general Contact Us form to the Contact Us Page sidebar. All of the Widget settings are here on the Contact Widget tab. Use the plugins built in Contact Form or add a custom form by shortcode from a Contact Form plugin of your choice.', 'contact-us-page-contact-people' ), admin_url('widgets.php') ),
                 'type' 		=> 'heading',
            	),
 			array(
-            	'name' 		=> __( 'Contact Page Sidebar', 'cup_cp' ),
-				'desc'		=> sprintf( __( 'We recommend that you create a new sidebar and assign it to the Contact Us Page. If you do you can then add the Contact Widget to that sidebar and it will only show on the Contact Us page. We recommend you install this plugin <a href="%s" target="_blank">WooSidebars</a> and use it to create the custom sidebar.', 'cup_cp' ), 'http://wordpress.org/plugins/woosidebars/'),
+            	'name' 		=> __( 'Contact Page Sidebar', 'contact-us-page-contact-people' ),
+				'desc'		=> sprintf( __( 'We recommend that you create a new sidebar and assign it to the Contact Us Page. If you do you can then add the Contact Widget to that sidebar and it will only show on the Contact Us page. We recommend you install this plugin <a href="%s" target="_blank">WooSidebars</a> and use it to create the custom sidebar.', 'contact-us-page-contact-people' ), 'http://wordpress.org/plugins/woosidebars/'),
                 'type' 		=> 'heading',
            	),
 
            	array(
-            	'name' 		=> __( 'Widget Contact Details', 'cup_cp' ),
-				'desc'		=> __( "Add contact details to show in the widget, empty fields don't show on front end.", 'cup_cp' ),
+            	'name' 		=> __( 'Widget Contact Details', 'contact-us-page-contact-people' ),
+				'desc'		=> __( "Add contact details to show in the widget, empty fields don't show on front end.", 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'contact_widget_details_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Address', 'cup_cp' ),
+				'name' 		=> __( 'Address', 'contact-us-page-contact-people' ),
 				'id' 		=> 'widget_info_address',
 				'type' 		=> 'text',
 				'default'	=> ''
 			),
 			array(  
-				'name' 		=> __( 'Phone', 'cup_cp' ),
+				'name' 		=> __( 'Phone', 'contact-us-page-contact-people' ),
 				'id' 		=> 'widget_info_phone',
 				'type' 		=> 'text',
 				'default'	=> ''
 			),
 			array(  
-				'name' 		=> __( 'Fax', 'cup_cp' ),
+				'name' 		=> __( 'Fax', 'contact-us-page-contact-people' ),
 				'id' 		=> 'widget_info_fax',
 				'type' 		=> 'text',
 				'default'	=> ''
 			),
 			array(  
-				'name' 		=> __( 'Mobile', 'cup_cp' ),
+				'name' 		=> __( 'Mobile', 'contact-us-page-contact-people' ),
 				'id' 		=> 'widget_info_mobile',
 				'type' 		=> 'text',
 				'default'	=> ''
 			),
 			array(  
-				'name' 		=> __( 'Visible Email address', 'cup_cp' ),
-				'desc'		=> __( 'NOT Recommended! Open email addresses on a site allow spammers to scrape them. It is very bad form to have open email addresses anywhere on a site.', 'cup_cp' ),
+				'name' 		=> __( 'Visible Email address', 'contact-us-page-contact-people' ),
+				'desc'		=> __( 'NOT Recommended! Open email addresses on a site allow spammers to scrape them. It is very bad form to have open email addresses anywhere on a site.', 'contact-us-page-contact-people' ),
 				'id' 		=> 'widget_info_email',
 				'type' 		=> 'text',
 				'default'	=> ''
 			),
 			
 			array(
-            	'name' 		=> __( 'Widget Custom Content', 'cup_cp' ),
+            	'name' 		=> __( 'Widget Custom Content', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'contact_widget_content_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Content before Map', 'cup_cp' ),
-				'desc'		=> __( "Content will show above map on widget. Leave empty and nothing shows on the frontend.", 'cup_cp' ),
+				'name' 		=> __( 'Content before Map', 'contact-us-page-contact-people' ),
+				'desc'		=> __( "Content will show above map on widget. Leave empty and nothing shows on the frontend.", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_content_before_maps',
 				'type' 		=> 'wp_editor',
 				'default'	=> '',
@@ -247,8 +247,8 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Content after Map', 'cup_cp' ),
-				'desc'		=> __( "Content will show below map on widget. Leave empty and nothing shows on the frontend.", 'cup_cp' ),
+				'name' 		=> __( 'Content after Map', 'contact-us-page-contact-people' ),
+				'desc'		=> __( "Content will show below map on widget. Leave empty and nothing shows on the frontend.", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_content_after_maps',
 				'type' 		=> 'wp_editor',
 				'default'	=> '',
@@ -258,13 +258,13 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 
 
 			array(
-            	'name' 		=> __( 'Widget Email Contact Form', 'cup_cp' ),
+            	'name' 		=> __( 'Widget Email Contact Form', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'email_contact_form_box',
                 'is_box'	=> true,
            	),
            	array(  
-				'name' 		=> __( 'Default Contact Form', 'cup_cp' ),
+				'name' 		=> __( 'Default Contact Form', 'contact-us-page-contact-people' ),
 				'class'		=> 'widget_show_contact_form',
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_show_contact_form]',
 				'type' 		=> 'onoff_radio',
@@ -273,16 +273,16 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 					array(
 						'val' 				=> 1,
 						'text' 				=> '',
-						'checked_label'		=> __( 'ON', 'cup_cp') ,
-						'unchecked_label' 	=> __( 'OFF', 'cup_cp') ,
+						'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ) ,
+						'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ) ,
 					),
 					
 				),
 				'separate_option'	=> true,
 			),
            	array(  
-				'name' 		=> __( 'Create Form By Shortcode', 'cup_cp' ),
-				'desc'		=> __( 'Create the widget email contact form by entering a shortcode from any contact form plugin.', 'cup_cp' ),
+				'name' 		=> __( 'Create Form By Shortcode', 'contact-us-page-contact-people' ),
+				'desc'		=> __( 'Create the widget email contact form by entering a shortcode from any contact form plugin.', 'contact-us-page-contact-people' ),
 				'class'		=> 'widget_show_contact_form',
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_show_contact_form]',
 				'type' 		=> 'onoff_radio',
@@ -291,23 +291,23 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 					array(
 						'val' 				=> 0,
 						'text' 				=> '',
-						'checked_label'		=> __( 'ON', 'cup_cp') ,
-						'unchecked_label' 	=> __( 'OFF', 'cup_cp') ,
+						'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ) ,
+						'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ) ,
 					),
 					
 				),
 				'separate_option'	=> true,
 			),
 			array(
-            	'name' 		=> __( 'Form Shortcode', 'cup_cp' ),
-				'desc'		=> __( 'Create the widget contact us form by entering a shortcode from any contact form plugin.', 'cup_cp' ),
+            	'name' 		=> __( 'Form Shortcode', 'contact-us-page-contact-people' ),
+				'desc'		=> __( 'Create the widget contact us form by entering a shortcode from any contact form plugin.', 'contact-us-page-contact-people' ),
 				'class'		=> 'widget_show_contact_form_another_plugin',
                 'type' 		=> 'heading',
                 'id'		=> 'contact_widget_3rd_form_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Form Shortcode', 'cup_cp' ),
+				'name' 		=> __( 'Form Shortcode', 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_input_shortcode]',
 				'type' 		=> 'text',
 				'default'	=> '',
@@ -315,7 +315,7 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 			),
 			
 			array(
-            	'name' 		=> __( 'Form Settings', 'cup_cp' ),
+            	'name' 		=> __( 'Form Settings', 'contact-us-page-contact-people' ),
             	'class'		=> 'widget_show_contact_form_default',
                 'type' 		=> 'heading',
                 'id'		=> 'contact_widget_default_form_box',
@@ -323,57 +323,57 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 
            	),
 			array(
-            	'name' 		=> __( "Email 'From' Settings", 'cup_cp' ),
+            	'name' 		=> __( "Email 'From' Settings", 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
            	),
 			array(  
-				'name' 		=> __( '"From" Name', 'cup_cp' ),
-				'desc' 		=> __( "Leave empty and your site title will be used", 'cup_cp' ),
+				'name' 		=> __( '"From" Name', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Leave empty and your site title will be used", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_email_from_name]',
 				'type' 		=> 'text',
 				'default'	=> get_bloginfo('blogname'),
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( '"From" Email Address', 'cup_cp' ),
-				'desc' 		=> __( "Leave empty and your WordPress admin email address will be used", 'cup_cp' ),
+				'name' 		=> __( '"From" Email Address', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Leave empty and your WordPress admin email address will be used", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_email_from_address]',
 				'type' 		=> 'text',
 				'default'	=> get_bloginfo('admin_email'),
 				'separate_option'	=> true,
 			),
 			array(
-            	'name' 		=> __( "Sender 'Request A Copy'", 'cup_cp' ),
+            	'name' 		=> __( "Sender 'Request A Copy'", 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
            	),
 			array(  
-				'name' 		=> __( 'Send Copy to Sender', 'cup_cp' ),
-				'desc' 		=> __( "Gives users a checkbox option to send a copy of the Inquiry email to themselves", 'cup_cp' ),
+				'name' 		=> __( 'Send Copy to Sender', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Gives users a checkbox option to send a copy of the Inquiry email to themselves", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_send_copy]',
 				'type' 		=> 'onoff_checkbox',
 				'default'	=> 'yes',
 				'checked_value'		=> 'yes',
 				'unchecked_value' 	=> 'no',
-				'checked_label'		=> __( 'ON', 'cup_cp' ),
-				'unchecked_label' 	=> __( 'OFF', 'cup_cp' ),
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
 				'separate_option'	=> true,
 			),
 			
 			array(
-            	'name' 		=> __( 'Email Delivery', 'cup_cp' ),
+            	'name' 		=> __( 'Email Delivery', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
            	),
 			array(  
-				'name' 		=> __( 'Inquiry Email goes to', 'cup_cp' ),
-				'desc' 		=> __( "Leave empty and your WordPress admin email address will be used", 'cup_cp' ),
+				'name' 		=> __( 'Inquiry Email goes to', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Leave empty and your WordPress admin email address will be used", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_email_to]',
 				'type' 		=> 'text',
 				'default'	=> get_bloginfo('admin_email'),
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'CC', 'cup_cp' ),
-				'desc' 		=> __( "Leave empty and no email is sent", 'cup_cp' ),
+				'name' 		=> __( 'CC', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Leave empty and no email is sent", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_email_contact_form[widget_email_cc]',
 				'type' 		=> 'text',
 				'default'	=> '',
@@ -382,21 +382,21 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 
 
 			array(
-            	'name' 		=> __( 'Widget Google Map', 'cup_cp' ),
+            	'name' 		=> __( 'Widget Google Map', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'contact_widget_map_settings_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Show Map', 'cup_cp' ),
+				'name' 		=> __( 'Show Map', 'contact-us-page-contact-people' ),
 				'class'		=> 'widget_hide_maps_frontend',
 				'id' 		=> 'widget_hide_maps_frontend',
 				'type' 		=> 'onoff_checkbox',
 				'default' 	=> 0,
 				'checked_value'		=> 0,
 				'unchecked_value' 	=> 1,
-				'checked_label'		=> __( 'ON', 'cup_cp' ),
-				'unchecked_label' 	=> __( 'OFF', 'cup_cp' ),
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
 				'separate_option'	=> true,
 
 			),
@@ -405,16 +405,16 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
                 'type' 		=> 'heading',
            	),
 			array(  
-				'name' 		=> __( 'Marker Location', 'cup_cp' ),
+				'name' 		=> __( 'Marker Location', 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_maps[widget_location]',
-				'desc'		=> '</span><div style="font-size: 13px; margin-top: 10px;">'.__( '* Tip - drag and drop the map marker to the required location', 'cup_cp' ).'</div><div id="map_canvas"></div><span>',
+				'desc'		=> '</span><div style="font-size: 13px; margin-top: 10px;">'.__( '* Tip - drag and drop the map marker to the required location', 'contact-us-page-contact-people' ).'</div><div id="map_canvas"></div><span>',
 				'class'		=> 'widget_location',
 				'type' 		=> 'text',
 				'default'	=> 'Australia',
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Zoom Level', 'cup_cp' ),
+				'name' 		=> __( 'Zoom Level', 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_maps[widget_zoom_level]',
 				'class'		=> 'widget_zoom_level',
 				'type' 		=> 'slider',
@@ -425,7 +425,7 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Map Type', 'cup_cp' ),
+				'name' 		=> __( 'Map Type', 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_maps[widget_map_type]',
 				'class'		=> 'widget_map_type chzn-select',
 				'type' 		=> 'select',
@@ -440,7 +440,7 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Map Height', 'cup_cp' ),
+				'name' 		=> __( 'Map Height', 'contact-us-page-contact-people' ),
 				'desc'		=> 'px',
 				'id' 		=> 'people_contact_widget_maps[widget_map_height]',
 				'class'		=> 'widget_map_height',
@@ -450,8 +450,8 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Map Callout Text', 'cup_cp' ),
-				'desc' 		=> __( "Text or HTML that will be output when you click on the map marker for your location.", 'cup_cp' ),
+				'name' 		=> __( 'Map Callout Text', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Text or HTML that will be output when you click on the map marker for your location.", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_widget_maps[widget_maps_callout_text]',
 				'class'		=> 'widget_maps_callout_text',
 				'type' 		=> 'textarea',

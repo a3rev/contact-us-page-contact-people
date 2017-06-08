@@ -75,7 +75,7 @@ class People_Contact_Contact_Page_Tab extends People_Contact_Admin_UI
 		
 		$tab_data = array( 
 			'name'				=> 'contact-page',
-			'label'				=> __( 'Contact Us Page', 'cup_cp' ),
+			'label'				=> __( 'Contact Us Page', 'contact-us-page-contact-people' ),
 			'callback_function'	=> 'people_contact_contact_page_tab_manager',
 		);
 		

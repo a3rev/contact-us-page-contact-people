@@ -14,11 +14,11 @@ class People_Contact_Manager_Panel
 		$message = '';
 		if( isset($_GET['action']) && $_GET['action'] == 'del' && isset($_GET['id']) && $_GET['id'] >= 0){
 			People_Contact_Profile_Data::delete_row( $_GET['id'] );
-			$message = '<div class="updated" id=""><p>'.__('Profile Successfully deleted.', 'cup_cp').'</p></div>';
+			$message = '<div class="updated" id=""><p>'.__('Profile Successfully deleted.', 'contact-us-page-contact-people' ).'</p></div>';
 		} elseif ( isset($_GET['edited_profile']) ) {
-			$message = '<div class="updated" id=""><p>'.__('Profile Successfully updated.', 'cup_cp').'</p></div>';
+			$message = '<div class="updated" id=""><p>'.__('Profile Successfully updated.', 'contact-us-page-contact-people' ).'</p></div>';
 		} elseif ( isset($_GET['created_profile']) ) {
-			$message = '<div class="updated" id=""><p>'.__('Profile Successfully created.', 'cup_cp').'</p></div>';
+			$message = '<div class="updated" id=""><p>'.__('Profile Successfully created.', 'contact-us-page-contact-people' ).'</p></div>';
 		}
 		
 		$my_contacts = People_Contact_Profile_Data::get_results('', 'c_order ASC', '', 'ARRAY_A');
@@ -28,31 +28,31 @@ class People_Contact_Manager_Panel
 		<div class="wrap a3rev_manager_panel_container">
         
         <?php echo $message; ?>
-        <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-contact-manager"><br></div><h1><?php _e('Profiles', 'cup_cp'); ?> <a class="add-new-h2" href="<?php echo admin_url('admin.php?page=people-contact', 'relative');?>"><?php _e('Add New', 'cup_cp'); ?></a></h1>
+        <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-contact-manager"><br></div><h1><?php _e('Profiles', 'contact-us-page-contact-people' ); ?> <a class="add-new-h2" href="<?php echo admin_url('admin.php?page=people-contact', 'relative');?>"><?php _e('Add New', 'contact-us-page-contact-people' ); ?></a></h1>
 		<div style="clear:both;height:5px;"></div>
 		<form name="contact_setting" method="post" action="">
 		  <table class="wp-list-table widefat fixed striped sorttable">
 			<thead>
 			  <tr>
 				<th width="30" class="manage-column column-sortable" style="text-align:left;white-space:nowrap"></th>
-				<th width="25" class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'cup_cp'); ?></th>
+				<th width="25" class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
 				<th width="40" class="manage-column column-image">&nbsp;</th>
-				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'cup_cp'); ?></th>
-				<th width="18%" class="manage-column column-email" style="text-align:left;white-space:nowrap"><?php _e('Email', 'cup_cp'); ?></th>
-				<th width="8%" class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'cup_cp'); ?></th>
-				<th width="15%" style="text-align:left" class="manage-column column-location"><?php _e('Location', 'cup_cp'); ?></th>
+				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th width="18%" class="manage-column column-email" style="text-align:left;white-space:nowrap"><?php _e('Email', 'contact-us-page-contact-people' ); ?></th>
+				<th width="8%" class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'contact-us-page-contact-people' ); ?></th>
+				<th width="15%" style="text-align:left" class="manage-column column-location"><?php _e('Location', 'contact-us-page-contact-people' ); ?></th>
 				<th width="85" style="text-align:center" class="manage-column column-actions"></th>
 			  </tr>
 			</thead>
 			<tfoot>
 			  <tr>
 				<th class="manage-column column-sortable" style="text-align:left;white-space:nowrap"></th>
-				<th class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'cup_cp'); ?></th>
+				<th class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
 				<th class="manage-column column-image">&nbsp;</th>
-				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'cup_cp'); ?></th>
-				<th class="manage-column column-email" style="text-align:left;white-space:nowrap"><?php _e('Email', 'cup_cp'); ?></th>
-				<th class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'cup_cp'); ?></th>
-				<th style="text-align:left" class="manage-column column-location"><?php _e('Location', 'cup_cp'); ?></th>
+				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-email" style="text-align:left;white-space:nowrap"><?php _e('Email', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'contact-us-page-contact-people' ); ?></th>
+				<th style="text-align:left" class="manage-column column-location"><?php _e('Location', 'contact-us-page-contact-people' ); ?></th>
 				<th style="text-align:center" class="manage-column column-actions"></th>
 			  </tr>
 			</tfoot>
@@ -76,14 +76,14 @@ class People_Contact_Manager_Panel
 				<td valign="middle" class="phone column-email"><?php esc_attr_e( stripslashes( $value['c_email']) );?></td>
 				<td valign="middle" class="phone column-phone"><?php esc_attr_e( stripslashes( $value['c_phone']) );?></td>
 				<td valign="middle" class="address column-location"><?php esc_attr_e( stripslashes( $value['c_address']) );?></td>
-				<td valign="middle" class="column-actions" align="center"><a title="<?php _e('Edit', 'cup_cp'); ?>" href="<?php echo admin_url('admin.php?page=people-contact&action=edit&id='.$value['id'], 'relative');?>"><?php _e('Edit', 'cup_cp'); ?></a> | <a title="<?php _e('Delete', 'cup_cp'); ?>" href="<?php echo admin_url('admin.php?page=people-contact-manager&action=del&id='.$value['id'], 'relative');?>" onclick="if(!confirm('<?php _e('Are you sure delete this profile?', 'cup_cp'); ?>')){return false;}else{return true;}"><?php _e('Delete', 'cup_cp'); ?></a></td>
+				<td valign="middle" class="column-actions" align="center"><a title="<?php _e('Edit', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-contact&action=edit&id='.$value['id'], 'relative');?>"><?php _e('Edit', 'contact-us-page-contact-people' ); ?></a> | <a title="<?php _e('Delete', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-contact-manager&action=del&id='.$value['id'], 'relative');?>" onclick="if(!confirm('<?php _e('Are you sure delete this profile?', 'contact-us-page-contact-people' ); ?>')){return false;}else{return true;}"><?php _e('Delete', 'contact-us-page-contact-people' ); ?></a></td>
 			  </tr>
 			  <?php
 				}
 			}else{
 								?>
 			  <tr>
-				<td valign="middle" align="center" colspan="8"><?php _e('No Profile', 'cup_cp'); ?></td>
+				<td valign="middle" align="center" colspan="8"><?php _e('No Profile', 'contact-us-page-contact-people' ); ?></td>
 			  </tr>
 			  <?php
 			}

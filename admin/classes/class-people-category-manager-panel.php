@@ -15,7 +15,7 @@ class People_Category_Manager_Panel
 
 		if ( $setting_id == 'a3_people_list_group_box' ) {
 			$message = '<div class="pro_feature_top_message">'
-				. sprintf( __( '<strong><a href="%s" target="_blank">Ultimate Version Feature</a></strong> The Groups feature enables admins to create a Group of profiles and insert them by shortcode completely independent of the Contact Us Page display. This can be done because each Profile has the option to show the profile or not show it on the main Contact Us Page. Simply Create Groups (like Categories) and assign Profiles to any number of groups. Then the Group (with a Group location map if required) can be inserted by shortcode in any page or post.', 'cup_cp' ), $people_contact_admin_init->pro_plugin_page_url )
+				. sprintf( __( '<strong><a href="%s" target="_blank">Ultimate Version Feature</a></strong> The Groups feature enables admins to create a Group of profiles and insert them by shortcode completely independent of the Contact Us Page display. This can be done because each Profile has the option to show the profile or not show it on the main Contact Us Page. Simply Create Groups (like Categories) and assign Profiles to any number of groups. Then the Group (with a Group location map if required) can be inserted by shortcode in any page or post.', 'contact-us-page-contact-people' ), $people_contact_admin_init->pro_plugin_page_url )
 				. '</div>';
 		}
 
@@ -52,9 +52,9 @@ class People_Category_Manager_Panel
 	
 	public static function admin_categories () {
 		global $people_contact_admin_interface;
-		$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'cup_cp') ) );
+		$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) ) );
 	?>
-        <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-category-manager"><br></div><h1><?php _e('Groups', 'cup_cp'); ?> <a class="add-new-h2" href="<?php echo admin_url('admin.php?page=people-category-manager&action=add_new', 'relative');?>"><?php _e('Add New', 'cup_cp'); ?></a></h1>
+        <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-category-manager"><br></div><h1><?php _e('Groups', 'contact-us-page-contact-people' ); ?> <a class="add-new-h2" href="<?php echo admin_url('admin.php?page=people-category-manager&action=add_new', 'relative');?>"><?php _e('Add New', 'contact-us-page-contact-people' ); ?></a></h1>
 		<div style="clear:both;height:5px;"></div>
 <div id="a3_plugin_panel_container">
 	<div id="a3_plugin_panel_upgrade_area">
@@ -65,26 +65,26 @@ class People_Category_Manager_Panel
 	<div id="a3_plugin_panel_fields">
         <div class="a3rev_panel_container">
 		<?php ob_start(); ?>
-        <div style="margin-bottom:5px;"><?php _e('Create Groups, assign Profiles to Groups and insert the Group into any Post or Page by Shortcode.', 'cup_cp'); ?></div>
+        <div style="margin-bottom:5px;"><?php _e('Create Groups, assign Profiles to Groups and insert the Group into any Post or Page by Shortcode.', 'contact-us-page-contact-people' ); ?></div>
 		<form name="contact_setting" method="post" action="">
 		  <table class="wp-list-table widefat fixed striped sorttable">
 			<thead>
 			  <tr>
-				<th width="25" class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'cup_cp'); ?></th>
-				<th width="15%" class="manage-column column-title" style="text-align:left;white-space:nowrap; width:15% !important;"><?php _e('Name', 'cup_cp'); ?></th>
-				<th width="40%" class="manage-column column-shortcode" style="text-align:left;white-space:nowrap"><?php _e('Shortcode', 'cup_cp'); ?></th>
-				<th width="50" class="manage-column column-profiles" style="text-align:center;white-space:nowrap"><?php _e('Profiles', 'cup_cp'); ?></th>
-                <th width="60" class="manage-column column-activated" style="text-align:center;white-space:nowrap"><?php _e('Activated', 'cup_cp'); ?></th>
+				<th width="25" class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
+				<th width="15%" class="manage-column column-title" style="text-align:left;white-space:nowrap; width:15% !important;"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th width="40%" class="manage-column column-shortcode" style="text-align:left;white-space:nowrap"><?php _e('Shortcode', 'contact-us-page-contact-people' ); ?></th>
+				<th width="50" class="manage-column column-profiles" style="text-align:center;white-space:nowrap"><?php _e('Profiles', 'contact-us-page-contact-people' ); ?></th>
+                <th width="60" class="manage-column column-activated" style="text-align:center;white-space:nowrap"><?php _e('Activated', 'contact-us-page-contact-people' ); ?></th>
 				<th width="100" style="text-align:center" class="manage-column column-actions">&nbsp;</th>
 			  </tr>
 			</thead>
 			<tfoot>
 			  <tr>
-				<th class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'cup_cp'); ?></th>
-				<th class="manage-column column-title" style="text-align:left;white-space:nowrap; width:15% !important;"><?php _e('Name', 'cup_cp'); ?></th>
-				<th class="manage-column column-shortcode" style="text-align:left;white-space:nowrap"><?php _e('Shortcode', 'cup_cp'); ?></th>
-				<th class="manage-column column-profiles" style="text-align:center;white-space:nowrap"><?php _e('Profiles', 'cup_cp'); ?></th>
-                <th class="manage-column column-activated" style="text-align:center;white-space:nowrap"><?php _e('Activated', 'cup_cp'); ?></th>
+				<th class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-title" style="text-align:left;white-space:nowrap; width:15% !important;"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-shortcode" style="text-align:left;white-space:nowrap"><?php _e('Shortcode', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-profiles" style="text-align:center;white-space:nowrap"><?php _e('Profiles', 'contact-us-page-contact-people' ); ?></th>
+                <th class="manage-column column-activated" style="text-align:center;white-space:nowrap"><?php _e('Activated', 'contact-us-page-contact-people' ); ?></th>
 				<th style="text-align:center" class="manage-column column-actions">&nbsp;</th>
 			  </tr>
 			</tfoot>
@@ -102,15 +102,15 @@ class People_Category_Manager_Panel
 				<td valign="middle" style="text-align:left;" class="name column-title"><?php esc_attr_e( stripslashes( $value['category_name']) );?></td>
 				<td valign="middle" class="column-shortcode">[people_group_contacts id="<?php echo $value['id'];?>" group_title="<?php esc_attr_e( stripslashes( $value['category_name']) );?>" column="3" show_map="1" show_group_title="1" ]</td>
 				<td valign="middle" class="column-profiles" style="text-align:center"><?php echo $total_profiles;?></td>
-                <td valign="middle" class="column-activated" style="text-align:center"><?php _e('Yes', 'cup_cp'); ?></td>
-				<td valign="middle" class="column-actions" align="center"><a title="<?php _e('View Profiles', 'cup_cp'); ?>" href="<?php echo admin_url('admin.php?page=people-category-manager&action=view-profile&id='.$value['id'], 'relative');?>"><?php _e('View Profiles', 'cup_cp'); ?></a> | <a title="<?php _e('Edit', 'cup_cp'); ?>" href="<?php echo admin_url('admin.php?page=people-category-manager&action=edit&id='.$value['id'], 'relative');?>"><?php _e('Edit', 'cup_cp'); ?></a> | <a title="<?php _e('Delete', 'cup_cp'); ?>" href="<?php echo admin_url('admin.php?page=people-category-manager&action=del&id='.$value['id'], 'relative');?>" onclick="if(!confirm('<?php _e('Are you sure delete this category?', 'cup_cp'); ?>')){return false;}else{return true;}"><?php _e('Delete', 'cup_cp'); ?></a></td>
+                <td valign="middle" class="column-activated" style="text-align:center"><?php _e('Yes', 'contact-us-page-contact-people' ); ?></td>
+				<td valign="middle" class="column-actions" align="center"><a title="<?php _e('View Profiles', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-category-manager&action=view-profile&id='.$value['id'], 'relative');?>"><?php _e('View Profiles', 'contact-us-page-contact-people' ); ?></a> | <a title="<?php _e('Edit', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-category-manager&action=edit&id='.$value['id'], 'relative');?>"><?php _e('Edit', 'contact-us-page-contact-people' ); ?></a> | <a title="<?php _e('Delete', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-category-manager&action=del&id='.$value['id'], 'relative');?>" onclick="if(!confirm('<?php _e('Are you sure delete this category?', 'contact-us-page-contact-people' ); ?>')){return false;}else{return true;}"><?php _e('Delete', 'contact-us-page-contact-people' ); ?></a></td>
 			  </tr>
 			  <?php
 				}
 			}else{
 								?>
 			  <tr>
-				<td valign="middle" align="center" colspan="6"><?php _e('No Groups', 'cup_cp'); ?></td>
+				<td valign="middle" align="center" colspan="6"><?php _e('No Groups', 'contact-us-page-contact-people' ); ?></td>
 			  </tr>
 			  <?php
 			}
@@ -121,7 +121,7 @@ class People_Category_Manager_Panel
 		<?php
 	        $settings_html = ob_get_clean();
 	        $people_contact_admin_interface->panel_box( $settings_html, array(
-	        	'name' 		=> __( 'List Groups', 'cup_cp' ),
+	        	'name' 		=> __( 'List Groups', 'contact-us-page-contact-people' ),
 	        	'class'		=> 'pro_feature_fields',
 	        	'id'		=> 'a3_people_list_group_box',
 				'is_box'	=> true,
@@ -146,15 +146,15 @@ class People_Category_Manager_Panel
 		$g_width_fixed      = $people_contact_location_map_settings['map_width_fixed'];
 		$g_height           = $people_contact_location_map_settings['map_height'];
 		$bt_type            = 'add_new_category';
-		$bt_value           = __('Create', 'cup_cp');
-		$title              = __('Add New Group', 'cup_cp');
+		$bt_value           = __('Create', 'contact-us-page-contact-people' );
+		$title              = __('Add New Group', 'contact-us-page-contact-people' );
 		if ( $category_id > 0 ) {
-			$data = array('id' => 1, 'category_name' => __('Profile Group', 'cup_cp') );
+			$data = array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) );
 			$category_name = $data['category_name'];
 			$publish = 1;
 			$bt_type = 'update_category';
-			$title = __('Edit Group', 'cup_cp');
-			$bt_value = __('Update', 'cup_cp');
+			$title = __('Edit Group', 'contact-us-page-contact-people' );
+			$bt_value = __('Update', 'contact-us-page-contact-people' );
 		}
 	?>
 		<div class="icon32 icon32-posts-post" id="icon-edit"><br></div><h1><?php echo $title;?></h1>
@@ -173,23 +173,23 @@ class People_Category_Manager_Panel
 			<table class="form-table" style="margin-bottom:0;">
 			  <tbody>
 				<tr valign="top">
-				  	<th scope="row"><label for="category_name"><?php _e('Group Name', 'cup_cp') ?></label></th>
+				  	<th scope="row"><label for="category_name"><?php _e('Group Name', 'contact-us-page-contact-people' ) ?></label></th>
 				  	<td><input type="text" style="width:300px;" value="<?php esc_attr_e( stripslashes( $category_name ) );?>" id="category_name" name="category_name" /></td>
 				</tr>
 				<tr valign="top">
-				  	<th scope="row"><label for="publish"><?php _e('Activate Shortcode', 'cup_cp') ?></label></th>
+				  	<th scope="row"><label for="publish"><?php _e('Activate Shortcode', 'contact-us-page-contact-people' ) ?></label></th>
 				  	<td>
                   		<input
 								name="publish"
                                 id="publish"
 								class="a3rev-ui-onoff_checkbox group_activate_shortcode"
-                                checked_label="<?php _e( 'ON', 'cup_cp' ); ?>"
-                                unchecked_label="<?php _e( 'OFF', 'cup_cp' ); ?>"
+                                checked_label="<?php _e( 'ON', 'contact-us-page-contact-people' ); ?>"
+                                unchecked_label="<?php _e( 'OFF', 'contact-us-page-contact-people' ); ?>"
                                 type="checkbox"
 								value="1"
 								<?php checked( $publish, 1 ); ?>
 								/>
-                  		<span class="description"><?php _e('Switch ON and this group can be embedded by shortcode from the Contact shortcode insert button above the WordPress text editor on any post or page.', 'cup_cp'); ?></span>
+                  		<span class="description"><?php _e('Switch ON and this group can be embedded by shortcode from the Contact shortcode insert button above the WordPress text editor on any post or page.', 'contact-us-page-contact-people' ); ?></span>
                   	</td>
 				</tr>
         	  </tbody>
@@ -208,7 +208,7 @@ class People_Category_Manager_Panel
 			<table class="form-table">
 			  <tbody>
 				<tr valign="top">
-				  	<th scope="row"><label for="g_zoom"><?php _e('Maximum Zoom Level', 'cup_cp') ?></label></th>
+				  	<th scope="row"><label for="g_zoom"><?php _e('Maximum Zoom Level', 'contact-us-page-contact-people' ) ?></label></th>
 				  	<td>
                   		<div class="a3rev-ui-slide-container">
                             <div class="a3rev-ui-slide-container-start"><div class="a3rev-ui-slide-container-end">
@@ -225,11 +225,11 @@ class People_Category_Manager_Panel
                                     />
 							</div>
                         </div>
-                        <span class="description" style="display: block; clear: both;"><?php echo __( 'Group maps feature auto zoom which sets the map so all profile markers are visible in the map viewer on first load.  Only use this setting if you want to make the first load zoom wider than the focus (the spread of profile location markers). Move the slider to the left to do this with zoom level 1 being the world map.', 'cup_cp' ); ?></span>
+                        <span class="description" style="display: block; clear: both;"><?php echo __( 'Group maps feature auto zoom which sets the map so all profile markers are visible in the map viewer on first load.  Only use this setting if you want to make the first load zoom wider than the focus (the spread of profile location markers). Move the slider to the left to do this with zoom level 1 being the world map.', 'contact-us-page-contact-people' ); ?></span>
                   	</td>
 				</tr>
 				<tr valign="top">
-				  	<th scope="row"><label for="g_map_type"><?php _e('Map Type', 'cup_cp') ?></label></th>
+				  	<th scope="row"><label for="g_map_type"><?php _e('Map Type', 'contact-us-page-contact-people' ) ?></label></th>
 				  	<td>
 				  		<?php
 				  		$map_type_list = array( 
@@ -260,14 +260,14 @@ class People_Category_Manager_Panel
 					</td>
 				</tr>
 				<tr valign="top">
-				  	<th scope="row"><label for="g_width_type"><?php _e('Map Width Type', 'cup_cp') ?></label></th>
+				  	<th scope="row"><label for="g_width_type"><?php _e('Map Width Type', 'contact-us-page-contact-people' ) ?></label></th>
 					<td class="forminp forminp-switcher_checkbox">
                   		<input
 							name="g_width_type"
                             id="g_width_type"
 							class="a3rev-ui-onoff_checkbox map_width_type"
-                            checked_label="<?php echo __( 'Responsive', 'cup_cp' ); ?>"
-                            unchecked_label="<?php echo __( 'Fixed Wide', 'cup_cp' ); ?>"
+                            checked_label="<?php echo __( 'Responsive', 'contact-us-page-contact-people' ); ?>"
+                            unchecked_label="<?php echo __( 'Fixed Wide', 'contact-us-page-contact-people' ); ?>"
                             type="checkbox"
 							value="percent"
 							<?php checked( $g_width_type, 'percent' ); ?>
@@ -318,7 +318,7 @@ class People_Category_Manager_Panel
 			<table class="form-table">
 			  <tbody>
 				<tr valign="top">
-				  	<th scope="row"><label for="g_height"><?php _e('Map Height', 'cup_cp') ?></label></th>
+				  	<th scope="row"><label for="g_height"><?php _e('Map Height', 'contact-us-page-contact-people' ) ?></label></th>
 				  	<td>
                   		<input type="text" style="width:60px;" value="<?php echo esc_attr( $g_height );?>" id="g_height" name="g_height" />
                   		<span style="margin-left:5px;" class="description">px</span>
@@ -330,8 +330,8 @@ class People_Category_Manager_Panel
 			<?php
 	        $settings_html = ob_get_clean();
 	        $people_contact_admin_interface->panel_box( $settings_html, array(
-	        	'name' 		=> __( 'Group Google Map', 'cup_cp' ),
-	        	'desc'		=> __( 'A Google Map showing all profile locations. When inserting this groups shortcode you have the option to show the group map. Set the Map display settings here.', 'cup_cp' ),
+	        	'name' 		=> __( 'Group Google Map', 'contact-us-page-contact-people' ),
+	        	'desc'		=> __( 'A Google Map showing all profile locations. When inserting this groups shortcode you have the option to show the group map. Set the Map display settings here.', 'contact-us-page-contact-people' ),
 	        	'id'		=> 'a3_people_group_g_map_box',
 	        	'class'		=> 'pro_feature_fields a3_people_group_g_map_container',
 				'is_box'	=> true,
@@ -341,7 +341,7 @@ class People_Category_Manager_Panel
             <div style="clear:both"></div>
 			<p class="submit" style="margin-bottom:0;padding-bottom:0;">
             <input type="hidden" value="<?php echo $bt_type;?>" name="<?php echo $bt_type;?>" />
-            <input disabled="disabled" type="submit" value="<?php echo $bt_value;?>" class="button button-primary" id="add_edit_buttom" name="add_edit_buttom"> <input type="button" class="button" onclick="window.location='admin.php?page=people-category-manager'" value="<?php _e('Cancel', 'cup_cp'); ?>" /></p>
+            <input disabled="disabled" type="submit" value="<?php echo $bt_value;?>" class="button button-primary" id="add_edit_buttom" name="add_edit_buttom"> <input type="button" class="button" onclick="window.location='admin.php?page=people-category-manager'" value="<?php _e('Cancel', 'contact-us-page-contact-people' ); ?>" /></p>
 		</form>
         </div>
 	</div>
@@ -389,11 +389,11 @@ class People_Category_Manager_Panel
 		global $people_contact_admin_interface;
 		global $people_contact_grid_view_icon;
 		
-		$current_category = array('id' => 1, 'category_name' => __('Profile Group', 'cup_cp') );
+		$current_category = array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) );
 		
 		?>
         
-        <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-category-profiles-manager"><br></div><h1>"<?php echo esc_attr( stripslashes( $current_category['category_name'] ) ) ; ?>" <?php _e('Profiles', 'cup_cp'); ?></h1>
+        <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-category-profiles-manager"><br></div><h1>"<?php echo esc_attr( stripslashes( $current_category['category_name'] ) ) ; ?>" <?php _e('Profiles', 'contact-us-page-contact-people' ); ?></h1>
 		<div style="clear:both;height:5px;"></div>
 <div id="a3_plugin_panel_container">
 	<div id="a3_plugin_panel_upgrade_area">
@@ -404,34 +404,34 @@ class People_Category_Manager_Panel
 	<div id="a3_plugin_panel_fields">
         <div class="a3rev_panel_container">
 		<?php ob_start(); ?>
-        <div style="margin-bottom:5px;"><?php _e('Below are all of the Profiles currently assigned to this Group. Sort Profile order for this Group by drag and drop using the blue up - down arrow at the left of each Profile row.', 'cup_cp'); ?></div>
+        <div style="margin-bottom:5px;"><?php _e('Below are all of the Profiles currently assigned to this Group. Sort Profile order for this Group by drag and drop using the blue up - down arrow at the left of each Profile row.', 'contact-us-page-contact-people' ); ?></div>
 		<form name="contact_setting" method="post" action="">
 		  <table class="wp-list-table widefat fixed striped sorttable">
 			<thead>
 			  <tr>
-				<th width="25" class="manage-column column-number" style="text-align:left;white-space:nowrap"><?php _e('No', 'cup_cp'); ?></th>
-				<th width="10%" class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'cup_cp'); ?></th>
-				<th width="18%" class="manage-column column-email" style="text-align:leftwhite-space:nowrap"><?php _e('Email', 'cup_cp'); ?></th>
-				<th width="8%" class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'cup_cp'); ?></th>
-				<th width="15%" style="text-align:left" class="manage-column column-location"><?php _e('Location', 'cup_cp'); ?></th>
-                <th width="8%" class="manage-column column-categories" style="text-align:left;white-space:nowrap"><?php _e('Groups', 'cup_cp'); ?></th>
+				<th width="25" class="manage-column column-number" style="text-align:left;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
+				<th width="10%" class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th width="18%" class="manage-column column-email" style="text-align:leftwhite-space:nowrap"><?php _e('Email', 'contact-us-page-contact-people' ); ?></th>
+				<th width="8%" class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'contact-us-page-contact-people' ); ?></th>
+				<th width="15%" style="text-align:left" class="manage-column column-location"><?php _e('Location', 'contact-us-page-contact-people' ); ?></th>
+                <th width="8%" class="manage-column column-categories" style="text-align:left;white-space:nowrap"><?php _e('Groups', 'contact-us-page-contact-people' ); ?></th>
 				<th width="10" style="text-align:center" class="manage-column column-actions">&nbsp;</th>
 			  </tr>
 			</thead>
 			<tfoot>
 			  <tr>
-				<th class="manage-column column-number" style="text-align:left;white-space:nowrap"><?php _e('No', 'cup_cp'); ?></th>
-				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'cup_cp'); ?></th>
-				<th class="manage-column column-email" style="text-align:leftwhite-space:nowrap"><?php _e('Email', 'cup_cp'); ?></th>
-				<th class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'cup_cp'); ?></th>
-				<th style="text-align:left" class="manage-column column-location"><?php _e('Location', 'cup_cp'); ?></th>
-                <th class="manage-column column-categories" style="text-align:left;white-space:nowrap"><?php _e('Groups', 'cup_cp'); ?></th>
+				<th class="manage-column column-number" style="text-align:left;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-email" style="text-align:leftwhite-space:nowrap"><?php _e('Email', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'contact-us-page-contact-people' ); ?></th>
+				<th style="text-align:left" class="manage-column column-location"><?php _e('Location', 'contact-us-page-contact-people' ); ?></th>
+                <th class="manage-column column-categories" style="text-align:left;white-space:nowrap"><?php _e('Groups', 'contact-us-page-contact-people' ); ?></th>
 				<th style="text-align:center" class="manage-column column-actions">&nbsp;</th>
 			  </tr>
 			</tfoot>
 			<tbody>
 			  <tr>
-				<td valign="middle" align="center" colspan="7"><?php _e('No Profile for This Group', 'cup_cp'); ?></td>
+				<td valign="middle" align="center" colspan="7"><?php _e('No Profile for This Group', 'contact-us-page-contact-people' ); ?></td>
 			  </tr>
 			</tbody>
 		  </table>
@@ -461,7 +461,7 @@ class People_Category_Manager_Panel
 		<?php
 	        $settings_html = ob_get_clean();
 	        $people_contact_admin_interface->panel_box( $settings_html, array(
-	        	'name' 		=> __( 'Profile Group', 'cup_cp' ),
+	        	'name' 		=> __( 'Profile Group', 'contact-us-page-contact-people' ),
 	        	'class'		=> 'pro_feature_fields',
 	        	'id'		=> 'a3_people_list_profiles_group_box',
 				'is_box'	=> true,

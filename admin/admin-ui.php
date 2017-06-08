@@ -106,14 +106,14 @@ class People_Contact_Admin_UI
 	 */
 	public function get_premium_video_data() {
 		$premium_video_data = array(
-				'box_title'    => __( 'Premium Version Enhanced Features', 'cup_cp' ),
+				'box_title'    => __( 'Premium Version Enhanced Features', 'contact-us-page-contact-people' ),
 				'image_url'    => PEOPLE_CONTACT_IMAGE_URL. '/video.jpg',
 				'video_url'    => 'https://www.youtube.com/embed/9dGw-ORfMIk?version=3&autoplay=1',
-				'left_title'   => __( 'Premium Version Enhanced Features', 'cup_cp' ),
-				'left_text'    => __( 'Contact People Ultimate', 'cup_cp' )
-									. "\n\n" . __( 'Quick Video showing the main (not all) enhanced features that are built into the Contact People Ultimate version', 'cup_cp' ),
-				'right_title'  => __( 'Developer Support and Premium Features', 'cup_cp' ),
-				'right_text'   => __( 'Limited Time Offer. Purchase the Premium Version Lifetime License. That is a Lifetime of maintenance updates, feature upgrades and developer support for a once only fee. Offer ending soon.', 'cup_cp' )
+				'left_title'   => __( 'Premium Version Enhanced Features', 'contact-us-page-contact-people' ),
+				'left_text'    => __( 'Contact People Ultimate', 'contact-us-page-contact-people' )
+									. "\n\n" . __( 'Quick Video showing the main (not all) enhanced features that are built into the Contact People Ultimate version', 'contact-us-page-contact-people' ),
+				'right_title'  => __( 'Developer Support and Premium Features', 'contact-us-page-contact-people' ),
+				'right_text'   => __( 'Limited Time Offer. Purchase the Premium Version Lifetime License. That is a Lifetime of maintenance updates, feature upgrades and developer support for a once only fee. Offer ending soon.', 'contact-us-page-contact-people' )
 									. "\n\n" . '<a target="_blank" href="'.$this->pro_plugin_page_url.'" class="button-primary">' . __( 'Get Premium Features and Support', '' ) . '</a>',
 			);
 
@@ -262,10 +262,10 @@ class People_Contact_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function upgrade_top_message( $echo = false, $setting_id = '' ) {
 		$upgrade_top_message = sprintf( '<div class="pro_feature_top_message">'
-			. __( 'Advanced Settings - Upgrade to the <a href="%s" target="_blank">%s License</a> to activate these settings.', 'cup_cp' )
+			. __( 'Advanced Settings - Upgrade to the <a href="%s" target="_blank">%s License</a> to activate these settings.', 'contact-us-page-contact-people' )
 			. '</div>'
 			, apply_filters( $this->plugin_name . '_' . $setting_id . '_pro_plugin_page_url', apply_filters( $this->plugin_name . '_pro_plugin_page_url', $this->pro_plugin_page_url ) )
-			, apply_filters( $this->plugin_name . '_' . $setting_id . '_pro_version_name', apply_filters( $this->plugin_name . '_pro_version_name', __( 'Ultimate Version', 'cup_cp' ) ) )
+			, apply_filters( $this->plugin_name . '_' . $setting_id . '_pro_version_name', apply_filters( $this->plugin_name . '_pro_version_name', __( 'Ultimate Version', 'contact-us-page-contact-people' ) ) )
 		);
 
 		$upgrade_top_message = apply_filters( $this->plugin_name . '_upgrade_top_message', $upgrade_top_message, $setting_id );
@@ -315,9 +315,9 @@ class People_Contact_Admin_UI
 			$transient_timeout = '_transient_timeout_' . $this->version_transient;
 			$timeout = get_option( $transient_timeout, false );
 			if ( false === $timeout ) {
-				$version_message = __( 'You should check now to see if have any new version is available', 'cup_cp' );
+				$version_message = __( 'You should check now to see if have any new version is available', 'contact-us-page-contact-people' );
 			} elseif ( 'cannot_connect_api' == $version_transient ) {
-				$version_message = sprintf( __( 'Connection Failure! Please try again. If this issue persists please create a support request on the plugin <a href="%s" target="_blank">a3rev support forum</a>.', 'cup_cp' ), $this->support_url );
+				$version_message = sprintf( __( 'Connection Failure! Please try again. If this issue persists please create a support request on the plugin <a href="%s" target="_blank">a3rev support forum</a>.', 'contact-us-page-contact-people' ), $this->support_url );
 			} else {
 				$version_info = explode( '||', $version_transient );
 				if ( FALSE !== stristr( $version_transient, '||' )
@@ -325,7 +325,7 @@ class People_Contact_Admin_UI
 					&& isset( $version_info[1] ) && $version_info[1] == 'valid'
 					&& version_compare( get_option('a3rev_wp_people_contact_lite_version') , $version_info[0], '<' ) ) {
 
-						$version_message = sprintf( __( 'There is a new version <span class="a3rev-ui-new-plugin-version">%s</span> available, <a href="%s" target="_blank">update now</a> or download direct from <a href="%s" target="_blank">My Account</a> on a3rev.com', 'cup_cp' ),
+						$version_message = sprintf( __( 'There is a new version <span class="a3rev-ui-new-plugin-version">%s</span> available, <a href="%s" target="_blank">update now</a> or download direct from <a href="%s" target="_blank">My Account</a> on a3rev.com', 'contact-us-page-contact-people' ),
 							$version_info[0],
 							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . PEOPLE_CONTACT_NAME ), 'upgrade-plugin_' . PEOPLE_CONTACT_NAME ),
 							'https://a3rev.com/my-account/downloads/'
@@ -334,7 +334,7 @@ class People_Contact_Admin_UI
 			}
 
 		} else {
-			$version_message = __( 'You should check now to see if have any new version is available', 'cup_cp' );
+			$version_message = __( 'You should check now to see if have any new version is available', 'contact-us-page-contact-people' );
 		}
 
 		return $version_message;

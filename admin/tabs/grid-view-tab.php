@@ -75,7 +75,7 @@ class People_Contact_Grid_View_Tab extends People_Contact_Admin_UI
 		
 		$tab_data = array( 
 			'name'				=> 'profile-cards',
-			'label'				=> __( 'Profile Cards', 'cup_cp' ),
+			'label'				=> __( 'Profile Cards', 'contact-us-page-contact-people' ),
 			'callback_function'	=> 'people_contact_grid_view_tab_manager',
 		);
 		

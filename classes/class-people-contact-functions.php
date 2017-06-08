@@ -29,7 +29,7 @@ class People_Contact_Functions
 		$include_from_page = false;
 		
 		if ( trim( $contact_success ) != '') $contact_success = wpautop( wptexturize( $contact_success ) );
-		else $contact_success = __("Thanks for your contact - we'll be in touch with you as soon as possible!", 'cup_cp');
+		else $contact_success = __("Thanks for your contact - we'll be in touch with you as soon as possible!", 'contact-us-page-contact-people' );
 		
 		$to_email = esc_attr( stripslashes( $profile_data['to_email'] ) );
 			
@@ -49,19 +49,19 @@ class People_Contact_Functions
 		$headers[] = 'From: '.$from_name.' <'.$from_email.'>';
 		$headers_yourself = $headers;
 		
-		$subject_yourself = people_ict_t__( 'Email Inquiry - Copy', __('[Copy]:', 'cup_cp') ).' '. stripslashes( $profile_data['subject'] );
+		$subject_yourself = people_ict_t__( 'Email Inquiry - Copy', __('[Copy]:', 'contact-us-page-contact-people' ) ).' '. stripslashes( $profile_data['subject'] );
 
 		$from_page_html = '';
 		if ( $include_from_page ) {
 			$from_page_html = '
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - From Page Title', __('From Page Title', 'cup_cp') ) .'</strong></font> 
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - From Page Title', __('From Page Title', 'contact-us-page-contact-people' ) ) .'</strong></font> 
 			  </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">' . esc_html( $from_page_title ) . '</font> </td></tr>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - From Page URL', __('From Page URL', 'cup_cp') ) .'</strong></font> 
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - From Page URL', __('From Page URL', 'contact-us-page-contact-people' ) ) .'</strong></font> 
 			  </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
@@ -75,31 +75,31 @@ class People_Contact_Functions
 		<td>
 		  <table width="100%" cellspacing="0" cellpadding="5" border="0" bgcolor="#ffffff"><tbody>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Profile Name', __('Profile Name', 'cup_cp') ) .'</strong></font> 
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Profile Name', __('Profile Name', 'contact-us-page-contact-people' ) ) .'</strong></font> 
 			  </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">[profile_name]</font> </td></tr>
 			'.$from_page_html.'
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Name', __('Contact Name', 'cup_cp') ) .'</strong></font> 
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Name', __('Contact Name', 'contact-us-page-contact-people' ) ) .'</strong></font> 
 			  </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">[contact_name]</font> </td></tr>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Email', __('Contact Email Address', 'cup_cp') ) .'</strong></font> </td></tr>
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Email', __('Contact Email Address', 'contact-us-page-contact-people' ) ) .'</strong></font> </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><a target="_blank" href="mailto:[contact_email]">[contact_email]</a></font> 
 			  </td></tr>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Phone', __('Contact Phone', 'cup_cp') ) .'</strong></font> </td></tr>
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Phone', __('Contact Phone', 'contact-us-page-contact-people' ) ) .'</strong></font> </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">[contact_phone]</font> </td></tr>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Message', __('Message', 'cup_cp') ) .'</strong></font> </td></tr>
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'. people_ict_t__( 'Email Inquiry - Contact Message', __('Message', 'contact-us-page-contact-people' ) ) .'</strong></font> </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">[message]</font> 
@@ -142,7 +142,7 @@ class People_Contact_Functions
 	public static function contact_to_site( $contact_data = array(), $send_copy_yourself = 1 ) {
 		global $people_contact_widget_email_contact_form;
 					
-		$contact_success = people_ict_t__( 'Contact Widget - Success Message', __("Thanks for your contact - we'll be in touch with you as soon as possible!", 'cup_cp') );
+		$contact_success = people_ict_t__( 'Contact Widget - Success Message', __("Thanks for your contact - we'll be in touch with you as soon as possible!", 'contact-us-page-contact-people' ) );
 		
 		if ( $people_contact_widget_email_contact_form['widget_email_to'] == '' )
 			$to_email = get_option('admin_email');
@@ -180,7 +180,7 @@ class People_Contact_Functions
 				}
 			}
 			
-			$subject_yourself = people_ict_t__( 'Contact Widget - Copy', __('[Copy]:', 'cup_cp') ).' '. stripslashes( $contact_data['subject']) ;
+			$subject_yourself = people_ict_t__( 'Contact Widget - Copy', __('[Copy]:', 'contact-us-page-contact-people' ) ).' '. stripslashes( $contact_data['subject']) ;
 			
 			$content = '
 	<table width="99%" cellspacing="0" cellpadding="1" border="0" bgcolor="#eaeaea"><tbody>
@@ -188,19 +188,19 @@ class People_Contact_Functions
 		<td>
 		  <table width="100%" cellspacing="0" cellpadding="5" border="0" bgcolor="#ffffff"><tbody>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'.people_ict_t__( 'Contact Widget - Name', __('Name', 'cup_cp') ).'</strong></font> 
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'.people_ict_t__( 'Contact Widget - Name', __('Name', 'contact-us-page-contact-people' ) ).'</strong></font> 
 			  </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">[contact_name]</font> </td></tr>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'.people_ict_t__( 'Contact Widget - Email Address', __('Email Address', 'cup_cp') ).'</strong></font> </td></tr>
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'.people_ict_t__( 'Contact Widget - Email Address', __('Email Address', 'contact-us-page-contact-people' ) ).'</strong></font> </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><a target="_blank" href="mailto:[contact_email]">[contact_email]</a></font> 
 			  </td></tr>
 			<tr bgcolor="#eaf2fa">
-			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'.people_ict_t__( 'Contact Widget - Message', __('Message', 'cup_cp') ).'</strong></font> </td></tr>
+			  <td colspan="2"><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px"><strong>'.people_ict_t__( 'Contact Widget - Message', __('Message', 'contact-us-page-contact-people' ) ).'</strong></font> </td></tr>
 			<tr bgcolor="#ffffff">
 			  <td width="20">&nbsp;</td>
 			  <td><font style="FONT-FAMILY:sans-serif;FONT-SIZE:12px">[message]</font> 
@@ -320,7 +320,7 @@ class People_Contact_Functions
 
 		$inquiry_contact_heading = $people_email_inquiry_global_settings['inquiry_contact_heading'];
 		if ( empty( $inquiry_contact_heading ) ) {
-			$inquiry_contact_heading = __( 'Email Inquiry', 'cup_cp' );
+			$inquiry_contact_heading = __( 'Email Inquiry', 'contact-us-page-contact-people' );
 		}
 
 		ob_start();
@@ -329,7 +329,7 @@ class People_Contact_Functions
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="modal-title people_email_inquiry_contact_heading"><?php echo $inquiry_contact_heading; ?></div>
-				<button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __( 'Close', 'cup_cp' ); ?>">
+				<button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __( 'Close', 'contact-us-page-contact-people' ); ?>">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -337,7 +337,7 @@ class People_Contact_Functions
 				<?php echo $profile_email_form; ?>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo __( 'Close', 'cup_cp' ); ?></button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo __( 'Close', 'contact-us-page-contact-people' ); ?></button>
 			</div>
 		</div>
 	</div>
@@ -479,9 +479,9 @@ class People_Contact_Functions
 	public static function people_contact_register_sidebar() {
 		global $wpdb;
 		register_sidebar(array(
-		  'name' => __( 'Contact Page Sidebar', 'cup_cp' ),
+		  'name' => __( 'Contact Page Sidebar', 'contact-us-page-contact-people' ),
 		  'id' => 'contact-us-sidebar',
-		  'description' => __( 'Contact Page Widgets area.', 'cup_cp' ),
+		  'description' => __( 'Contact Page Widgets area.', 'contact-us-page-contact-people' ),
 		  'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		  'after_widget' => '</div>',
 		  'before_title' => '<h3>',
@@ -491,7 +491,7 @@ class People_Contact_Functions
 	
 	public static function extension_shortcode() {
 		$html = '';
-		$html .= '<div id="a3_plugin_shortcode_extensions">'. sprintf( __( '<a href="%s" target="_blank">Ultimate Version</a> only', 'cup_cp' ), PEOPLE_CONTACT_ULTIMATE_URI ) .'</div>';
+		$html .= '<div id="a3_plugin_shortcode_extensions">'. sprintf( __( '<a href="%s" target="_blank">Ultimate Version</a> only', 'contact-us-page-contact-people' ), PEOPLE_CONTACT_ULTIMATE_URI ) .'</div>';
 		return $html;	
 	}
 }

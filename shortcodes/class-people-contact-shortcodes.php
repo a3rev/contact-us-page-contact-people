@@ -35,7 +35,7 @@ class People_Contact_Shortcode{
 		$is_post_edit_page = in_array(basename($_SERVER['PHP_SELF']), array('post.php', 'page.php', 'page-new.php', 'post-new.php'));
         if(!$is_post_edit_page)
             return;
-		echo '<a href="#TB_inline?width=640&height=580&inlineId=people-contact-wrap" class="thickbox button contact_add_shortcode" title="' . __( 'Insert shortcode', 'cup_cp' ) . '"><span class="contact_add_shortcode_icon"></span>'.__('Contact', 'cup_cp').'</a>';
+		echo '<a href="#TB_inline?width=640&height=580&inlineId=people-contact-wrap" class="thickbox button contact_add_shortcode" title="' . __( 'Insert shortcode', 'contact-us-page-contact-people' ) . '"><span class="contact_add_shortcode_icon"></span>'.__('Contact', 'contact-us-page-contact-people' ).'</a>';
 		?>
         <style type="text/css">
 		#TB_ajaxContent{width:auto !important;}
@@ -73,17 +73,17 @@ class People_Contact_Shortcode{
 	public function people_contact_generator_popup() {
 		global $people_contact_location_map_settings;
 		$contacts = People_Contact_Profile_Data::get_results('show_on_main_page=1', 'c_order ASC', '', 'ARRAY_A');
-		$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'cup_cp') ) );
+		$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) ) );
 		?>
 		<div id="people-contact-wrap" style="display:none">
         <div class="people-shortcode-popup-container">
         <div id="a3_plugin_shortcode_upgrade_area"><div class="a3-people-contact-logo-extensions"></div><?php echo People_Contact_Functions::extension_shortcode(); ?>
-            <fieldset style="border:1px solid #DFDFDF; padding:0 20px; background: #FFF;  margin:10px;"><legend style="font-weight:bold; font-size:14px;"><?php _e('Insert Single Profile', 'cup_cp'); ?></legend>
+            <fieldset style="border:1px solid #DFDFDF; padding:0 20px; background: #FFF;  margin:10px;"><legend style="font-weight:bold; font-size:14px;"><?php _e('Insert Single Profile', 'contact-us-page-contact-people' ); ?></legend>
             <div id="people-contact-content" class="people-contact-content people-contact-shortcode-container" style="text-align:left;">
-            <p><label for="people_contact_item"><?php _e('Select people', 'cup_cp'); ?>:</label> 
+            <p><label for="people_contact_item"><?php _e('Select people', 'contact-us-page-contact-people' ); ?>:</label> 
                 <select style="width:250px" id="people_contact_item" name="people_contact_item">
                 <?php
-				    echo '<option value="">'.__('Please select...', 'cup_cp').'</option>';	
+				    echo '<option value="">'.__('Please select...', 'contact-us-page-contact-people' ).'</option>';	
 					if( is_array($contacts) && count($contacts) > 0 ){
 						foreach ($contacts as $key=>$value) {
 							$profile_name =  trim( esc_attr( stripslashes($value['c_name']) ) );
@@ -95,31 +95,31 @@ class People_Contact_Shortcode{
                 </select> <img class="people_contact_item_loader" style="display:none;" src="<?php echo PEOPLE_CONTACT_IMAGE_URL; ?>/ajax-loader.gif" border=0 />
             </p>
             
-            <p><label for="people_contact_align"><?php _e('Card Alignment', 'cup_cp'); ?>:</label> <select style="width:120px" id="people_contact_align" name="people_contact_align"><option value="none" selected="selected"><?php _e('None', 'cup_cp'); ?></option><option value="left-wrap"><?php _e('Left - wrap', 'cup_cp'); ?></option><option value="left"><?php _e('Left - no wrap', 'cup_cp'); ?></option><option value="center"><?php _e('Center', 'cup_cp'); ?></option><option value="right-wrap"><?php _e('Right - wrap', 'cup_cp'); ?></option><option value="right"><?php _e('Right - no wrap', 'cup_cp'); ?></option></select> <span class="description"><?php _e('Wrap is text wrap like images', 'cup_cp'); ?></span></p>
-				<p><label for="people_contact_item_width"><?php _e('Card Width', 'cup_cp'); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_item_width" name="people_contact_item_width" type="text" value="300" />px</p>
-				<p><label for=""><strong><?php _e('Card External Padding', 'cup_cp'); ?></strong>:</label><br /> 
-					<label for="people_contact_padding_top" style="width:auto; float:none"><?php _e('Above', 'cup_cp'); ?>:</label><input  disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_top" name="people_contact_padding_top" type="text" value="10" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                	<label for="people_contact_padding_bottom" style="width:auto; float:none"><?php _e('Below', 'cup_cp'); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_bottom" name="people_contact_padding_bottom" type="text" value="10" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                	<label for="people_contact_padding_left" style="width:auto; float:none"><?php _e('Left', 'cup_cp'); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_left" name="people_contact_padding_left" type="text" value="0" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                	<label for="people_contact_padding_right" style="width:auto; float:none"><?php _e('Right', 'cup_cp'); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_right" name="people_contact_padding_right" type="text" value="0" />px
+            <p><label for="people_contact_align"><?php _e('Card Alignment', 'contact-us-page-contact-people' ); ?>:</label> <select style="width:120px" id="people_contact_align" name="people_contact_align"><option value="none" selected="selected"><?php _e('None', 'contact-us-page-contact-people' ); ?></option><option value="left-wrap"><?php _e('Left - wrap', 'contact-us-page-contact-people' ); ?></option><option value="left"><?php _e('Left - no wrap', 'contact-us-page-contact-people' ); ?></option><option value="center"><?php _e('Center', 'contact-us-page-contact-people' ); ?></option><option value="right-wrap"><?php _e('Right - wrap', 'contact-us-page-contact-people' ); ?></option><option value="right"><?php _e('Right - no wrap', 'contact-us-page-contact-people' ); ?></option></select> <span class="description"><?php _e('Wrap is text wrap like images', 'contact-us-page-contact-people' ); ?></span></p>
+				<p><label for="people_contact_item_width"><?php _e('Card Width', 'contact-us-page-contact-people' ); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_item_width" name="people_contact_item_width" type="text" value="300" />px</p>
+				<p><label for=""><strong><?php _e('Card External Padding', 'contact-us-page-contact-people' ); ?></strong>:</label><br /> 
+					<label for="people_contact_padding_top" style="width:auto; float:none"><?php _e('Above', 'contact-us-page-contact-people' ); ?>:</label><input  disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_top" name="people_contact_padding_top" type="text" value="10" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label for="people_contact_padding_bottom" style="width:auto; float:none"><?php _e('Below', 'contact-us-page-contact-people' ); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_bottom" name="people_contact_padding_bottom" type="text" value="10" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label for="people_contact_padding_left" style="width:auto; float:none"><?php _e('Left', 'contact-us-page-contact-people' ); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_left" name="people_contact_padding_left" type="text" value="0" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label for="people_contact_padding_right" style="width:auto; float:none"><?php _e('Right', 'contact-us-page-contact-people' ); ?>:</label> <input disabled="disabled" style="width:50px;" size="10" id="people_contact_padding_right" name="people_contact_padding_right" type="text" value="0" />px
                 </p>
            
             
 			</div>
             <div style="clear:both;height:0px"></div>
-            <p><input disabled="disabled" type="button" class="button button-primary" value="<?php _e('Insert Shortcode', 'cup_cp'); ?>" /> 
-            <input type="button" class="button" onclick="tb_remove(); return false;" value="<?php _e('Cancel', 'cup_cp'); ?>" />
+            <p><input disabled="disabled" type="button" class="button button-primary" value="<?php _e('Insert Shortcode', 'contact-us-page-contact-people' ); ?>" /> 
+            <input type="button" class="button" onclick="tb_remove(); return false;" value="<?php _e('Cancel', 'contact-us-page-contact-people' ); ?>" />
 			</p>
             </fieldset>
             </div>
             
             <div id="a3_plugin_shortcode_upgrade_area"><div class="a3-people-contact-logo-extensions"></div><?php echo People_Contact_Functions::extension_shortcode(); ?>
-            <fieldset style="border:1px solid #DFDFDF; padding:0 20px; background: #FFF; margin:10px;"><legend style="font-weight:bold; font-size:14px;"><?php _e('Insert Group', 'cup_cp'); ?></legend>
+            <fieldset style="border:1px solid #DFDFDF; padding:0 20px; background: #FFF; margin:10px;"><legend style="font-weight:bold; font-size:14px;"><?php _e('Insert Group', 'contact-us-page-contact-people' ); ?></legend>
             <div id="people-category-content" class="people-category-content people-contact-shortcode-container" style="text-align:left;">
-                <p><label for="profile_category_id"><?php _e('Select Group', 'cup_cp'); ?>:</label> 
+                <p><label for="profile_category_id"><?php _e('Select Group', 'contact-us-page-contact-people' ); ?>:</label> 
                     <select style="width:250px" id="profile_category_id" name="profile_category_id">
                     <?php
-                        echo '<option value="">'.__('Please select...', 'cup_cp').'</option>';	
+                        echo '<option value="">'.__('Please select...', 'contact-us-page-contact-people' ).'</option>';	
                         if( is_array($all_categories) && count($all_categories) > 0 ){
                             foreach ($all_categories as $category_data) {
                                 echo '<option value="'.$category_data['id'].'">'. trim( esc_attr( stripslashes( $category_data['category_name'] ) ) ).'</option>';
@@ -129,26 +129,26 @@ class People_Contact_Shortcode{
                     </select>
                 </p>
             
-                <p><label for="profile_category_column"><?php _e('Profile Cards / Row', 'cup_cp'); ?>:</label> 
+                <p><label for="profile_category_column"><?php _e('Profile Cards / Row', 'contact-us-page-contact-people' ); ?>:</label> 
                 	<select style="width:120px" id="profile_category_column" name="profile_category_column">
                     <?php
-					echo '<option value="">'.__('Please select...', 'cup_cp').'</option>';
-						echo '<option value="1">1 ' .__('Card', 'cup_cp') .' </option>';
+					echo '<option value="">'.__('Please select...', 'contact-us-page-contact-people' ).'</option>';
+						echo '<option value="1">1 ' .__('Card', 'contact-us-page-contact-people' ) .' </option>';
 					for ( $column = 2; $column <= 5; $column++ ) {
-						echo '<option value="'.$column.'">'. $column. ' ' .__('Cards', 'cup_cp') .' </option>';
+						echo '<option value="'.$column.'">'. $column. ' ' .__('Cards', 'contact-us-page-contact-people' ) .' </option>';
 					}
                     ?>
-                    </select> <span class="description"><?php _e('Empty to use global settings.', 'cup_cp'); ?></span>
+                    </select> <span class="description"><?php _e('Empty to use global settings.', 'contact-us-page-contact-people' ); ?></span>
 				</p>
-                <p><label for="enable_google_map"><?php _e('Google Map', 'cup_cp'); ?>:</label> <input disabled="disabled" type="checkbox" id="enable_google_map" name="enable_google_map" value="1" <?php if ( $people_contact_location_map_settings['hide_maps_frontend'] != 1 ) echo 'checked="checked"'; ?> /> <span><?php _e('Check to enable google location map for this group.', 'cup_cp'); ?></span>
+                <p><label for="enable_google_map"><?php _e('Google Map', 'contact-us-page-contact-people' ); ?>:</label> <input disabled="disabled" type="checkbox" id="enable_google_map" name="enable_google_map" value="1" <?php if ( $people_contact_location_map_settings['hide_maps_frontend'] != 1 ) echo 'checked="checked"'; ?> /> <span><?php _e('Check to enable google location map for this group.', 'contact-us-page-contact-people' ); ?></span>
                 </p>
-                <p><label for="people_show_group_title"><?php _e('Group Title', 'cup_cp'); ?>:</label> <input disabled="disabled" type="checkbox" id="people_show_group_title" name="people_show_group_title" value="1" checked="checked" /> <span><?php _e('Check to show group title above Profiles.', 'cup_cp'); ?></span>
+                <p><label for="people_show_group_title"><?php _e('Group Title', 'contact-us-page-contact-people' ); ?>:</label> <input disabled="disabled" type="checkbox" id="people_show_group_title" name="people_show_group_title" value="1" checked="checked" /> <span><?php _e('Check to show group title above Profiles.', 'contact-us-page-contact-people' ); ?></span>
                 </p>
 				
 			</div>
             <div style="clear:both;height:0px"></div>
-            <p><input disabled="disabled" type="button" class="button button-primary" value="<?php _e('Insert Shortcode', 'cup_cp'); ?>" /> 
-            <input type="button" class="button" onclick="tb_remove(); return false;" value="<?php _e('Cancel', 'cup_cp'); ?>" />
+            <p><input disabled="disabled" type="button" class="button button-primary" value="<?php _e('Insert Shortcode', 'contact-us-page-contact-people' ); ?>" /> 
+            <input type="button" class="button" onclick="tb_remove(); return false;" value="<?php _e('Cancel', 'contact-us-page-contact-people' ); ?>" />
 			</p>
             </fieldset>
             </div>

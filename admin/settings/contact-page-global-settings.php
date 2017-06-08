@@ -78,9 +78,9 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 		$this->subtab_init();
 		
 		$this->form_messages = array(
-				'success_message'	=> __( 'Contact Page Settings successfully saved.', 'cup_cp' ),
-				'error_message'		=> __( 'Error: Contact Page Settings can not save.', 'cup_cp' ),
-				'reset_message'		=> __( 'Contact Page Settings successfully reseted.', 'cup_cp' ),
+				'success_message'	=> __( 'Contact Page Settings successfully saved.', 'contact-us-page-contact-people' ),
+				'error_message'		=> __( 'Error: Contact Page Settings can not save.', 'contact-us-page-contact-people' ),
+				'reset_message'		=> __( 'Contact Page Settings successfully reseted.', 'contact-us-page-contact-people' ),
 			);
 		
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );
@@ -149,7 +149,7 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 		
 		$subtab_data = array( 
 			'name'				=> 'global-settings',
-			'label'				=> __( 'Settings', 'cup_cp' ),
+			'label'				=> __( 'Settings', 'contact-us-page-contact-people' ),
 			'callback_function'	=> 'contact_page_global_settings_form',
 		);
 		
@@ -193,46 +193,46 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
 
 			array(
-            	'name' 		=> __( 'Plugin Framework Global Settings', 'cup_cp' ),
+            	'name' 		=> __( 'Plugin Framework Global Settings', 'contact-us-page-contact-people' ),
             	'id'		=> 'plugin_framework_global_box',
                 'type' 		=> 'heading',
                 'first_open'=> true,
                 'is_box'	=> true,
            	),
            	array(
-           		'name'		=> __( 'Customize Admin Setting Box Display', 'cup_cp' ),
-           		'desc'		=> __( 'By default each admin panel will open with all Setting Boxes in the CLOSED position.', 'cup_cp' ),
+           		'name'		=> __( 'Customize Admin Setting Box Display', 'contact-us-page-contact-people' ),
+           		'desc'		=> __( 'By default each admin panel will open with all Setting Boxes in the CLOSED position.', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
            	),
            	array(
 				'type' 		=> 'onoff_toggle_box',
 			),
 			array(
-           		'name'		=> __( 'Google Fonts', 'cup_cp' ),
-           		'desc'		=> __( 'By Default Google Fonts are pulled from a static JSON file in this plugin. This file is updated but does not have the latest font releases from Google.', 'cup_cp' ),
+           		'name'		=> __( 'Google Fonts', 'contact-us-page-contact-people' ),
+           		'desc'		=> __( 'By Default Google Fonts are pulled from a static JSON file in this plugin. This file is updated but does not have the latest font releases from Google.', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
            	),
            	array(
                 'type' 		=> 'google_api_key',
            	),
            	array(
-           		'name'		=> __( 'Google Map', 'cup_cp' ),
-           		'desc'		=> sprintf( __( "Usage of the Google Maps APIs now requires a key. Enter your existing Google Map API Key below. Don't have a key? You can <a href='%s' target='_blank'>generate a new API key</a> on the Google API Console", 'cup_cp' ), 'https://developers.google.com/maps/documentation/javascript/get-api-key' ),
+           		'name'		=> __( 'Google Map', 'contact-us-page-contact-people' ),
+           		'desc'		=> sprintf( __( "Usage of the Google Maps APIs now requires a key. Enter your existing Google Map API Key below. Don't have a key? You can <a href='%s' target='_blank'>generate a new API key</a> on the Google API Console", 'contact-us-page-contact-people' ), 'https://developers.google.com/maps/documentation/javascript/get-api-key' ),
                 'type' 		=> 'heading',
            	),
            	array(
-				'name' 		=> __( 'Google Map API', 'cup_cp' ),
+				'name' 		=> __( 'Google Map API', 'contact-us-page-contact-people' ),
 				'id' 		=> 'google_map_api_key',
 				'type' 		=> 'text',
 				'default'	=> '',
 			),
            	array(
-            	'name' 		=> __( 'House Keeping', 'cup_cp' ),
+            	'name' 		=> __( 'House Keeping', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
             ),
 			array(
-				'name' 		=> __( 'Clean up on Deletion', 'cup_cp' ),
-				'desc' 		=> __( 'On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here.', 'cup_cp'),
+				'name' 		=> __( 'Clean up on Deletion', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( 'On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here.', 'contact-us-page-contact-people' ),
 				'id' 		=> 'a3_people_contact_lite_clean_on_deletion',
 				'type' 		=> 'onoff_checkbox',
 				'default'	=> '0',
@@ -240,33 +240,33 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 				'free_version'		=> true,
 				'checked_value'		=> '1',
 				'unchecked_value'	=> '0',
-				'checked_label'		=> __( 'ON', 'cup_cp' ),
-				'unchecked_label' 	=> __( 'OFF', 'cup_cp' ),
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
 			),
 
 			array(
-            	'name' 		=> __( 'Profile Cards Title', 'cup_cp' ),
+            	'name' 		=> __( 'Profile Cards Title', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
-                'desc'		=> __( 'Title that shows below the map and above the profile cards', 'cup_cp' ),
+                'desc'		=> __( 'Title that shows below the map and above the profile cards', 'contact-us-page-contact-people' ),
                 'id'		=> 'profile_cards_title_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Title', 'cup_cp' ),
-				'desc'		=> __( 'Leave Empty and no title will show', 'cup_cp' ),
+				'name' 		=> __( 'Title', 'contact-us-page-contact-people' ),
+				'desc'		=> __( 'Leave Empty and no title will show', 'contact-us-page-contact-people' ),
 				'id' 		=> 'grid_view_team_title',
 				'type' 		=> 'text',
 				'default'	=> '',
 			),
 			array(
-            	'name' 		=> __( 'Profile Cards Per Row', 'cup_cp' ),
+            	'name' 		=> __( 'Profile Cards Per Row', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'profile_cards_per_row_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Cards Per Row', 'cup_cp' ),
-				'desc'		=> __( 'Max 5 Cards per row', 'cup_cp' ),
+				'name' 		=> __( 'Cards Per Row', 'contact-us-page-contact-people' ),
+				'desc'		=> __( 'Max 5 Cards per row', 'contact-us-page-contact-people' ),
 				'id' 		=> 'grid_view_col',
 				'type' 		=> 'slider',
 				'default'	=> 2,
@@ -276,15 +276,15 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 			),
 			
 			array(
-            	'name' 		=> __( 'Custom Contact Us Page', 'cup_cp' ),
-				'desc'		=> __( 'A "Contact Us Page" was auto created on activation of the plugin. It contains the shortcode [people_contacts] required to show the contact us page. If it was not or you want to change it, create a new page, add the shortcode and then set it here.', 'cup_cp' ),
+            	'name' 		=> __( 'Custom Contact Us Page', 'contact-us-page-contact-people' ),
+				'desc'		=> __( 'A "Contact Us Page" was auto created on activation of the plugin. It contains the shortcode [people_contacts] required to show the contact us page. If it was not or you want to change it, create a new page, add the shortcode and then set it here.', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'contact_us_page_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Set Page', 'cup_cp' ),
-				'desc' 		=> __( 'Page contents:', 'cup_cp' ).' [people_contacts]',
+				'name' 		=> __( 'Set Page', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( 'Page contents:', 'contact-us-page-contact-people' ).' [people_contacts]',
 				'id' 		=> 'contact_us_page_id',
 				'type' 		=> 'single_select_page',
 				'default'	=> '',
@@ -293,22 +293,22 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 			),
 
 			array(
-            	'name' 		=> __( 'Contact Page Google Map', 'cup_cp' ),
+            	'name' 		=> __( 'Contact Page Google Map', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
                 'id'		=> 'google_map_settings_box',
                 'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( 'Show Map', 'cup_cp' ),
-				'desc' 		=> __( "ON will show Profiles location map at top of the Contact Us Page.", 'cup_cp' ),
+				'name' 		=> __( 'Show Map', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "ON will show Profiles location map at top of the Contact Us Page.", 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_location_map_settings[hide_maps_frontend]',
 				'class'		=> 'hide_maps_frontend',
 				'type' 		=> 'onoff_checkbox',
 				'default' 	=> 0,
 				'checked_value'		=> 0,
 				'unchecked_value' 	=> 1,
-				'checked_label'		=> __( 'ON', 'cup_cp' ),
-				'unchecked_label' 	=> __( 'OFF', 'cup_cp' ),
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
 				'separate_option'	=> true,
 			),
 
@@ -317,8 +317,8 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
                 'type' 		=> 'heading',
            	),
 			array(  
-				'name' 		=> __( 'Maximum Zoom Level', 'cup_cp' ),
-				'desc'		=> '</span></div></div><span class="description" style="clear: both;">' . __( 'The Contact Us Page map feature auto zoom sets the map so all profile markers are visible in the map viewer on first load. Only use this setting if you want to make the first load zoom wider than the focus (the spread of profile location markers). Move the slider to the left to do this with zoom level 1 being the world map.', 'cup_cp' ) . '</span><div><div><span>',
+				'name' 		=> __( 'Maximum Zoom Level', 'contact-us-page-contact-people' ),
+				'desc'		=> '</span></div></div><span class="description" style="clear: both;">' . __( 'The Contact Us Page map feature auto zoom sets the map so all profile markers are visible in the map viewer on first load. Only use this setting if you want to make the first load zoom wider than the focus (the spread of profile location markers). Move the slider to the left to do this with zoom level 1 being the world map.', 'contact-us-page-contact-people' ) . '</span><div><div><span>',
 				'id' 		=> 'people_contact_location_map_settings[zoom_level]',
 				'type' 		=> 'slider',
 				'min'		=> 1,
@@ -328,7 +328,7 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Map Type', 'cup_cp' ),
+				'name' 		=> __( 'Map Type', 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_location_map_settings[map_type]',
 				'type' 		=> 'select',
 				'default'	=> 'ROADMAP',
@@ -342,15 +342,15 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 				'separate_option'	=> true,
 			),
 			array(  
-				'name' 		=> __( 'Map Width Type', 'cup_cp' ),
+				'name' 		=> __( 'Map Width Type', 'contact-us-page-contact-people' ),
 				'id' 		=> 'people_contact_location_map_settings[map_width_type]',
 				'class'		=> 'map_width_type',
 				'type' 		=> 'switcher_checkbox',
 				'default'	=> 'percent',
 				'checked_value'		=> 'percent',
 				'unchecked_value' 	=> 'px',
-				'checked_label'		=> __( 'Responsive', 'cup_cp' ),
-				'unchecked_label' 	=> __( 'Fixed Wide', 'cup_cp' ),
+				'checked_label'		=> __( 'Responsive', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'Fixed Wide', 'contact-us-page-contact-people' ),
 				'separate_option'	=> true,
 			),
 			array(
@@ -387,7 +387,7 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
                 'type' 		=> 'heading',
            	),
 			array(  
-				'name' 		=> __( 'Map Height', 'cup_cp' ),
+				'name' 		=> __( 'Map Height', 'contact-us-page-contact-people' ),
 				'desc'		=> 'px',
 				'id' 		=> 'people_contact_location_map_settings[map_height]',
 				'type' 		=> 'text',

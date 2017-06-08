@@ -183,7 +183,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$version_message = $this->get_version_message();
 					$has_new_version = 1;
 					if ( '' == trim( $version_message ) ) {
-						$version_message = __( 'Great! You have the latest version installed.', 'cup_cp' );
+						$version_message = __( 'Great! You have the latest version installed.', 'contact-us-page-contact-people' );
 						$has_new_version = 0;
 					} else {
 						delete_option('a3_people_contact_lite_clean_on_deletion');
@@ -248,7 +248,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 	/* get_success_message */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_success_message( $message = '' ) {
-		if ( trim( $message ) == '' ) $message = __( 'Settings successfully saved.' , 'cup_cp' ); 
+		if ( trim( $message ) == '' ) $message = __( 'Settings successfully saved.' , 'contact-us-page-contact-people' ); 
 		return '<div class="updated" id=""><p>' . $message . '</p></div>';
 	}
 	
@@ -256,7 +256,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 	/* get_error_message */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_error_message( $message = '' ) {
-		if ( trim( $message ) == '' ) $message = __( 'Error: Settings can not save.' , 'cup_cp' ); 
+		if ( trim( $message ) == '' ) $message = __( 'Error: Settings can not save.' , 'contact-us-page-contact-people' ); 
 		return '<div class="error" id=""><p>' . $message . '</p></div>';
 	}
 	
@@ -264,7 +264,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 	/* get_reset_message */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_reset_message( $message = '' ) {
-		if ( trim( $message ) == '' ) $message = __( 'Settings successfully reseted.' , 'cup_cp' ); 
+		if ( trim( $message ) == '' ) $message = __( 'Settings successfully reseted.' , 'contact-us-page-contact-people' ); 
 		return '<div class="updated" id=""><p>' . $message . '</p></div>';
 	}
 	
@@ -285,12 +285,12 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function get_font_weights() {
 		$font_weights = array (
-			'300'				=> __( 'Thin', 'cup_cp' ),
-			'300 italic'		=> __( 'Thin/Italic', 'cup_cp' ),
-			'normal'			=> __( 'Normal', 'cup_cp' ),
-			'italic'			=> __( 'Italic', 'cup_cp' ),
-			'bold'				=> __( 'Bold', 'cup_cp' ),
-			'bold italic'		=> __( 'Bold/Italic', 'cup_cp' ),
+			'300'				=> __( 'Thin', 'contact-us-page-contact-people' ),
+			'300 italic'		=> __( 'Thin/Italic', 'contact-us-page-contact-people' ),
+			'normal'			=> __( 'Normal', 'contact-us-page-contact-people' ),
+			'italic'			=> __( 'Italic', 'contact-us-page-contact-people' ),
+			'bold'				=> __( 'Bold', 'contact-us-page-contact-people' ),
+			'bold italic'		=> __( 'Bold/Italic', 'contact-us-page-contact-people' ),
 		);
 		return apply_filters( $this->plugin_name . '_font_weights', $font_weights );
 	}
@@ -300,14 +300,14 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function get_border_styles() {
 		$border_styles = array (
-			'solid'				=> __( 'Solid', 'cup_cp' ),
-			'double'			=> __( 'Double', 'cup_cp' ),
-			'dashed'			=> __( 'Dashed', 'cup_cp' ),
-			'dotted'			=> __( 'Dotted', 'cup_cp' ),
-			'groove'			=> __( 'Groove', 'cup_cp' ),
-			'ridge'				=> __( 'Ridge', 'cup_cp' ),
-			'inset'				=> __( 'Inset', 'cup_cp' ),
-			'outset'			=> __( 'Outset', 'cup_cp' ),
+			'solid'				=> __( 'Solid', 'contact-us-page-contact-people' ),
+			'double'			=> __( 'Double', 'contact-us-page-contact-people' ),
+			'dashed'			=> __( 'Dashed', 'contact-us-page-contact-people' ),
+			'dotted'			=> __( 'Dotted', 'contact-us-page-contact-people' ),
+			'groove'			=> __( 'Groove', 'contact-us-page-contact-people' ),
+			'ridge'				=> __( 'Ridge', 'contact-us-page-contact-people' ),
+			'inset'				=> __( 'Inset', 'contact-us-page-contact-people' ),
+			'outset'			=> __( 'Outset', 'contact-us-page-contact-people' ),
 		);
 		return apply_filters( $this->plugin_name . '_border_styles', $border_styles );
 	}
@@ -1740,13 +1740,13 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 
 					$google_api_key        = $this->settings_get_option( $this->google_api_key_option );
 					$google_api_key_enable = $this->settings_get_option( $this->google_api_key_option . '_enable', 0 );
-					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'cup_cp' );
-					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'cup_cp' );
+					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'contact-us-page-contact-people' );
+					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'contact-us-page-contact-people' );
 
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $this->google_api_key_option; ?>"><?php echo __( 'Google Fonts API', 'cup_cp' ); ?></label>
+							<label for="<?php echo $this->google_api_key_option; ?>"><?php echo __( 'Google Fonts API', 'contact-us-page-contact-people' ); ?></label>
 						</th>
 						<td class="forminp forminp-onoff_checkbox forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -1758,11 +1758,11 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 type="checkbox"
 								value="1"
 								<?php checked( $google_api_key_enable, 1 ); ?>
-								/> <span class="description" style="margin-left:5px;"><?php echo __( 'ON to connect to Google Fonts API and have auto font updates direct from Google.', 'cup_cp' ); ?></span>
+								/> <span class="description" style="margin-left:5px;"><?php echo __( 'ON to connect to Google Fonts API and have auto font updates direct from Google.', 'contact-us-page-contact-people' ); ?></span>
 
 							<div>&nbsp;</div>
 							<div class="a3rev-ui-google-api-key-container" style="<?php if( 1 != $google_api_key_enable ) { echo 'display: none;'; } ?>">
-								<div class="a3rev-ui-google-api-key-description"><?php echo sprintf( __( "Enter your existing Google Fonts API Key below. Don't have a key? Visit <a href='%s' target='_blank'>Google Developer API</a> to create a key", 'cup_cp' ), 'https://developers.google.com/fonts/docs/developer_api#APIKey' ); ?></div>
+								<div class="a3rev-ui-google-api-key-description"><?php echo sprintf( __( "Enter your existing Google Fonts API Key below. Don't have a key? Visit <a href='%s' target='_blank'>Google Developer API</a> to create a key", 'contact-us-page-contact-people' ), 'https://developers.google.com/fonts/docs/developer_api#APIKey' ); ?></div>
 								<div class="a3rev-ui-google-api-key-inside 
 									<?php
 									if ( $people_contact_fonts_face->is_valid_google_api_key() ) {
@@ -1779,11 +1779,11 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 										style="<?php echo esc_attr( $value['css'] ); ?>"
 										value="<?php echo esc_attr( $google_api_key ); ?>"
 										class="a3rev-ui-text a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?> <?php echo esc_attr( $value['class'] ); ?>"
-		                                placeholder="<?php echo __( 'Google Fonts API Key', 'cup_cp' ); ?>"
+		                                placeholder="<?php echo __( 'Google Fonts API Key', 'contact-us-page-contact-people' ); ?>"
 										<?php echo implode( ' ', $custom_attributes ); ?>
 										/>
-									<p class="a3rev-ui-google-valid-key-message"><?php echo __( 'Your Google API Key is valid and automatic font updates are enabled.', 'cup_cp' ); ?></p>
-									<p class="a3rev-ui-google-unvalid-key-message"><?php echo __( 'Please enter a valid Google API Key.', 'cup_cp' ); ?></p>
+									<p class="a3rev-ui-google-valid-key-message"><?php echo __( 'Your Google API Key is valid and automatic font updates are enabled.', 'contact-us-page-contact-people' ); ?></p>
+									<p class="a3rev-ui-google-unvalid-key-message"><?php echo __( 'Please enter a valid Google API Key.', 'contact-us-page-contact-people' ); ?></p>
 								</div>
 							</div>
 						</td>
@@ -1802,7 +1802,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label><?php echo __( 'Check New Version', 'cup_cp' ); ?></label>
+							<label><?php echo __( 'Check New Version', 'contact-us-page-contact-people' ); ?></label>
 						</th>
 						<td class="forminp forminp-manual_check_version">
 							<?php echo $description; ?>
@@ -1813,7 +1813,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 id="<?php echo $this->plugin_name . '-check-version'; ?>"
 								class="button button-primary a3rev-ui-manual_check_version"
                                 type="button"
-								value="<?php echo __( 'Check Now', 'cup_cp' ); ?>"
+								value="<?php echo __( 'Check Now', 'contact-us-page-contact-people' ); ?>"
 								/> <span class="a3rev-ui-version-checking"> </span>
 								<p class="a3rev-ui-check-version-message <?php echo $new_version_class; ?>"><?php echo $version_message; ?></p>
 
@@ -1984,13 +1984,13 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 				case 'onoff_toggle_box' :
 
 					$option_value = $this->settings_get_option( $this->toggle_box_open_option, 0 );
-					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'cup_cp' );
-					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'cup_cp' );
+					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'contact-us-page-contact-people' );
+					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'contact-us-page-contact-people' );
 
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $this->toggle_box_open_option; ?>"><?php echo __( 'Open Box Display', 'cup_cp' ); ?></label>
+							<label for="<?php echo $this->toggle_box_open_option; ?>"><?php echo __( 'Open Box Display', 'contact-us-page-contact-people' ); ?></label>
 						</th>
 						<td class="forminp forminp-onoff_checkbox forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -2003,7 +2003,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								value="1"
 								<?php checked( $option_value, 1 ); ?>
 								<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <span class="description" style="margin-left:5px;"><?php echo __( 'ON and each admin panel setting box OPEN | CLOSED position are saved each time changes are SAVED.', 'cup_cp' ); ?></span>
+								/> <span class="description" style="margin-left:5px;"><?php echo __( 'ON and each admin panel setting box OPEN | CLOSED position are saved each time changes are SAVED.', 'contact-us-page-contact-people' ); ?></span>
                         </td>
 					</tr><?php
 				break;
@@ -2084,8 +2084,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 									name="<?php echo $name_attribute; ?>[enable]"
 									id="<?php echo $id_attribute; ?>"
 									class="a3rev-ui-bg_color-enable a3rev-ui-onoff_checkbox <?php echo esc_attr( $value['class'] ); ?>"
-									checked_label="<?php _e( 'ON', 'cup_cp' ); ?>"
-									unchecked_label="<?php _e( 'OFF', 'cup_cp' ); ?>"
+									checked_label="<?php _e( 'ON', 'contact-us-page-contact-people' ); ?>"
+									unchecked_label="<?php _e( 'OFF', 'contact-us-page-contact-people' ); ?>"
 									type="checkbox"
 									value="1"
 									<?php checked( 1, $enable ); ?>
@@ -2253,8 +2253,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								<?php
 								if ( is_array( $value['onoff_options'] ) && count( $value['onoff_options'] ) > 0 ) {
 									foreach ( $value['onoff_options'] as $i_option ) {
-										if ( ! isset( $i_option['checked_label'] ) ) $i_option['checked_label'] = __( 'ON', 'cup_cp' );
-										if ( ! isset( $i_option['unchecked_label'] ) ) $i_option['unchecked_label'] = __( 'OFF', 'cup_cp' );
+										if ( ! isset( $i_option['checked_label'] ) ) $i_option['checked_label'] = __( 'ON', 'contact-us-page-contact-people' );
+										if ( ! isset( $i_option['unchecked_label'] ) ) $i_option['unchecked_label'] = __( 'OFF', 'contact-us-page-contact-people' );
 										if ( ! isset( $i_option['val'] ) ) $i_option['val'] = 1;
 										if ( ! isset( $i_option['text'] ) ) $i_option['text'] = '';
 										?>
@@ -2343,8 +2343,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 				case 'onoff_checkbox' :
 				
 					if ( ! isset( $value['checked_value'] ) ) $value['checked_value'] = 1;
-					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'cup_cp' );
-					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'cup_cp' );
+					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'contact-us-page-contact-people' );
+					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'contact-us-page-contact-people' );
 		
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
@@ -2372,8 +2372,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 				case 'switcher_checkbox' :
 				
 					if ( ! isset( $value['checked_value'] ) ) $value['checked_value'] = 1;
-					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'cup_cp' );
-					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'cup_cp' );
+					if ( ! isset( $value['checked_label'] ) ) $value['checked_label'] = __( 'ON', 'contact-us-page-contact-people' );
+					if ( ! isset( $value['unchecked_label'] ) ) $value['unchecked_label'] = __( 'OFF', 'contact-us-page-contact-people' );
 		
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
@@ -2408,11 +2408,11 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 	
-							<label><?php _e( 'Width', 'cup_cp' ); ?> <input name="<?php echo $name_attribute; ?>[width]" id="<?php echo $id_attribute; ?>-width" type="text" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-width" value="<?php echo $width; ?>" /></label>
+							<label><?php _e( 'Width', 'contact-us-page-contact-people' ); ?> <input name="<?php echo $name_attribute; ?>[width]" id="<?php echo $id_attribute; ?>-width" type="text" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-width" value="<?php echo $width; ?>" /></label>
 	
-							<label><?php _e( 'Height', 'cup_cp' ); ?> <input name="<?php echo $name_attribute; ?>[height]" id="<?php echo $id_attribute; ?>-height" type="text" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-height" value="<?php echo $height; ?>" /></label>
+							<label><?php _e( 'Height', 'contact-us-page-contact-people' ); ?> <input name="<?php echo $name_attribute; ?>[height]" id="<?php echo $id_attribute; ?>-height" type="text" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-height" value="<?php echo $height; ?>" /></label>
 	
-							<label><?php _e( 'Hard Crop', 'cup_cp' ); ?> <input name="<?php echo $name_attribute; ?>[crop]" id="<?php echo $id_attribute; ?>-crop" type="checkbox" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-crop" <?php echo $crop; ?> /></label>
+							<label><?php _e( 'Hard Crop', 'contact-us-page-contact-people' ); ?> <input name="<?php echo $name_attribute; ?>[crop]" id="<?php echo $id_attribute; ?>-crop" type="checkbox" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-crop" <?php echo $crop; ?> /></label>
 	
 							</td>
 					</tr><?php
@@ -2505,7 +2505,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 id="<?php echo $id_attribute; ?>-face"
 								class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-face chzn-select <?php if ( is_rtl() ) { echo 'chzn-rtl'; } ?>"
 								>
-								<optgroup label="<?php _e( '-- Default Fonts --', 'cup_cp' ); ?>">
+								<optgroup label="<?php _e( '-- Default Fonts --', 'contact-us-page-contact-people' ); ?>">
                                 <?php
 									foreach ( $people_contact_fonts_face->get_default_fonts() as $val => $text ) {
 										?>
@@ -2516,7 +2516,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 									}
 								?>
                                 </optgroup>
-                                <optgroup label="<?php _e( '-- Google Fonts --', 'cup_cp' ); ?>">
+                                <optgroup label="<?php _e( '-- Google Fonts --', 'contact-us-page-contact-people' ); ?>">
                                 <?php
 									foreach ( $people_contact_fonts_face->get_google_fonts() as $font ) {
 										?>
@@ -2557,7 +2557,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								/> 
                                 
                            <!-- Preview Button -->
-                           <div class="a3rev-ui-typography-preview"><a href="#" class="a3rev-ui-typography-preview-button button submit-button" title="<?php _e( 'Preview your customized typography settings', 'cup_cp'); ?>"><span>&nbsp;</span></a></div>
+                           <div class="a3rev-ui-typography-preview"><a href="#" class="a3rev-ui-typography-preview-button button submit-button" title="<?php _e( 'Preview your customized typography settings', 'contact-us-page-contact-people' ); ?>"><span>&nbsp;</span></a></div>
                            
                            </div>
                            
@@ -2666,8 +2666,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								/>
                            
                            <!-- Preview Button -->
-                           <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'cup_cp' ); ?>"><span>&nbsp;</span></a></div>
-                           <span class="description" style="margin-left:5px;"><?php echo __( '0px = No Border', 'cup_cp' ); ?></span>
+                           <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'contact-us-page-contact-people' ); ?>"><span>&nbsp;</span></a></div>
+                           <span class="description" style="margin-left:5px;"><?php echo __( '0px = No Border', 'contact-us-page-contact-people' ); ?></span>
                            <div style="clear:both; margin-bottom:10px"></div>
                            
                            <!-- Border Corner : Rounded or Square -->
@@ -2675,8 +2675,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                     name="<?php echo $name_attribute; ?>[corner]"
                                     id="<?php echo $id_attribute; ?>"
                                     class="a3rev-ui-border-corner a3rev-ui-onoff_checkbox <?php echo esc_attr( $value['class'] ); ?>"
-                                    checked_label="<?php _e( 'Rounded', 'cup_cp' ); ?>"
-                                    unchecked_label="<?php _e( 'Square', 'cup_cp' ); ?>"
+                                    checked_label="<?php _e( 'Rounded', 'contact-us-page-contact-people' ); ?>"
+                                    unchecked_label="<?php _e( 'Square', 'contact-us-page-contact-people' ); ?>"
                                     type="checkbox"
                                     value="rounded"
                                     <?php checked( 'rounded', $corner ); ?>
@@ -2686,7 +2686,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 							<!-- Border Rounded Value -->
 								<div class="a3rev-ui-border-corner-value-container">
                                 	<div class="a3rev-ui-border_corner-top_left">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Left Corner', 'cup_cp' ); ?></span>
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Left Corner', 'contact-us-page-contact-people' ); ?></span>
                                         <div class="a3rev-ui-slide-container">
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2706,7 +2706,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 		</div>
                                     </div>
                                     <div class="a3rev-ui-border_corner-top_right">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Right Corner', 'cup_cp' ); ?></span> 
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Right Corner', 'contact-us-page-contact-people' ); ?></span> 
                                         <div class="a3rev-ui-slide-container">
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2726,7 +2726,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 		</div>
                                     </div>
                                     <div class="a3rev-ui-border_corner-bottom_right">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Right Corner', 'cup_cp' ); ?></span> 
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Right Corner', 'contact-us-page-contact-people' ); ?></span> 
                                         <div class="a3rev-ui-slide-container">
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2746,7 +2746,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 		</div>
                                     </div>
                                     <div class="a3rev-ui-border_corner-bottom_left">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Left Corner', 'cup_cp' ); ?></span>
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Left Corner', 'contact-us-page-contact-people' ); ?></span>
                                         <div class="a3rev-ui-slide-container"> 
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2833,8 +2833,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								/>
                            
                            <!-- Preview Button -->
-                           <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border styles settings', 'cup_cp' ); ?>"><span>&nbsp;</span></a></div>
-                           <span class="description" style="margin-left:5px;"><?php echo __( '0px = No Border', 'cup_cp' ); ?></span>
+                           <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border styles settings', 'contact-us-page-contact-people' ); ?>"><span>&nbsp;</span></a></div>
+                           <span class="description" style="margin-left:5px;"><?php echo __( '0px = No Border', 'contact-us-page-contact-people' ); ?></span>
                            </div>
                            
 						</td>
@@ -2891,8 +2891,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                     name="<?php echo $name_attribute; ?>[corner]"
                                     id="<?php echo $id_attribute; ?>"
                                     class="a3rev-ui-border-corner a3rev-ui-onoff_checkbox <?php echo esc_attr( $value['class'] ); ?>"
-                                    checked_label="<?php _e( 'Rounded', 'cup_cp' ); ?>"
-                                    unchecked_label="<?php _e( 'Square', 'cup_cp' ); ?>"
+                                    checked_label="<?php _e( 'Rounded', 'contact-us-page-contact-people' ); ?>"
+                                    unchecked_label="<?php _e( 'Square', 'contact-us-page-contact-people' ); ?>"
                                     type="checkbox"
                                     value="rounded"
                                     <?php checked( 'rounded', $corner ); ?>
@@ -2900,12 +2900,12 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								/> 
                                 
                                 <!-- Preview Button -->
-                               	<div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'cup_cp' ); ?>"><span>&nbsp;</span></a></div>
+                               	<div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'contact-us-page-contact-people' ); ?>"><span>&nbsp;</span></a></div>
                                 <?php echo $description; ?>
                                	<!-- Border Rounded Value -->
 								<div class="a3rev-ui-border-corner-value-container">
                                 	<div class="a3rev-ui-border_corner-top_left">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Left Corner', 'cup_cp' ); ?></span>
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Left Corner', 'contact-us-page-contact-people' ); ?></span>
                                         <div class="a3rev-ui-slide-container">
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2925,7 +2925,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 		</div>
                                     </div>
                                     <div class="a3rev-ui-border_corner-top_right">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Right Corner', 'cup_cp' ); ?></span>
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Right Corner', 'contact-us-page-contact-people' ); ?></span>
                                         <div class="a3rev-ui-slide-container"> 
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2945,7 +2945,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 		</div>
                                     </div>
                                     <div class="a3rev-ui-border_corner-bottom_right">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Right Corner', 'cup_cp' ); ?></span>
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Right Corner', 'contact-us-page-contact-people' ); ?></span>
                                         <div class="a3rev-ui-slide-container"> 
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -2965,7 +2965,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                 		</div>
                                     </div>
                                     <div class="a3rev-ui-border_corner-bottom_left">
-                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Left Corner', 'cup_cp' ); ?></span> 
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Left Corner', 'contact-us-page-contact-people' ); ?></span> 
                                         <div class="a3rev-ui-slide-container">
                                             <div class="a3rev-ui-slide-container-start">
                                                 <div class="a3rev-ui-slide-container-end">
@@ -3015,8 +3015,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                     name="<?php echo $name_attribute; ?>[enable]"
                                     id="<?php echo $id_attribute; ?>"
                                     class="a3rev-ui-box_shadow-enable a3rev-ui-onoff_checkbox <?php echo esc_attr( $value['class'] ); ?>"
-                                    checked_label="<?php _e( 'ON', 'cup_cp' ); ?>"
-                                    unchecked_label="<?php _e( 'OFF', 'cup_cp' ); ?>"
+                                    checked_label="<?php _e( 'ON', 'contact-us-page-contact-people' ); ?>"
+                                    unchecked_label="<?php _e( 'OFF', 'contact-us-page-contact-people' ); ?>"
                                     type="checkbox"
                                     value="1"
                                     <?php checked( 1, $enable ); ?>
@@ -3031,7 +3031,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								name="<?php echo $name_attribute; ?>[h_shadow]"
                                 id="<?php echo $id_attribute; ?>-h_shadow"
 								class="a3rev-ui-box_shadow-h_shadow chzn-select <?php if ( is_rtl() ) { echo 'chzn-rtl'; } ?>"
-                                data-placeholder="<?php _e( 'Horizontal Shadow', 'cup_cp' ); ?>"
+                                data-placeholder="<?php _e( 'Horizontal Shadow', 'contact-us-page-contact-people' ); ?>"
 								>
 								<?php
 									for ( $i = -20; $i <= 20; $i++ ) {
@@ -3049,7 +3049,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								name="<?php echo $name_attribute; ?>[v_shadow]"
                                 id="<?php echo $id_attribute; ?>-v_shadow"
 								class="a3rev-ui-box_shadow-v_shadow chzn-select <?php if ( is_rtl() ) { echo 'chzn-rtl'; } ?>"
-                                data-placeholder="<?php _e( 'Vertical Shadow', 'cup_cp' ); ?>"
+                                data-placeholder="<?php _e( 'Vertical Shadow', 'contact-us-page-contact-people' ); ?>"
 								>
 								<?php
 									for ( $i = -20; $i <= 20; $i++ ) {
@@ -3067,7 +3067,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								name="<?php echo $name_attribute; ?>[blur]"
                                 id="<?php echo $id_attribute; ?>-blur"
 								class="a3rev-ui-box_shadow-blur chzn-select <?php if ( is_rtl() ) { echo 'chzn-rtl'; } ?>"
-                                data-placeholder="<?php _e( 'Blur Distance', 'cup_cp' ); ?>"
+                                data-placeholder="<?php _e( 'Blur Distance', 'contact-us-page-contact-people' ); ?>"
 								>
 								<?php
 									for ( $i = 0; $i <= 20; $i++ ) {
@@ -3085,7 +3085,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								name="<?php echo $name_attribute; ?>[spread]"
                                 id="<?php echo $id_attribute; ?>-spread"
 								class="a3rev-ui-box_shadow-spread chzn-select <?php if ( is_rtl() ) { echo 'chzn-rtl'; } ?>"
-                                data-placeholder="<?php _e( 'Spread Size', 'cup_cp' ); ?>"
+                                data-placeholder="<?php _e( 'Spread Size', 'contact-us-page-contact-people' ); ?>"
 								>
 								<?php
 									for ( $i = 0; $i <= 20; $i++ ) {
@@ -3103,8 +3103,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                     name="<?php echo $name_attribute; ?>[inset]"
                                     id="<?php echo $id_attribute; ?>"
                                     class="a3rev-ui-box_shadow-inset a3rev-ui-onoff_checkbox"
-                                    checked_label="<?php _e( 'INNER', 'cup_cp' ); ?>"
-                                    unchecked_label="<?php _e( 'OUTER', 'cup_cp' ); ?>"
+                                    checked_label="<?php _e( 'INNER', 'contact-us-page-contact-people' ); ?>"
+                                    unchecked_label="<?php _e( 'OUTER', 'contact-us-page-contact-people' ); ?>"
                                     type="checkbox"
                                     value="inset"
                                     <?php checked( 'inset', $inset ); ?>
@@ -3122,7 +3122,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 								/>
                         	
                             <!-- Preview Button -->
-                           <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-box_shadow-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized box shadow settings', 'cup_cp'); ?>"><span>&nbsp;</span></a></div>   
+                           <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-box_shadow-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized box shadow settings', 'contact-us-page-contact-people' ); ?>"><span>&nbsp;</span></a></div>   
                            </div>
                            <div style="clear:both;"></div>
                            </div>
@@ -3396,8 +3396,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 			</div> <!-- Close Panel Row -->
 		<?php do_action( $this->plugin_name . '-' . trim( $form_key ) . '_settings_end' ); ?>
             <p class="submit">
-                    <input type="submit" value="<?php _e('Save changes', 'cup_cp'); ?>" class="button button-primary" name="bt_save_settings" />
-                    <input type="submit" name="bt_reset_settings" class="button" value="<?php _e('Reset Settings', 'cup_cp'); ?>"  />
+                    <input type="submit" value="<?php _e('Save changes', 'contact-us-page-contact-people' ); ?>" class="button button-primary" name="bt_save_settings" />
+                    <input type="submit" name="bt_reset_settings" class="button" value="<?php _e('Reset Settings', 'contact-us-page-contact-people' ); ?>"  />
                     <input type="hidden" name="form_name_action" value="<?php echo $form_key; ?>"  />
                     <input type="hidden" class="last_tab" name="subtab" value="#<?php echo $current_subtab; ?>" />
             </p>

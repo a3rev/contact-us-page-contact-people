@@ -13,10 +13,10 @@ class People_Contact_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname' => 'people_contact_widget',
-			'description' => __( "Use this widget to add Business / Organization details, contact details, information, location map and a general contact us form as a widget.", 'cup_cp'),
+			'description' => __( "Use this widget to add Business / Organization details, contact details, information, location map and a general contact us form as a widget.", 'contact-us-page-contact-people' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct('people_contacts', __('Contact Us Widget', 'cup_cp'), $widget_ops);
+		parent::__construct('people_contacts', __('Contact Us Widget', 'contact-us-page-contact-people' ), $widget_ops);
 	}
 
 	public static function widget_maps_contact_output($args){
@@ -205,7 +205,7 @@ class People_Contact_Widget extends WP_Widget {
 
 				//Check to make sure that the name field is not empty
 				if( trim( $_POST['contactName'] ) === '' ) {
-					$nameError =  __( 'You forgot to enter your name.', 'cup_cp' );
+					$nameError =  __( 'You forgot to enter your name.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {
 					$name = trim( $_POST['contactName'] );
@@ -213,10 +213,10 @@ class People_Contact_Widget extends WP_Widget {
 
 				//Check to make sure sure that a valid email address is submitted
 				if( trim( $_POST['email'] ) === '' )  {
-					$emailError = __( 'You forgot to enter your email address.', 'cup_cp' );
+					$emailError = __( 'You forgot to enter your email address.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else if ( ! eregi( "^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$", trim($_POST['email'] ) ) ) {
-					$emailError = __( 'You entered an invalid email address.', 'cup_cp' );
+					$emailError = __( 'You entered an invalid email address.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {
 					$email = trim( $_POST['email'] );
@@ -224,7 +224,7 @@ class People_Contact_Widget extends WP_Widget {
 
 				//Check to make sure comments were entered
 				if( trim( $_POST['comments'] ) === '' ) {
-					$contactError = __( 'You forgot to enter your comments.', 'cup_cp' );
+					$contactError = __( 'You forgot to enter your comments.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {
 					$comments = stripslashes( trim( $_POST['comments'] ) );
@@ -234,7 +234,7 @@ class People_Contact_Widget extends WP_Widget {
 				if( ! isset( $hasError ) ) {
 
 					$emailTo = $people_contact_widget_information['widget_info_email'];
-					$subject = __( 'Contact Form Submission from', 'cup_cp' ). ' ' .$name;
+					$subject = __( 'Contact Form Submission from', 'contact-us-page-contact-people' ). ' ' .$name;
 
 					$contact_data = array(
 						'subject' 			=> $subject,
@@ -266,14 +266,14 @@ class People_Contact_Widget extends WP_Widget {
 					jQuery( '.requiredField').each(function() {
 						if(jQuery.trim(jQuery(this).val()) == '') {
 							var labelText = jQuery(this).prev( 'label').text();
-							jQuery(this).parent().append( '<span class="error"><?php _e( 'You forgot to enter your', 'cup_cp' ); ?> '+labelText+'.</span>' );
+							jQuery(this).parent().append( '<span class="error"><?php _e( 'You forgot to enter your', 'contact-us-page-contact-people' ); ?> '+labelText+'.</span>' );
 							jQuery(this).addClass( 'inputError' );
 							hasError = true;
 						} else if(jQuery(this).hasClass( 'email')) {
 							var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 							if(!emailReg.test(jQuery.trim(jQuery(this).val()))) {
 								var labelText = jQuery(this).prev( 'label').text();
-								jQuery(this).parent().append( '<span class="error"><?php _e( 'You entered an invalid', 'cup_cp' ); ?> '+labelText+'.</span>' );
+								jQuery(this).parent().append( '<span class="error"><?php _e( 'You entered an invalid', 'contact-us-page-contact-people' ); ?> '+labelText+'.</span>' );
 								jQuery(this).addClass( 'inputError' );
 								hasError = true;
 							}
@@ -284,7 +284,7 @@ class People_Contact_Widget extends WP_Widget {
 						var formInput = jQuery(this).serialize();
 						jQuery.post(jQuery(this).attr( 'action'),formInput, function(data){
 							jQuery( 'form#contactForm').slideUp( "fast", function() {
-								jQuery(this).before( '<p class="tick"><?php _e( '<strong>Thanks!</strong> Your email was successfully sent.', 'cup_cp' ); ?></p>' );
+								jQuery(this).before( '<p class="tick"><?php _e( '<strong>Thanks!</strong> Your email was successfully sent.', 'contact-us-page-contact-people' ); ?></p>' );
 							});
 						});
 					} else {
@@ -323,7 +323,7 @@ class People_Contact_Widget extends WP_Widget {
 				if( trim($email_icon ) == '' ) $email_icon = PEOPLE_CONTACT_IMAGE_URL.'/p_icon_email.png';
 				if( isset( $emailSent ) && $emailSent == true ) { ?>
 					<p class="info">
-					  <?php _e( 'Your email was successfully sent.', 'cup_cp' ); ?>
+					  <?php _e( 'Your email was successfully sent.', 'contact-us-page-contact-people' ); ?>
 					</p>
 				<?php } else { ?>
 					<div style="clear:both;"></div>
@@ -335,22 +335,22 @@ class People_Contact_Widget extends WP_Widget {
 						  <?php } ?>
 						  <?php if (isset($people_contact_widget_information['widget_info_phone']) && $people_contact_widget_information['widget_info_phone'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $phone_icon;?>" /></span><?php _e('Phone:','cup_cp'); ?>
+							<span><img src="<?php echo $phone_icon;?>" /></span><?php _e('Phone:', 'contact-us-page-contact-people' ); ?>
 							<?php echo $people_contact_widget_information['widget_info_phone']; ?></li>
 						  <?php } ?>
 						  <?php if (isset($people_contact_widget_information['widget_info_fax']) && $people_contact_widget_information['widget_info_fax'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $fax_icon;?>" /></span><?php _e('Fax:','cup_cp'); ?>
+							<span><img src="<?php echo $fax_icon;?>" /></span><?php _e('Fax:', 'contact-us-page-contact-people' ); ?>
 							<?php echo $people_contact_widget_information['widget_info_fax']; ?></li>
 						  <?php } ?>
 	                      <?php if (isset($people_contact_widget_information['widget_info_mobile']) && $people_contact_widget_information['widget_info_mobile'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $mobile_icon;?>" /></span><?php _e('Mobile:','cup_cp'); ?>
+							<span><img src="<?php echo $mobile_icon;?>" /></span><?php _e('Mobile:', 'contact-us-page-contact-people' ); ?>
 							<?php echo $people_contact_widget_information['widget_info_mobile']; ?></li>
 						  <?php } ?>
 						  <?php if (isset($people_contact_widget_information['widget_info_email']) && $people_contact_widget_information['widget_info_email'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $email_icon;?>" /></span><?php _e('Email:','cup_cp'); ?>
+							<span><img src="<?php echo $email_icon;?>" /></span><?php _e('Email:', 'contact-us-page-contact-people' ); ?>
 							<a href="mailto:<?php echo $people_contact_widget_information['widget_info_email']; ?>"><?php echo $people_contact_widget_information['widget_info_email']; ?></a></li>
 						  <?php } ?>
 						</ul>
@@ -371,14 +371,14 @@ class People_Contact_Widget extends WP_Widget {
 	                ?>
 					<?php if( isset( $hasError ) ) { ?>
 					<p class="alert">
-					  <?php _e( 'There was an error submitting the form.', 'cup_cp' ); ?>
+					  <?php _e( 'There was an error submitting the form.', 'contact-us-page-contact-people' ); ?>
 					</p>
 					<?php } ?>
 					<form action="<?php the_permalink(); ?>" id="contactForm" method="post">
 					  <ol class="forms">
 						<li>
 						  <label for="contactName">
-							<?php _e( 'Name', 'cup_cp' ); ?> <span class="require">*</span>
+							<?php _e( 'Name', 'contact-us-page-contact-people' ); ?> <span class="require">*</span>
 						  </label>
 						  <input type="text" name="contactName" id="contactName" value="<?php if( isset( $_POST['contactName'] ) ) { echo esc_attr( $_POST['contactName'] ); } ?>" class="txt requiredField" />
 						  <?php if($nameError != '') { ?>
@@ -387,7 +387,7 @@ class People_Contact_Widget extends WP_Widget {
 						</li>
 						<li>
 						  <label for="email">
-							<?php _e( 'Email', 'cup_cp' ); ?> <span class="require">*</span>
+							<?php _e( 'Email', 'contact-us-page-contact-people' ); ?> <span class="require">*</span>
 						  </label>
 						  <input type="text" name="email" id="email" value="<?php if( isset( $_POST['email'] ) ) { echo esc_attr( $_POST['email'] ); } ?>" class="txt requiredField email" />
 						  <?php if($emailError != '') { ?>
@@ -396,7 +396,7 @@ class People_Contact_Widget extends WP_Widget {
 						</li>
 						<li class="textarea">
 						  <label for="commentsText">
-							<?php _e( 'Message', 'cup_cp' ); ?> <span class="require">*</span>
+							<?php _e( 'Message', 'contact-us-page-contact-people' ); ?> <span class="require">*</span>
 						  </label>
 						  <textarea name="comments" id="commentsText" rows="5" class="requiredField"><?php if( isset( $_POST['comments'] ) ) { echo esc_textarea( $_POST['comments'] ); } ?></textarea>
 						  <?php if( $contactError != '' ) { ?>
@@ -408,14 +408,14 @@ class People_Contact_Widget extends WP_Widget {
 	                     <label>
 						  <span for="sendCopy">
 	                      	<input type="checkbox" name="sendCopy" id="sendCopy" value="true"<?php if( isset( $_POST['sendCopy'] ) && $_POST['sendCopy'] == true ) { echo ' checked="checked"'; } ?> />
-							<?php _e( 'Send a copy of this email to yourself', 'cup_cp' ); ?>
+							<?php _e( 'Send a copy of this email to yourself', 'contact-us-page-contact-people' ); ?>
 						  </span>
 						 </label>
 	                    </li>
 	                    <?php } ?>
 						<li class="buttons">
 						  <input type="hidden" name="submitted" id="submitted" value="true" />
-						  <input class="submit button" type="submit" value="<?php esc_attr_e( 'Send', 'cup_cp' ); ?>" /> <img class="contact-site-ajax-wait" src="<?php echo PEOPLE_CONTACT_IMAGE_URL; ?>/ajax-loader2.gif" border="0" style="display:none; padding:0; margin:0; vertical-align: middle;" />
+						  <input class="submit button" type="submit" value="<?php esc_attr_e( 'Send', 'contact-us-page-contact-people' ); ?>" /> <img class="contact-site-ajax-wait" src="<?php echo PEOPLE_CONTACT_IMAGE_URL; ?>/ajax-loader2.gif" border="0" style="display:none; padding:0; margin:0; vertical-align: middle;" />
 						</li>
 					  </ol>
 					</form>
@@ -452,7 +452,7 @@ class People_Contact_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
 	    $title = strip_tags($instance['title']);
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'cup_cp' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'contact-us-page-contact-people' ); ?></label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 <?php
 	}

@@ -87,31 +87,31 @@ class People_Contact_WPML_Functions
 		if ( function_exists('icl_register_string') ) {
 			
 			// Default Form
-			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Name', __( 'Name', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Email', __( 'Email', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Phone', __( 'Phone', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Subject', __( 'Subject', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Message', __( 'Message', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Default Form - Send Copy', __( 'Send a copy of this email to myself.',  'cup_cp' ) );
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Name', __( 'Name', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Email', __( 'Email', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Phone', __( 'Phone', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Subject', __( 'Subject', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Message', __( 'Message', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Send Copy', __( 'Send a copy of this email to myself.', 'contact-us-page-contact-people' ) );
 			
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - from', __( 'from', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact from', __( 'Contact from', 'cup_cp' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - from', __( 'from', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact from', __( 'Contact from', 'contact-us-page-contact-people' ) );
 			
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Profile Name', __( 'Profile Name', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - From Page Title', __( 'From Page Title', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - From Page URL', __( 'From Page URL', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Name', __( 'Contact Name', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Email', __( 'Contact Email Address', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Phone', __( 'Contact Phone', 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Message', __( 'Message', 'cup_cp' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Profile Name', __( 'Profile Name', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - From Page Title', __( 'From Page Title', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - From Page URL', __( 'From Page URL', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Name', __( 'Contact Name', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Email', __( 'Contact Email Address', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Phone', __( 'Contact Phone', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Message', __( 'Message', 'contact-us-page-contact-people' ) );
 			
-			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Copy', __( '[Copy]:',  'cup_cp' ) );
+			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Copy', __( '[Copy]:', 'contact-us-page-contact-people' ) );
 			
-			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Success Message', __( "Thanks for your contact - we'll be in touch with you as soon as possible!", 'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Copy', __( '[Copy]:',  'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Name', __( 'Name',  'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Email Address', __( 'Email Address',  'cup_cp' ) );
-			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Message', __( 'Message',  'cup_cp' ) );
+			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Success Message', __( "Thanks for your contact - we'll be in touch with you as soon as possible!", 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Copy', __( '[Copy]:', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Name', __( 'Name', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Email Address', __( 'Email Address', 'contact-us-page-contact-people' ) );
+			icl_register_string($this->plugin_wpml_name, 'Contact Widget - Message', __( 'Message', 'contact-us-page-contact-people' ) );
 						
 		}
 	}

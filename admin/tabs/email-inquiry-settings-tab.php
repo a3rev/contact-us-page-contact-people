@@ -75,7 +75,7 @@ class People_Email_Inquiry_Settings_Tab extends People_Contact_Admin_UI
 		
 		$tab_data = array( 
 			'name'				=> 'email-inquiry',
-			'label'				=> __( 'Profile Email', 'cup_cp' ),
+			'label'				=> __( 'Profile Email', 'contact-us-page-contact-people' ),
 			'callback_function'	=> 'people_email_inquiry_settings_tab_manager',
 		);
 		

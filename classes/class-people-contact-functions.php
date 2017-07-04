@@ -284,15 +284,6 @@ class People_Contact_Functions
 	}
 
 	public static function enqueue_modal_scripts() {
-		// Don't include modal script if bootstrap is loaded by theme or plugins
-		if ( wp_script_is( 'bootstrap', 'registered' ) 
-			|| wp_script_is( 'bootstrap', 'enqueued' ) ) {
-			
-			wp_enqueue_style( 'bootstrap' );
-			wp_enqueue_script( 'bootstrap' );
-			
-			return;
-		}
 
 		if ( ! wp_script_is( 'bootstrap-modal', 'registered' ) 
 			&& ! wp_script_is( 'bootstrap-modal', 'enqueued' ) ) {
@@ -301,6 +292,20 @@ class People_Contact_Functions
 		}
 
 		wp_enqueue_style( 'bootstrap-modal' );
+
+		// Don't include modal script if bootstrap is loaded by theme or plugins
+		if ( wp_script_is( 'bootstrap', 'registered' ) 
+			|| wp_script_is( 'bootstrap', 'enqueued' ) ) {
+			
+			wp_enqueue_script( 'bootstrap' );
+			
+			return;
+		}
+
+		if ( wp_script_is( 'wpsm_tabs_r_bootstrap-js-front', 'enqueued' ) || wp_script_is( 'wpsm_ac_bootstrap-js-front', 'enqueued' ) ) {
+			return;
+		}
+
 		wp_enqueue_script( 'bootstrap-modal' );
 	}
 

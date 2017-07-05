@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
 Tested up to: 4.8.0
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.1.2 - 2017/07/05 =
+* Fix - Include Transition script from bootstrap so that Modal pop up script can work
 
 = 3.1.1 - 2017/07/04 =
 * Tweak - Rollback Modal script from Bootstrap version 4.0 Alpha to verssion 3.3.7
@@ -436,6 +439,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.1.2 =
+Maintenance Update. 1 bug fix for bootstrap modal pop up
 
 = 3.1.1 =
 Maintenance Update. Update of Bootstrap Modal pop up script - Important - be sure to clear all caching after you run this upgrade! 

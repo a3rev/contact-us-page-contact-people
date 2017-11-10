@@ -205,12 +205,12 @@ body .people_email_inquiry_form_button,
 					left bottom,
 					color-stop(.2, <?php echo $inquiry_contact_button_bg_colour_from; ?>),
 					color-stop(1, <?php echo $inquiry_contact_button_bg_colour_to; ?>)
-				) !important;;
+				) !important;
 	background: -moz-linear-gradient(
 					center top,
 					<?php echo $inquiry_contact_button_bg_colour_from; ?> 20%,
 					<?php echo $inquiry_contact_button_bg_colour_to; ?> 100%
-				) !important;;
+				) !important;
 	
 	/*Border*/
 	<?php echo $people_contact_admin_interface->generate_border_css( $inquiry_contact_button_border ); ?>

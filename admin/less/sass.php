@@ -5,11 +5,11 @@ if (!defined('ABSPATH'))
 
 class A3_People_Contact_Less
 {
-	public $plugin_name = 'contact_people_ultimate';
-	public $css_file_name = 'wp_contact_people';
-	public $plugin_folder = PEOPLE_CONTACT_FOLDER;
-	public $plugin_dir = PEOPLE_CONTACT_DIR;
-
+    public $plugin_name   = PEOPLE_CONTACT_KEY;
+    public $css_file_name = 'wp_contact_people';
+    public $plugin_folder = PEOPLE_CONTACT_FOLDER;
+    public $plugin_dir    = PEOPLE_CONTACT_DIR;
+    
     /*-----------------------------------------------------------------------------------*/
     /* Constructor */
     /*-----------------------------------------------------------------------------------*/

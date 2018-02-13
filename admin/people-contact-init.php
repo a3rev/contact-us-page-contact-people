@@ -3,7 +3,7 @@
  * Call this function when plugin is deactivated
  */
 function people_contact_install(){
-	update_option('a3rev_wp_people_contact_lite_version', '3.1.2');
+	update_option('a3rev_wp_people_contact_lite_version', PEOPLE_CONTACT_VERSION );
 	update_option('a3rev_wp_people_contact_ultimate_version', '3.0.4');
 
 	$contact_us_page_id = People_Contact_Functions::create_page( esc_sql( 'contact-us-page' ), 'contact_us_page_id', __('Contact Us Page', 'contact-us-page-contact-people' ), '[people_contacts]' );
@@ -23,17 +23,12 @@ function people_contact_install(){
 	update_option('a3rev_wp_people_contact_just_installed', true);
 }
 
-
-update_option('a3rev_wp_people_contact_plugin', 'contact_us_page_contact_people');
-
 /**
  * Load languages file
  */
 function wp_people_contact_init() {
 	if ( get_option('a3rev_wp_people_contact_just_installed') ) {
 		delete_option('a3rev_wp_people_contact_just_installed');
-		wp_redirect( admin_url( 'admin.php?page=people-contact-manager', 'relative' ) );
-		exit;
 	}
 
 	wp_people_contact_plugin_textdomain();
@@ -152,7 +147,7 @@ function a3_people_contact_lite_upgrade_plugin () {
 		$a3_people_contact_less->plugin_build_sass();
 	}
 
-	update_option('a3rev_wp_people_contact_lite_version', '3.1.2');
+	update_option('a3rev_wp_people_contact_lite_version', PEOPLE_CONTACT_VERSION );
 	update_option('a3rev_wp_people_contact_ultimate_version', '3.0.4');
 
 }

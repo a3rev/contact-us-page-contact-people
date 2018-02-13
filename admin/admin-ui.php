@@ -30,19 +30,16 @@ class People_Contact_Admin_UI
 	 * @var string
 	 * You must change to correct plugin name that you are working
 	 */
-	public $plugin_name = 'contact_people_ultimate';
 
-	public $google_api_key_option = 'contact_people_ultimate_google_api_key';
-
-	public $toggle_box_open_option = 'contact_people_ultimate_toggle_box_open';
-
-	public $is_free_plugin = true;
-
-	public $version_transient = 'a3rev_wp_people_contact_ultimate_update_info';
-
-	public $plugin_option_key = 'a3rev_wp_people_contact_ultimate_plugin';
-
-	public $support_url = 'https://a3rev.com/forums/forum/wordpress-plugins/contact-people-ultimate/';
+	public $framework_version      = '2.0.2';
+	public $plugin_name            = PEOPLE_CONTACT_KEY;
+	public $plugin_path            = PEOPLE_CONTACT_NAME;
+	public $google_api_key_option  = PEOPLE_CONTACT_KEY . '_google_api_key';
+	public $toggle_box_open_option = PEOPLE_CONTACT_KEY . '_toggle_box_open';
+	public $version_transient      = PEOPLE_CONTACT_KEY . '_licinfo';
+	public $is_free_plugin         = false;
+	
+	public $support_url            = 'https://a3rev.com/forums/forum/wordpress-plugins/contact-people-ultimate/';
 
 
 	/**
@@ -55,8 +52,8 @@ class People_Contact_Admin_UI
 	 * @var string
 	 * You must change to correct pro plugin page url on a3rev site
 	 */
-	public $pro_plugin_page_url = 'http://a3rev.com/shop/contact-people-ultimate/';
-		
+	public $pro_plugin_page_url = 'https://a3rev.com/shop/contact-people-ultimate/';
+
 	/**
 	 * @var string
 	 */
@@ -323,11 +320,11 @@ class People_Contact_Admin_UI
 				if ( FALSE !== stristr( $version_transient, '||' )
 					&& is_array( $version_info )
 					&& isset( $version_info[1] ) && $version_info[1] == 'valid'
-					&& version_compare( get_option('a3rev_wp_people_contact_lite_version') , $version_info[0], '<' ) ) {
+					&& version_compare( PEOPLE_CONTACT_VERSION , $version_info[0], '<' ) ) {
 
 						$version_message = sprintf( __( 'There is a new version <span class="a3rev-ui-new-plugin-version">%s</span> available, <a href="%s" target="_blank">update now</a> or download direct from <a href="%s" target="_blank">My Account</a> on a3rev.com', 'contact-us-page-contact-people' ),
 							$version_info[0],
-							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . PEOPLE_CONTACT_NAME ), 'upgrade-plugin_' . PEOPLE_CONTACT_NAME ),
+							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . $this->plugin_path ), 'upgrade-plugin_' . $this->plugin_path ),
 							'https://a3rev.com/my-account/downloads/'
 						);
 				}

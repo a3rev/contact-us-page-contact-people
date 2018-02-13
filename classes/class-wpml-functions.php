@@ -32,7 +32,7 @@ class People_Contact_WPML_Functions
 	 */
 	public function wpml_ict_t() {
 		
-		$plugin_name = 'contact_people_ultimate';
+		$plugin_name = PEOPLE_CONTACT_KEY;
 		
 		add_filter( $plugin_name . '_' . 'people_email_inquiry_global_settings' . '_get_settings', array( $this, 'ict_t_email_inquiry_global_settings' ) );
 		add_filter( $plugin_name . '_' . 'people_contact_global_settings' . '_get_settings', array( $this, 'ict_t_contact_page_settings' ) );

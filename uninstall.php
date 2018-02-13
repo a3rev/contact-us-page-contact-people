@@ -5,22 +5,23 @@
  * Uninstalling deletes options, tables, and pages.
  *
  */
-if( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
+if( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) 
 	exit();
 
 global $wpdb;
+$plugin_key = 'contact_us_page_contact_people';
 
 // Delete Google Font
-delete_option('contact_people_ultimate_google_api_key');
-delete_option('contact_people_ultimate_google_api_key' . '_enable');
-delete_transient('contact_people_ultimate_google_api_key' . '_status');
-delete_option('contact_people_ultimate' . '_google_font_list');
+delete_option( $plugin_key . '_google_api_key' . '_enable' );
+delete_transient( $plugin_key . '_google_api_key' . '_status' );
+delete_option( $plugin_key . '_google_font_list' );
 
-if (get_option('a3_people_contact_lite_clean_on_deletion') == 1) {
-    delete_option('contact_people_ultimate_toggle_box_open');
-    delete_option('contact_people_ultimate' . '-custom-boxes');
+if ( get_option( $plugin_key . '_clean_on_deletion' ) == 1 ) {
+	delete_option( $plugin_key . '_google_api_key' );
+	delete_option( $plugin_key . '_toggle_box_open' );
+	delete_option( $plugin_key . '-custom-boxes' );
 
-    delete_metadata( 'user', 0, 'contact_people_ultimate' . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
+	delete_metadata( 'user', 0,  $plugin_key . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
 
     delete_option('people_contact_settings');
     delete_option('people_contact_global_settings');
@@ -51,7 +52,7 @@ if (get_option('a3_people_contact_lite_clean_on_deletion') == 1) {
     delete_option('contact_us_page_id');
     delete_option('a3rev_wp_people_contact_version');
 
-    delete_option('a3_people_contact_lite_clean_on_deletion');
+    delete_option($plugin_key . '_clean_on_deletion');
 
     global $wpdb;
     $wpdb->query('DROP TABLE IF EXISTS ' . $wpdb->prefix . 'cup_cp_profiles');

@@ -37,7 +37,7 @@ class People_Contact_Admin_UI
 	public $google_api_key_option  = PEOPLE_CONTACT_KEY . '_google_api_key';
 	public $toggle_box_open_option = PEOPLE_CONTACT_KEY . '_toggle_box_open';
 	public $version_transient      = PEOPLE_CONTACT_KEY . '_licinfo';
-	public $is_free_plugin         = false;
+	public $is_free_plugin         = true;
 	
 	public $support_url            = 'https://a3rev.com/forums/forum/wordpress-plugins/contact-people-ultimate/';
 

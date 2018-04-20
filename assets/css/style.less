@@ -297,7 +297,32 @@ body #people_contacts_container #map_canvas .infowindow .info_avatar img, body #
 
 /* POPUP */
 .contact_people_modal {
-  z-index: 10500000;
+    z-index: 10500000 !important;
+
+    .modal-dialog {
+        margin-top: 50px !important;
+    }
+
+    .modal-header {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+        .close {
+            font-size: 25px;
+            font-family: Arial, sans-serif;
+            padding: 0px 10px;
+        }
+    }
 }
 .custom_contact_popup {
     position: relative;

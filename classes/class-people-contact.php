@@ -89,7 +89,7 @@ class People_Contact {
 			$c_attachment_id = $people_contact_grid_view_icon['default_profile_image_attachment_id'];
 		}
 
-		$img_output = '<img width="80" class="wp-image-'.$c_attachment_id.'" src="'.$src.'" />';
+		$img_output = '<img width="80" class="a3-notlazy wp-image-'.$c_attachment_id.'" src="'.$src.'" />';
 		if ( function_exists( 'wp_make_content_images_responsive' ) ) {
 			$img_output = wp_make_content_images_responsive( $img_output );
 		}

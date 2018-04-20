@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 3.1.4
+Tested up to: 4.9.5
+Stable tag: 3.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,14 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.1.5 - 2018/04/20 =
+* Maintenance Update. Fix compatibility issues with a3 Lazy Load and close icon position on popup. Also compatibility with WordPress 4.9.5
+* Tweak - Test for compatibility with WordPress 4.9.5
+* Framework - Define filter tag for enable OR disable load new google fonts via API
+* Framework - Update plugin framework to new version 2.0.3
+* Fix - Added a3-notlazy class for image on popup for compatibility with a3 Lazy Load. Solves the issue image not loaded on popup when first load.
+* Tweak - Custom X icon so that it shows larger and in correct position
 
 = 3.1.4 - 2018/03/01 =
 * Maintenance Update. Fixed issue with admin settings not saving in version 3.1.3
@@ -450,6 +458,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.1.5 =
+Maintenance Update. Fix compatibility issues with a3 Lazy Load and close icon position on popup. Also compatibility with WordPress 4.9.5
 
 = 3.1.4 =
 Maintenance Update. Fixed issue with admin settings not saving in version 3.1.3

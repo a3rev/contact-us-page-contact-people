@@ -94,6 +94,9 @@ class People_Contact {
 			$img_output = wp_make_content_images_responsive( $img_output );
 		}
 
+		$show_acceptance = true;
+		if ( isset( $people_email_inquiry_global_settings['acceptance'] ) && $people_email_inquiry_global_settings['acceptance'] == 'no') $show_acceptance = false;
+
 		ob_start();
 		?>
 		<div class="custom_contact_popup <?php echo $inquiry_contact_form_class; ?>">
@@ -125,11 +128,32 @@ class People_Contact {
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label" for="c_message_<?php echo $contact_id; ?>"><?php people_ict_t_e( 'Default Form - Contact Message', __('Message', 'contact-us-page-contact-people' ) ); ?> <span class="gfield_required">*</span></label>
                 <textarea rows="3" name="c_message" id="c_message_<?php echo $contact_id; ?>"></textarea></div>
-            <div class="people_email_inquiry_field">
-                <?php if ( $people_email_inquiry_global_settings['send_copy'] != 'no' ) { ?>
+            <?php if ( $people_email_inquiry_global_settings['send_copy'] != 'no' ) { ?>
+			<div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">&nbsp;</label>
-                <label class="people_email_inquiry_send_copy"><input type="checkbox" name="send_copy" id="send_copy_<?php echo $contact_id; ?>" value="1" checked="checked" /> <?php people_ict_t_e( 'Default Form - Send Copy', __('Send a copy of this email to myself.', 'contact-us-page-contact-people' ) ); ?></label>
-                <?php } ?>
+                <label class="people_email_inquiry_send_copy"><input type="checkbox" name="send_copy" id="send_copy_<?php echo $contact_id; ?>" value="1" /> <?php people_ict_t_e( 'Default Form - Send Copy', __('Send a copy of this email to myself.', 'contact-us-page-contact-people' ) ); ?></label>
+            </div>
+            <?php } ?>
+
+            <?php if ( $show_acceptance ) { ?>
+            <div class="people_email_inquiry_field">&nbsp;</div>
+
+            <?php $information_text = get_option( 'people_email_inquiry_information_text', '' ); ?>
+            <?php if ( ! empty( $information_text ) ) { ?>
+			<div class="people_email_inquiry_field">
+				<?php echo stripslashes( $information_text ); ?>
+			</div>
+			<?php } ?>
+
+			<?php $condition_text = get_option( 'people_email_inquiry_condition_text', '' ); ?>
+			<?php if ( empty( $condition_text ) ) { $condition_text = __( 'I have read and agree to the website terms and conditions', 'contact-us-page-contact-people' ); } ?>
+			<div class="people_email_inquiry_field">
+				<label class="people_email_inquiry_send_copy"><input type="checkbox" name="agree_terms" class="agree_terms" value="1"> <?php echo stripslashes( $condition_text ); ?></label>
+			</div>
+			<div class="people_email_inquiry_field">&nbsp;</div>
+			<?php } ?>
+
+            <div class="people_email_inquiry_field">
                 <a class="people_email_inquiry_form_button <?php echo $inquiry_contact_button_class; ?>" id="people_email_inquiry_bt_<?php echo $contact_id; ?>" contact_id="<?php echo $contact_id; ?>" from-page-id="<?php echo $from_page_id; ?>"><?php echo $inquiry_contact_text_button; ?></a>
             </div>
             <div style="clear:both"></div>

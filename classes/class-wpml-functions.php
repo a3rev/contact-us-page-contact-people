@@ -93,6 +93,8 @@ class People_Contact_WPML_Functions
 			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Subject', __( 'Subject', 'contact-us-page-contact-people' ) );
 			icl_register_string($this->plugin_wpml_name, 'Default Form - Contact Message', __( 'Message', 'contact-us-page-contact-people' ) );
 			icl_register_string($this->plugin_wpml_name, 'Default Form - Send Copy', __( 'Send a copy of this email to myself.', 'contact-us-page-contact-people' ) );
+
+			icl_register_string($this->plugin_wpml_name, 'Default Form - Agree Terms Error', __('You need to agree to the website terms and conditions if want to submit this inquiry', 'contact-us-page-contact-people' ) );
 			
 			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - from', __( 'from', 'contact-us-page-contact-people' ) );
 			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact from', __( 'Contact from', 'contact-us-page-contact-people' ) );

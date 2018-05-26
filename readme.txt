@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 4.9.5
-Stable tag: 3.1.5
+Tested up to: 4.9.6
+Stable tag: 3.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,13 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.1.6 - 2018/05/26 =
+* This maintenance update is for compatibility with WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU 
+* Tweak - Default Profile and Contact Us Widget Email Inquiry Form. Add new GDPR Compliance Options Box with option to turn Acceptance notice ON or OFF for default form.
+* Tweak - When Acceptance notice is ON option shows to edit the default text that shows to the right of the acceptance box. 
+* Tweak - When Acceptance Notice is ON option shows to add information text to the bottom of the form. Leave the text edit empty on and nothing shows on the form footer.
+* Tweak - Test for compatibility with WordPress 4.9.6
 
 = 3.1.5 - 2018/04/20 =
 * Maintenance Update. Fix compatibility issues with a3 Lazy Load and close icon position on popup. Also compatibility with WordPress 4.9.5
@@ -458,6 +465,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.1.6 =
+Maintenance Update. Compatibility with WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU
 
 = 3.1.5 =
 Maintenance Update. Fix compatibility issues with a3 Lazy Load and close icon position on popup. Also compatibility with WordPress 4.9.5

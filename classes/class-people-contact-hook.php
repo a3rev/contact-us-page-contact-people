@@ -156,6 +156,9 @@ class People_Contact_Hook_Filter
 		global $people_email_inquiry_global_settings;
 
 		if ( $people_email_inquiry_global_settings['contact_form_type_other'] == 1 ) return ;
+
+		$show_acceptance = true;
+		if ( isset( $people_email_inquiry_global_settings['acceptance'] ) && $people_email_inquiry_global_settings['acceptance'] == 'no') $show_acceptance = false;
 	?>
     	<script type="text/javascript">
 			jQuery(document).ready(function ($) {
@@ -174,8 +177,19 @@ class People_Contact_Hook_Filter
 					var c_phone = $("#c_phone_" + contact_id).val();
 					var c_message = $("#c_message_" + contact_id).val();
 					var send_copy = 0;
-					if ( $("#send_copy_" + contact_id).is(':checked') )
+					if ( $("#send_copy_" + contact_id).is(':checked') ) {
 						send_copy = 1;
+					}
+
+					<?php if ( $show_acceptance ) { ?>
+					var agree_terms = $(this).parents('.people_email_inquiry_content').find('.agree_terms');
+					var is_agree_terms = 0;
+					if ( agree_terms.is(':checked') ) {
+						is_agree_terms = 1;
+					}
+					<?php } else { ?>
+					var is_agree_terms = 1;
+					<?php } ?>
 
 					if (c_name.replace(/^\s+|\s+$/g, '') == "") {
 						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Name Error', __('Please enter your Name', 'contact-us-page-contact-people' ) ); ?>\n";
@@ -191,6 +205,11 @@ class People_Contact_Hook_Filter
 					}
 					if (c_message.replace(/^\s+|\s+$/g, '') == "") {
 						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Message Error', __('Please enter your Message', 'contact-us-page-contact-people' ) ); ?>\n";
+						people_email_inquiry_have_error = true;
+					}
+
+					if ( 0 === is_agree_terms ) {
+						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Agree Terms Error', __('You need to agree to the website terms and conditions if want to submit this inquiry', 'contact-us-page-contact-people' ) ); ?>\n";
 						people_email_inquiry_have_error = true;
 					}
 

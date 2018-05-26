@@ -186,6 +186,8 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 	/* Init all fields of this form */
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
+
+		$privacy_policy_url = '#';
 		
   		// Define settings			
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
@@ -280,6 +282,51 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 				'free_version'	=> true,
 			),
 
+			array(
+            	'name' 		=> __( 'GDPR Compliance', 'contact-us-page-contact-people' ),
+                'type' 		=> 'heading',
+                'class'		=> 'ei_default_form_container',
+                'id'		=> 'ei_form_gdpr_box',
+                'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Show acceptance checkbox', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( "Gives users a checkbox to agree terms and conditions, this field is required if you turn it ON.", 'contact-us-page-contact-people' ),
+				'id' 		=> 'acceptance',
+				'class'		=> 'acceptance',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'yes',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
+			array(
+				'class'		=> 'show_acceptance_yes',
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Information Text', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( 'Enter informational text and a link to your privacy policy (Optional). Leave blank and nothing will show.', 'contact-us-page-contact-people' ),
+				'id' 		=> 'people_email_inquiry_information_text',
+				'type' 		=> 'wp_editor',
+				'textarea_rows'		=> 15,
+				'default'	=> sprintf( __( 'The information you enter here will be sent directly to the recipient. It is not stored on this sites database. Read more in our <a href="%s" target="_blank">Privacy Policy</a>', 'contact-us-page-contact-people' ), $privacy_policy_url ),
+				'separate_option'	=> true,
+				'free_version'	=> true,
+			),
+			array(  
+				'name' 		=> __( 'Acceptance Text', 'contact-us-page-contact-people' ),
+				'desc' 		=> __( 'Text will show on the right of the acceptance checkbox. (Required)', 'contact-us-page-contact-people' ),
+				'id' 		=> 'people_email_inquiry_condition_text',
+				'type' 		=> 'wp_editor',
+				'textarea_rows'		=> 10,
+				'default'	=> __( 'I have read and agree to the website terms and conditions', 'contact-us-page-contact-people' ),
+				'separate_option'	=> true,
+				'free_version'	=> true,
+			),
 
 			// Default Form Style
 			array(
@@ -580,6 +627,10 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 <script>
 (function($) {
 $(document).ready(function() {
+	if ( $("input.acceptance:checked").val() != 'yes') {
+		$(".show_acceptance_yes").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
+	}
+
 	if ( $("input.contact_form_type_other:checked").val() == 1) {
 		$(".ei_default_form_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
 		if ( $("input.contact_form_3rd_open_type:checked").val() == 'popup') {
@@ -608,6 +659,13 @@ $(document).ready(function() {
 		$(".ei_3rd_contact_form_popup").attr('style','display:none;');
 		if ( value != 'popup' && status == 'true' ) {
 			$(".ei_3rd_contact_form_popup").slideDown();
+		}
+	});
+
+	$(document).on( "a3rev-ui-onoff_checkbox-switch", '.acceptance', function( event, value, status ) {
+		$(".show_acceptance_yes").attr('style','display:none;');
+		if ( value == 'yes' && status == 'true' ) {
+			$(".show_acceptance_yes").slideDown();
 		}
 	});
 });

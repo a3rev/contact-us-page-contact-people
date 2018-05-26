@@ -525,6 +525,13 @@ body .people_email_inquiry_form_button,
   position: relative;
   top: -1em;
 }
+.people_contact_widget ol.forms li.agree_inline input.agree_terms {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.people_contact_widget ol.forms li.agree_inline span.error {
+  top: auto;
+}
 .people_contact_widget .gform_wrapper {
   margin: 0;
   max-width: 100% !important;

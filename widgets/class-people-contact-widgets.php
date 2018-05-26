@@ -196,9 +196,15 @@ class People_Contact_Widget extends WP_Widget {
 		$enable_widget_send_copy = true;
 		if ( $people_contact_widget_email_contact_form['widget_send_copy'] == 'no') $enable_widget_send_copy = false;
 
-		$nameError = '';
-		$emailError = '';
-		$contactError = '';
+		$show_acceptance = true;
+		if ( isset( $people_contact_widget_email_contact_form['acceptance'] ) && $people_contact_widget_email_contact_form['acceptance'] == 'no') $show_acceptance = false;
+
+		wp_enqueue_style( 'people_contact_style' );
+
+		$nameError       = '';
+		$emailError      = '';
+		$contactError    = '';
+		$agreeTermsError = '';
 		//If the form is submitted
 		if( isset( $_POST['submitted'] ) ) {
 
@@ -228,6 +234,11 @@ class People_Contact_Widget extends WP_Widget {
 					$hasError = true;
 				} else {
 					$comments = stripslashes( trim( $_POST['comments'] ) );
+				}
+
+				if ( $show_acceptance && ( ! isset( $_POST['agree_terms'] ) || 1 != $_POST['agree_terms'] ) ) {
+					$agreeTermsError = people_ict_t__( 'Default Form - Agree Terms Error', __('You need to agree to the website terms and conditions if want to submit this inquiry', 'contact-us-page-contact-people' ) );
+					$hasError = true;
 				}
 
 				//If there is no error, send the email
@@ -263,6 +274,7 @@ class People_Contact_Widget extends WP_Widget {
 					jQuery( 'form#contactForm .error').remove();
 					jQuery( 'form#contactForm input.submit').attr('disabled', 'disabled');
 					var hasError = false;
+
 					jQuery( '.requiredField').each(function() {
 						if(jQuery.trim(jQuery(this).val()) == '') {
 							var labelText = jQuery(this).prev( 'label').text();
@@ -279,6 +291,20 @@ class People_Contact_Widget extends WP_Widget {
 							}
 						}
 					});
+
+					<?php if ( $show_acceptance ) { ?>
+					var agree_terms = jQuery(this).find('.agree_terms');
+					var is_agree_terms = 0;
+					if ( agree_terms.is(':checked') ) {
+						is_agree_terms = 1;
+					}
+
+					if ( 0 === is_agree_terms ) {
+						agree_terms.parents('li.agree_inline').append( '<span class="error"><?php people_ict_t_e( 'Default Form - Agree Terms Error', __('You need to agree to the website terms and conditions if want to submit this inquiry', 'contact-us-page-contact-people' ) ); ?></span>' );
+						hasError = true;
+					}
+					<?php } ?>
+
 					if(!hasError) {
 						jQuery(this).find('.contact-site-ajax-wait').show();
 						var formInput = jQuery(this).serialize();
@@ -413,6 +439,27 @@ class People_Contact_Widget extends WP_Widget {
 						 </label>
 	                    </li>
 	                    <?php } ?>
+
+	                    <?php if ( $show_acceptance ) { ?>
+	                    <?php $information_text = get_option( 'people_contact_widget_information_text', '' ); ?>
+            			<?php if ( ! empty( $information_text ) ) { ?>
+	                    <li class="inline">
+	                    	<p><?php echo stripslashes( $information_text ); ?></p>
+	                    </li>
+	                    <?php } ?>
+
+	                    <?php $condition_text = get_option( 'people_contact_widget_condition_text', '' ); ?>
+						<?php if ( empty( $condition_text ) ) { $condition_text = __( 'I have read and agree to the website terms and conditions', 'contact-us-page-contact-people' ); } ?>
+	                    <li class="agree_inline">
+	                     <label>
+	                     	<input type="checkbox" name="agree_terms" class="agree_terms" value="1"> <?php echo stripslashes( $condition_text ); ?>
+	                     </label>
+	                      <?php if($agreeTermsError != '') { ?>
+						  <span class="error"><?php echo $agreeTermsError;?></span>
+						  <?php } ?>
+	                    </li>
+	                    <?php } ?>
+
 						<li class="buttons">
 						  <input type="hidden" name="submitted" id="submitted" value="true" />
 						  <input class="submit button" type="submit" value="<?php esc_attr_e( 'Send', 'contact-us-page-contact-people' ); ?>" /> <img class="contact-site-ajax-wait" src="<?php echo PEOPLE_CONTACT_IMAGE_URL; ?>/ajax-loader2.gif" border="0" style="display:none; padding:0; margin:0; vertical-align: middle;" />

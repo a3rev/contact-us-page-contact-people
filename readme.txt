@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
 Tested up to: 4.9.6
-Stable tag: 3.1.6
+Stable tag: 3.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,21 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.2.0 - 2018/06/16 =
+* This is a major upgrade to the Default Email Inquiry form with 7 new features. Upgrade of the modal popup script for enhanced UI and UX 
+* Feature - Default Email Form. Added Form Field Options box
+* Feature - Default Email Form.  Name field has option to turn ON or OFF Required field
+* Feature - Default Email Form.  Telephone field has ON or OFF option to show. 
+* Feature - Default Email Form. Telephone field IF showing has option for Required field ON or OFF
+* Feature - Default Email Form. Subject field has ON or OFF option to show. 
+* Feature - Default Emil Form. Subject field IF showing has option for Required field ON or OFF
+* Feature - Default Email Form. Message Field has option to turn ON or OFF Required field
+* Tweak - Default Email Form.  Update plugin admin page sidebar Place card links for support and more plugins
+* Tweak - Updated the plugins readme file to reflect the many changes in this version
+* Tweak - Multiple coding standard enhancements.
+* Framework - Update Modal script and style to version 4.1.1
+* Framework - Update a3rev Plugin Framework to version 2.0.4
 
 = 3.1.6 - 2018/05/26 =
 * This maintenance update is for compatibility with WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU 
@@ -465,6 +480,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.2.0 =
+This is a major upgrade to the Default Email Inquiry form with 7 new features. Upgrade of the modal popup script for enhanced UI and UX
 
 = 3.1.6 =
 Maintenance Update. Compatibility with WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU

@@ -265,6 +265,113 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 				'default'	=> get_bloginfo('admin_email'),
 				'free_version'	=> true,
 			),
+
+			array(
+				'name' 		=> __( 'Form Field Options', 'contact-us-page-contact-people' ),
+				'type' 		=> 'heading',
+				'class'		=> 'ei_default_form_container',
+				'id'		=> 'ei_form_field_options_box',
+				'is_box'	=> true,
+           	),
+
+           	array(
+				'name' 		=> __( 'Name Field', 'contact-us-page-contact-people' ),
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Required', 'contact-us-page-contact-people' ) . ' <span style="color:red">*</span>',
+				'id' 		=> 'name_required',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'no',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
+			array(
+				'name' 		=> __( 'Phone Field', 'contact-us-page-contact-people' ),
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Show', 'contact-us-page-contact-people' ),
+				'id' 		=> 'show_phone',
+				'class'		=> 'show_phone',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'yes',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
+			array(
+				'class'		=> 'show_phone_yes_container',
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Required', 'contact-us-page-contact-people' ) . ' <span style="color:red">*</span>',
+				'id' 		=> 'phone_required',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'no',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
+			array(
+				'name' 		=> __( 'Subject Field', 'contact-us-page-contact-people' ),
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Show', 'contact-us-page-contact-people' ),
+				'id' 		=> 'show_subject',
+				'class'		=> 'show_subject',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'yes',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
+			array(
+				'class'		=> 'show_subject_yes_container',
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Required', 'contact-us-page-contact-people' ) . ' <span style="color:red">*</span>',
+				'id' 		=> 'subject_required',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'no',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
+			array(
+				'name' 		=> __( 'Message Field', 'contact-us-page-contact-people' ),
+				'type' 		=> 'heading',
+			),
+			array(  
+				'name' 		=> __( 'Required', 'contact-us-page-contact-people' ) . ' <span style="color:red">*</span>',
+				'id' 		=> 'message_required',
+				'type' 		=> 'onoff_checkbox',
+				'default'	=> 'no',
+				'checked_value'		=> 'yes',
+				'unchecked_value' 	=> 'no',
+				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
+				'unchecked_label' 	=> __( 'OFF', 'contact-us-page-contact-people' ),
+				'free_version'	=> true,
+			),
+
 			array(
 				'name' 		=> __( "Sender 'Request A Copy'", 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
@@ -274,7 +381,7 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 				'desc' 		=> __( "Gives users a checkbox option to send a copy of the Inquiry email to themselves", 'contact-us-page-contact-people' ),
 				'id' 		=> 'send_copy',
 				'type' 		=> 'onoff_checkbox',
-				'default'	=> 'yes',
+				'default'	=> 'no',
 				'checked_value'		=> 'yes',
 				'unchecked_value' 	=> 'no',
 				'checked_label'		=> __( 'ON', 'contact-us-page-contact-people' ),
@@ -631,6 +738,14 @@ $(document).ready(function() {
 		$(".show_acceptance_yes").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
 	}
 
+	if ( $("input.show_phone:checked").val() != 'yes') {
+		$(".show_phone_yes_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
+	}
+
+	if ( $("input.show_subject:checked").val() != 'yes') {
+		$(".show_subject_yes_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
+	}
+
 	if ( $("input.contact_form_type_other:checked").val() == 1) {
 		$(".ei_default_form_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
 		if ( $("input.contact_form_3rd_open_type:checked").val() == 'popup') {
@@ -666,6 +781,20 @@ $(document).ready(function() {
 		$(".show_acceptance_yes").attr('style','display:none;');
 		if ( value == 'yes' && status == 'true' ) {
 			$(".show_acceptance_yes").slideDown();
+		}
+	});
+
+	$(document).on( "a3rev-ui-onoff_checkbox-switch", '.show_phone', function( event, value, status ) {
+		$(".show_phone_yes_container").attr('style','display:none;');
+		if ( value == 'yes' && status == 'true' ) {
+			$(".show_phone_yes_container").slideDown();
+		}
+	});
+
+	$(document).on( "a3rev-ui-onoff_checkbox-switch", '.show_subject', function( event, value, status ) {
+		$(".show_subject_yes_container").attr('style','display:none;');
+		if ( value == 'yes' && status == 'true' ) {
+			$(".show_subject_yes_container").slideDown();
 		}
 	});
 });

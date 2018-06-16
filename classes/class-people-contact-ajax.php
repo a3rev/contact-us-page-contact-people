@@ -1,0 +1,83 @@
+<?php
+// File Security Check
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class People_Contact_Ajax
+{
+
+	public function __construct() {
+		$this->add_ajax_events();
+	}
+
+	/**
+	 * Hook in methods - uses WordPress ajax handlers (admin-ajax).
+	 */
+	public function add_ajax_events() {
+		$ajax_events = array(
+			'email_inquiry_submit_form' => true,
+		);
+
+		foreach ( $ajax_events as $ajax_event => $nopriv ) {
+			add_action( 'wp_ajax_people_' . $ajax_event, array( $this, str_replace( '-', '_', $ajax_event ) . '_ajax' ) );
+
+			if ( $nopriv ) {
+				add_action( 'wp_ajax_nopriv_people_' . $ajax_event, array( $this, str_replace( '-', '_', $ajax_event ) . '_ajax' ) );
+			}
+		}
+	}
+
+	public function email_inquiry_submit_form_ajax() {
+
+		$json_var = array(
+			'status'  => 'error',
+			'message' => people_ict_t__( 'Default Form - Contact Not Allow', __( "Sorry, you can't contact at this time.", 'contact-us-page-contact-people' ) ),
+		);
+
+		$contact_id         = stripslashes( $_POST['contact_id'] );
+		$from_page_id       = isset( $_POST['from_page_id'] ) ? $_POST['from_page_id'] : 0;
+		$profile_email      =  esc_attr( stripslashes( $_POST['profile_email'] ) );
+		$profile_name       =  esc_attr( stripslashes( $_POST['profile_name'] ) );
+		$your_name          = esc_attr( stripslashes( $_POST['your_name'] ) );
+		$your_email         = esc_attr( stripslashes( $_POST['your_email'] ) );
+		$your_phone         = esc_attr( stripslashes( $_POST['your_phone'] ) );
+		$your_subject       = esc_attr( stripslashes( $_POST['your_subject'] ) );
+		$your_message       = esc_attr( stripslashes( strip_tags( $_POST['your_message'] ) ) );
+		$send_copy_yourself = stripslashes( $_POST['send_copy'] );
+
+		if ( '' != trim( $your_subject ) ) {
+			$subject = trim( $your_subject ). ' ' . people_ict_t__( 'Email Inquiry - from', __('from', 'contact-us-page-contact-people' ) ) . ' ' . ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
+		} else {
+			$subject = people_ict_t__( 'Email Inquiry - Contact from', __('Contact from', 'contact-us-page-contact-people' ) ).' '. ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
+		}
+
+		$profile_data = array(
+			'subject' 			=> $subject,
+			'to_email' 			=> $profile_email,
+			'profile_name'		=> $profile_name,
+			'profile_email'		=> $profile_email,
+			'contact_name'		=> $your_name,
+			'contact_email'		=> $your_email,
+			'contact_phone'		=> $your_phone,
+			'message'			=> $your_message,
+			'from_page_id'		=> $from_page_id,
+		);
+
+		$email_result = People_Contact_Functions::contact_to_people( $profile_data, $send_copy_yourself );
+
+		if ( false !== $email_result ) {
+			$json_var['status']  = 'success';
+			$json_var['message'] = $email_result;
+		}
+
+		wp_send_json( $json_var );
+
+		die();
+	}
+}
+
+global $people_contact_ajax;
+$people_contact_ajax = new People_Contact_Ajax();
+
+?>

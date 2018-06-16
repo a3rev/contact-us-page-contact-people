@@ -330,19 +330,16 @@ class People_Contact_Functions
 
 		ob_start();
 	?>
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="modal-title people_email_inquiry_contact_heading"><?php echo $inquiry_contact_heading; ?></div>
-				<button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __( 'Close', 'contact-us-page-contact-people' ); ?>">
+				<span class="close" data-dismiss="modal" aria-label="<?php echo __( 'Close', 'contact-us-page-contact-people' ); ?>">
 					<span aria-hidden="true">&times;</span>
-				</button>
+				</span>
 			</div>
 			<div class="modal-body">
 				<?php echo $profile_email_form; ?>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo __( 'Close', 'contact-us-page-contact-people' ); ?></button>
 			</div>
 		</div>
 	</div>

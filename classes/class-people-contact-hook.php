@@ -97,11 +97,10 @@ class People_Contact_Hook_Filter
 				include( PEOPLE_CONTACT_DIR . '/templates/customized_style.php' );
 			}
 
-			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'respondjs' );
 
 			add_action( 'wp_head', array( 'People_Contact_Hook_Filter', 'fix_window_console_ie' ) );
-			add_action( 'wp_head', array( 'People_Contact_Hook_Filter', 'frontend_footer_scripts' ) );
+			add_action( 'wp_head', array( 'People_Contact_Hook_Filter', 'footer_default_form_scripts' ) );
 
 		}
 	}
@@ -117,11 +116,10 @@ class People_Contact_Hook_Filter
 			include( PEOPLE_CONTACT_DIR . '/templates/customized_style.php' );
 		}
 
-		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'respondjs' );
 
 		self::fix_window_console_ie();
-		self::frontend_footer_scripts();
+		self::footer_default_form_scripts();
 	}
 
 	public static function fix_window_console_ie() {
@@ -146,107 +144,39 @@ class People_Contact_Hook_Filter
     <?php
 	}
 
-	public static function frontend_footer_scripts() {
-		global $people_contact_loaded_footer_scripts;
-
-		if ( $people_contact_loaded_footer_scripts ) return ;
-
-		$people_contact_loaded_footer_scripts = true;
+	public static function footer_default_form_scripts() {
 
 		global $people_email_inquiry_global_settings;
 
-		if ( $people_email_inquiry_global_settings['contact_form_type_other'] == 1 ) return ;
+		if ( 1 == $people_email_inquiry_global_settings['contact_form_type_other'] ) {
+			return ;
+		}
 
-		$show_acceptance = true;
-		if ( isset( $people_email_inquiry_global_settings['acceptance'] ) && $people_email_inquiry_global_settings['acceptance'] == 'no') $show_acceptance = false;
-	?>
-    	<script type="text/javascript">
-			jQuery(document).ready(function ($) {
-				$(document).on("click", ".people_email_inquiry_form_button", function(){
-					var contact_id = $(this).attr("contact_id");
-					var from_page_id = $(this).attr("from-page-id");
-					var people_email_inquiry_error = "";
-					var people_email_inquiry_have_error = false;
+		global $people_default_form_scripts;
 
-					var filter = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-					var profile_email = $("#profile_email_" + contact_id).val();
-					var profile_name = $("#profile_name_" + contact_id).val();
-					var c_name = $("#c_name_" + contact_id).val();
-					var c_subject = $("#c_subject_" + contact_id).val();
-					var c_email = $("#c_email_" + contact_id).val();
-					var c_phone = $("#c_phone_" + contact_id).val();
-					var c_message = $("#c_message_" + contact_id).val();
-					var send_copy = 0;
-					if ( $("#send_copy_" + contact_id).is(':checked') ) {
-						send_copy = 1;
-					}
+		if ( $people_default_form_scripts ) {
+			return ;
+		}
 
-					<?php if ( $show_acceptance ) { ?>
-					var agree_terms = $(this).parents('.people_email_inquiry_content').find('.agree_terms');
-					var is_agree_terms = 0;
-					if ( agree_terms.is(':checked') ) {
-						is_agree_terms = 1;
-					}
-					<?php } else { ?>
-					var is_agree_terms = 1;
-					<?php } ?>
+		$people_default_form_scripts = true;
 
-					if (c_name.replace(/^\s+|\s+$/g, '') == "") {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Name Error', __('Please enter your Name', 'contact-us-page-contact-people' ) ); ?>\n";
-						people_email_inquiry_have_error = true;
-					}
-					if (c_email == "" || !filter.test(c_email)) {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Email Error', __('Please enter valid Email address', 'contact-us-page-contact-people' ) ); ?>\n";
-						people_email_inquiry_have_error = true;
-					}
-					if (c_phone.replace(/^\s+|\s+$/g, '') == "") {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Phone Error', __('Please enter your Phone', 'contact-us-page-contact-people' ) ); ?>\n";
-						people_email_inquiry_have_error = true;
-					}
-					if (c_message.replace(/^\s+|\s+$/g, '') == "") {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Contact Message Error', __('Please enter your Message', 'contact-us-page-contact-people' ) ); ?>\n";
-						people_email_inquiry_have_error = true;
-					}
+		if ( wp_script_is( 'people-ei-default-form', 'enqueued' ) ) {
+			return;
+		}
 
-					if ( 0 === is_agree_terms ) {
-						people_email_inquiry_error += "<?php people_ict_t_e( 'Default Form - Agree Terms Error', __('You need to agree to the website terms and conditions if want to submit this inquiry', 'contact-us-page-contact-people' ) ); ?>\n";
-						people_email_inquiry_have_error = true;
-					}
+		wp_enqueue_script( 'people-ei-default-form', PEOPLE_CONTACT_JS_URL . '/default-form.js', array( 'jquery' ), PEOPLE_CONTACT_VERSION, true );
 
-					if (people_email_inquiry_have_error) {
-						alert(people_email_inquiry_error);
-						return false;
-					}
+		wp_localize_script( 'people-ei-default-form',
+			'people_ei_default_vars',
+			apply_filters( 'people_ei_default_vars', array(
+				'ajax_url'          => admin_url( 'admin-ajax.php', 'relative' ),
+				'email_valid_error' => people_ict_t__( 'Default Form - Contact Email Error', __( 'Please enter valid Email address', 'contact-us-page-contact-people' ) ),
+				'required_error'    => people_ict_t__( 'Default Form - Required Error', __( 'is required', 'contact-us-page-contact-people' ) ),
+				'agree_terms_error' => people_ict_t__( 'Default Form - Agree Terms Error', __( 'You need to agree to the website terms and conditions if want to submit this inquiry', 'contact-us-page-contact-people' ) ),
+				'security_nonce'    => wp_create_nonce( 'people-ei-default-form' )
+			) )
+		);
 
-					$(this).attr("disabled", "disabled");
-
-					var wait = $('.ajax-wait');
-					wait.css('display','block');
-
-					var data = {
-						action: 		"send_a_contact",
-						contact_id: 	contact_id,
-						from_page_id: 	from_page_id,
-						profile_email:	profile_email,
-						profile_name:	profile_name,
-						c_name: 		c_name,
-						c_email: 		c_email,
-						c_phone: 		c_phone,
-						c_subject:		c_subject,
-						c_message: 		c_message,
-						send_copy:		send_copy,
-						security: 		"<?php echo wp_create_nonce("send-a-contact");?>"
-					};
-
-					$.post( '<?php echo admin_url('admin-ajax.php', 'relative');?>', data, function(response) {
-						$('#people_email_inquiry_content_' + contact_id ).html(response);
-						wait.css('display','none');
-					});
-					return false;
-				});
-			});
-		</script>
-    <?php
 	}
 
 	public static function browser_body_class( $classes, $class = '' ) {
@@ -330,7 +260,10 @@ class People_Contact_Hook_Filter
 	}
 
 	public static function plugin_extension_box( $boxes = array() ) {
-		$support_box = '<a href="https://wordpress.org/support/plugin/contact-us-page-contact-people" target="_blank" alt="'.__('Go to Support Forum', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/go-to-support-forum.png" /></a>';
+
+		global $people_contact_admin_init;
+		
+		$support_box = '<a href="'.$people_contact_admin_init->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/go-to-support-forum.png" /></a>';
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'
@@ -364,8 +297,10 @@ class People_Contact_Hook_Filter
 		if ( $plugin_name != PEOPLE_CONTACT_NAME) {
 			return $links;
 		}
-		$links[] = '<a href="http://docs.a3rev.com/user-guides/plugins-extensions/woocommerce/contact-us-page-contact-people/" target="_blank">'.__('Documentation', 'contact-us-page-contact-people' ).'</a>';
-		$links[] = '<a href="http://wordpress.org/support/plugin/contact-us-page-contact-people/" target="_blank">'.__('Support', 'contact-us-page-contact-people' ).'</a>';
+
+		global $people_contact_admin_init;
+
+		$links[] = '<a href="'.$people_contact_admin_init->support_url.'" target="_blank">'.__('Support', 'contact-us-page-contact-people' ).'</a>';
 		return $links;
 	}
 

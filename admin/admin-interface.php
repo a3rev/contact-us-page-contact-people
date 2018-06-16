@@ -87,10 +87,9 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 
 	public function register_modal_scripts() {
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		wp_register_style( 'bootstrap-modal', $this->admin_plugin_url() . '/assets/css/modal' . $suffix . '.css', array(), '3.3.7', 'all' );
-
-		wp_register_script( 'bootstrap-transition', $this->admin_plugin_url() . '/assets/js/bootstrap/transition' . $suffix . '.js', array( 'jquery' ), '3.3.7', true );
-		wp_register_script( 'bootstrap-modal', $this->admin_plugin_url() . '/assets/js/bootstrap/modal' . $suffix . '.js', array( 'jquery', 'bootstrap-transition' ), '3.3.7', true );
+		wp_register_style( 'bootstrap-modal', $this->admin_plugin_url() . '/assets/css/modal' . $suffix . '.css', array(), '4.1.1', 'all' );
+		wp_register_script( 'bootstrap-util', $this->admin_plugin_url() . '/assets/js/bootstrap/util' . $suffix . '.js', array( 'jquery' ), '4.1.1', false );
+		wp_register_script( 'bootstrap-modal', $this->admin_plugin_url() . '/assets/js/bootstrap/modal' . $suffix . '.js', array( 'jquery', 'bootstrap-util' ), '4.1.1', false );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -1713,7 +1712,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 						// open box handle
 						echo '<div data-form-key="'. esc_attr( trim( $form_key ) ) .'" data-box-id="'. esc_attr( $heading_box_id ) .'" class="a3rev_panel_box_handle ' . $box_handle_class .'" >' . "\n\n";
 
-						echo ( ! empty( $value['name'] ) ) ? '<h3 class="a3-plugin-ui-panel-box '. $toggle_box_class . ' ' . $opened_class . '">'. esc_html( $value['name'] ) .' '. $view_doc .'</h3>' : '';
+						echo ( ! empty( $value['name'] ) ) ? '<h3 class="a3-plugin-ui-panel-box '. $toggle_box_class . ' ' . $opened_class . '">'. $value['name'] .' '. $view_doc .'</h3>' : '';
 
 						if ( stristr( $value['class'], 'pro_feature_fields' ) !== false && ! empty( $value['id'] ) ) $this->upgrade_top_message( true, sanitize_title( $value['id'] ) );
 						elseif ( stristr( $value['class'], 'pro_feature_fields' ) !== false ) $this->upgrade_top_message( true );
@@ -1739,7 +1738,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 						if ( stristr( $value['class'], 'pro_feature_fields' ) !== false && ! empty( $value['id'] ) ) $this->upgrade_top_message( true, sanitize_title( $value['id'] ) );
 						elseif ( stristr( $value['class'], 'pro_feature_fields' ) !== false ) $this->upgrade_top_message( true );
 
-						echo ( ! empty( $value['name'] ) ) ? '<h3>'. esc_html( $value['name'] ) .' '. $view_doc .'</h3>' : '';
+						echo ( ! empty( $value['name'] ) ) ? '<h3>'. $value['name'] .' '. $view_doc .'</h3>' : '';
 					}
 
 					if ( ! empty( $value['desc'] ) ) {
@@ -1851,7 +1850,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$submit_data      = json_encode( $value['submit_data'] );
 
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp">
 
                             <div class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-control">
@@ -1918,7 +1917,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$multi_ajax = json_encode( $multi_ajax );
 
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp">
 
                             <div class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-control">
@@ -2040,7 +2039,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -2067,7 +2066,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -2098,7 +2097,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
 							<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -2134,7 +2133,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<?php echo $description; ?>
@@ -2164,7 +2163,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<select
@@ -2226,7 +2225,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<fieldset>
@@ -2265,7 +2264,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<fieldset>
@@ -2317,7 +2316,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 							if ( $value['show_if_checked'] == 'option' ) echo 'show_options_if_checked';
 						?>">
 						<th scope="row" class="titledesc">
-                        	<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+                        	<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
                         </th>
 						<td class="forminp forminp-checkbox">
 							<fieldset>
@@ -2333,7 +2332,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					}
 	
 					?>
-						<legend class="screen-reader-text"><span><?php echo esc_html( $value['name'] ) ?></span></legend>
+						<legend class="screen-reader-text"><span><?php echo $value['name']; ?></span></legend>
 	
 						<label for="<?php echo $id_attribute; ?>">
 						<input
@@ -2370,7 +2369,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -2399,7 +2398,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -2426,7 +2425,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$crop 	= checked( 1, $option_value['crop'], false );
 	
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 	
 							<label><?php _e( 'Width', 'contact-us-page-contact-people' ); ?> <input name="<?php echo $name_attribute; ?>[width]" id="<?php echo $id_attribute; ?>-width" type="text" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-width" value="<?php echo $width; ?>" /></label>
@@ -2461,7 +2460,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 						$args = wp_parse_args( $value['args'], $args );
 	
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp">
 							<?php echo str_replace(' id=', " data-placeholder='" . esc_html( $value['placeholder'] ) .  "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
 						</td>
@@ -2484,7 +2483,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$color       = $option_value['color'];
 
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp">
                         	<?php echo $description; ?>
                             <div class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-control">
@@ -2638,7 +2637,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$bottom_right_corner = intval( $bottom_right_corner );
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp forminp-border_corner">
 							<?php echo $description; ?>
                             <div class="a3rev-ui-settings-control">
@@ -2805,7 +2804,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$color	= $option_value['color'];
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp">
 							<?php echo $description; ?>
                             <div class="a3rev-ui-settings-control">
@@ -2904,7 +2903,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$bottom_right_corner = intval( $bottom_right_corner );
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                             <div class="a3rev-ui-settings-control">	
                                 <!-- Border Corner : Rounded or Square -->
@@ -3030,7 +3029,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					$inset		= $option_value['inset'];
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo $value['name']; ?></th>
 						<td class="forminp forminp-box_shadow">
                             <input
                                     name="<?php echo $name_attribute; ?>[enable]"
@@ -3164,7 +3163,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         <div class="a3rev-ui-slide-container">
@@ -3208,11 +3207,11 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
-                        	<?php echo $people_contact_uploader->upload_input( $name_attribute, $id_attribute, $option_value, $attachment_id, $value['default'], esc_html( $value['name'] ), $class, esc_attr( $value['css'] ) , '', $strip_methods );?>
+                        	<?php echo $people_contact_uploader->upload_input( $name_attribute, $id_attribute, $option_value, $attachment_id, $value['default'], $value['name'], $class, esc_attr( $value['css'] ) , '', $strip_methods );?>
 						</td>
 					</tr><?php
 									
@@ -3226,7 +3225,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
@@ -3250,7 +3249,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
@@ -3316,7 +3315,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
                                     style="<?php echo esc_attr( $text_field['css'] ); ?>"
                                     value="<?php echo esc_attr( $option_value ); ?>"
                                     class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?> <?php echo esc_attr( $text_field['class'] ); ?>"
-                                    /> <span><?php echo esc_html( $text_field['name'] ); ?></span></label> 
+                                    /> <span><?php echo $text_field['name']; ?></span></label> 
 							<?php
 							}
 							?>
@@ -3335,7 +3334,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
                         	<?php echo $tip; ?>
-							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
+							<label for="<?php echo $id_attribute; ?>"><?php echo $value['name']; ?></label>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<input
@@ -3534,7 +3533,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 			// open box handle
 			echo '<div data-form-key="custom-boxes" data-box-id="'. esc_attr( $heading_box_id ) .'" class="a3rev_panel_box_handle" >' . "\n\n";
 
-			echo ( ! empty( $options['name'] ) ) ? '<h3 class="a3-plugin-ui-panel-box '. $toggle_box_class . ' ' . $opened_class . '">'. esc_html( $options['name'] ) .' '. $view_doc .'</h3>' : '';
+			echo ( ! empty( $options['name'] ) ) ? '<h3 class="a3-plugin-ui-panel-box '. $toggle_box_class . ' ' . $opened_class . '">'. $options['name'] .' '. $view_doc .'</h3>' : '';
 
 			if ( stristr( $options['class'], 'pro_feature_fields' ) !== false && ! empty( $options['id'] ) ) $this->upgrade_top_message( true, sanitize_title( $options['id'] ) );
 			elseif ( stristr( $options['class'], 'pro_feature_fields' ) !== false ) $this->upgrade_top_message( true );
@@ -3552,7 +3551,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 			if ( stristr( $options['class'], 'pro_feature_fields' ) !== false && ! empty( $options['id'] ) ) $this->upgrade_top_message( true, sanitize_title( $options['id'] ) );
 			elseif ( stristr( $options['class'], 'pro_feature_fields' ) !== false ) $this->upgrade_top_message( true );
 
-			echo ( ! empty( $options['name'] ) ) ? '<h3>'. esc_html( $options['name'] ) .' '. $view_doc .'</h3>' : '';
+			echo ( ! empty( $options['name'] ) ) ? '<h3>'. $options['name'] .' '. $view_doc .'</h3>' : '';
 		}
 
 		if ( ! empty( $options['desc'] ) ) {

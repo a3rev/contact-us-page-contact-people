@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
 Tested up to: 4.9.6
-Stable tag: 3.2.0
+Stable tag: 3.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,15 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.2.1 - 2018/06/19 =
+* Maintenance update with fixes for when profile card is embedded on a page in shortcode plus tweaks for modal pop up in mobile and added background colour for third party forms pop up
+* Tweak - Auto scroll to top of modal popup when it opens for better UI in mobile
+* Tweak - Show Profile Image and Profile Name on same line on pop up for mobile
+* Framework - Fix for Framework Global Box Settings not working 
+* Framework - Update a3rev Plugin Framework to version 2.0.5
+* Fix - Get correct From Page Title when embed contact profile shortcode multiple times on a page
+* Fix - Get correct From Page URL when embed contact profile shortcode multiple times on a page
 
 = 3.2.0 - 2018/06/16 =
 * This is a major upgrade to the Default Email Inquiry form with 7 new features. Upgrade of the modal popup script for enhanced UI and UX 
@@ -480,6 +489,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.2.1 =
+Maintenance update with fixes for when profile card is embedded on a page in shortcode plus tweaks for modal pop up in mobile and added background colour for third party forms pop up
 
 = 3.2.0 =
 This is a major upgrade to the Default Email Inquiry form with 7 new features. Upgrade of the modal popup script for enhanced UI and UX

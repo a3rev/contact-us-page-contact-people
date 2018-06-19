@@ -40,6 +40,8 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function __construct() {
 
+		parent::__construct();
+
 		$this->admin_includes();
 
 		add_action( 'init', array( $this, 'init_scripts' ) );

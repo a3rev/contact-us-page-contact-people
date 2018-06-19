@@ -446,7 +446,7 @@ class People_Contact {
 
 					if (sites[12] != '') {
 						infotext += '<p><span class="p_icon_email"><img src="<?php echo $email_icon;?>" style="width:auto;height:auto" /></span> ';
-						infotext += '<a data-form_type="default" data-toggle="modal" href="#contact_people_modal_'+sites[5]+'"><?php echo $people_contact_grid_view_icon['grid_view_email_text']; ?></a>';
+						infotext += '<a data-form_type="default" data-toggle="modal"  data-from_page_id="<?php echo $post->ID; ?>" data-from_page_title="<?php echo esc_attr( get_the_title( $post->ID ) ); ?>" data-from_page_url="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" href="#contact_people_modal_'+sites[5]+'"><?php echo $people_contact_grid_view_icon['grid_view_email_text']; ?></a>';
 						infotext += '</p>';
 					}
 
@@ -635,7 +635,7 @@ class People_Contact {
 				if ( trim($value['c_email']) != '') {
 
 					$have_modal_popup = true;
-					$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+					$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" data-from_page_id="'.$post->ID.'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
 				}
 
 				if ( $use_modal_popup && $have_modal_popup && ! in_array( $profile_id, $people_contact_form_ids ) ) {

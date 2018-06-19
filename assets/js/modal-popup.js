@@ -5,9 +5,19 @@
 			$('.contact_people_modal').appendTo('body');
 		}, 1000 );
 
+
+		$(window).on('people-modal-scrolltop', function(e) {
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				$('.contact_people_modal,body,html').animate({ scrollTop: 0 }, 'slow');
+			}
+		});
+
 		$('.contact_people_modal').on( 'show.bs.modal', function (event) {
-			var button     = $(event.relatedTarget);
-			var form_type  = button.data('form_type');
+			var button          = $(event.relatedTarget);
+			var form_type       = button.data('form_type');
+			var from_page_id    = button.data('from_page_id');
+			var from_page_title = button.data('from_page_title');
+			var from_page_url   = button.data('from_page_url');
 
 			var modal = $(this);
 
@@ -29,8 +39,11 @@
 				inquiry_form_content.find('.c_message').val('');
 				inquiry_form_content.find('.send_copy').prop( 'checked', false );
 				inquiry_form_content.find('.agree_terms').prop( 'checked', false );
+				inquiry_form_content.find('.people_email_inquiry_form_button').data( 'from_page_id', from_page_id );
 
 			}
+
+			$(window).trigger( 'people-modal-scrolltop' );
 
 		});
 

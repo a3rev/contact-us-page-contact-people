@@ -523,6 +523,10 @@ class People_Contact {
 		$cur_wp_version = preg_replace('/-.*$/', '', $wp_version);
 		?>
         <script type="text/javascript">
+        jQuery(document).on( 'lazyload', '.people_box_content<?php echo $unique_id; ?> .contact-people-image', function(e) {
+			var people_box = jQuery(this).parents('.people_box_content');
+			people_box.masonry();
+		});
         jQuery(window).load(function(){
 			var grid_view_col = <?php echo $grid_view_col;?>;
 			var screen_width = jQuery('body').width();
@@ -595,7 +599,7 @@ class People_Contact {
 				$html .= '<div style="clear:both;"></div>';
 				$html .= '<div class="people-content-item">';
 
-				$img_output = '<img class="wp-image-'.$c_attachment_id.'" src="'.$src.'" />';
+				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" />';
 				if ( function_exists( 'wp_make_content_images_responsive' ) ) {
 					$img_output = wp_make_content_images_responsive( $img_output );
 				}
@@ -664,4 +668,5 @@ class People_Contact {
 		return $html;
 	}
 }
+
 ?>

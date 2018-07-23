@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 4.9.6
-Stable tag: 3.2.1
+Tested up to: 4.9.7
+Stable tag: 3.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,11 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.2.2 - 2018/07/23 =
+* This maintenance upgrade is a small tweak for improved compatibility with a3 Lazy Load and WordPress v 4.9.7
+* Tweak - Called masonry for calculate height of card item after image is loaded by Lazy script for compatibility with a3 Lazy Load plugin
+* Tweak - Test for compatibility with WordPress 4.9.7
 
 = 3.2.1 - 2018/06/19 =
 * Maintenance update with fixes for when profile card is embedded on a page in shortcode plus tweaks for modal pop up in mobile and added background colour for third party forms pop up
@@ -489,6 +494,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.2.2 =
+This maintenance upgrade is a small tweak for improved compatibility with a3 Lazy Load and WordPress v 4.9.7
 
 = 3.2.1 =
 Maintenance update with fixes for when profile card is embedded on a page in shortcode plus tweaks for modal pop up in mobile and added background colour for third party forms pop up

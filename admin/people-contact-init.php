@@ -32,6 +32,10 @@ function wp_people_contact_init() {
 	}
 
 	wp_people_contact_plugin_textdomain();
+
+	if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'people-contact-settings', 'people-contact' ) ) ) {
+		add_action( 'admin_notices', array( 'People_Contact_Hook_Filter', 'map_notice' ), 11 );
+	}
 }
 
 // Add language
@@ -147,8 +151,19 @@ function a3_people_contact_lite_upgrade_plugin () {
 		$a3_people_contact_less->plugin_build_sass();
 	}
 
+	if(version_compare(get_option('a3rev_wp_people_contact_lite_version'), '3.2.3') === -1){
+		update_option('a3rev_wp_people_contact_lite_version', '3.2.3');
+
+		$people_contact_global_settings = get_option( 'people_contact_global_settings' );
+		$google_map_api_key = $people_contact_global_settings['google_map_api_key'];
+
+		global $people_contact_admin_init;
+		update_option( $people_contact_admin_init->google_map_api_key_option . '_enable', 1 );
+		update_option( $people_contact_admin_init->google_map_api_key_option, $google_map_api_key );
+	}
+
 	update_option('a3rev_wp_people_contact_lite_version', PEOPLE_CONTACT_VERSION );
-	update_option('a3rev_wp_people_contact_ultimate_version', '3.0.4');
+	update_option('a3rev_wp_people_contact_ultimate_version', '3.2.3');
 
 }
 ?>

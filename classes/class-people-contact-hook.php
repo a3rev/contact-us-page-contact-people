@@ -225,12 +225,19 @@ class People_Contact_Hook_Filter
 	}
 
 	public static function add_new_load_only_script(){
-		global $people_contact_global_settings;
 
-		$google_map_api_key = $people_contact_global_settings['google_map_api_key'];
+		global $people_contact_admin_init;
+		$google_map_api_key = '';
+		if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+		}
+
+		if ( ! empty( $google_map_api_key ) ) {
+			$google_map_api_key = '&key=' . $google_map_api_key;
+		}
 
 		wp_enqueue_script('jquery-ui-autocomplete', '', array('jquery-ui-widget', 'jquery-ui-position'), '1.8.6');
-		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp&key=' . $google_map_api_key );
+		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp' . $google_map_api_key );
 	}
 
 	public static function admin_header_script() {
@@ -308,6 +315,20 @@ class People_Contact_Hook_Filter
 		$actions = array_merge( array( 'settings' => '<a href="admin.php?page=people-contact-settings">' . __( 'Settings', 'contact-us-page-contact-people' ) . '</a>' ), $actions );
 
 		return $actions;
+	}
+
+	public static function map_notice() {
+		global $people_contact_admin_init;
+
+		global $widget_hide_maps_frontend;
+		global $people_contact_location_map_settings;
+
+		if (  ( 1 == $widget_hide_maps_frontend && 1 == $people_contact_location_map_settings['hide_maps_frontend'] ) || $people_contact_admin_init->is_valid_google_map_api_key() ) return;
+	?>
+		<div class="error below-h2" style="display:block !important; margin-left:2px;">
+			<p><?php echo sprintf( __( 'Warning: No Google Maps API key was found - Maps may not show without a key. Go to the <a href="%s">Google Maps API option box</a>, enter your key and Save Changes or switch Google Maps OFF <a href="%s">here</a> and <a href="%s">here</a>.' , 'contact-us-page-contact-people' ), admin_url( 'admin.php?page=people-contact-settings&box_open=google_map_api_key_settings_box' ), admin_url( 'admin.php?page=people-contact-settings&box_open=google_map_settings_box' ), admin_url( 'admin.php?page=people-contact-settings&tab=contact-widget&box_open=contact_widget_map_settings_box' ) ); ?></p>
+		</div>
+	<?php
 	}
 }
 ?>

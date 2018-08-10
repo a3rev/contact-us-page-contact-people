@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 4.9.7
-Stable tag: 3.2.2
+Tested up to: 4.9.8
+Stable tag: 3.2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,18 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.2.3 - 2018/08/10 =
+* This maintenance update is focused on a rework of the Google Maps API settings in the plugin, Maps API error notices. It also resolves a display issue with Gravity Forms added by shortcode and compatibility with WordPress 4.9.8, WooCommerce 3.4.4 and Gravity Forms 2.3.3
+* Tweak - Remove custom Gravity Forms style that was added in 2015. Does not work with latest version of Gravity Forms
+* Tweak - Move Google Maps API settings onto its own options box for greater clarity
+* Tweak - Update Google Maps API settings with ON | OFF switch and Error display if Key is invalid.
+* Tweak - Add Warning Notification if Maps are On but an valid key is not set. 
+* Tweak - Test for compatibility with WordPress 4.9.8
+* Tweak - Test for compatibility with WooCommerce 3.4.4
+* Tweak - Test form compatibility with Gravity Forms v 2.3.3
+* Framework - Update a3rev Plugin Framework to version 2.0.7
+* Fix - Use HTTPS method and parse Google API Key to resolve issue with Google Map API rate limiting
 
 = 3.2.2 - 2018/07/23 =
 * This maintenance upgrade is a small tweak for improved compatibility with a3 Lazy Load and WordPress v 4.9.7
@@ -494,6 +506,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.2.3 =
+This maintenance update is focused on a rework of the Google Maps API settings in the plugin, Maps API error notices. It also resolves a display issue with Gravity Forms added by shortcode and compatibility with WordPress 4.9.8, WooCommerce 3.4.4 and Gravity Forms 2.3.3
 
 = 3.2.2 =
 This maintenance upgrade is a small tweak for improved compatibility with a3 Lazy Load and WordPress v 4.9.7

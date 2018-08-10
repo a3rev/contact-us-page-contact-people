@@ -21,7 +21,6 @@ class People_Contact_Widget extends WP_Widget {
 
 	public static function widget_maps_contact_output($args){
 		// No More API Key needed
-		global $people_contact_global_settings;
 		global $people_contact_widget_information,$people_contact_widget_maps,$people_contact_grid_view_icon,$people_contact_widget_email_contact_form;
 		global $widget_hide_maps_frontend;
 
@@ -49,8 +48,17 @@ class People_Contact_Widget extends WP_Widget {
 
 		if(empty($map_height)) { $map_height = 150;}
 
-		$google_map_api_key = $people_contact_global_settings['google_map_api_key'];
-		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp&key=' . $google_map_api_key );
+		global $people_contact_admin_init;
+		$google_map_api_key = '';
+		if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+		}
+
+		if ( ! empty( $google_map_api_key ) ) {
+			$google_map_api_key = '&key=' . $google_map_api_key;
+		}
+
+		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp' . $google_map_api_key );
 		?>
 		<div id="single_map_people_contact" style="width:100%; height: <?php echo $map_height; ?>px"></div>
 		<script src="<?php echo PEOPLE_CONTACT_JS_URL; ?>/markers.js" type="text/javascript"></script>
@@ -79,7 +87,7 @@ class People_Contact_Widget extends WP_Widget {
 					} ?>
 					<?php
 
-					$url = 'http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($geocoords).'&sensor=false';
+					$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($geocoords).'&sensor=false' . $google_map_api_key;
 					$geodata = file_get_contents($url);
 					$geodata = json_decode($geodata);
 					$center_lat = $geodata->results[0]->geometry->location->lat;

@@ -293,9 +293,18 @@ class People_Contact {
 
 		$show_map = ( $people_contact_location_map_settings['hide_maps_frontend'] != 1 ) ? 1 : 0 ;
 
+		$google_map_api_key = '';
 		if ( $show_map != 0 ) {
-			$google_map_api_key = $people_contact_global_settings['google_map_api_key'];
-			wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp&key=' . $google_map_api_key );
+			global $people_contact_admin_init;
+			if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
+				$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+			}
+
+			if ( ! empty( $google_map_api_key ) ) {
+				$google_map_api_key = '&key=' . $google_map_api_key;
+			}
+
+			wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp' . $google_map_api_key );
 		}
 
 		if ( $use_modal_popup ) {
@@ -391,7 +400,7 @@ class People_Contact {
 					if ( 0 == $value['enable_map_marker'] ) continue;
 
 					if ( (trim($value['c_latitude']) == '' || trim($value['c_longitude']) == '' ) && trim($value['c_address']) != '') {
-						$url = 'http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($value['c_address']).'&sensor=false';
+						$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($value['c_address']).'&sensor=false' . $google_map_api_key ;
 						$geodata = file_get_contents($url);
 						$geodata = json_decode($geodata);
 						$value['c_latitude'] = $geodata->results[0]->geometry->location->lat;

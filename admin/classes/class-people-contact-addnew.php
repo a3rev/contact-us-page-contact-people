@@ -81,6 +81,16 @@ class People_Contact_AddNew
 	public static function admin_screen_add_edit() {
 		global $people_contact_location_map_settings;
 
+		global $people_contact_admin_init;
+		$google_map_api_key = '';
+		if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+		}
+
+		if ( ! empty( $google_map_api_key ) ) {
+			$google_map_api_key = '&key=' . $google_map_api_key;
+		}
+
 		global $people_contact_admin_interface;
 
 		$address_error_class = '';
@@ -109,7 +119,7 @@ class People_Contact_AddNew
 			$data    = People_Contact_Profile_Data::get_row( $_GET['id'], '', 'ARRAY_A' );
 			$title   = __('Edit Profile', 'contact-us-page-contact-people' );
 			if ( (trim($data['c_latitude']) == '' || trim($data['c_longitude']) == '' ) && trim($data['c_address']) != '') {
-				$googleapis_url      = 'http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($data['c_address']).'&sensor=false';
+				$googleapis_url      = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($data['c_address']).'&sensor=false' . $google_map_api_key;
 				$geodata             = file_get_contents($googleapis_url);
 				$geodata             = json_decode($geodata);
 				$data['c_latitude']  = $geodata->results[0]->geometry->location->lat;

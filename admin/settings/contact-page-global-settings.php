@@ -216,17 +216,6 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
                 'type' 		=> 'google_api_key',
            	),
            	array(
-           		'name'		=> __( 'Google Map', 'contact-us-page-contact-people' ),
-           		'desc'		=> sprintf( __( "Usage of the Google Maps APIs now requires a key. Enter your existing Google Map API Key below. Don't have a key? You can <a href='%s' target='_blank'>generate a new API key</a> on the Google API Console", 'contact-us-page-contact-people' ), 'https://developers.google.com/maps/documentation/javascript/get-api-key' ),
-                'type' 		=> 'heading',
-           	),
-           	array(
-				'name' 		=> __( 'Google Map API', 'contact-us-page-contact-people' ),
-				'id' 		=> 'google_map_api_key',
-				'type' 		=> 'text',
-				'default'	=> '',
-			),
-           	array(
             	'name' 		=> __( 'House Keeping', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
             ),
@@ -292,6 +281,16 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 				'css'		=> 'width:300px;',
 			),
 
+			array(
+           		'name'		=> __( 'Google Maps API', 'contact-us-page-contact-people' ),
+           		'desc'		=> __( 'This plugin uses Google Maps. If you use the map with the contact page, profiles, shortcode or widget without a Maps API key set, they will work initially but Google will block access to the maps if there are more than a few accesses per month. Usage of Google Maps API requires a key.', 'contact-us-page-contact-people' ),
+                'type' 		=> 'heading',
+                'id'		=> 'google_map_api_key_settings_box',
+                'is_box'	=> true,
+           	),
+			array(
+                'type' 		=> 'google_map_api_key',
+           	),
 			array(
             	'name' 		=> __( 'Contact Page Google Map', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',

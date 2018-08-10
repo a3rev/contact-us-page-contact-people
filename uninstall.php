@@ -16,6 +16,10 @@ delete_option( $plugin_key . '_google_api_key' . '_enable' );
 delete_transient( $plugin_key . '_google_api_key' . '_status' );
 delete_option( $plugin_key . '_google_font_list' );
 
+// Delete Google Map
+delete_option( $plugin_key . '_google_map_api_key' . '_enable' );
+delete_transient( $plugin_key . '_google_map_api_key' . '_status' );
+
 if ( get_option( $plugin_key . '_clean_on_deletion' ) == 1 ) {
 	delete_option( $plugin_key . '_google_api_key' );
 	delete_option( $plugin_key . '_toggle_box_open' );

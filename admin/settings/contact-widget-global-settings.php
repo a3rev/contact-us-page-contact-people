@@ -509,15 +509,24 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 	}
 
 	public function include_script() {
-		global $people_contact_global_settings;
+		$widget_hide_maps_frontend = get_option( 'widget_hide_maps_frontend' );
+		if ( 1 == $widget_hide_maps_frontend ) return;
 
-		$google_map_api_key = $people_contact_global_settings['google_map_api_key'];
+		global $people_contact_admin_init;
+		$google_map_api_key = '';
+		if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+		}
+
+		if ( ! empty( $google_map_api_key ) ) {
+			$google_map_api_key = '&key=' . $google_map_api_key;
+		}
 
 		wp_enqueue_script('jquery-ui-autocomplete', '', array('jquery-ui-widget', 'jquery-ui-position'), '1.8.6');
-		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp&key=' . $google_map_api_key );
+		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp' . $google_map_api_key );
 
 		global $people_contact_widget_maps;
-		$googleapis_url = 'http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($people_contact_widget_maps['widget_location']).'&sensor=false';
+		$googleapis_url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($people_contact_widget_maps['widget_location']).'&sensor=false' . $google_map_api_key;
 		$geodata = file_get_contents($googleapis_url);
 		$geodata = json_decode($geodata);
 		$center_lat = $geodata->results[0]->geometry->location->lat;

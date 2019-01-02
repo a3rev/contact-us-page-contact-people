@@ -384,7 +384,7 @@ class People_Contact_Admin_Interface extends People_Contact_Admin_UI
 				
 				default :
 					// Do not include when it's separate option
-					if ( isset( $value['separate_option'] ) && $value['separate_option'] != false ) continue;
+					if ( isset( $value['separate_option'] ) && $value['separate_option'] != false ) break;
 					
 					// Remove [, ] characters from id argument
 					if ( strstr( $value['id'], '[' ) ) {

@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 4.9.8
-Stable tag: 3.2.3
+Tested up to: 5.0.2
+Stable tag: 3.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,18 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.2.4 - 2019/01/02 =
+* This maintenance update is for compatibility with WordPress 5.0.2 and PHP 7.3. It also includes performance updates to the plugin framework.
+* Tweak - Test for compatibility with WordPress 5.0.2 and WordPress 4.9.9
+* Tweak - Create new structure for future development of Gutenberg Blocks
+* Framework - Performance improvement.  Replace wp_remote_fopen  with file_get_contents for get web fonts
+* Framework - Performance improvement. Define new variable `is_load_google_fonts` if admin does not require to load google fonts
+* Credit - Props to Derek for alerting us to the framework google fonts performance issue
+* Framework - Register style name for dynamic style of plugin for use with Gutenberg block
+* Framework - Update Modal script and style to version 4.1.1
+* Framework - Update a3rev Plugin Framework to version 2.1.0
+* Framework - Test and update for compatibility with PHP 7.3
 
 = 3.2.3 - 2018/08/10 =
 * This maintenance update is focused on a rework of the Google Maps API settings in the plugin, Maps API error notices. It also resolves a display issue with Gravity Forms added by shortcode and compatibility with WordPress 4.9.8, WooCommerce 3.4.4 and Gravity Forms 2.3.3
@@ -506,6 +518,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.2.4 =
+This maintenance update is for compatibility with WordPress 5.0.2 and PHP 7.3. It also includes performance updates to the plugin framework.
 
 = 3.2.3 =
 This maintenance update is focused on a rework of the Google Maps API settings in the plugin, Maps API error notices. It also resolves a display issue with Gravity Forms added by shortcode and compatibility with WordPress 4.9.8, WooCommerce 3.4.4 and Gravity Forms 2.3.3

@@ -31,14 +31,15 @@ class People_Contact_Admin_UI
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version         = '2.0.8';
-	public $plugin_name               = PEOPLE_CONTACT_KEY;
-	public $plugin_path               = PEOPLE_CONTACT_NAME;
-	public $google_api_key_option     = '';
+	public $framework_version      = '2.1.0';
+	public $plugin_name            = PEOPLE_CONTACT_KEY;
+	public $plugin_path            = PEOPLE_CONTACT_NAME;
+	public $google_api_key_option  = '';
 	public $google_map_api_key_option = '';
-	public $toggle_box_open_option    = '';
-	public $version_transient         = '';
-	public $is_free_plugin            = true;
+	public $toggle_box_open_option = '';
+	public $version_transient      = '';
+	public $is_free_plugin         = true;
+	public $is_load_google_fonts   = true;
 	
 	public $support_url            = '';
 
@@ -77,7 +78,15 @@ class People_Contact_Admin_UI
 		$this->toggle_box_open_option    = PEOPLE_CONTACT_KEY . '_toggle_box_open';
 		$this->version_transient         = PEOPLE_CONTACT_KEY . '_licinfo';
 
-		$this->support_url = 'https://wordpress.org/support/plugin/contact-us-page-contact-people/';
+		if ( defined( 'PEOPLE_CONTACT_G_FONTS' ) ) {
+			$this->is_load_google_fonts = (boolean) PEOPLE_CONTACT_G_FONTS;
+		}
+
+		if ( is_multisite() ) {
+			$this->support_url = esc_url( network_admin_url( 'admin.php?page=a3rev-support' ) );
+		} else {
+			$this->support_url = esc_url( self_admin_url( 'admin.php?page=a3rev-support' ) );
+		}
 
 		$this->update_google_map_api_key();
 	}

@@ -82,11 +82,7 @@ class People_Contact_Admin_UI
 			$this->is_load_google_fonts = (boolean) PEOPLE_CONTACT_G_FONTS;
 		}
 
-		if ( is_multisite() ) {
-			$this->support_url = esc_url( network_admin_url( 'admin.php?page=a3rev-support' ) );
-		} else {
-			$this->support_url = esc_url( self_admin_url( 'admin.php?page=a3rev-support' ) );
-		}
+		$this->support_url = 'https://wordpress.org/support/plugin/contact-us-page-contact-people/';
 
 		$this->update_google_map_api_key();
 	}

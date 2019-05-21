@@ -49,7 +49,12 @@ class People_Contact {
 			$c_attachment_id = $people_contact_grid_view_icon['default_profile_image_attachment_id'];
 		}
 
-		$img_output = '<img width="80" class="a3-notlazy wp-image-'.$c_attachment_id.'" src="'.$src.'" />';
+		$alt = get_post_meta( $c_attachment_id, '_wp_attachment_image_alt', true );
+		if ( empty( $alt ) ) {
+			$alt = $data['c_name'];
+		}
+
+		$img_output = '<img width="80" class="a3-notlazy wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
 		if ( function_exists( 'wp_make_content_images_responsive' ) ) {
 			$img_output = wp_make_content_images_responsive( $img_output );
 		}
@@ -603,12 +608,17 @@ class People_Contact {
 					$c_attachment_id = $people_contact_grid_view_icon['default_profile_image_attachment_id'];
 				}
 
+				$alt = get_post_meta( $c_attachment_id, '_wp_attachment_image_alt', true );
+				if ( empty( $alt ) ) {
+					$alt = $value['c_name'];
+				}
+
 				$html .= '<div class="people_item people_item'.$unique_id.' people_item_id'.$profile_id.' '.( 0 != $value['enable_map_marker'] && '' != trim( $value['c_latitude'] ) && '' != trim( $value['c_longitude'] ) ? 'has_marker' : '' ).'">';
 				$html .= '<div class="people-entry-item">';
 				$html .= '<div style="clear:both;"></div>';
 				$html .= '<div class="people-content-item">';
 
-				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" />';
+				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
 				if ( function_exists( 'wp_make_content_images_responsive' ) ) {
 					$img_output = wp_make_content_images_responsive( $img_output );
 				}

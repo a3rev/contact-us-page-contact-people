@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.5
-Tested up to: 5.2.0
-Stable tag: 3.2.5
+Tested up to: 5.2.2
+Stable tag: 3.2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,10 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.2.6 - 2019/06/29 =
+* This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3
+* Fix - PHP warning continue targeting switch is equivalent to break for compatibility on PHP 7.3
 
 = 3.2.5 - 2019/05/21 =
 * This maintenance update adds support for ALT text on images
@@ -524,6 +528,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.2.6 =
+This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3
 
 = 3.2.5 =
 This maintenance update adds support for ALT text on images.

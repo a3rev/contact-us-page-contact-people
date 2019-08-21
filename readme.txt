@@ -2,9 +2,9 @@
 	
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
-Requires at least: 4.5
+Requires at least: 4.6
 Tested up to: 5.2.2
-Stable tag: 3.2.6
+Stable tag: 3.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,8 +12,8 @@ Easily and instantly create an interesting, stylish, professional and highly fun
 	
 == Description ==
 	
-Contact Us Page - Contact People allows you to easily transform your themes dull and boring contact us page into a stunning and vibrant, ultra-professional Contact Us Page not only for your General sites contact us but for individual profiles (people, positions, Stores) within an organization.
-	
+Contact Us Page - Contact People allows you to easily transform your themes dull and boring contact us page into a stunning and vibrant, ultra-professional Contact Us Page not only for your General sites contact us but for individual profiles.	
+
 Features include:
 	
 = PROFILES =
@@ -37,9 +37,16 @@ Profile Features are:
 
 = CONTACT POP UP FORMS =
 
-* When click on email link on a profile card the contact form opens is a beatiful Bootstrap Modal pop up
+* When click on email link on a profile card the contact form opens is a beautiful Bootstrap Modal pop up
 * Form pop up shows beautifully in PC, tablet and mobile
 * User can send email direct to any profile without leaving the page
+
+= SHORTCODE & GUTENBERG BLOCK =
+
+Insert Profile contact cards in any page or post. Support for
+
+* Legacy Editor - via shortcode
+* Gutenberg Editor - via Contact Profile Block 
  
 		
 = CONTACT US PAGE =
@@ -85,7 +92,6 @@ The plugin includes a fully customizable Contact Widget that can be used in any 
 This plugin features a an [Ultimate version upgrade](https://a3rev.com/shop/contact-people-ultimate/) that adds 3 advanced functionalities:
 
 * Custom Profile Contact Forms
-* Profile Cards Shortcode
 * Profile Groups
 
 = CONTRIBUTE =
@@ -99,9 +105,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 	
 = Minimum Requirements =
 	
-* WordPress 4.5
-* PHP version 5.5.0 or greater
-* MySQL version 5.5.0 or greater
+* WordPress 4.6
+* PHP version 5.6.0 or greater
+* MySQL version 5.6.0 or greater
 	
 == Screenshots ==
 
@@ -128,6 +134,13 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.3.0 - 2019/08/21 =
+* This feature upgrade adds 2 new features. Add profile cards to post and pages via shortcode for legacy editor and via Contact Profile block in the Gutenberg editor 
+* Feature - Add Contact Profile Card by block in Gutenberg editor
+* Feature - Add Contact Profile Card by Shortcode in legacy editor
+* Tweak - Icon alignment style on Profile Card 
+* Tweak - Add rel=noopener to Profile Card website link
 
 = 3.2.6 - 2019/06/29 =
 * This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3
@@ -528,6 +541,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.3.0 =
+This feature upgrade adds 2 new features. Add profile cards to post and pages via shortcode for legacy editor and via Contact Profile block in the Gutenberg editor
 
 = 3.2.6 =
 This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3

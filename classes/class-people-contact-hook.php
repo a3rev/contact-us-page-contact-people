@@ -86,7 +86,8 @@ class People_Contact_Hook_Filter
 
 		if ( $post
 			&& ( $contact_people_page_id == $post->ID
-				|| has_shortcode( $post->post_content, 'people_contacts' ) ) ) {
+				|| has_shortcode( $post->post_content, 'people_contacts' )
+				|| has_shortcode( $post->post_content, 'people_contact' ) ) ) {
 
 			self::add_google_fonts();
 

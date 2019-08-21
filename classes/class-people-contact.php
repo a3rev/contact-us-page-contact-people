@@ -649,7 +649,7 @@ class People_Contact {
 				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.$mobile_icon.'" style="width:auto;height:auto" /></span> '. esc_attr( stripslashes($value['c_mobile'] ) ).'</p>';
 				}
 				if ( trim($value['c_website']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a href="'. esc_url( stripslashes($value['c_website'] ) ).'" target="_blank">'.( function_exists('icl_t') ? icl_t( 'a3 Contact People', 'Profile Cards - Website Link Text', __('Visit Website', 'contact-us-page-contact-people' ) ) : __('Visit Website', 'contact-us-page-contact-people' ) ).'</a></p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a rel="noopener" href="'. esc_url( stripslashes($value['c_website'] ) ).'" target="_blank">'.( function_exists('icl_t') ? icl_t( 'a3 Contact People', 'Profile Cards - Website Link Text', __('Visit Website', 'contact-us-page-contact-people' ) ) : __('Visit Website', 'contact-us-page-contact-people' ) ).'</a></p>';
 				}
 
 				$have_modal_popup = false;
@@ -685,6 +685,159 @@ class People_Contact {
 		$html .= '</div>';
 		$html .= '<div style="clear:both"></div>';
 		return $html;
+	}
+
+	public function create_people_contact($id = 0, $style = '', $wrap = false){
+		global $people_contact_form_ids;
+
+		if ( empty( $people_contact_form_ids ) ) {
+			$people_contact_form_ids = array();
+		}
+
+		$profile_id = $id;
+
+		global $people_email_inquiry_global_settings;
+		global $people_contact_grid_view_layout, $people_contact_grid_view_icon, $profile_email_page_id;
+		$peoples = People_Contact_Profile_Data::get_row( $profile_id, '', 'ARRAY_A' );
+		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		if( !is_array($peoples) ) return;
+
+		global $post;
+
+		$use_modal_popup = People_Contact_Functions::check_use_modal_popup();
+
+		wp_enqueue_script( 'jquery' );
+		People_Contact_Hook_Filter::frontend_scripts_enqueue();
+
+		if ( $use_modal_popup ) {
+			People_Contact_Functions::enqueue_modal_scripts();
+		}
+
+		$unique_id = rand(100,10000);
+		$profile_email_page_link = '#';
+
+		$grid_view_col = 0;
+		$phone_icon = $people_contact_grid_view_icon['grid_view_icon_phone'];
+		if( trim($phone_icon ) == '' ) $phone_icon = PEOPLE_CONTACT_IMAGE_URL.'/p_icon_phone.png';
+		$fax_icon = $people_contact_grid_view_icon['grid_view_icon_fax'];
+		if( trim($fax_icon ) == '' ) $fax_icon = PEOPLE_CONTACT_IMAGE_URL.'/p_icon_fax.png';
+		$mobile_icon = $people_contact_grid_view_icon['grid_view_icon_mobile'];
+		if( trim($mobile_icon ) == '' ) $mobile_icon = PEOPLE_CONTACT_IMAGE_URL.'/p_icon_mobile.png';
+		$email_icon = $people_contact_grid_view_icon['grid_view_icon_email'];
+		if( trim($email_icon ) == '' ) $email_icon = PEOPLE_CONTACT_IMAGE_URL.'/p_icon_email.png';
+		$website_icon = $people_contact_grid_view_icon['grid_view_icon_website'];
+		if( trim($website_icon ) == '' ) $website_icon = PEOPLE_CONTACT_IMAGE_URL.'/p_icon_website.png';
+
+		$html = '';
+		$break_div = '<div style="clear:both;"></div>';
+		$html .= '<div class="people_box_content pcol'.$grid_view_col.'" style="'.$style.'">';
+		if ( is_array($peoples) ) {
+				if ($peoples['c_avatar'] != '') {
+					$src = $peoples['c_avatar'];
+					$c_attachment_id = $peoples['c_attachment_id'];
+				} else {
+					$src = $people_contact_grid_view_icon['default_profile_image'];
+					$c_attachment_id = $people_contact_grid_view_icon['default_profile_image_attachment_id'];
+				}
+
+				$alt = get_post_meta( $c_attachment_id, '_wp_attachment_image_alt', true );
+				if ( empty( $alt ) ) {
+					$alt = $peoples['c_name'];
+				}
+
+				$html .= '<div class="people_item" style="width:100%;margin:0 !important;">';
+				$html .= '<div class="people-entry-item">';
+				$html .= '<div style="clear:both;"></div>';
+				$html .= '<div class="people-content-item">';
+				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
+				if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+					$img_output = wp_make_content_images_responsive( $img_output );
+				}
+				if ( $people_contact_grid_view_layout['thumb_image_position'] == 'top' && $people_contact_grid_view_layout['item_title_position'] == 'below' ) {
+					$html .= '<div class="p_content_left">'.$img_output.'</div>';
+					$html .= '<h3 class="p_item_title">'.esc_attr( stripslashes( $peoples['c_title'])).'</h3>';
+				} else {
+					$html .= '<h3 class="p_item_title">'.esc_attr( stripslashes( $peoples['c_title'])).'</h3>';
+					$html .= '<div class="p_content_left">'.$img_output.'</div>';
+				}
+				$html .= '<div class="p_content_right">';
+				$html .= '<h3 class="p_item_name">'.esc_attr( stripslashes( $peoples['c_name'])).'</h3>';
+				if ( trim($peoples['c_about']) != '') {
+				$html .= '<div class="p_about_profile">';
+				$html .= wpautop(wptexturize( stripslashes( $peoples['c_about'] ) ) );
+				$html .= '</div>';
+				}
+
+				$html .= '<div class="p_contact_details">';
+				if ( trim($peoples['c_phone']) != '') {
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_phone"><img src="'.$phone_icon.'" style="width:auto;height:auto" /></span> '.esc_attr( stripslashes( $peoples['c_phone'])).'</p>';
+				}
+				if ( trim($peoples['c_fax']) != '') {
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_fax"><img src="'.$fax_icon.'" style="width:auto;height:auto" /></span> '.esc_attr( stripslashes( $peoples['c_fax'])).'</p>';
+				}
+				if ( trim($peoples['c_mobile']) != '') {
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.$mobile_icon.'" style="width:auto;height:auto" /></span> '.esc_attr( stripslashes( $peoples['c_mobile'])).'</p>';
+				}
+				if ( trim($peoples['c_website']) != '') {
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a rel="noopener" href="'.esc_url( stripslashes( $peoples['c_website'])).'" target="_blank">'.$people_contact_grid_view_icon['grid_view_website_text'].'</a></p>';
+				}
+
+				if ( $people_email_inquiry_global_settings['contact_form_type_other'] == 1 ) {
+					if (get_option('permalink_structure') == '')
+						$profile_email_page_link = get_permalink( $profile_email_page_id ).'&from-page-id='.$post->ID.'&profile-id=';
+					else
+						$profile_email_page_link = rtrim( get_permalink( $profile_email_page_id ), '/' ).'/from-page-id/'.$post->ID.'/profile-id/';
+				}
+
+				$have_modal_popup = false;
+				$profile_modal_id = 'contact_people_modal_' . $profile_id;
+
+				if ( trim($peoples['c_email']) != '') {
+					if ( class_exists('People_Contact_3RD_ContactForm_Functions') && People_Contact_3RD_ContactForm_Functions::check_enable_3rd_contact_form() ) {
+						if ( '' != trim( $peoples['c_shortcode'] ) || '' != trim($people_email_inquiry_global_settings['contact_form_type_shortcode']) ) {
+							if ( $people_email_inquiry_global_settings['contact_form_3rd_open_type'] == 'popup' ) {
+								$have_modal_popup = true;
+								$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="party" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" data-from_page_id="'.$post->ID.'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+							} else {
+								$target_link = 'target="_blank"';
+								if ( $people_email_inquiry_global_settings['contact_form_3rd_open_type'] == 'new_page_same_window' ) {
+									$target_link = 'target="_parent"';
+								}
+
+								$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a href="'.$profile_email_page_link.$profile_id.'" '.$target_link.'>'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+							}
+						}
+					} else {
+						$have_modal_popup = true;
+						$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" data-from_page_id="'.$post->ID.'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+					}
+				}
+
+				if ( $use_modal_popup && $have_modal_popup && ! in_array( $profile_id, $people_contact_form_ids ) ) {
+					$people_contact_form_ids[] = $profile_id;
+					$html .= '<div class="modal fade contact_people_modal" id="'.$profile_modal_id.'" tabindex="-1" role="dialog" aria-labelledby="'.$profile_modal_id.'Title" aria-hidden="true" style="display: none;">';
+
+					if ( class_exists('People_Contact_3RD_ContactForm_Functions') && People_Contact_3RD_ContactForm_Functions::check_enable_3rd_contact_form() ) {
+						$html .= People_Contact_3RD_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );
+					} else {
+						$html .= self::default_contact_form( $profile_id, $post->ID );
+					}
+					$html .= '</div>';
+				}
+
+				$html .= '</div>';
+				$html .= '</div>';
+
+				$html .= '</div>';
+				$html .= '<div style="clear:both;"></div>';
+				$html .= '</div>';
+				$html .= '</div>';
+		}
+		$html .= '</div>';
+		if ($wrap == 'true') $break_div = '';
+
+		$output = $break_div.$html.$break_div;
+		return $output;
 	}
 }
 

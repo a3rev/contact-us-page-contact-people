@@ -9,7 +9,10 @@
  * load_ajax_contact_form()
  * create_contact_maps();
  */
-class People_Contact {
+namespace A3Rev\ContactPeople;
+
+class Main {
+
 	var $admin_page,$contact_manager;
 	public $template_url = PEOPLE_CONTACT_PATH;
 
@@ -22,7 +25,7 @@ class People_Contact {
 	}
 
 	public function include_modal_popup_at_footer() {
-		$use_modal_popup = People_Contact_Functions::check_use_modal_popup();
+		$use_modal_popup = Contact_Functions::check_use_modal_popup();
 
 		if ( $use_modal_popup ) {
 			wp_enqueue_script( 'contact-people-modal-popup', PEOPLE_CONTACT_JS_URL . '/modal-popup.js', array( 'jquery' ), PEOPLE_CONTACT_VERSION, true );
@@ -39,7 +42,7 @@ class People_Contact {
 		$inquiry_contact_button_class = apply_filters( 'people_inquiry_contact_button_class', '' );
 		$inquiry_contact_form_class = apply_filters( 'people_inquiry_contact_form_class', '' );
 
-		$data = People_Contact_Profile_Data::get_row( $contact_id, '', 'ARRAY_A' );
+		$data = Data\Profile::get_row( $contact_id, '', 'ARRAY_A' );
 
 		if ($data['c_avatar'] != '') {
 			$src = $data['c_avatar'];
@@ -271,7 +274,7 @@ class People_Contact {
 
 		$output = ob_get_clean();
 
-		$output = People_Contact_Functions::modal_popup_container( $output );
+		$output = Contact_Functions::modal_popup_container( $output );
 
 		return $output;
 	}
@@ -291,10 +294,10 @@ class People_Contact {
 		if( !is_page() || ($contact_people_page_id != get_the_ID()) ) return;
 		if( !is_array($contacts) || count ($contacts) <= 0 ) return;
 
-		$use_modal_popup = People_Contact_Functions::check_use_modal_popup();
+		$use_modal_popup = Contact_Functions::check_use_modal_popup();
 
 		wp_enqueue_script( 'jquery' );
-		People_Contact_Hook_Filter::frontend_scripts_enqueue();
+		Hook_Filter::frontend_scripts_enqueue();
 
 		$show_map = ( $people_contact_location_map_settings['hide_maps_frontend'] != 1 ) ? 1 : 0 ;
 
@@ -313,7 +316,7 @@ class People_Contact {
 		}
 
 		if ( $use_modal_popup ) {
-			People_Contact_Functions::enqueue_modal_scripts();
+			Contact_Functions::enqueue_modal_scripts();
 		}
 
 		$unique_id = rand(100,10000);
@@ -419,7 +422,7 @@ class People_Contact {
 					if ( $update_lat_lng ) {
 						$contacts[$key]['c_latitude'] = $value['c_latitude'];
 						$contacts[$key]['c_longitude'] = $value['c_longitude'];
-						People_Contact_Profile_Data::set_lat_lng( $profile_id, $value['c_latitude'], $value['c_longitude'] );
+						Data\Profile::set_lat_lng( $profile_id, $value['c_latitude'], $value['c_longitude'] );
 					}
 
 					$i++;
@@ -430,7 +433,7 @@ class People_Contact {
 						$src = $people_contact_grid_view_icon['default_profile_image'];
 					}
 
-					if ( class_exists('People_Contact_3RD_ContactForm_Functions') && People_Contact_3RD_ContactForm_Functions::check_enable_3rd_contact_form() ) {
+					if ( class_exists( __NAMESPACE__ . '\Addons\Party_ContactForm_Functions' ) && Addons\Party_ContactForm_Functions::check_enable_3rd_contact_form() ) {
 						if ( '' == trim( $value['c_shortcode'] ) && '' == trim($people_email_inquiry_global_settings['contact_form_type_shortcode']) ) {
 							$value['c_email'] = '';
 						}
@@ -665,8 +668,8 @@ class People_Contact {
 					$people_contact_form_ids[] = $profile_id;
 					$html .= '<div class="modal fade contact_people_modal" id="'.$profile_modal_id.'" tabindex="-1" role="dialog" aria-labelledby="'.$profile_modal_id.'Title" aria-hidden="true" style="display: none;">';
 
-					if ( class_exists('People_Contact_3RD_ContactForm_Functions') && People_Contact_3RD_ContactForm_Functions::check_enable_3rd_contact_form() ) {
-						$html .= People_Contact_3RD_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );
+					if ( class_exists( __NAMESPACE__ . '\Addons\Party_ContactForm_Functions' ) && Addons\Party_ContactForm_Functions::check_enable_3rd_contact_form() ) {
+						$html .= Addons\Party_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );
 					} else {
 						$html .= self::default_contact_form( $profile_id, $post->ID );
 					}
@@ -698,19 +701,19 @@ class People_Contact {
 
 		global $people_email_inquiry_global_settings;
 		global $people_contact_grid_view_layout, $people_contact_grid_view_icon, $profile_email_page_id;
-		$peoples = People_Contact_Profile_Data::get_row( $profile_id, '', 'ARRAY_A' );
+		$peoples = Data\Profile::get_row( $profile_id, '', 'ARRAY_A' );
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 		if( !is_array($peoples) ) return;
 
 		global $post;
 
-		$use_modal_popup = People_Contact_Functions::check_use_modal_popup();
+		$use_modal_popup = Contact_Functions::check_use_modal_popup();
 
 		wp_enqueue_script( 'jquery' );
-		People_Contact_Hook_Filter::frontend_scripts_enqueue();
+		Hook_Filter::frontend_scripts_enqueue();
 
 		if ( $use_modal_popup ) {
-			People_Contact_Functions::enqueue_modal_scripts();
+			Contact_Functions::enqueue_modal_scripts();
 		}
 
 		$unique_id = rand(100,10000);
@@ -793,7 +796,7 @@ class People_Contact {
 				$profile_modal_id = 'contact_people_modal_' . $profile_id;
 
 				if ( trim($peoples['c_email']) != '') {
-					if ( class_exists('People_Contact_3RD_ContactForm_Functions') && People_Contact_3RD_ContactForm_Functions::check_enable_3rd_contact_form() ) {
+					if ( class_exists( __NAMESPACE__ . '\Addons\Party_ContactForm_Functions' ) && Addons\Party_ContactForm_Functions::check_enable_3rd_contact_form() ) {
 						if ( '' != trim( $peoples['c_shortcode'] ) || '' != trim($people_email_inquiry_global_settings['contact_form_type_shortcode']) ) {
 							if ( $people_email_inquiry_global_settings['contact_form_3rd_open_type'] == 'popup' ) {
 								$have_modal_popup = true;
@@ -817,8 +820,8 @@ class People_Contact {
 					$people_contact_form_ids[] = $profile_id;
 					$html .= '<div class="modal fade contact_people_modal" id="'.$profile_modal_id.'" tabindex="-1" role="dialog" aria-labelledby="'.$profile_modal_id.'Title" aria-hidden="true" style="display: none;">';
 
-					if ( class_exists('People_Contact_3RD_ContactForm_Functions') && People_Contact_3RD_ContactForm_Functions::check_enable_3rd_contact_form() ) {
-						$html .= People_Contact_3RD_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );
+					if ( class_exists( __NAMESPACE__ . '\Addons\Party_ContactForm_Functions' ) && Addons\Party_ContactForm_Functions::check_enable_3rd_contact_form() ) {
+						$html .= Addons\Party_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );
 					} else {
 						$html .= self::default_contact_form( $profile_id, $post->ID );
 					}
@@ -840,5 +843,3 @@ class People_Contact {
 		return $output;
 	}
 }
-
-?>

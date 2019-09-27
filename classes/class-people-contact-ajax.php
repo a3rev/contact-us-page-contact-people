@@ -1,10 +1,13 @@
 <?php
+
+namespace A3Rev\ContactPeople;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class People_Contact_Ajax
+class Ajax
 {
 
 	public function __construct() {
@@ -64,7 +67,7 @@ class People_Contact_Ajax
 			'from_page_id'		=> $from_page_id,
 		);
 
-		$email_result = People_Contact_Functions::contact_to_people( $profile_data, $send_copy_yourself );
+		$email_result = Contact_Functions::contact_to_people( $profile_data, $send_copy_yourself );
 
 		if ( false !== $email_result ) {
 			$json_var['status']  = 'success';
@@ -76,8 +79,3 @@ class People_Contact_Ajax
 		die();
 	}
 }
-
-global $people_contact_ajax;
-$people_contact_ajax = new People_Contact_Ajax();
-
-?>

@@ -7,13 +7,19 @@
  *
  * admin_screen()
  */
-class People_Contact_Manager_Panel
-{	
+
+namespace A3Rev\ContactPeople\Admin;
+
+use A3Rev\ContactPeople\Data as Data;
+
+class Profile_Manager
+{
+
 	public static function admin_screen () {
 		global $people_contact_grid_view_icon;
 		$message = '';
 		if( isset($_GET['action']) && $_GET['action'] == 'del' && isset($_GET['id']) && $_GET['id'] >= 0){
-			People_Contact_Profile_Data::delete_row( $_GET['id'] );
+			Data\Profile::delete_row( $_GET['id'] );
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully deleted.', 'contact-us-page-contact-people' ).'</p></div>';
 		} elseif ( isset($_GET['edited_profile']) ) {
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully updated.', 'contact-us-page-contact-people' ).'</p></div>';
@@ -21,7 +27,7 @@ class People_Contact_Manager_Panel
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully created.', 'contact-us-page-contact-people' ).'</p></div>';
 		}
 		
-		$my_contacts = People_Contact_Profile_Data::get_results('', 'c_order ASC', '', 'ARRAY_A');
+		$my_contacts = Data\Profile::get_results('', 'c_order ASC', '', 'ARRAY_A');
 		?>
         <div id="htmlForm">
         <div style="clear:both"></div>
@@ -118,4 +124,3 @@ class People_Contact_Manager_Panel
 		<?php	
 	}
 }
-?>

@@ -12,7 +12,10 @@
  * people_contacts_html()
  * people_contact_html()
  */
-class People_Contact_Shortcode{
+
+namespace A3Rev\ContactPeople;
+
+class Shortcode{
 	
 	var $admin_page,$contact_manager;
 	public $template_url = PEOPLE_CONTACT_PATH;
@@ -73,7 +76,7 @@ class People_Contact_Shortcode{
 	
 	public function people_contact_generator_popup() {
 		global $people_contact_location_map_settings;
-		$contacts = People_Contact_Profile_Data::get_results('', 'c_order ASC', '', 'ARRAY_A');
+		$contacts = Data\Profile::get_results('', 'c_order ASC', '', 'ARRAY_A');
 		$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) ) );
 		?>
 		<div id="people-contact-wrap" style="display:none">
@@ -109,7 +112,7 @@ class People_Contact_Shortcode{
 			</p>
             </fieldset>
             
-            <div id="a3_plugin_shortcode_upgrade_area"><div class="a3-people-contact-logo-extensions"></div><?php echo People_Contact_Functions::extension_shortcode(); ?>
+            <div id="a3_plugin_shortcode_upgrade_area"><div class="a3-people-contact-logo-extensions"></div><?php echo Contact_Functions::extension_shortcode(); ?>
             <fieldset style="border:1px solid #DFDFDF; padding:0 20px; background: #FFF; margin:10px;"><legend style="font-weight:bold; font-size:14px;"><?php _e('Insert Group', 'contact-us-page-contact-people' ); ?></legend>
             <div id="people-category-content" class="people-category-content people-contact-shortcode-container" style="text-align:left;">
                 <p><label for="profile_category_id"><?php _e('Select Group', 'contact-us-page-contact-people' ); ?>:</label> 
@@ -192,7 +195,7 @@ class People_Contact_Shortcode{
 	public function people_contacts_html( $atts ) {
 		global $people_contact;
 		extract( shortcode_atts( array(), $atts ) );
-		$contacts = People_Contact_Profile_Data::get_results('show_on_main_page=1', 'c_order ASC', '', 'ARRAY_A');
+		$contacts = Data\Profile::get_results('show_on_main_page=1', 'c_order ASC', '', 'ARRAY_A');
 		return '<div id="people_contacts_container">'.$people_contact->create_contact_maps($contacts).'</div>';
 	}
 	
@@ -209,4 +212,3 @@ class People_Contact_Shortcode{
 	}
 	
 }
-?>

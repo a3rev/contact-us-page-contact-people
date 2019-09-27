@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.6
-Tested up to: 5.2.2
-Stable tag: 3.3.0
+Tested up to: 5.2.3
+Stable tag: 3.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,12 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.4.0 - 2019/09/27 =
+* This feature upgrade is a full refactor of the plugins PHP to PHP dependency manager Composer with autoloading.
+* Feature - Plugin fully refactored to Composer for cleaner code and faster PHP code
+* Tweak - Replace PaddingControl instead of MarginControl for Card Spacing settings of Contact Profile block
+* Tweak - Test for compatibility with WordPress 5.2.3
 
 = 3.3.0 - 2019/08/21 =
 * This feature upgrade adds 2 new features. Add profile cards to post and pages via shortcode for legacy editor and via Contact Profile block in the Gutenberg editor 
@@ -541,6 +547,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.4.0 =
+This feature upgrade is a full refactor of the plugins PHP to PHP dependency manager Composer with autoloading plus compatibility with WordPress 5.2.3
 
 = 3.3.0 =
 This feature upgrade adds 2 new features. Add profile cards to post and pages via shortcode for legacy editor and via Contact Profile block in the Gutenberg editor

@@ -7,8 +7,14 @@
  *
  * admin_screen_add_edit()
  */
-class People_Contact_AddNew
+
+namespace A3Rev\ContactPeople\Admin;
+
+use A3Rev\ContactPeople\Data as Data;
+
+class AddNew
 {
+
 	public static function profile_form_action() {
 		if ( !is_admin() ) return ;
 
@@ -43,7 +49,7 @@ class People_Contact_AddNew
 				$_REQUEST['contact_arr']['enable_map_marker'] = 0;
 			}
 
-			People_Contact_Profile_Data::update_row($_REQUEST['contact_arr']);
+			Data\Profile::update_row($_REQUEST['contact_arr']);
 
 			wp_redirect( 'admin.php?page=people-contact-manager&edited_profile=true', 301 );
 			exit();
@@ -71,7 +77,7 @@ class People_Contact_AddNew
 				$_REQUEST['contact_arr']['enable_map_marker'] = 0;
 			}
 
-			$profile_id = People_Contact_Profile_Data::insert_row($_REQUEST['contact_arr']);
+			$profile_id = Data\Profile::insert_row($_REQUEST['contact_arr']);
 
 			wp_redirect( 'admin.php?page=people-contact-manager&created_profile=true', 301 );
 			exit();
@@ -116,7 +122,7 @@ class People_Contact_AddNew
 
 		if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id']) && $_GET['id'] >= 0) {
 			$bt_type = 'update_contact';
-			$data    = People_Contact_Profile_Data::get_row( $_GET['id'], '', 'ARRAY_A' );
+			$data    = Data\Profile::get_row( $_GET['id'], '', 'ARRAY_A' );
 			$title   = __('Edit Profile', 'contact-us-page-contact-people' );
 			if ( (trim($data['c_latitude']) == '' || trim($data['c_longitude']) == '' ) && trim($data['c_address']) != '') {
 				$googleapis_url      = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($data['c_address']).'&sensor=false' . $google_map_api_key;
@@ -531,4 +537,3 @@ class People_Contact_AddNew
 		<?php
 	}
 }
-?>

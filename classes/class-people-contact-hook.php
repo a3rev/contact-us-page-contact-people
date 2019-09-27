@@ -14,24 +14,27 @@
  * plugin_extra_links()
  *
  */
-class People_Contact_Hook_Filter
+
+namespace A3Rev\ContactPeople;
+
+class Hook_Filter
 {
 	public static function register_admin_screen () {
 		global $query_string, $current_user;
 		$current_user_id = $current_user->user_login;
 
-		$contact_manager = add_menu_page( __('Contact Us', 'contact-us-page-contact-people' ), __('Contact Us', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact-manager', array( 'People_Contact_Manager_Panel', 'admin_screen' ), null, '27.222');
+		$contact_manager = add_menu_page( __('Contact Us', 'contact-us-page-contact-people' ), __('Contact Us', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact-manager', array( __NAMESPACE__ . '\Admin\Profile_Manager', 'admin_screen' ), null, '27.222');
 
-		$profile = add_submenu_page('people-contact-manager', __( 'Profiles', 'contact-us-page-contact-people' ), __( 'Profiles', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact-manager', array( 'People_Contact_Manager_Panel', 'admin_screen' ) );
+		$profile = add_submenu_page('people-contact-manager', __( 'Profiles', 'contact-us-page-contact-people' ), __( 'Profiles', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact-manager', array( __NAMESPACE__ . '\Admin\Profile_Manager', 'admin_screen' ) );
 
-		$add_new = add_submenu_page('people-contact-manager', __( 'Add New Profile', 'contact-us-page-contact-people' ), __( 'Add New Profile', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact', array( 'People_Contact_AddNew', 'admin_screen_add_edit' ) );
+		$add_new = add_submenu_page('people-contact-manager', __( 'Add New Profile', 'contact-us-page-contact-people' ), __( 'Add New Profile', 'contact-us-page-contact-people' ), 'manage_options', 'people-contact', array( __NAMESPACE__ . '\Admin\AddNew', 'admin_screen_add_edit' ) );
 
-		$categories_page = add_submenu_page('people-contact-manager', __( 'Groups', 'contact-us-page-contact-people' ), __( 'Groups', 'contact-us-page-contact-people' ), 'manage_options', 'people-category-manager', array( 'People_Category_Manager_Panel', 'admin_screen' ) );
+		$categories_page = add_submenu_page('people-contact-manager', __( 'Groups', 'contact-us-page-contact-people' ), __( 'Groups', 'contact-us-page-contact-people' ), 'manage_options', 'people-category-manager', array( __NAMESPACE__ . '\Admin\Category_Manager', 'admin_screen' ) );
 
-		add_action( "admin_print_scripts-" . $contact_manager, array( 'People_Contact_Hook_Filter', 'contact_manager_load_only_script') );
-		add_action( "admin_print_scripts-" . $profile, array( 'People_Contact_Hook_Filter', 'contact_manager_load_only_script') );
-		add_action( "admin_print_scripts-" . $add_new, array( 'People_Contact_Hook_Filter', 'add_new_load_only_script') );
-		add_action( "admin_print_scripts-" . $categories_page, array( 'People_Contact_Hook_Filter', 'category_manager_load_only_script') );
+		add_action( "admin_print_scripts-" . $contact_manager, array( __CLASS__, 'contact_manager_load_only_script') );
+		add_action( "admin_print_scripts-" . $profile, array( __CLASS__, 'contact_manager_load_only_script') );
+		add_action( "admin_print_scripts-" . $add_new, array( __CLASS__, 'add_new_load_only_script') );
+		add_action( "admin_print_scripts-" . $categories_page, array( __CLASS__, 'category_manager_load_only_script') );
 
 	} // End register_admin_screen()
 
@@ -100,8 +103,8 @@ class People_Contact_Hook_Filter
 
 			wp_enqueue_script( 'respondjs' );
 
-			add_action( 'wp_head', array( 'People_Contact_Hook_Filter', 'fix_window_console_ie' ) );
-			add_action( 'wp_head', array( 'People_Contact_Hook_Filter', 'footer_default_form_scripts' ) );
+			add_action( 'wp_head', array( __CLASS__, 'fix_window_console_ie' ) );
+			add_action( 'wp_head', array( __CLASS__, 'footer_default_form_scripts' ) );
 
 		}
 	}
@@ -254,7 +257,7 @@ class People_Contact_Hook_Filter
 		$i = 0;
 		foreach ($updateRecordsArray as $recordIDValue) {
 			$i++;
-			People_Contact_Profile_Data::update_order($recordIDValue, $i);
+			Data\Profile::update_order($recordIDValue, $i);
 		}
 		die();
 	}
@@ -332,4 +335,3 @@ class People_Contact_Hook_Filter
 	<?php
 	}
 }
-?>

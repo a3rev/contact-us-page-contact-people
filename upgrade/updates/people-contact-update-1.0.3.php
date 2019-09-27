@@ -11,6 +11,6 @@ if ( is_array($contacts) && count($contacts) > 0 ) {
 			$new_value[$key] = esc_attr( stripslashes( $field ) );
 		}
 		$new_value['c_order'] = $i;
-		People_Contact_Profile_Data::insert_row( $new_value );
+		\A3Rev\ContactPeople\Data\Profile::insert_row( $new_value );
 	}
 }

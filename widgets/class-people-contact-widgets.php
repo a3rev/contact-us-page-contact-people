@@ -7,7 +7,9 @@
  * @author		A3rev
  */
 
-class People_Contact_Widget extends WP_Widget {
+namespace A3Rev\ContactPeople;
+
+class Widget extends \WP_Widget {
 
 	/** constructor */
 	function __construct() {
@@ -268,7 +270,7 @@ class People_Contact_Widget extends WP_Widget {
 						$send_copy_yourself = 1;
 					}
 
-					$email_result = People_Contact_Functions::contact_to_site( $contact_data, $send_copy_yourself );
+					$email_result = Contact_Functions::contact_to_site( $contact_data, $send_copy_yourself );
 
 					$emailSent = true;
 
@@ -340,7 +342,7 @@ class People_Contact_Widget extends WP_Widget {
 				?>
 				<?php if ($geocoords != '') { ?>
 				<div style="clear:both;"></div>
-				<?php People_Contact_Widget::widget_maps_contact_output("geocoords=$geocoords"); ?>
+				<?php self::widget_maps_contact_output("geocoords=$geocoords"); ?>
 				<?php } ?>
 	            <?php if ($people_contact_widget_content_after_maps != '') { ?>
 	            <div style="clear:both;"></div>
@@ -513,6 +515,3 @@ class People_Contact_Widget extends WP_Widget {
 	}
 
 }
-
-function register_people_contact_widget(){register_widget('People_Contact_Widget');}
-add_action('widgets_init', 'register_people_contact_widget');

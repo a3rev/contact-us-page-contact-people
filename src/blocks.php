@@ -8,12 +8,14 @@
  * @package CGB
  */
 
+namespace A3Rev\ContactPeople;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class People_Contact_Blocks {
+class Blocks {
 
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_block' ) );
@@ -51,7 +53,7 @@ class People_Contact_Blocks {
 			// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 		);
 		
-		$contacts = People_Contact_Profile_Data::get_results('', 'c_order ASC', '', 'ARRAY_A');
+		$contacts = Data\Profile::get_results('', 'c_order ASC', '', 'ARRAY_A');
 		
 		$contactList = array();
 		if ( is_array( $contacts ) && count( $contacts ) > 0 ) {
@@ -95,6 +97,3 @@ class People_Contact_Blocks {
 
 	}
 }
-
-new People_Contact_Blocks();
-?>

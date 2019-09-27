@@ -7,7 +7,10 @@
  * plugins_loaded()
  * wpml_register_string()
  */
-class People_Contact_WPML_Functions
+
+namespace A3Rev\ContactPeople;
+
+class WPML_Functions
 {	
 	public $plugin_wpml_name = 'a3 Contact People';
 	
@@ -172,21 +175,3 @@ class People_Contact_WPML_Functions
 	}
 	
 }
-
-global $people_contact_wpml;
-$people_contact_wpml = new People_Contact_WPML_Functions();
-
-function people_ict_t_e( $name, $string ) {
-	global $people_contact_wpml;
-	$string = ( function_exists('icl_t') ? icl_t( $people_contact_wpml->plugin_wpml_name, $name, $string ) : $string );
-	
-	echo $string;
-}
-
-function people_ict_t__( $name, $string ) {
-	global $people_contact_wpml;
-	$string = ( function_exists('icl_t') ? icl_t( $people_contact_wpml->plugin_wpml_name, $name, $string ) : $string );
-	
-	return $string;
-}
-?>

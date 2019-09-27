@@ -17,8 +17,12 @@
  * delete_rows()
  * delete_row()
  */
-class People_Contact_Profile_Data
+
+namespace A3Rev\ContactPeople\Data;
+
+class Profile
 {
+
 	public static function install_database() {
 		global $wpdb;
 		$collate = '';
@@ -115,7 +119,7 @@ class People_Contact_Profile_Data
 		$c_latitude = strip_tags( addslashes( $c_latitude ) );
 		$c_longitude = strip_tags( addslashes( $c_longitude ) );
 		
-		$c_order = People_Contact_Profile_Data::get_maximum_order();
+		$c_order = self::get_maximum_order();
 		$c_order++;
 		$query = $wpdb->query("INSERT INTO {$table_name}( c_title, c_name, c_avatar, c_attachment_id, c_email, c_phone, c_fax, c_mobile, c_website, c_about, show_on_main_page, enable_map_marker, c_address, c_latitude, c_longitude, c_shortcode, c_order ) VALUES('$c_title', '$c_name', '$c_avatar', '$c_attachment_id', '$c_email', '$c_phone', '$c_fax', '$c_mobile', '$c_website', '$c_about', '$show_on_main_page', '$enable_map_marker', '$c_address', '$c_latitude', '$c_longitude', '', '$c_order' )");
 		if ($query) {
@@ -170,7 +174,7 @@ class People_Contact_Profile_Data
 	public static function update_items_order( $item_orders=array() ) {
 		if (is_array($item_orders) && count($item_orders) > 0) {
 			foreach ($item_orders as $profile_id => $c_order) {
-				People_Contact_Profile_Data::update_order($profile_id, $c_order);
+				self::update_order($profile_id, $c_order);
 			}
 		}
 	}
@@ -185,7 +189,7 @@ class People_Contact_Profile_Data
 	public static function delete_rows($items=array()) {
 		if (is_array($items) && count($items) > 0) {
 			foreach ($items as $profile_id) {
-				People_Contact_Profile_Data::delete_row($profile_id);
+				self::delete_row($profile_id);
 			}
 		}
 	}
@@ -197,4 +201,3 @@ class People_Contact_Profile_Data
 		return $result;
 	}
 }
-?>

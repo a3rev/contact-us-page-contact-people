@@ -7,9 +7,11 @@
  * plugins_loaded()
  * create_page()
  * people_contact_register_sidebar()
-
  */
-class People_Contact_Functions 
+
+namespace A3Rev\ContactPeople;
+
+class Contact_Functions
 {	
 	
 	/** 
@@ -18,7 +20,7 @@ class People_Contact_Functions
 	public static function plugins_loaded() {
 		global $contact_people_page_id;
 
-		$contact_people_page_id = People_Contact_Functions::get_page_id_from_shortcode( 'people_contacts', 'contact_us_page_id');
+		$contact_people_page_id = self::get_page_id_from_shortcode( 'people_contacts', 'contact_us_page_id');
 	}
 	
 	public static function contact_to_people( $profile_data = array(), $send_copy_yourself = 1 ) {
@@ -122,9 +124,9 @@ class People_Contact_Functions
 			$content = apply_filters('people_contact_contact_profile_content', $content, $profile_data );
 			
 			// Filters for the email
-			add_filter( 'wp_mail_from', array( 'People_Contact_Functions', 'profile_get_from_address' ) );
-			add_filter( 'wp_mail_from_name', array( 'People_Contact_Functions', 'profile_get_from_name' ) );
-			add_filter( 'wp_mail_content_type', array( 'People_Contact_Functions', 'get_content_type' ) );
+			add_filter( 'wp_mail_from', array( __CLASS__, 'profile_get_from_address' ) );
+			add_filter( 'wp_mail_from_name', array( __CLASS__, 'profile_get_from_name' ) );
+			add_filter( 'wp_mail_content_type', array( __CLASS__, 'get_content_type' ) );
 			
 			wp_mail( $to_email, stripslashes( $profile_data['subject'] ), $content, $headers, '' );
 			
@@ -133,9 +135,9 @@ class People_Contact_Functions
 			}
 			
 			// Unhook filters
-			remove_filter( 'wp_mail_from', array( 'People_Contact_Functions', 'profile_get_from_address' ) );
-			remove_filter( 'wp_mail_from_name', array( 'People_Contact_Functions', 'profile_get_from_name' ) );
-			remove_filter( 'wp_mail_content_type', array( 'People_Contact_Functions', 'get_content_type' ) );
+			remove_filter( 'wp_mail_from', array( __CLASS__, 'profile_get_from_address' ) );
+			remove_filter( 'wp_mail_from_name', array( __CLASS__, 'profile_get_from_name' ) );
+			remove_filter( 'wp_mail_content_type', array( __CLASS__, 'get_content_type' ) );
 			return $contact_success;
 	}
 	
@@ -221,9 +223,9 @@ class People_Contact_Functions
 			$content = apply_filters('people_contact_contact_site_content', $content, $contact_data );
 			
 			// Filters for the email
-			add_filter( 'wp_mail_from', array( 'People_Contact_Functions', 'get_from_address' ) );
-			add_filter( 'wp_mail_from_name', array( 'People_Contact_Functions', 'get_from_name' ) );
-			add_filter( 'wp_mail_content_type', array( 'People_Contact_Functions', 'get_content_type' ) );
+			add_filter( 'wp_mail_from', array( __CLASS__, 'get_from_address' ) );
+			add_filter( 'wp_mail_from_name', array( __CLASS__, 'get_from_name' ) );
+			add_filter( 'wp_mail_content_type', array( __CLASS__, 'get_content_type' ) );
 			
 			wp_mail( $to_email, stripslashes( $contact_data['subject'] ), $content, $headers, '' );
 			
@@ -232,9 +234,9 @@ class People_Contact_Functions
 			}
 			
 			// Unhook filters
-			remove_filter( 'wp_mail_from', array( 'People_Contact_Functions', 'get_from_address' ) );
-			remove_filter( 'wp_mail_from_name', array( 'People_Contact_Functions', 'get_from_name' ) );
-			remove_filter( 'wp_mail_content_type', array( 'People_Contact_Functions', 'get_content_type' ) );
+			remove_filter( 'wp_mail_from', array( __CLASS__, 'get_from_address' ) );
+			remove_filter( 'wp_mail_from_name', array( __CLASS__, 'get_from_name' ) );
+			remove_filter( 'wp_mail_content_type', array( __CLASS__, 'get_content_type' ) );
 			
 			return $contact_success;
 	}
@@ -439,7 +441,7 @@ class People_Contact_Functions
 				$trid = $sitepress->get_element_trid( $original_id, 'post_page' );
 				foreach ( $active_languages as $language ) {
 					if ( $language['code'] == $source_lang_code ) continue;
-					People_Contact_Functions::create_page_wpml( $trid, $language['code'], $source_lang_code, $slug.'-'.$language['code'], $page_title.' '.$language['display_name'], $page_content );
+					self::create_page_wpml( $trid, $language['code'], $source_lang_code, $slug.'-'.$language['code'], $page_title.' '.$language['display_name'], $page_content );
 				}
 			}
 		}
@@ -497,4 +499,3 @@ class People_Contact_Functions
 		return $html;	
 	}
 }
-?>

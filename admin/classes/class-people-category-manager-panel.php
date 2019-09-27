@@ -7,7 +7,12 @@
  *
  * admin_screen()
  */
-class People_Category_Manager_Panel
+
+namespace A3Rev\ContactPeople\Admin;
+
+use A3Rev\ContactPeople\Data as Data;
+
+class Category_Manager
 {
 
 	public static function custom_upgrade_top_message( $message, $setting_id ) {
@@ -15,7 +20,7 @@ class People_Category_Manager_Panel
 
 		if ( $setting_id == 'a3_people_list_group_box' ) {
 			$message = '<div class="pro_feature_top_message">'
-				. sprintf( __( '<strong><a href="%s" target="_blank">Ultimate Version Feature</a></strong> The Groups feature enables admins to create a Group of profiles and insert them by shortcode completely independent of the Contact Us Page display. This can be done because each Profile has the option to show the profile or not show it on the main Contact Us Page. Simply Create Groups (like Categories) and assign Profiles to any number of groups. Then the Group (with a Group location map if required) can be inserted by shortcode in any page or post.', 'contact-us-page-contact-people' ), $people_contact_admin_init->pro_plugin_page_url )
+				. sprintf( __( '<strong><a href="%s" target="_blank">Ultimate Version Feature</a></strong> The Groups feature enables admins to create Groups of profiles and insert them by shortcode or Gutenberg Contact Groups Block completely independent of the Contact Us Page display. Simply Create Groups (like Categories) and assign Profiles to any number of groups. Then the Group (with a Group location map if required) can be inserted by shortcode or Block in any page or post.', 'contact-us-page-contact-people' ), $people_contact_admin_init->pro_plugin_page_url )
 				. '</div>';
 		}
 
@@ -26,7 +31,7 @@ class People_Category_Manager_Panel
 		$message = '';
 
 		global $people_contact_admin_init;
-		add_filter( $people_contact_admin_init->plugin_name . '_upgrade_top_message', array( 'People_Category_Manager_Panel', 'custom_upgrade_top_message' ), 10, 2 );
+		add_filter( $people_contact_admin_init->plugin_name . '_upgrade_top_message', array( __CLASS__, 'custom_upgrade_top_message' ), 10, 2 );
 
 		?>
         <div id="htmlForm">
@@ -36,13 +41,13 @@ class People_Category_Manager_Panel
         <?php echo $message; ?>
 		<?php
 		if ( isset($_GET['action']) && $_GET['action'] == 'add_new' ) {
-			People_Category_Manager_Panel::admin_category_update();
+			self::admin_category_update();
 		} elseif ( isset($_GET['action']) && $_GET['action'] == 'edit' ) {
-			People_Category_Manager_Panel::admin_category_update( $_GET['id'] );
+			self::admin_category_update( $_GET['id'] );
 		} elseif ( isset($_GET['action']) && $_GET['action'] == 'view-profile' ) {
-			People_Category_Manager_Panel::admin_category_profiles( $_GET['id'] );
+			self::admin_category_profiles( $_GET['id'] );
 		} else {
-			People_Category_Manager_Panel::admin_categories();
+			self::admin_categories();
 		}
 		?>
         </div>
@@ -474,4 +479,3 @@ class People_Category_Manager_Panel
 		<?php	
 	}
 }
-?>

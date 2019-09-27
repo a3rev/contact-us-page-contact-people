@@ -9,3 +9,4 @@
 /README.md export-ignore
 /.vscode/ export-ignore
 /node_modules/ export-ignore
+/composer.* export-ignore

@@ -3,7 +3,7 @@
  */
 import map from 'lodash/map';
 
-import { MarginControl, SpacingAttributes, IconBox } from '@bit/a3revsoftware.blockpress.spacing';
+import { PaddingControl, SpacingAttributes, IconBox } from '@bit/a3revsoftware.blockpress.spacing';
 
 const { __ } = wp.i18n;
 const { Component } = wp.element;
@@ -56,7 +56,7 @@ export default class InspectorCardSpacing extends Component {
 
 				<BaseControl className="a3-blockpress-control-spacing">
 					<IconBox />
-					<MarginControl { ...this.props } fieldName={ fieldName } />
+					<PaddingControl { ...this.props } fieldName={ fieldName } />
 				</BaseControl>
 			</PanelBody>
 		);

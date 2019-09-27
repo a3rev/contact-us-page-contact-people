@@ -8,12 +8,14 @@
  * @package CGB
  */
 
+namespace A3Rev\ContactPeople\Blocks;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class People_Contact_Profile_Block {
+class Profile {
 
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_block' ) );	
@@ -133,9 +135,9 @@ class People_Contact_Profile_Block {
 			$width = 100;
 		}
 
-		// Validate Margin Unit
-		if ( ! isset( $marginUnit ) ) {
-            $marginUnit = 'px';
+		// Validate Padding Unit
+		if ( ! isset( $paddingUnit ) ) {
+            $paddingUnit = 'px';
         }
 
 		$style = '';
@@ -145,17 +147,17 @@ class People_Contact_Profile_Block {
 
 		$style .= 'width:100%;max-width:'.$width.$widthUnit.';';
 
-		if ( isset( $marginLeft ) && ! empty( $marginLeft ) ) {
-			$style .= 'margin-left:'.$marginLeft.$marginUnit.';';
+		if ( isset( $paddingLeft ) && ! empty( $paddingLeft ) ) {
+			$style .= 'padding-left:'.$paddingLeft.$paddingUnit.';';
 		}
-		if ( isset( $marginTop ) && ! empty( $marginTop ) ) {
-			$style .= 'margin-top:'.$marginTop.$marginUnit.';';
+		if ( isset( $paddingTop ) && ! empty( $paddingTop ) ) {
+			$style .= 'padding-top:'.$paddingTop.$paddingUnit.';';
 		}
-		if ( isset( $marginRight ) && ! empty( $marginRight ) ) {
-			$style .= 'margin-right:'.marginRight.$marginUnit.';';
+		if ( isset( $paddingRight ) && ! empty( $paddingRight ) ) {
+			$style .= 'padding-right:'.$paddingRight.$paddingUnit.';';
 		}
-		if ( isset( $marginBottom ) && ! empty( $marginBottom ) ) {
-			$style .= 'margin-bottom:'.$marginBottom.$marginUnit.';';
+		if ( isset( $paddingBottom ) && ! empty( $paddingBottom ) ) {
+			$style .= 'padding-bottom:'.$paddingBottom.$paddingUnit.';';
 		}
 
 		ob_start();
@@ -165,6 +167,3 @@ class People_Contact_Profile_Block {
 		return $output;
 	}
 }
-
-new People_Contact_Profile_Block();
-?>

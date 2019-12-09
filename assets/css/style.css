@@ -242,6 +242,30 @@
 .people-entry-item .p_title {
   margin: 0 !important;
 }
+/*#people_contacts_container .people-entry-item .p_about_profile.fixed_height,
+.people-entry-item .p_about_profile.fixed_height {
+  position: relative;
+  overflow: hidden;
+  height: 4.2em;
+  padding-bottom: 1em;
+  margin-bottom: 8px;
+}
+#people_contacts_container .people-entry-item .p_about_profile.fixed_height::after,
+.people-entry-item .p_about_profile.fixed_height::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 1.4em;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 70%, rgba(255,255,255,0) 100%);
+}
+#people_contacts_container .people_box_content.has_map .people_item.has_marker .people-entry-item:hover .p_about_profile.fixed_height::after,
+.people_box_content.has_map .people_item.has_marker .people-entry-item:hover .p_about_profile.fixed_height::after {
+  background: rgb(230,243,244);
+  background: linear-gradient(0deg, rgba(230,243,244,1) 0%, rgba(230,243,244,0.8) 70%, rgba(230,243,244,0) 100%);
+}*/
 /* MAPS */
 body #people_contacts_container #map_canvas img,
 body #people_contacts_container .map_canvas_container img {
@@ -346,6 +370,9 @@ body #people_contacts_container .map_canvas_container .infowindow .info_avatar i
   font-size: 25px;
   font-family: Arial, sans-serif;
   padding: 0px 10px;
+}
+.contact_people_modal .gform_body .ginput_recaptcha {
+  transform: scale(1) !important;
 }
 .custom_contact_popup {
   position: relative;

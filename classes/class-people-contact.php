@@ -409,7 +409,8 @@ class Main {
 
 					if ( (trim($value['c_latitude']) == '' || trim($value['c_longitude']) == '' ) && trim($value['c_address']) != '') {
 						$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($value['c_address']).'&sensor=false' . $google_map_api_key ;
-						$geodata = file_get_contents($url);
+						$response = wp_remote_get( $url, array( 'timeout' => 120 ) );
+						$geodata = wp_remote_retrieve_body( $response );
 						$geodata = json_decode($geodata);
 						$value['c_latitude'] = $geodata->results[0]->geometry->location->lat;
 						$value['c_longitude'] = $geodata->results[0]->geometry->location->lng;
@@ -636,7 +637,7 @@ class Main {
 				$html .= '<div class="p_content_right">';
 				$html .= '<h3 class="p_item_name">'.esc_attr( stripslashes( $value['c_name'])).'</h3>';
 				if ( trim($value['c_about']) != '') {
-				$html .= '<div class="p_about_profile">';
+				$html .= '<div class="p_about_profile fixed_height">';
 				$html .= wpautop(wptexturize( stripslashes( $value['c_about'] ) ) );
 				$html .= '</div>';
 				}
@@ -766,7 +767,7 @@ class Main {
 				$html .= '<div class="p_content_right">';
 				$html .= '<h3 class="p_item_name">'.esc_attr( stripslashes( $peoples['c_name'])).'</h3>';
 				if ( trim($peoples['c_about']) != '') {
-				$html .= '<div class="p_about_profile">';
+				$html .= '<div class="p_about_profile fixed_height">';
 				$html .= wpautop(wptexturize( stripslashes( $peoples['c_about'] ) ) );
 				$html .= '</div>';
 				}

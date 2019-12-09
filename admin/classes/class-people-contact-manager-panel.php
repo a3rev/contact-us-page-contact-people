@@ -19,7 +19,7 @@ class Profile_Manager
 		global $people_contact_grid_view_icon;
 		$message = '';
 		if( isset($_GET['action']) && $_GET['action'] == 'del' && isset($_GET['id']) && $_GET['id'] >= 0){
-			Data\Profile::delete_row( $_GET['id'] );
+			Data\Profile::delete_row( absint( $_GET['id'] ) );
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully deleted.', 'contact-us-page-contact-people' ).'</p></div>';
 		} elseif ( isset($_GET['edited_profile']) ) {
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully updated.', 'contact-us-page-contact-people' ).'</p></div>';

@@ -527,7 +527,8 @@ class People_Contact_Contact_Widget_Global_Settings extends People_Contact_Admin
 
 		global $people_contact_widget_maps;
 		$googleapis_url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($people_contact_widget_maps['widget_location']).'&sensor=false' . $google_map_api_key;
-		$geodata = file_get_contents($googleapis_url);
+		$response = wp_remote_get( $googleapis_url, array( 'timeout' => 120 ) );
+		$geodata = wp_remote_retrieve_body( $response );
 		$geodata = json_decode($geodata);
 		$center_lat = $geodata->results[0]->geometry->location->lat;
 		$center_lng = $geodata->results[0]->geometry->location->lng;

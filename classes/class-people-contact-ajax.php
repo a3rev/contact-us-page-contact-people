@@ -38,16 +38,16 @@ class Ajax
 			'message' => people_ict_t__( 'Default Form - Contact Not Allow', __( "Sorry, you can't contact at this time.", 'contact-us-page-contact-people' ) ),
 		);
 
-		$contact_id         = stripslashes( $_POST['contact_id'] );
-		$from_page_id       = isset( $_POST['from_page_id'] ) ? $_POST['from_page_id'] : 0;
-		$profile_email      =  esc_attr( stripslashes( $_POST['profile_email'] ) );
-		$profile_name       =  esc_attr( stripslashes( $_POST['profile_name'] ) );
-		$your_name          = esc_attr( stripslashes( $_POST['your_name'] ) );
-		$your_email         = esc_attr( stripslashes( $_POST['your_email'] ) );
-		$your_phone         = esc_attr( stripslashes( $_POST['your_phone'] ) );
-		$your_subject       = esc_attr( stripslashes( $_POST['your_subject'] ) );
-		$your_message       = esc_attr( stripslashes( strip_tags( $_POST['your_message'] ) ) );
-		$send_copy_yourself = stripslashes( $_POST['send_copy'] );
+		$contact_id         = absint( $_POST['contact_id'] );
+		$from_page_id       = isset( $_POST['from_page_id'] ) ? absint( $_POST['from_page_id'] ) : 0;
+		$profile_email      = sanitize_text_field( wp_unslash( $_POST['profile_email'] ) );
+		$profile_name       = sanitize_text_field( wp_unslash( $_POST['profile_name'] ) );
+		$your_name          = sanitize_text_field( wp_unslash( $_POST['your_name'] ) );
+		$your_email         = sanitize_text_field( wp_unslash( $_POST['your_email'] ) );
+		$your_phone         = sanitize_text_field( wp_unslash( $_POST['your_phone'] ) );
+		$your_subject       = sanitize_text_field( wp_unslash( $_POST['your_subject'] ) );
+		$your_message       = sanitize_textarea_field( wp_unslash( $_POST['your_message'] ) );
+		$send_copy_yourself = sanitize_text_field( wp_unslash( $_POST['send_copy'] ) );
 
 		if ( '' != trim( $your_subject ) ) {
 			$subject = trim( $your_subject ). ' ' . people_ict_t__( 'Email Inquiry - from', __('from', 'contact-us-page-contact-people' ) ) . ' ' . ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );

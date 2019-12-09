@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 4.6
-Tested up to: 5.2.3
-Stable tag: 3.4.0
+Tested up to: 5.3
+Stable tag: 3.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,14 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.4.1 - 2019/12/09 =
+* This feature release a full security review plus compatibility with WordPress 5.3.0
+* Tweak - Remove the hard coded PHP error_reporting display errors false from compile sass to css
+* Tweak - Test for compatibility with WordPress 5.3.0
+* Fix - Show recaptcha on modal popup for gravity form
+* Dev - Replace file_get_contents with HTTP API wp_remote_get
+* Dev - Ensure that all inputs are sanitized and all outputs are escaped
 
 = 3.4.0 - 2019/09/27 =
 * This feature upgrade is a full refactor of the plugins PHP to PHP dependency manager Composer with autoloading.
@@ -547,6 +555,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.4.1 =
+This feature release a full security review plus compatibility with WordPress 5.3.0
 
 = 3.4.0 =
 This feature upgrade is a full refactor of the plugins PHP to PHP dependency manager Composer with autoloading plus compatibility with WordPress 5.2.3

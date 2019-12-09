@@ -257,7 +257,7 @@ class Hook_Filter
 		$i = 0;
 		foreach ($updateRecordsArray as $recordIDValue) {
 			$i++;
-			Data\Profile::update_order($recordIDValue, $i);
+			Data\Profile::update_order( absint( $recordIDValue ), $i);
 		}
 		die();
 	}

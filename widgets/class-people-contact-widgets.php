@@ -90,7 +90,8 @@ class Widget extends \WP_Widget {
 					<?php
 
 					$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($geocoords).'&sensor=false' . $google_map_api_key;
-					$geodata = file_get_contents($url);
+					$response = wp_remote_get( $url, array( 'timeout' => 120 ) );
+					$geodata = wp_remote_retrieve_body( $response );
 					$geodata = json_decode($geodata);
 					$center_lat = $geodata->results[0]->geometry->location->lat;
 					$center_lng = $geodata->results[0]->geometry->location->lng;
@@ -224,7 +225,7 @@ class Widget extends \WP_Widget {
 					$nameError =  __( 'You forgot to enter your name.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {
-					$name = trim( $_POST['contactName'] );
+					$name = trim( sanitize_text_field( $_POST['contactName'] ) );
 				}
 
 				//Check to make sure sure that a valid email address is submitted
@@ -235,7 +236,7 @@ class Widget extends \WP_Widget {
 					$emailError = __( 'You entered an invalid email address.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {
-					$email = trim( $_POST['email'] );
+					$email = trim( sanitize_text_field( $_POST['email'] ) );
 				}
 
 				//Check to make sure comments were entered
@@ -243,7 +244,7 @@ class Widget extends \WP_Widget {
 					$contactError = __( 'You forgot to enter your comments.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {
-					$comments = stripslashes( trim( $_POST['comments'] ) );
+					$comments = sanitize_textarea_field( trim( $_POST['comments'] ) );
 				}
 
 				if ( $show_acceptance && ( ! isset( $_POST['agree_terms'] ) || 1 != $_POST['agree_terms'] ) ) {

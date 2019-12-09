@@ -43,9 +43,9 @@ class Category_Manager
 		if ( isset($_GET['action']) && $_GET['action'] == 'add_new' ) {
 			self::admin_category_update();
 		} elseif ( isset($_GET['action']) && $_GET['action'] == 'edit' ) {
-			self::admin_category_update( $_GET['id'] );
+			self::admin_category_update( absint( $_GET['id'] ) );
 		} elseif ( isset($_GET['action']) && $_GET['action'] == 'view-profile' ) {
-			self::admin_category_profiles( $_GET['id'] );
+			self::admin_category_profiles( absint( $_GET['id'] ) );
 		} else {
 			self::admin_categories();
 		}

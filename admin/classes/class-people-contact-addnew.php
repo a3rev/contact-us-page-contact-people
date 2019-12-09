@@ -14,7 +14,6 @@ use A3Rev\ContactPeople\Data as Data;
 
 class AddNew
 {
-
 	public static function profile_form_action() {
 		if ( !is_admin() ) return ;
 
@@ -32,8 +31,8 @@ class AddNew
 				return;
 			}
 
-			$_REQUEST['contact_arr']['c_avatar'] = $_REQUEST['c_avatar'];
-			$_REQUEST['contact_arr']['c_attachment_id'] = $_REQUEST['c_avatar_attachment_id'];
+			$_REQUEST['contact_arr']['c_avatar'] = sanitize_text_field( $_REQUEST['c_avatar'] );
+			$_REQUEST['contact_arr']['c_attachment_id'] = absint( $_REQUEST['c_avatar_attachment_id'] );
 
 			if ( isset($_REQUEST['contact_arr']['c_website']) && trim( $_REQUEST['contact_arr']['c_website'] ) == 'http://' ) $_REQUEST['contact_arr']['c_website'] = '';
 
@@ -60,8 +59,8 @@ class AddNew
 				return;
 			}
 
-			$_REQUEST['contact_arr']['c_avatar'] = $_REQUEST['c_avatar'];
-			$_REQUEST['contact_arr']['c_attachment_id'] = $_REQUEST['c_avatar_attachment_id'];
+			$_REQUEST['contact_arr']['c_avatar'] = sanitize_text_field( $_REQUEST['c_avatar'] );
+			$_REQUEST['contact_arr']['c_attachment_id'] = absint( $_REQUEST['c_avatar_attachment_id'] );
 
 			if ( isset($_REQUEST['contact_arr']['c_website']) && trim( $_REQUEST['contact_arr']['c_website'] ) == 'http://' ) $_REQUEST['contact_arr']['c_website'] = '';
 
@@ -122,11 +121,12 @@ class AddNew
 
 		if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id']) && $_GET['id'] >= 0) {
 			$bt_type = 'update_contact';
-			$data    = Data\Profile::get_row( $_GET['id'], '', 'ARRAY_A' );
+			$data    = Data\Profile::get_row( absint( $_GET['id'] ), '', 'ARRAY_A' );
 			$title   = __('Edit Profile', 'contact-us-page-contact-people' );
 			if ( (trim($data['c_latitude']) == '' || trim($data['c_longitude']) == '' ) && trim($data['c_address']) != '') {
 				$googleapis_url      = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($data['c_address']).'&sensor=false' . $google_map_api_key;
-				$geodata             = file_get_contents($googleapis_url);
+				$response            = wp_remote_get( $googleapis_url, array( 'timeout' => 120 ) );
+				$geodata             = wp_remote_retrieve_body( $response );
 				$geodata             = json_decode($geodata);
 				$data['c_latitude']  = $geodata->results[0]->geometry->location->lat;
 				$data['c_longitude'] = $geodata->results[0]->geometry->location->lng;
@@ -155,7 +155,7 @@ class AddNew
           <div style="clear:both;"></div>
 		  <div class="contact_manager a3rev_panel_container a3rev_custom_panel_container">
 			<form action="" name="add_conact" id="add_contact" method="post">
-			<input type="hidden" value="<?php if ( isset( $_GET['id'] ) ) echo $_GET['id']; ?>" id="profile_id" name="contact_arr[profile_id]">
+			<input type="hidden" value="<?php if ( isset( $_GET['id'] ) ) echo absint( $_GET['id'] ); ?>" id="profile_id" name="contact_arr[profile_id]">
             <div class="col-left">
 	            <?php ob_start(); ?>
 				<table class="form-table" style="margin-bottom:0;">

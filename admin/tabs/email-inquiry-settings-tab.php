@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\ContactPeople\FrameWork\Tabs {
+
+use A3Rev\ContactPeople\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 Email Inquiry Global Settings Tab
 
@@ -22,7 +26,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class People_Email_Inquiry_Settings_Tab extends People_Contact_Admin_UI
+class Inquiry_Settings extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -103,7 +107,8 @@ class People_Email_Inquiry_Settings_Tab extends People_Contact_Admin_UI
 	public function settings_include() {
 		
 		// Includes Settings file
-		include_once( $this->admin_plugin_dir() . '/settings/email-inquiry/global-settings.php' );
+		global $people_contact_email_inquiry_global_settings;
+		$people_contact_email_inquiry_global_settings = new FrameWork\Settings\Email_Inquiry();
 		
 	}
 	
@@ -119,8 +124,10 @@ class People_Email_Inquiry_Settings_Tab extends People_Contact_Admin_UI
 	}
 }
 
-global $people_email_inquiry_settings_tab;
-$people_email_inquiry_settings_tab = new People_Email_Inquiry_Settings_Tab();
+}
+
+// global code
+namespace {
 
 /** 
  * people_email_inquiry_settings_tab_manager()
@@ -131,4 +138,4 @@ function people_email_inquiry_settings_tab_manager() {
 	$people_email_inquiry_settings_tab->tab_manager();
 }
 
-?>
+}

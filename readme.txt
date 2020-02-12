@@ -2,9 +2,9 @@
 	
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
-Requires at least: 4.6
-Tested up to: 5.3
-Stable tag: 3.4.1
+Requires at least: 4.9
+Tested up to: 5.3.2
+Stable tag: 3.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,8 +105,8 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 	
 = Minimum Requirements =
 	
-* WordPress 4.6
-* PHP version 5.6.0 or greater
+* WordPress 4.9
+* PHP version 7.0 or greater
 * MySQL version 5.6.0 or greater
 	
 == Screenshots ==
@@ -134,6 +134,12 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.4.2 - 2020/02/12 =
+* This maintenance release completes the upgrade to PHP Composer, plus compatibility with WordPress v 5.3.2
+* Tweak - Plugin Framework fully refactored to Composer for cleaner code and faster PHP code on admin panels
+* Tweak - Update plugin for compatibility with new version of plugin Framework
+* Tweak - Test for compatibility with WordPress 5.3.2
 
 = 3.4.1 - 2019/12/09 =
 * This feature release a full security review plus compatibility with WordPress 5.3.0
@@ -555,6 +561,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.4.2 =
+This maintenance release completes the upgrade to PHP Composer, plus compatibility with WordPress v 5.3.2
 
 = 3.4.1 =
 This feature release a full security review plus compatibility with WordPress 5.3.0

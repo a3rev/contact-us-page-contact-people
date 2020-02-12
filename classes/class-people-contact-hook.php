@@ -49,7 +49,7 @@ class Hook_Filter
 
 		$people_contact_loaded_google_fonts = true;
 
-		global $people_contact_fonts_face;
+		global ${PEOPLE_CONTACT_PREFIX.'fonts_face'};
 
 		$google_fonts = array(
 			$people_contact_grid_view_layout['card_title_font']['face'],
@@ -65,7 +65,7 @@ class Hook_Filter
 			$people_email_inquiry_global_settings['inquiry_contact_button_font']['face']
 		);
 
-		$people_contact_fonts_face->generate_google_webfonts( $google_fonts );
+		${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_google_webfonts( $google_fonts );
 	}
 
 	public static function frontend_scripts_register() {
@@ -80,8 +80,8 @@ class Hook_Filter
 		wp_register_style( 'people_contact_style', PEOPLE_CONTACT_CSS_URL.'/style'.$suffix.'.css', array(), PEOPLE_CONTACT_VERSION );
 
 		if ( file_exists( $_upload_dir['basedir'] . '/sass/wp_contact_people'.$suffix.'.css' ) ) {
-			global $a3_people_contact_less;
-			wp_register_style( 'wp_contact_people', str_replace(array('http:','https:'), '', $_upload_dir['baseurl'] ) . '/sass/wp_contact_people'.$suffix.'.css', array( 'people_contact_style' ), $a3_people_contact_less->get_css_file_version() );
+			global ${PEOPLE_CONTACT_PREFIX.'less'};
+			wp_register_style( 'wp_contact_people', str_replace(array('http:','https:'), '', $_upload_dir['baseurl'] ) . '/sass/wp_contact_people'.$suffix.'.css', array( 'people_contact_style' ), ${PEOPLE_CONTACT_PREFIX.'less'}->get_css_file_version() );
 		}
 		if ( $is_IE ) {
 			wp_register_script( 'respondjs', PEOPLE_CONTACT_JS_URL . '/respond-ie.js', array( 'jquery' ) );
@@ -230,10 +230,10 @@ class Hook_Filter
 
 	public static function add_new_load_only_script(){
 
-		global $people_contact_admin_init;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 		$google_map_api_key = '';
-		if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
-			$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+		if ( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option, '' );
 		}
 
 		if ( ! empty( $google_map_api_key ) ) {
@@ -272,9 +272,9 @@ class Hook_Filter
 
 	public static function plugin_extension_box( $boxes = array() ) {
 
-		global $people_contact_admin_init;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 		
-		$support_box = '<a href="'.$people_contact_admin_init->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/go-to-support-forum.png" /></a>';
+		$support_box = '<a href="'.${PEOPLE_CONTACT_PREFIX.'admin_init'}->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'contact-us-page-contact-people' ).'"><img src="'.PEOPLE_CONTACT_IMAGE_URL.'/go-to-support-forum.png" /></a>';
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'
@@ -309,9 +309,9 @@ class Hook_Filter
 			return $links;
 		}
 
-		global $people_contact_admin_init;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 
-		$links[] = '<a href="'.$people_contact_admin_init->support_url.'" target="_blank">'.__('Support', 'contact-us-page-contact-people' ).'</a>';
+		$links[] = '<a href="'.${PEOPLE_CONTACT_PREFIX.'admin_init'}->support_url.'" target="_blank">'.__('Support', 'contact-us-page-contact-people' ).'</a>';
 		return $links;
 	}
 
@@ -322,12 +322,12 @@ class Hook_Filter
 	}
 
 	public static function map_notice() {
-		global $people_contact_admin_init;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 
 		global $widget_hide_maps_frontend;
 		global $people_contact_location_map_settings;
 
-		if (  ( 1 == $widget_hide_maps_frontend && 1 == $people_contact_location_map_settings['hide_maps_frontend'] ) || $people_contact_admin_init->is_valid_google_map_api_key() ) return;
+		if (  ( 1 == $widget_hide_maps_frontend && 1 == $people_contact_location_map_settings['hide_maps_frontend'] ) || ${PEOPLE_CONTACT_PREFIX.'admin_init'}->is_valid_google_map_api_key() ) return;
 	?>
 		<div class="error below-h2" style="display:block !important; margin-left:2px;">
 			<p><?php echo sprintf( __( 'Warning: No Google Maps API key was found - Maps may not show without a key. Go to the <a href="%s">Google Maps API option box</a>, enter your key and Save Changes or switch Google Maps OFF <a href="%s">here</a> and <a href="%s">here</a>.' , 'contact-us-page-contact-people' ), admin_url( 'admin.php?page=people-contact-settings&box_open=google_map_api_key_settings_box' ), admin_url( 'admin.php?page=people-contact-settings&box_open=google_map_settings_box' ), admin_url( 'admin.php?page=people-contact-settings&tab=contact-widget&box_open=contact_widget_map_settings_box' ) ); ?></p>

@@ -289,8 +289,8 @@ class Contact_Functions
 
 		if ( ! wp_script_is( 'bootstrap-modal', 'registered' ) 
 			&& ! wp_script_is( 'bootstrap-modal', 'enqueued' ) ) {
-			global $people_contact_admin_interface;
-			$people_contact_admin_interface->register_modal_scripts();
+			global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
+			${PEOPLE_CONTACT_PREFIX.'admin_interface'}->register_modal_scripts();
 		}
 
 		wp_enqueue_style( 'bootstrap-modal' );

@@ -303,9 +303,9 @@ class Main {
 
 		$google_map_api_key = '';
 		if ( $show_map != 0 ) {
-			global $people_contact_admin_init;
-			if ( $people_contact_admin_init->is_valid_google_map_api_key() ) {
-				$google_map_api_key = get_option( $people_contact_admin_init->google_map_api_key_option, '' );
+			global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
+			if ( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->is_valid_google_map_api_key() ) {
+				$google_map_api_key = get_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option, '' );
 			}
 
 			if ( ! empty( $google_map_api_key ) ) {
@@ -412,8 +412,11 @@ class Main {
 						$response = wp_remote_get( $url, array( 'timeout' => 120 ) );
 						$geodata = wp_remote_retrieve_body( $response );
 						$geodata = json_decode($geodata);
-						$value['c_latitude'] = $geodata->results[0]->geometry->location->lat;
-						$value['c_longitude'] = $geodata->results[0]->geometry->location->lng;
+
+						if ( isset( $geodata->results[0] ) ) {
+							$value['c_latitude'] = $geodata->results[0]->geometry->location->lat;
+							$value['c_longitude'] = $geodata->results[0]->geometry->location->lng;
+						}
 
 						$update_lat_lng = true;
 					}

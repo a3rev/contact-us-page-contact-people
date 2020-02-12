@@ -16,11 +16,11 @@ class Category_Manager
 {
 
 	public static function custom_upgrade_top_message( $message, $setting_id ) {
-		global $people_contact_admin_init;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 
 		if ( $setting_id == 'a3_people_list_group_box' ) {
 			$message = '<div class="pro_feature_top_message">'
-				. sprintf( __( '<strong><a href="%s" target="_blank">Ultimate Version Feature</a></strong> The Groups feature enables admins to create Groups of profiles and insert them by shortcode or Gutenberg Contact Groups Block completely independent of the Contact Us Page display. Simply Create Groups (like Categories) and assign Profiles to any number of groups. Then the Group (with a Group location map if required) can be inserted by shortcode or Block in any page or post.', 'contact-us-page-contact-people' ), $people_contact_admin_init->pro_plugin_page_url )
+				. sprintf( __( '<strong><a href="%s" target="_blank">Ultimate Version Feature</a></strong> The Groups feature enables admins to create Groups of profiles and insert them by shortcode or Gutenberg Contact Groups Block completely independent of the Contact Us Page display. Simply Create Groups (like Categories) and assign Profiles to any number of groups. Then the Group (with a Group location map if required) can be inserted by shortcode or Block in any page or post.', 'contact-us-page-contact-people' ), ${PEOPLE_CONTACT_PREFIX.'admin_init'}->pro_plugin_page_url )
 				. '</div>';
 		}
 
@@ -30,8 +30,8 @@ class Category_Manager
 	public static function admin_screen () {
 		$message = '';
 
-		global $people_contact_admin_init;
-		add_filter( $people_contact_admin_init->plugin_name . '_upgrade_top_message', array( __CLASS__, 'custom_upgrade_top_message' ), 10, 2 );
+		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
+		add_filter( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->plugin_name . '_upgrade_top_message', array( __CLASS__, 'custom_upgrade_top_message' ), 10, 2 );
 
 		?>
         <div id="htmlForm">
@@ -56,7 +56,7 @@ class Category_Manager
 	}
 	
 	public static function admin_categories () {
-		global $people_contact_admin_interface;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
 		$all_categories = array ( array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) ) );
 	?>
         <div class="icon32 icon32-a3rev-ui-settings icon32-a3revpeople-contact-settings" id="icon32-a3revpeople-category-manager"><br></div><h1><?php _e('Groups', 'contact-us-page-contact-people' ); ?> <a class="add-new-h2" href="<?php echo admin_url('admin.php?page=people-category-manager&action=add_new', 'relative');?>"><?php _e('Add New', 'contact-us-page-contact-people' ); ?></a></h1>
@@ -64,7 +64,7 @@ class Category_Manager
 <div id="a3_plugin_panel_container">
 	<div id="a3_plugin_panel_upgrade_area">
 		<div id="a3_plugin_panel_extensions">
-		<?php $people_contact_admin_interface->plugin_extension_boxes( true ); ?>
+		<?php ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->plugin_extension_boxes( true ); ?>
 		</div>
 	</div>
 	<div id="a3_plugin_panel_fields">
@@ -125,7 +125,7 @@ class Category_Manager
 		</form>
 		<?php
 	        $settings_html = ob_get_clean();
-	        $people_contact_admin_interface->panel_box( $settings_html, array(
+	        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
 	        	'name' 		=> __( 'List Groups', 'contact-us-page-contact-people' ),
 	        	'class'		=> 'pro_feature_fields',
 	        	'id'		=> 'a3_people_list_group_box',
@@ -140,7 +140,7 @@ class Category_Manager
 	}
 	
 	public static function admin_category_update( $category_id = 0) {
-		global $people_contact_admin_interface;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
 		global $people_contact_location_map_settings;
 		$category_name      = '';
 		$publish            = 1;
@@ -167,7 +167,7 @@ class Category_Manager
 <div id="a3_plugin_panel_container">
 	<div id="a3_plugin_panel_upgrade_area">
 		<div id="a3_plugin_panel_extensions">
-		<?php $people_contact_admin_interface->plugin_extension_boxes( true ); ?>
+		<?php ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->plugin_extension_boxes( true ); ?>
 		</div>
 	</div>
 	<div id="a3_plugin_panel_fields">
@@ -201,7 +201,7 @@ class Category_Manager
 			</table>
 			<?php
 	        $settings_html = ob_get_clean();
-	        $people_contact_admin_interface->panel_box( $settings_html, array(
+	        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
 	        	'name' 		=> $title,
 	        	'class'		=> 'pro_feature_fields',
 	        	'id'		=> 'a3_people_group_box',
@@ -334,7 +334,7 @@ class Category_Manager
 
 			<?php
 	        $settings_html = ob_get_clean();
-	        $people_contact_admin_interface->panel_box( $settings_html, array(
+	        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
 	        	'name' 		=> __( 'Group Google Map', 'contact-us-page-contact-people' ),
 	        	'desc'		=> __( 'A Google Map showing all profile locations. When inserting this groups shortcode you have the option to show the group map. Set the Map display settings here.', 'contact-us-page-contact-people' ),
 	        	'id'		=> 'a3_people_group_g_map_box',
@@ -391,7 +391,7 @@ class Category_Manager
 	public static function admin_category_profiles ( $category_id ) {
 		if ( $category_id < 1 ) return '';
 		
-		global $people_contact_admin_interface;
+		global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
 		global $people_contact_grid_view_icon;
 		
 		$current_category = array('id' => 1, 'category_name' => __('Profile Group', 'contact-us-page-contact-people' ) );
@@ -403,7 +403,7 @@ class Category_Manager
 <div id="a3_plugin_panel_container">
 	<div id="a3_plugin_panel_upgrade_area">
 		<div id="a3_plugin_panel_extensions">
-		<?php $people_contact_admin_interface->plugin_extension_boxes( true ); ?>
+		<?php ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->plugin_extension_boxes( true ); ?>
 		</div>
 	</div>
 	<div id="a3_plugin_panel_fields">
@@ -465,7 +465,7 @@ class Category_Manager
 		</form>
 		<?php
 	        $settings_html = ob_get_clean();
-	        $people_contact_admin_interface->panel_box( $settings_html, array(
+	        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
 	        	'name' 		=> __( 'Profile Group', 'contact-us-page-contact-people' ),
 	        	'class'		=> 'pro_feature_fields',
 	        	'id'		=> 'a3_people_list_profiles_group_box',

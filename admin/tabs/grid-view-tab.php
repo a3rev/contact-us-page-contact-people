@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\ContactPeople\FrameWork\Tabs {
+
+use A3Rev\ContactPeople\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 Grid View Tab
 
@@ -22,7 +26,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class People_Contact_Grid_View_Tab extends People_Contact_Admin_UI
+class Grid_View extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -103,7 +107,8 @@ class People_Contact_Grid_View_Tab extends People_Contact_Admin_UI
 	public function settings_include() {
 		
 		// Includes Settings file
-		include_once( $this->admin_plugin_dir() . '/settings/grid-view-layout-settings.php' );
+		global $people_contact_grid_view_layout_settings;
+		$people_contact_grid_view_layout_settings = new FrameWork\Settings\Grid_View_Layout();
 		
 	}
 	
@@ -112,16 +117,16 @@ class People_Contact_Grid_View_Tab extends People_Contact_Admin_UI
 	/* Call tab layout from Admin Init 
 	/*-----------------------------------------------------------------------------------*/
 	public function tab_manager() {
-		global $people_contact_admin_init;
-
 		$this->plugin_extension_start();
 		people_contact_grid_view_layout_settings_form();
 		$this->plugin_extension_end();
 	}
 }
 
-global $people_contact_grid_view_tab;
-$people_contact_grid_view_tab = new People_Contact_Grid_View_Tab();
+}
+
+// global code
+namespace {
 
 /** 
  * people_contact_grid_view_tab_manager()
@@ -132,4 +137,4 @@ function people_contact_grid_view_tab_manager() {
 	$people_contact_grid_view_tab->tab_manager();
 }
 
-?>
+}

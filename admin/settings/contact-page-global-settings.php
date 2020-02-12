@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\ContactPeople\FrameWork\Settings {
+
+use A3Rev\ContactPeople\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 Contact Page Global Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class Contact_Page_Global_Settings extends People_Contact_Admin_UI
+class Global_Panel extends FrameWork\Admin_UI
 {
 	
 	/**
@@ -107,9 +111,9 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$people_contact_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -129,9 +133,9 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$people_contact_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -175,10 +179,10 @@ class Contact_Page_Global_Settings extends People_Contact_Admin_UI
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
 		$output = '';
-		$output .= $people_contact_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 		
 		return $output;
 	}
@@ -447,8 +451,10 @@ $(document).ready(function() {
 	}
 }
 
-global $contact_page_global_settings;
-$contact_page_global_settings = new Contact_Page_Global_Settings();
+}
+
+// global code
+namespace {
 
 /** 
  * contact_page_global_settings_form()
@@ -459,4 +465,4 @@ function contact_page_global_settings_form() {
 	$contact_page_global_settings->settings_form();
 }
 
-?>
+}

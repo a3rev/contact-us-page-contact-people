@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\ContactPeople\FrameWork\Settings {
+
+use A3Rev\ContactPeople\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 People Email Inquiry Global Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
+class Email_Inquiry extends FrameWork\Admin_UI
 {
 	
 	/**
@@ -107,9 +111,9 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$people_contact_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -117,9 +121,9 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 	/* Reset default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function reset_default_settings() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$people_contact_admin_interface->reset_settings( $this->form_fields, $this->option_name, true, true );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, true, true );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -127,9 +131,9 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$people_contact_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -173,10 +177,10 @@ class People_Email_Inquiry_Global_Settings extends People_Contact_Admin_UI
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $people_contact_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
 		$output = '';
-		$output .= $people_contact_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 		
 		return $output;
 	}
@@ -804,8 +808,10 @@ $(document).ready(function() {
 	}
 }
 
-global $people_contact_email_inquiry_global_settings;
-$people_contact_email_inquiry_global_settings = new People_Email_Inquiry_Global_Settings();
+}
+
+// global code
+namespace {
 
 /** 
  * people_email_inquiry_global_settings_form()
@@ -816,4 +822,4 @@ function people_contact_email_inquiry_global_settings_form() {
 	$people_contact_email_inquiry_global_settings->settings_form();
 }
 
-?>
+}

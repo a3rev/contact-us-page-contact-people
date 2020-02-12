@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\ContactPeople\FrameWork\Pages {
+
+use A3Rev\ContactPeople\FrameWork;
+
 // File Security Check
-if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /*-----------------------------------------------------------------------------------
 People Contact Settings Page
 
@@ -21,7 +25,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class People_Contact_Settings_Page extends People_Contact_Admin_UI
+class People_Contact extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -93,11 +97,18 @@ class People_Contact_Settings_Page extends People_Contact_Admin_UI
 	/* Include all tabs into this page
 	/*-----------------------------------------------------------------------------------*/
 	public function tabs_include() {
-		
-		include_once( $this->admin_plugin_dir() . '/tabs/contact-page-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/grid-view-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/email-inquiry-settings-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/contact-widget-tab.php' );
+
+		global $people_contact_contact_page_tab;
+		$people_contact_contact_page_tab = new FrameWork\Tabs\Contact_Page();
+
+		global $people_contact_grid_view_tab;
+		$people_contact_grid_view_tab = new FrameWork\Tabs\Grid_View();
+
+		global $people_email_inquiry_settings_tab;
+		$people_email_inquiry_settings_tab = new FrameWork\Tabs\Inquiry_Settings();
+
+		global $people_contact_contact_widget_tab;
+		$people_contact_contact_widget_tab = new FrameWork\Tabs\Contact_Widget();
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -105,15 +116,17 @@ class People_Contact_Settings_Page extends People_Contact_Admin_UI
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
 	public function admin_settings_page() {
-		global $people_contact_admin_init;
+		global ${$this->plugin_prefix.'admin_init'};
 		
-		$people_contact_admin_init->admin_settings_page( $this->page_data() );
+		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $this->page_data() );
 	}
 	
 }
 
-global $people_contact_settings_page;
-$people_contact_settings_page = new People_Contact_Settings_Page();
+}
+
+// global code
+namespace {
 
 /** 
  * people_contact_settings_page_show()
@@ -124,4 +137,4 @@ function people_contact_settings_page_show() {
 	$people_contact_settings_page->admin_settings_page();
 }
 
-?>
+}

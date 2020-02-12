@@ -2,11 +2,11 @@
 /*
 Plugin Name: Contact Us page - Contact people LITE
 Description: Instantly and easily create a simply stunning Contact Us page on almost any theme. Google location map, People Contact Profiles and a fully featured Contact Us widget. Fully responsive and easy to customize. Ultimate Version upgrade for even more features.
-Version: 3.4.1
+Version: 3.4.2
 Author: a3rev Software
 Author URI: https://a3rev.com/
-Requires at least: 4.1
-Tested up to: 5.3
+Requires at least: 4.9
+Tested up to: 5.3.2
 Text Domain: contact-us-page-contact-people
 Domain Path: /languages
 License: GPLv2 or later
@@ -40,8 +40,11 @@ define('PEOPLE_CONTACT_IMAGE_URL', PEOPLE_CONTACT_URL . '/assets/images');
 if (!defined("PEOPLE_CONTACT_ULTIMATE_URI")) define("PEOPLE_CONTACT_ULTIMATE_URI", "https://a3rev.com/shop/contact-people-ultimate/");
 
 define( 'PEOPLE_CONTACT_KEY', 'contact_us_page_contact_people' );
-define( 'PEOPLE_CONTACT_VERSION', '3.4.1' );
+define( 'PEOPLE_CONTACT_PREFIX', 'people_contact_' );
+define( 'PEOPLE_CONTACT_VERSION', '3.4.2' );
 define( 'PEOPLE_CONTACT_G_FONTS', true );
+
+use \A3Rev\ContactPeople\FrameWork;
 
 if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 	require __DIR__ . '/vendor/autoload.php';
@@ -50,6 +53,23 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 
 	global $people_contact_wpml;
 	$people_contact_wpml = new \A3Rev\ContactPeople\WPML_Functions();
+
+	/**
+	 * Plugin Framework init
+	 */
+	global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
+	${PEOPLE_CONTACT_PREFIX.'admin_interface'} = new FrameWork\Admin_Interface();
+
+	global $people_contact_settings_page;
+	$people_contact_settings_page = new FrameWork\Pages\People_Contact();
+
+	global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
+	${PEOPLE_CONTACT_PREFIX.'admin_init'} = new FrameWork\Admin_Init();
+
+	global ${PEOPLE_CONTACT_PREFIX.'less'};
+	${PEOPLE_CONTACT_PREFIX.'less'} = new FrameWork\Less_Sass();
+
+	// End - Plugin Framework init
 
 	global $people_contact;
 	$people_contact = new \A3Rev\ContactPeople\Main();
@@ -80,14 +100,6 @@ function wp_people_contact_plugin_textdomain() {
 	load_textdomain( 'contact-us-page-contact-people', WP_LANG_DIR . '/contact-us-page-contact-people/contact-us-page-contact-people-' . $locale . '.mo' );
 	load_plugin_textdomain( 'contact-us-page-contact-people', false, PEOPLE_CONTACT_FOLDER.'/languages' );
 }
-
-include ('admin/admin-ui.php');
-include ('admin/admin-interface.php');
-
-include ('admin/admin-pages/admin-settings-page.php');
-
-include ('admin/admin-init.php');
-include ('admin/less/sass.php');
 
 // Editor
 include 'tinymce3/tinymce.php';

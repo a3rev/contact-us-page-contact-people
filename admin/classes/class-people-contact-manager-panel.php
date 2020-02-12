@@ -27,7 +27,7 @@ class Profile_Manager
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully created.', 'contact-us-page-contact-people' ).'</p></div>';
 		}
 		
-		$my_contacts = Data\Profile::get_results('', 'c_order ASC', '', 'ARRAY_A');
+		$my_contacts = Data\Profile::get_results('', 'c_order ASC, id ASC', '', 'ARRAY_A');
 		?>
         <div id="htmlForm">
         <div style="clear:both"></div>

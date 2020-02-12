@@ -1,7 +1,7 @@
 <style>
 /* Grid View Layout */
 <?php
-global $people_contact_admin_interface, $people_contact_fonts_face;
+global ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, ${PEOPLE_CONTACT_PREFIX.'fonts_face'};
 global $people_contact_grid_view_layout;
 ?>
 #people_contacts_container .people-entry-item .p_content_left,
@@ -42,22 +42,22 @@ global $people_contact_grid_view_layout;
 #people_contacts_container .people-entry-item .p_item_title,
 .people-entry-item .p_item_title {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $people_contact_grid_view_layout['card_title_font'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $people_contact_grid_view_layout['card_title_font'] ); ?>
 }
 #people_contacts_container .people-entry-item .p_item_name,
 .people-entry-item .p_item_name {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $people_contact_grid_view_layout['card_profile_name_font'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $people_contact_grid_view_layout['card_profile_name_font'] ); ?>
 }
 #people_contacts_container .people-entry-item .p_about_profile *,
 .people-entry-item .p_about_profile * {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $people_contact_grid_view_layout['card_about_profile_font'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $people_contact_grid_view_layout['card_about_profile_font'] ); ?>
 }
 #people_contacts_container .people-entry-item .p_contact_details *,
 .people-entry-item .p_contact_details * {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $people_contact_grid_view_layout['card_contact_icons_font'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $people_contact_grid_view_layout['card_contact_icons_font'] ); ?>
 }
 #people_contacts_container .people-entry-item .p_about_profile a,
 .people-entry-item .p_about_profile a,
@@ -94,7 +94,7 @@ body #people_contacts_container .map_canvas_container .infowindow .info_avatar i
 	background: <?php echo $people_contact_grid_view_layout['item_image_background']; ?> !important;
 	
 <?php if ( $people_contact_grid_view_layout['item_image_border_type'] != 'no' ) { ?>
-	<?php echo $people_contact_admin_interface->generate_border_style_css( $people_contact_grid_view_layout['item_image_border'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->generate_border_style_css( $people_contact_grid_view_layout['item_image_border'] ); ?>
 <?php } else { ?>
 	border: none !important;
 <?php } ?>
@@ -109,7 +109,7 @@ body #people_contacts_container .map_canvas_container .infowindow .info_avatar i
 	-moz-border-radius: 200px !important;
 	-webkit-border-radius: 200px !important;
 <?php } ?>
-	<?php echo $people_contact_admin_interface->generate_shadow_css( $people_contact_grid_view_layout['item_image_shadow'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->generate_shadow_css( $people_contact_grid_view_layout['item_image_shadow'] ); ?>
 
 	box-sizing:border-box !important;
 	-moz-box-sizing:border-box !important;
@@ -119,9 +119,9 @@ body #people_contacts_container .map_canvas_container .infowindow .info_avatar i
 #people_contacts_container .people_item .people-entry-item,
 .people_item .people-entry-item{
 	background-color:<?php echo $people_contact_grid_view_layout['grid_view_item_background'];?>;
-	<?php echo $people_contact_admin_interface->generate_border_css( $people_contact_grid_view_layout['grid_view_item_border'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->generate_border_css( $people_contact_grid_view_layout['grid_view_item_border'] ); ?>
 	padding:<?php echo $people_contact_grid_view_layout['grid_view_item_padding_top'];?>px <?php echo $people_contact_grid_view_layout['grid_view_item_padding_right'];?>px <?php echo $people_contact_grid_view_layout['grid_view_item_padding_bottom'];?>px <?php echo $people_contact_grid_view_layout['grid_view_item_padding_left'];?>px;
-	<?php echo $people_contact_admin_interface->generate_shadow_css( $people_contact_grid_view_layout['grid_view_item_shadow'] ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->generate_shadow_css( $people_contact_grid_view_layout['grid_view_item_shadow'] ); ?>
 }
 #people_contacts_container .people_box_content.has_map .people_item.has_marker .people-entry-item,
 .people_box_content.has_map .people_item.has_marker .people-entry-item {
@@ -154,28 +154,28 @@ extract($people_email_inquiry_global_settings);
 body .custom_contact_popup,
 .custom_contact_popup {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $inquiry_contact_popup_text ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $inquiry_contact_popup_text ); ?>
 }
 .people_email_inquiry_contact_heading {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $inquiry_contact_heading_font ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $inquiry_contact_heading_font ); ?>
 }
 .people_email_inquiry_site_name {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $inquiry_form_site_name_font ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $inquiry_form_site_name_font ); ?>
 }
 .people_email_inquiry_profile_position {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $inquiry_form_profile_position_font ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $inquiry_form_profile_position_font ); ?>
 }
 .people_email_inquiry_profile_name {
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $inquiry_form_profile_name_font ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $inquiry_form_profile_name_font ); ?>
 }
 .custom_contact_popup input,
 .custom_contact_popup textarea{
 	/*Border*/
-	<?php echo $people_contact_admin_interface->generate_border_css( $inquiry_input_border ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->generate_border_css( $inquiry_input_border ); ?>
 	
 	/*Background*/
 	background-color: <?php echo $inquiry_input_bg_colour; ?> !important;
@@ -213,10 +213,10 @@ body .people_email_inquiry_form_button,
 				) !important;
 	
 	/*Border*/
-	<?php echo $people_contact_admin_interface->generate_border_css( $inquiry_contact_button_border ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->generate_border_css( $inquiry_contact_button_border ); ?>
 	
 	/* Font */
-	<?php echo $people_contact_fonts_face->generate_font_css( $inquiry_contact_button_font ); ?>
+	<?php echo ${PEOPLE_CONTACT_PREFIX.'fonts_face'}->generate_font_css( $inquiry_contact_button_font ); ?>
 		
 	text-align: center !important;
 	text-shadow: 0 -1px 0 hsla(0,0%,0%,.3);

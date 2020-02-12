@@ -1,9 +1,11 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\ContactPeople\FrameWork {
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 A3rev Plugin Fonts Face
 
@@ -19,7 +21,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class People_Contact_Fonts_Face extends People_Contact_Admin_UI
+class Fonts_Face extends Admin_UI
 {
 
 	/**
@@ -642,5 +644,4 @@ class People_Contact_Fonts_Face extends People_Contact_Admin_UI
 
 }
 
-global $people_contact_fonts_face;
-$people_contact_fonts_face = new People_Contact_Fonts_Face();
+}

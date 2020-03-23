@@ -215,6 +215,10 @@
   padding: 0 !important;
   line-height: 1em !important;
 }
+#people_contacts_container .people-entry-item .p_contact_details [class^='p_icon'] img ,
+.people-entry-item .p_contact_details [class^='p_icon'] img {
+  display: initial;
+}
 #people_contacts_container .people-entry-item .p_content_right img,
 .people-entry-item .p_content_right img {
   border: none !important;

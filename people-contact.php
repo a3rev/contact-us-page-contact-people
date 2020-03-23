@@ -57,17 +57,14 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 	/**
 	 * Plugin Framework init
 	 */
-	global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
-	${PEOPLE_CONTACT_PREFIX.'admin_interface'} = new FrameWork\Admin_Interface();
+	$GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'] = new FrameWork\Admin_Interface();
 
 	global $people_contact_settings_page;
 	$people_contact_settings_page = new FrameWork\Pages\People_Contact();
 
-	global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-	${PEOPLE_CONTACT_PREFIX.'admin_init'} = new FrameWork\Admin_Init();
+	$GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init'] = new FrameWork\Admin_Init();
 
-	global ${PEOPLE_CONTACT_PREFIX.'less'};
-	${PEOPLE_CONTACT_PREFIX.'less'} = new FrameWork\Less_Sass();
+	$GLOBALS[PEOPLE_CONTACT_PREFIX.'less'] = new FrameWork\Less_Sass();
 
 	// End - Plugin Framework init
 

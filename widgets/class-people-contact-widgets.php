@@ -50,10 +50,9 @@ class Widget extends \WP_Widget {
 
 		if(empty($map_height)) { $map_height = 150;}
 
-		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 		$google_map_api_key = '';
-		if ( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->is_valid_google_map_api_key() ) {
-			$google_map_api_key = get_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option, '' );
+		if ( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->google_map_api_key_option, '' );
 		}
 
 		if ( ! empty( $google_map_api_key ) ) {

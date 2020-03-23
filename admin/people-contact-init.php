@@ -10,8 +10,7 @@ function people_contact_install(){
 	\A3Rev\ContactPeople\Contact_Functions::auto_create_page_for_wpml( $contact_us_page_id, _x('contact-us-page', 'page_slug', 'contact-us-page-contact-people' ), __('Contact Us Page', 'contact-us-page-contact-people' ), '[people_contacts]' );
 	\A3Rev\ContactPeople\Data\Profile::install_database();
 
-	global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-	delete_metadata( 'user', 0, ${PEOPLE_CONTACT_PREFIX.'admin_init'}->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
+	delete_metadata( 'user', 0, $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
 
 	update_option('a3rev_wp_people_contact_just_installed', true);
 }
@@ -27,12 +26,10 @@ function wp_people_contact_init() {
 		delete_option('a3rev_wp_people_contact_just_installed');
 
 		// Set Settings Default from Admin Init
-		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-		${PEOPLE_CONTACT_PREFIX.'admin_init'}->set_default_settings();
+		$GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->set_default_settings();
 
 		// Build sass
-		global ${PEOPLE_CONTACT_PREFIX.'less'};
-		${PEOPLE_CONTACT_PREFIX.'less'}->plugin_build_sass();
+		$GLOBALS[PEOPLE_CONTACT_PREFIX.'less']->plugin_build_sass();
 	}
 
 	wp_people_contact_plugin_textdomain();
@@ -60,11 +57,10 @@ add_action( 'plugins_loaded', array( '\A3Rev\ContactPeople\Contact_Functions', '
 // Add text on right of Visit the plugin on Plugin manager page
 add_filter( 'plugin_row_meta', array('\A3Rev\ContactPeople\Hook_Filter', 'plugin_extra_links'), 10, 2 );
 
-	global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-	${PEOPLE_CONTACT_PREFIX.'admin_init'}->init();
+	$GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->init();
 
 	// Add upgrade notice to Dashboard pages
-	add_filter( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\ContactPeople\Hook_Filter', 'plugin_extension_box' ) );
+	add_filter( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\ContactPeople\Hook_Filter', 'plugin_extension_box' ) );
 
 	// Add extra link on left of Deactivate link on Plugin manager page
 	add_action('plugin_action_links_'.PEOPLE_CONTACT_NAME, array('\A3Rev\ContactPeople\Hook_Filter', 'settings_plugin_links') );
@@ -89,9 +85,6 @@ add_filter( 'plugin_row_meta', array('\A3Rev\ContactPeople\Hook_Filter', 'plugin
 	// Check upgrade functions
 add_action('plugins_loaded', 'a3_people_contact_lite_upgrade_plugin');
 function a3_people_contact_lite_upgrade_plugin () {
-
-	global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-	global ${PEOPLE_CONTACT_PREFIX.'less'};
 
 	// Upgrade to 1.0.3
 	if(version_compare(get_option('a3rev_wp_people_contact_version'), '1.0.3') === -1){
@@ -120,7 +113,7 @@ function a3_people_contact_lite_upgrade_plugin () {
 		update_option('a3rev_wp_people_contact_lite_version', '1.2.0');
 
 		// Build sass
-		${PEOPLE_CONTACT_PREFIX.'less'}->plugin_build_sass();
+		$GLOBALS[PEOPLE_CONTACT_PREFIX.'less']->plugin_build_sass();
 	}
 
 	if( version_compare(get_option('a3rev_wp_people_contact_lite_version'), '2.0.1') === -1 ){
@@ -145,10 +138,10 @@ function a3_people_contact_lite_upgrade_plugin () {
 	if(version_compare(get_option('a3rev_wp_people_contact_lite_version'), '3.0.0') === -1){
 		update_option('a3rev_wp_people_contact_lite_version', '3.0.0');
 
-		${PEOPLE_CONTACT_PREFIX.'admin_init'}->set_default_settings();
+		$GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->set_default_settings();
 
 		// Build sass
-		${PEOPLE_CONTACT_PREFIX.'less'}->plugin_build_sass();
+		$GLOBALS[PEOPLE_CONTACT_PREFIX.'less']->plugin_build_sass();
 	}
 
 	if(version_compare(get_option('a3rev_wp_people_contact_lite_version'), '3.2.3') === -1){
@@ -157,9 +150,8 @@ function a3_people_contact_lite_upgrade_plugin () {
 		$people_contact_global_settings = get_option( 'people_contact_global_settings' );
 		$google_map_api_key = $people_contact_global_settings['google_map_api_key'];
 
-		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-		update_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option . '_enable', 1 );
-		update_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option, $google_map_api_key );
+		update_option( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->google_map_api_key_option . '_enable', 1 );
+		update_option( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->google_map_api_key_option, $google_map_api_key );
 	}
 
 	update_option('a3rev_wp_people_contact_lite_version', PEOPLE_CONTACT_VERSION );

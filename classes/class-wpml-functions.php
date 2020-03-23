@@ -45,8 +45,7 @@ class WPML_Functions
 	
 	// Registry Dynamic String for WPML
 	public function wpml_register_dynamic_string() {
-		global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
-		$people_email_inquiry_global_settings = array_map( array( ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, 'admin_stripslashes' ), get_option( 'people_email_inquiry_global_settings', array() ) );
+		$people_email_inquiry_global_settings = array_map( array( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'], 'admin_stripslashes' ), get_option( 'people_email_inquiry_global_settings', array() ) );
 		$people_email_inquiry_contact_success = stripslashes( get_option( 'people_email_inquiry_contact_success', '' ) );
 
 		if ( function_exists('icl_register_string') ) {
@@ -59,11 +58,11 @@ class WPML_Functions
 			icl_register_string($this->plugin_wpml_name, 'Email Inquiry - Contact Success Message', $people_email_inquiry_contact_success );
 			
 			// Contact Page Global Settings
-			$people_contact_global_settings = array_map( array( ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, 'admin_stripslashes' ), get_option( 'people_contact_global_settings', array() ) );
+			$people_contact_global_settings = array_map( array( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'], 'admin_stripslashes' ), get_option( 'people_contact_global_settings', array() ) );
 			icl_register_string($this->plugin_wpml_name, 'Contact Page - Profile Cards Title', $people_contact_global_settings['grid_view_team_title'] );
 
 			// Contact Widget Global Settings
-			$people_contact_widget_information = array_map( array( ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, 'admin_stripslashes' ), get_option( 'people_contact_widget_information', array() ) );
+			$people_contact_widget_information = array_map( array( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'], 'admin_stripslashes' ), get_option( 'people_contact_widget_information', array() ) );
 			icl_register_string($this->plugin_wpml_name, 'Contact Us Widget - Address', $people_contact_widget_information['widget_info_address'] );
 
 			$people_contact_widget_content_before_maps = stripslashes( get_option( 'people_contact_widget_content_before_maps', '' ) );
@@ -72,14 +71,14 @@ class WPML_Functions
 			$people_contact_widget_content_after_maps = stripslashes( get_option( 'people_contact_widget_content_after_maps', '' ) );
 			icl_register_string($this->plugin_wpml_name, 'Contact Us Widget - Content After Map', $people_contact_widget_content_after_maps );
 
-			$people_contact_widget_email_contact_form = array_map( array( ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, 'admin_stripslashes' ), get_option( 'people_contact_widget_email_contact_form', array() ) );
+			$people_contact_widget_email_contact_form = array_map( array( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'], 'admin_stripslashes' ), get_option( 'people_contact_widget_email_contact_form', array() ) );
 			icl_register_string($this->plugin_wpml_name, 'Contact Us Widget - From Name', $people_contact_widget_email_contact_form['widget_email_from_name'] );
 
-			$people_contact_widget_maps = array_map( array( ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, 'admin_stripslashes' ), get_option( 'people_contact_widget_maps', array() ) );
+			$people_contact_widget_maps = array_map( array( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'], 'admin_stripslashes' ), get_option( 'people_contact_widget_maps', array() ) );
 			icl_register_string($this->plugin_wpml_name, 'Contact Us Widget - Map Callout Text', $people_contact_widget_maps['widget_maps_callout_text'] );
 
 			// Profile Cards Settings
-			$people_contact_grid_view_icon = array_map( array( ${PEOPLE_CONTACT_PREFIX.'admin_interface'}, 'admin_stripslashes' ), get_option( 'people_contact_grid_view_icon', array() ) );
+			$people_contact_grid_view_icon = array_map( array( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface'], 'admin_stripslashes' ), get_option( 'people_contact_grid_view_icon', array() ) );
 			icl_register_string($this->plugin_wpml_name, 'Profile Cards - Email Link Text', $people_contact_grid_view_icon['grid_view_email_text'] );
 			icl_register_string($this->plugin_wpml_name, 'Profile Cards - Website Link Text', $people_contact_grid_view_icon['grid_view_website_text'] );
 		}

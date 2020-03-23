@@ -106,20 +106,16 @@ class Contact_Widget extends FrameWork\Admin_UI
 	/* set_default_settings()
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
-	public function set_default_settings() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
-		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
+	public function set_default_settings() {		
+		$GLOBALS[$this->plugin_prefix.'admin_interface']->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
 	/* get_settings()
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
-	public function get_settings() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
-		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
+	public function get_settings() {		
+		$GLOBALS[$this->plugin_prefix.'admin_interface']->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -162,11 +158,9 @@ class Contact_Widget extends FrameWork\Admin_UI
 	/* settings_form() */
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
-	public function settings_form() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
+	public function settings_form() {		
 		$output = '';
-		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= $GLOBALS[$this->plugin_prefix.'admin_interface']->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 		
 		return $output;
 	}
@@ -516,10 +510,9 @@ class Contact_Widget extends FrameWork\Admin_UI
 		$widget_hide_maps_frontend = get_option( 'widget_hide_maps_frontend' );
 		if ( 1 == $widget_hide_maps_frontend ) return;
 
-		global ${$this->plugin_prefix.'admin_init'};
 		$google_map_api_key = '';
-		if ( ${$this->plugin_prefix.'admin_init'}->is_valid_google_map_api_key() ) {
-			$google_map_api_key = get_option( ${$this->plugin_prefix.'admin_init'}->google_map_api_key_option, '' );
+		if ( $GLOBALS[$this->plugin_prefix.'admin_init']->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $GLOBALS[$this->plugin_prefix.'admin_init']->google_map_api_key_option, '' );
 		}
 
 		if ( ! empty( $google_map_api_key ) ) {

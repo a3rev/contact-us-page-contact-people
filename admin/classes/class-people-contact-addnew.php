@@ -86,17 +86,14 @@ class AddNew
 	public static function admin_screen_add_edit() {
 		global $people_contact_location_map_settings;
 
-		global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
 		$google_map_api_key = '';
-		if ( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->is_valid_google_map_api_key() ) {
-			$google_map_api_key = get_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option, '' );
+		if ( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->is_valid_google_map_api_key() ) {
+			$google_map_api_key = get_option( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->google_map_api_key_option, '' );
 		}
 
 		if ( ! empty( $google_map_api_key ) ) {
 			$google_map_api_key = '&key=' . $google_map_api_key;
 		}
-
-		global ${PEOPLE_CONTACT_PREFIX.'admin_interface'};
 
 		$address_error_class = '';
 		$message             = '';
@@ -173,17 +170,14 @@ class AddNew
 					<tr valign="top">
 					  <th scope="row"><label for="c_avatar"><?php _e('Profile Image', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td class="profileavatar">
-	                  <?php
-					  global ${PEOPLE_CONTACT_PREFIX.'uploader'};
-					  ?>
-	                  <?php echo ${PEOPLE_CONTACT_PREFIX.'uploader'}->upload_input( 'c_avatar', 'c_avatar', $data['c_avatar'], $data['c_attachment_id'], '', __('Profile Image', 'contact-us-page-contact-people' ), '', 'width:100%;', '<div class="description">'.__("Image format .jpg, .png", 'contact-us-page-contact-people' ).'</div>' ); ?>
+	                  <?php echo $GLOBALS[PEOPLE_CONTACT_PREFIX.'uploader']->upload_input( 'c_avatar', 'c_avatar', $data['c_avatar'], $data['c_attachment_id'], '', __('Profile Image', 'contact-us-page-contact-people' ), '', 'width:100%;', '<div class="description">'.__("Image format .jpg, .png", 'contact-us-page-contact-people' ).'</div>' ); ?>
 	                  </td>
 					</tr>
 	        	  </tbody>
 				</table>
 				<?php
 		        $settings_html = ob_get_clean();
-		        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+		        $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface']->panel_box( $settings_html, array(
 		        	'name' 		=> __( 'Profile Details', 'contact-us-page-contact-people' ),
 		        	'desc'		=> __("Fields left empty will not show on the front end.", 'contact-us-page-contact-people' ),
 		        	'css'		=> 'margin-top: 5px',
@@ -225,7 +219,7 @@ class AddNew
 				</table>
 				<?php
 		        $settings_html = ob_get_clean();
-		        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+		        $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface']->panel_box( $settings_html, array(
 		        	'name' 		=> __( 'Contact Details', 'contact-us-page-contact-people' ),
 		        	'desc'		=> __("Fields left empty will not show on the front end.", 'contact-us-page-contact-people' ),
 		        	'id'		=> 'a3_people_contact_details_box',
@@ -287,7 +281,7 @@ class AddNew
 				</div>
 				<?php
 		        $settings_html = ob_get_clean();
-		        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+		        $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface']->panel_box( $settings_html, array(
 		        	'name' 		=> __( 'Contact Page Profile', 'contact-us-page-contact-people' ),
 		        	'desc'		=> __( 'Switch OFF and this profile will not show on the main Contact Us Page but still can be inserted by shortcode (Pro and Ultimate Versions) and assigned to groups (Ultimate Version) that are inserted by shortcode.', 'contact-us-page-contact-people' ),
 		        	'id'		=> 'a3_people_contact_page_profile_box',
@@ -307,7 +301,7 @@ class AddNew
 					</table>
 					<?php
 			        $settings_html = ob_get_clean();
-			        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+			        $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface']->panel_box( $settings_html, array(
 			        	'name' 		=> __( 'Contact Form by Shortcode', 'contact-us-page-contact-people' ),
 			        	'desc'		=> sprintf( __( 'Add a unique Contact Form for this profile. Supports Contact Form 7 or Gravity Forms plugin shortcodes. Feature must be switched <a href="%s" target="_blank">ON here</a> + Contact Form Type > Create Form by Shortcode switch.', 'contact-us-page-contact-people' ), admin_url( 'admin.php?page=people-contact-settings&tab=email-inquiry' ) ),
 			        	'class'		=> 'pro_feature_fields',
@@ -346,7 +340,7 @@ class AddNew
               		</div>
               		<?php
 			        $settings_html = ob_get_clean();
-			        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+			        $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface']->panel_box( $settings_html, array(
 			        	'name' 		=> __( 'Assign Profile to Groups', 'contact-us-page-contact-people' ),
 			        	'desc'		=> __( 'Use the ON | OFF switches to assign this profile to any number of Groups', 'contact-us-page-contact-people' ),
 			        	'class'		=> 'pro_feature_fields',
@@ -386,7 +380,7 @@ class AddNew
 				</table>
 				<?php
 		        $settings_html = ob_get_clean();
-		        ${PEOPLE_CONTACT_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+		        $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_interface']->panel_box( $settings_html, array(
 		        	'name' 		=> __( 'Profile Location Address', 'contact-us-page-contact-people' ),
 		        	'desc'		=> __( '<strong>REQUIRED</strong>: All profiles must have a map location set. The location set here is used for this profile on the Contact Us Page map (optional) and any Group map (optional) that the profile has been assigned to.', 'contact-us-page-contact-people' ),
 		        	'id'		=> 'a3_people_location_address_box',

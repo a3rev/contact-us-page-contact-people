@@ -303,9 +303,8 @@ class Main {
 
 		$google_map_api_key = '';
 		if ( $show_map != 0 ) {
-			global ${PEOPLE_CONTACT_PREFIX.'admin_init'};
-			if ( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->is_valid_google_map_api_key() ) {
-				$google_map_api_key = get_option( ${PEOPLE_CONTACT_PREFIX.'admin_init'}->google_map_api_key_option, '' );
+			if ( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->is_valid_google_map_api_key() ) {
+				$google_map_api_key = get_option( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->google_map_api_key_option, '' );
 			}
 
 			if ( ! empty( $google_map_api_key ) ) {

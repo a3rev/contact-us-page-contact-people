@@ -87,23 +87,23 @@ add_action('plugins_loaded', 'a3_people_contact_lite_upgrade_plugin');
 function a3_people_contact_lite_upgrade_plugin () {
 
 	// Upgrade to 1.0.3
-	if(version_compare(get_option('a3rev_wp_people_contact_version'), '1.0.3') === -1){
+	if(version_compare(get_option('a3rev_wp_people_contact_lite_version'), '1.0.3') === -1){
 		\A3Rev\ContactPeople\Data\Profile::install_database();
-		update_option('a3rev_wp_people_contact_version', '1.0.3');
+		update_option('a3rev_wp_people_contact_lite_version', '1.0.3');
 
 		include( PEOPLE_CONTACT_DIR. '/upgrade/updates/people-contact-update-1.0.3.php' );
 	}
 
 	// Upgrade to 1.1.1
-	if(version_compare(get_option('a3rev_wp_people_contact_version'), '1.1.1') === -1){
-		update_option('a3rev_wp_people_contact_version', '1.1.1');
+	if(version_compare(get_option('a3rev_wp_people_contact_lite_version'), '1.1.1') === -1){
+		update_option('a3rev_wp_people_contact_lite_version', '1.1.1');
 
 		include( PEOPLE_CONTACT_DIR. '/upgrade/updates/people-contact-update-1.1.1.php' );
 	}
 
 	// Upgrade to 1.1.4 for Lite version
-	if(version_compare(get_option('a3rev_wp_people_contact_version'), '1.1.4') === -1){
-		update_option('a3rev_wp_people_contact_version', '1.1.4');
+	if(version_compare(get_option('a3rev_wp_people_contact_lite_version'), '1.1.4') === -1){
+		update_option('a3rev_wp_people_contact_lite_version', '1.1.4');
 
 		include( PEOPLE_CONTACT_DIR. '/upgrade/updates/people-contact-update-1.1.4.php' );
 	}

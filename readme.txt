@@ -2,9 +2,9 @@
 	
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
-Requires at least: 4.9
-Tested up to: 5.3.2
-Stable tag: 3.4.2
+Requires at least: 5.0
+Tested up to: 5.4
+Stable tag: 3.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,7 +105,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 	
 = Minimum Requirements =
 	
-* WordPress 4.9
+* WordPress 5.0
 * PHP version 7.0 or greater
 * MySQL version 5.6.0 or greater
 	
@@ -134,6 +134,16 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.4.3 - 2020/03/24 =
+* This maintenance release is for compatibility with WordPress 5.4, Gutenberg 7.5 and introduces Travis CI build unit testing and fixes for compatibility issue with PHP 7.0 to 7.4
+* Tweak - Test for compatibility with WordPress 5.4
+* Tweak - Run Travis CI unit build tests for PHP compatibility issues with PHP 7.0 to 7.4
+* Tweak - Update Gutenberg block for work compatibility with Gutenberg latest version 7.5
+* Fix - Update global ${$this- to $GLOBALS[$this to resolve 7.0+ PHP warnings
+* Fix - Update global ${$option to $GLOBALS[$option to resolve 7.0+ PHP warnings
+* Fix - Update less PHP lib that use square brackets [] instead of curly braces {} for Array, depreciated in PHP 7.4
+* Fix - Validate to not use get_magic_quotes_gpc function that are depreciated in PHP 7.4
 
 = 3.4.2 - 2020/02/12 =
 * This maintenance release completes the upgrade to PHP Composer, plus compatibility with WordPress v 5.3.2
@@ -561,6 +571,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.4.3 =
+This maintenance release is for compatibility with WordPress 5.4, Gutenberg 7.5 and introduces Travis CI build unit testing and fixes for compatibility issue with PHP 7.0 to 7.4
 
 = 3.4.2 =
 This maintenance release completes the upgrade to PHP Composer, plus compatibility with WordPress v 5.3.2

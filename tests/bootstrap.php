@@ -25,6 +25,7 @@ require_once $_tests_dir . '/includes/functions.php';
 function _manually_load_plugin() {
 	require dirname( dirname( __FILE__ ) ) . '/people-contact.php';
 	update_option('a3rev_wp_people_contact_lite_version', PEOPLE_CONTACT_VERSION);
+	update_option('a3rev_wp_people_contact_version', PEOPLE_CONTACT_VERSION);
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

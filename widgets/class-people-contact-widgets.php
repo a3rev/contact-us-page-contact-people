@@ -231,7 +231,7 @@ class Widget extends \WP_Widget {
 				if( trim( $_POST['email'] ) === '' )  {
 					$emailError = __( 'You forgot to enter your email address.', 'contact-us-page-contact-people' );
 					$hasError = true;
-				} else if ( ! eregi( "^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$", trim($_POST['email'] ) ) ) {
+				} else if ( ! filter_var( trim($_POST['email'] ), FILTER_VALIDATE_EMAIL ) ) {
 					$emailError = __( 'You entered an invalid email address.', 'contact-us-page-contact-people' );
 					$hasError = true;
 				} else {

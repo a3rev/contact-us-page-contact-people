@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.0
 Tested up to: 5.4
-Stable tag: 3.4.3
+Stable tag: 3.4.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,10 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.4.4 - 2020/04/03 =
+* This maintenance release updates a depreciated email validating function
+* Fix - Replace depreciated eregi function with filter_var for validating email
 
 = 3.4.3 - 2020/03/24 =
 * This maintenance release is for compatibility with WordPress 5.4, Gutenberg 7.5 and introduces Travis CI build unit testing and fixes for compatibility issue with PHP 7.0 to 7.4
@@ -571,6 +575,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.4.4 =
+This maintenance release updates a depreciated email validating function
 
 = 3.4.3 =
 This maintenance release is for compatibility with WordPress 5.4, Gutenberg 7.5 and introduces Travis CI build unit testing and fixes for compatibility issue with PHP 7.0 to 7.4

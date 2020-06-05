@@ -441,7 +441,8 @@ class Fonts_Face extends Admin_UI
 				$respone_api = wp_remote_get( "https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=" . trim( $this->google_api_key ),
 					array(
 						'sslverify' => false,
-						'timeout'   => 45
+						'timeout'   => 45,
+						'headers' => array( 'referer' => get_site_url() ) 
 					)
 				);
 

@@ -17,6 +17,9 @@ import IconContact from './../../assets/icons/icon.svg';
 
 import ProfileAttributes from './attributes';
 
+// editor style
+import './editor.scss';
+
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks;
 

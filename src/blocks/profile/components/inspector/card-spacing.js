@@ -27,7 +27,7 @@ export default class InspectorCardSpacing extends Component {
 
 		return (
 			<PanelBody
-				className="a3-blockpress-inspect-panel"
+				className="a3-blockpress-inspect-panel contact-people-inspect-panel"
 				title={ __( 'Card Style' ) }
 				initialOpen={ false }
 			>

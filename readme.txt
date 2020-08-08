@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.0
-Tested up to: 5.4.2
-Stable tag: 3.4.5
+Tested up to: 5.5
+Stable tag: 3.4.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,12 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.4.6 - 2020/08/08 =
+* This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
+* Tweak - Test for compatibility with WordPress 5.5
+* Tweak - Test for compatibility with WooCommerce 4.3.1
+* Tweak - Replace wp_make_content_images_responsive with wp_filter_content_tags for compatibility on WordPress 5.5
 
 = 3.4.5 - 2020/07/20 =
 * This maintenance release has a performance tweak, plus compatibility with WordPress 5.4.2, Gutenberg 8.5.1 and WooCommerce 4.3.0
@@ -582,6 +588,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.4.6 =
+This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
 
 = 3.4.5 =
 This maintenance release has a performance tweak, plus compatibility with WordPress 5.4.2, Gutenberg 8.5.1 and WooCommerce 4.3.0

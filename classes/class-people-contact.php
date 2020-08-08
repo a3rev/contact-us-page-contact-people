@@ -58,7 +58,9 @@ class Main {
 		}
 
 		$img_output = '<img width="80" class="a3-notlazy wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
-		if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+		if ( function_exists( 'wp_filter_content_tags' ) ) {
+			$img_output = wp_filter_content_tags( $img_output );
+		} elseif ( function_exists( 'wp_make_content_images_responsive' ) ) {
 			$img_output = wp_make_content_images_responsive( $img_output );
 		}
 
@@ -625,7 +627,9 @@ class Main {
 				$html .= '<div class="people-content-item">';
 
 				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
-				if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+				if ( function_exists( 'wp_filter_content_tags' ) ) {
+					$img_output = wp_filter_content_tags( $img_output );
+				} elseif ( function_exists( 'wp_make_content_images_responsive' ) ) {
 					$img_output = wp_make_content_images_responsive( $img_output );
 				}
 
@@ -756,7 +760,9 @@ class Main {
 				$html .= '<div style="clear:both;"></div>';
 				$html .= '<div class="people-content-item">';
 				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
-				if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+				if ( function_exists( 'wp_filter_content_tags' ) ) {
+					$img_output = wp_filter_content_tags( $img_output );
+				} elseif ( function_exists( 'wp_make_content_images_responsive' ) ) {
 					$img_output = wp_make_content_images_responsive( $img_output );
 				}
 				if ( $people_contact_grid_view_layout['thumb_image_position'] == 'top' && $people_contact_grid_view_layout['item_title_position'] == 'below' ) {

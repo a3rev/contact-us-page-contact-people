@@ -41,6 +41,11 @@ registerBlockType( 'contact-people/profile', {
 	}, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'a3rev-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [ __( 'Contact People' ), __( 'Contact Profile' ), __( 'Single Profile' ), __( 'a3rev' ) ],
+	example: {
+		attributes: {
+			isPreview: true,
+		},
+	},
 
 	attributes: {
 		...ProfileAttributes,
@@ -54,6 +59,18 @@ registerBlockType( 'contact-people/profile', {
 
 	// The "edit" property must be a valid function.
 	edit( props ) {
+		const { attributes } = props;
+
+		if ( attributes.isPreview ) {
+			return ( <img
+				src={ contact_people_vars.preview }
+				alt={ __( 'Contact People Preview' ) }
+				style={ {
+					width: '100%',
+					height: 'auto',
+				} }
+			/> );
+		}
 
 		return (
 			<Fragment>

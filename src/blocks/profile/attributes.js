@@ -22,6 +22,13 @@ const ProfileAttributes = {
 		type: 'string',
 		default: 'px',
 	},
+	/**
+	 * For previewing?
+	 */
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default ProfileAttributes;

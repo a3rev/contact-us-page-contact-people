@@ -65,7 +65,10 @@ class Blocks {
 			}
 		}
 
-		wp_localize_script( 'contact-people-block-js', 'contact_people_vars', array( 'contactList' => json_encode( $contactList ) ) );
+		wp_localize_script( 'contact-people-block-js', 'contact_people_vars', array( 
+			'contactList' => json_encode( $contactList ),
+			'preview'     => PEOPLE_CONTACT_IMAGE_URL.  '/preview.jpg',
+		) );
 	}
 
 	public function create_a3blocks_section() {

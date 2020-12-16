@@ -66,8 +66,8 @@ class Blocks {
 		}
 
 		wp_localize_script( 'contact-people-block-js', 'contact_people_vars', array( 
-			'contactList' => json_encode( $contactList ),
-			'preview'     => PEOPLE_CONTACT_IMAGE_URL.  '/preview.jpg',
+			'contactList'     => json_encode( $contactList ),
+			'profile_preview' => PEOPLE_CONTACT_URL . '/src/blocks/profile/preview.jpg',
 		) );
 	}
 

@@ -63,8 +63,8 @@ registerBlockType( 'contact-people/profile', {
 
 		if ( attributes.isPreview ) {
 			return ( <img
-				src={ contact_people_vars.preview }
-				alt={ __( 'Contact People Preview' ) }
+				src={ contact_people_vars.profile_preview }
+				alt={ __( 'Contact Profile Preview' ) }
 				style={ {
 					width: '100%',
 					height: 'auto',

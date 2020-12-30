@@ -286,14 +286,14 @@ class Widget extends \WP_Widget {
 					var hasError = false;
 
 					jQuery( '.requiredField').each(function() {
-						if(jQuery.trim(jQuery(this).val()) == '') {
+						if(jQuery(this).val().trim() == '') {
 							var labelText = jQuery(this).prev( 'label').text();
 							jQuery(this).parent().append( '<span class="error"><?php _e( 'You forgot to enter your', 'contact-us-page-contact-people' ); ?> '+labelText+'.</span>' );
 							jQuery(this).addClass( 'inputError' );
 							hasError = true;
 						} else if(jQuery(this).hasClass( 'email')) {
 							var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-							if(!emailReg.test(jQuery.trim(jQuery(this).val()))) {
+							if(!emailReg.test(jQuery(this).val().trim())) {
 								var labelText = jQuery(this).prev( 'label').text();
 								jQuery(this).parent().append( '<span class="error"><?php _e( 'You entered an invalid', 'contact-us-page-contact-people' ); ?> '+labelText+'.</span>' );
 								jQuery(this).addClass( 'inputError' );

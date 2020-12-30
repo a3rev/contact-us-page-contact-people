@@ -549,7 +549,7 @@ class Main {
 			var people_box = jQuery(this).parents('.people_box_content');
 			people_box.masonry();
 		});
-        jQuery(window).load(function(){
+        jQuery(window).on( 'load', function(){
 			var grid_view_col = <?php echo $grid_view_col;?>;
 			var screen_width = jQuery('body').width();
 			if(screen_width <= 750 && screen_width >= 481 ){

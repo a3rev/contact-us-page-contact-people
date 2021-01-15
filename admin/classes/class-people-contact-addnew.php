@@ -114,7 +114,8 @@ class AddNew
 
 		$bt_cancel      = '<input type="button" class="button" onclick="window.location=\'admin.php?page=people-contact-manager\'" value="'.__('Cancel', 'contact-us-page-contact-people' ).'" />';
 
-		$data           = array('c_title' => '', 'c_name' => '', 'c_email' => '', 'c_phone' => '', 'c_fax' => '', 'c_mobile' => '', 'c_website' => '', 'c_address' => '', 'c_latitude' => '', 'c_longitude' => '', 'c_shortcode' => '', 'c_avatar' => '', 'c_attachment_id' => 0, 'c_about' => '');
+		$data           = array('c_title' => '', 'c_name' => '', 'c_identitier' => '', 'c_email' => '', 'c_phone' => '', 'c_fax' => '', 'c_mobile' => '', 'c_website' => '', 'c_address' => '', 'c_latitude' => '', 'c_longitude' => '', 'c_shortcode' => '', 'c_avatar' => '', 'c_attachment_id' => 0, 'c_about' => '');
+
 
 		if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id']) && $_GET['id'] >= 0) {
 			$bt_type = 'update_contact';
@@ -166,6 +167,12 @@ class AddNew
 					<tr valign="top">
 					  <th scope="row"><label for="c_name"><?php _e('Name', 'contact-us-page-contact-people' ) ?></label></th>
 					  <td><input type="text" class="regular-text" value="<?php if(isset($data['c_name'])){ esc_attr_e( stripslashes( $data['c_name']));}?>" id="c_name" name="contact_arr[c_name]"></td>
+					</tr>
+					<tr valign="top">
+					  <th scope="row"><label for="c_identitier"><?php _e('ID', 'contact-us-page-contact-people' ) ?></label></th>
+					  <td><input type="text" maxlength="30" class="regular-text" value="<?php if(isset($data['c_identitier'])){ esc_attr_e( stripslashes( $data['c_identitier']));}?>" id="c_identitier" name="contact_arr[c_identitier]">
+					  	<div style="font-size: 13px; font-style: italic;"><?php echo __( 'For Admin identifier, when Profile has multiple Contact cards that have different contact forms. Not shown on front end. Limited to 30 Characters.', 'contact-us-page-contact-people' ); ?></div>
+					  </td>
 					</tr>
 					<tr valign="top">
 					  <th scope="row"><label for="c_avatar"><?php _e('Profile Image', 'contact-us-page-contact-people' ) ?></label></th>

@@ -59,9 +59,18 @@ class Blocks {
 		if ( is_array( $contacts ) && count( $contacts ) > 0 ) {
 			foreach ( $contacts as $key=>$value ) {
 				$profile_name =  trim( esc_attr( stripslashes( $value['c_name'] ) ) );
-				if ( $profile_name == '' ) $profile_name = trim( esc_attr( stripslashes( $value['c_title'] ) ) ); 
+				if ( $profile_name == '' ) $profile_name = trim( esc_attr( stripslashes( $value['c_title'] ) ) );
 
-				$contactList[] = array( 'label' => $profile_name, 'value' => $value['id'] );
+				$c_identitier =  trim( esc_attr( stripslashes( $value['c_identitier'] ) ) );
+				if ( strlen( $c_identitier ) > 30 ) {
+					$c_identitier = substr( $c_identitier, 0, 30 ) . '...';
+				}
+
+				if ( '' !== $c_identitier ) {
+					$c_identitier = ' - ' . $c_identitier;
+				} 
+
+				$contactList[] = array( 'label' => $profile_name . $c_identitier, 'value' => $value['id'] );
 			}
 		}
 

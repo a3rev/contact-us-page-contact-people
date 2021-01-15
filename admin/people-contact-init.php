@@ -154,8 +154,14 @@ function a3_people_contact_lite_upgrade_plugin () {
 		update_option( $GLOBALS[PEOPLE_CONTACT_PREFIX.'admin_init']->google_map_api_key_option, $google_map_api_key );
 	}
 
+	if( version_compare(get_option('a3rev_wp_people_contact_lite_version'), '3.5.0') === -1 ){
+		update_option('a3rev_wp_people_contact_lite_version', '3.5.0');
+
+		include( PEOPLE_CONTACT_DIR. '/upgrade/updates/people-contact-update-3.5.0.php' );
+	}
+
 	update_option('a3rev_wp_people_contact_lite_version', PEOPLE_CONTACT_VERSION );
-	update_option('a3rev_wp_people_contact_ultimate_version', '3.2.3');
+	update_option('a3rev_wp_people_contact_ultimate_version', '3.5.0');
 
 }
 

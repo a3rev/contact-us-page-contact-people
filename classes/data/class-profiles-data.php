@@ -37,6 +37,7 @@ class Profile
 				  `id` int(11) NOT NULL auto_increment,
 				  `c_title` blob NOT NULL,
 				  `c_name` blob NOT NULL,
+				  `c_identitier` varchar(250) NOT NULL,
 				  `c_avatar` text NOT NULL,
 				  `c_attachment_id` bigint(20) NOT NULL DEFAULT '0',
 				  `c_email` varchar(250) NOT NULL,
@@ -106,6 +107,7 @@ class Profile
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
 		$c_title = strip_tags( addslashes( $c_title ) );
 		$c_name = strip_tags( addslashes( $c_name ) );
+		$c_identitier = strip_tags( addslashes( $c_identitier ) );
 		$c_avatar = strip_tags( addslashes( $c_avatar ) );
 		$c_email = strip_tags( addslashes( $c_email ) );
 		$c_phone = strip_tags( addslashes( $c_phone ) );
@@ -121,7 +123,7 @@ class Profile
 		
 		$c_order = self::get_maximum_order();
 		$c_order++;
-		$query = $wpdb->query("INSERT INTO {$table_name}( c_title, c_name, c_avatar, c_attachment_id, c_email, c_phone, c_fax, c_mobile, c_website, c_about, show_on_main_page, enable_map_marker, c_address, c_latitude, c_longitude, c_shortcode, c_order ) VALUES('$c_title', '$c_name', '$c_avatar', '$c_attachment_id', '$c_email', '$c_phone', '$c_fax', '$c_mobile', '$c_website', '$c_about', '$show_on_main_page', '$enable_map_marker', '$c_address', '$c_latitude', '$c_longitude', '', '$c_order' )");
+		$query = $wpdb->query("INSERT INTO {$table_name}( c_title, c_name, c_identitier, c_avatar, c_attachment_id, c_email, c_phone, c_fax, c_mobile, c_website, c_about, show_on_main_page, enable_map_marker, c_address, c_latitude, c_longitude, c_shortcode, c_order ) VALUES('$c_title', '$c_name', '$c_identitier', '$c_avatar', '$c_attachment_id', '$c_email', '$c_phone', '$c_fax', '$c_mobile', '$c_website', '$c_about', '$show_on_main_page', '$enable_map_marker', '$c_address', '$c_latitude', '$c_longitude', '', '$c_order' )");
 		if ($query) {
 			$profile_id = $wpdb->insert_id;
 			return $profile_id;
@@ -136,6 +138,7 @@ class Profile
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
 		$c_title = strip_tags( addslashes( $c_title ) );
 		$c_name = strip_tags( addslashes( $c_name ) );
+		$c_identitier = strip_tags( addslashes( $c_identitier ) );
 		$c_avatar = strip_tags( addslashes( $c_avatar ) );
 		$c_email = strip_tags( addslashes( $c_email ) );
 		$c_phone = strip_tags( addslashes( $c_phone ) );
@@ -149,7 +152,7 @@ class Profile
 		$c_latitude = strip_tags( addslashes( $c_latitude ) );
 		$c_longitude = strip_tags( addslashes( $c_longitude ) );
 		$c_shortcode = strip_tags( addslashes( $c_shortcode ) );
-		$query = $wpdb->query("UPDATE {$table_name} SET c_title='$c_title', c_name='$c_name', c_avatar='$c_avatar', c_attachment_id='$c_attachment_id', c_email='$c_email', c_phone='$c_phone', c_fax='$c_fax', c_mobile='$c_mobile', c_website='$c_website', c_about='$c_about', show_on_main_page='$show_on_main_page', enable_map_marker='$enable_map_marker', c_address='$c_address', c_latitude='$c_latitude', c_longitude='$c_longitude', c_shortcode='' WHERE id='$profile_id'");
+		$query = $wpdb->query("UPDATE {$table_name} SET c_title='$c_title', c_name='$c_name', c_identitier='$c_identitier', c_avatar='$c_avatar', c_attachment_id='$c_attachment_id', c_email='$c_email', c_phone='$c_phone', c_fax='$c_fax', c_mobile='$c_mobile', c_website='$c_website', c_about='$c_about', show_on_main_page='$show_on_main_page', enable_map_marker='$enable_map_marker', c_address='$c_address', c_latitude='$c_latitude', c_longitude='$c_longitude', c_shortcode='' WHERE id='$profile_id'");
 		return $query;
 
 	}

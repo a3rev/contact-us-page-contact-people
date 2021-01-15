@@ -44,6 +44,7 @@ class Profile_Manager
 				<th width="25" class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
 				<th width="40" class="manage-column column-image">&nbsp;</th>
 				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th width="10%" class="manage-column column-id" style="text-align:left;white-space:nowrap"><?php _e('ID', 'contact-us-page-contact-people' ); ?></th>
 				<th width="18%" class="manage-column column-email" style="text-align:left;white-space:nowrap"><?php _e('Email', 'contact-us-page-contact-people' ); ?></th>
 				<th width="8%" class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'contact-us-page-contact-people' ); ?></th>
 				<th width="15%" style="text-align:left" class="manage-column column-location"><?php _e('Location', 'contact-us-page-contact-people' ); ?></th>
@@ -56,6 +57,7 @@ class Profile_Manager
 				<th class="manage-column column-number" style="text-align:right;white-space:nowrap"><?php _e('No', 'contact-us-page-contact-people' ); ?></th>
 				<th class="manage-column column-image">&nbsp;</th>
 				<th class="manage-column column-title" style="text-align:left;white-space:nowrap"><?php _e('Name', 'contact-us-page-contact-people' ); ?></th>
+				<th class="manage-column column-id" style="text-align:left;white-space:nowrap"><?php _e('ID', 'contact-us-page-contact-people' ); ?></th>
 				<th class="manage-column column-email" style="text-align:left;white-space:nowrap"><?php _e('Email', 'contact-us-page-contact-people' ); ?></th>
 				<th class="manage-column column-phone" style="text-align:left;white-space:nowrap"><?php _e('Phone', 'contact-us-page-contact-people' ); ?></th>
 				<th style="text-align:left" class="manage-column column-location"><?php _e('Location', 'contact-us-page-contact-people' ); ?></th>
@@ -79,6 +81,7 @@ class Profile_Manager
 				<td valign="middle" class="no column-number" style="text-align:right;"><span class="number_item"><?php echo $i;?></span></td>
 				<td valign="middle" class="avatar column-image" align="center"><img src="<?php echo $src; ?>" style="border:1px solid #CCC;padding:2px;background:#FFF;width:32px;" /></td>
 				<td valign="middle" style="text-align:left;" class="name column-title"><?php esc_attr_e( stripslashes( $value['c_name']) );?></td>
+				<td valign="middle" style="text-align:left;" class="name column-id"><?php esc_attr_e( stripslashes( $value['c_identitier']) );?></td>
 				<td valign="middle" class="phone column-email"><?php esc_attr_e( stripslashes( $value['c_email']) );?></td>
 				<td valign="middle" class="phone column-phone"><?php esc_attr_e( stripslashes( $value['c_phone']) );?></td>
 				<td valign="middle" class="address column-location"><?php esc_attr_e( stripslashes( $value['c_address']) );?></td>
@@ -89,7 +92,7 @@ class Profile_Manager
 			}else{
 								?>
 			  <tr>
-				<td valign="middle" align="center" colspan="8"><?php _e('No Profile', 'contact-us-page-contact-people' ); ?></td>
+				<td valign="middle" align="center" colspan="9"><?php _e('No Profile', 'contact-us-page-contact-people' ); ?></td>
 			  </tr>
 			  <?php
 			}

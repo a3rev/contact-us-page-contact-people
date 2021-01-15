@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 3.4.9
+Stable tag: 3.5.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,15 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.5.0 - 2021/01/15 =
+* This feature release adds the option to add a unique text ID to each Profile. This is for admin use when a Profile has multiple contact cards that have different contact forms.
+* Feature - Add Profile ID. Plain text, Limited to 30 characters including white space and only visible on backend.
+* Tweak - Added the ID Field to Profile Details option box on Create / Edit Profiles.
+* Tweak - Added ID column to the Profiles listing page.
+* Tweak - Show the Profile name and ID in Contact Profile Block select profile dropdown
+* Tweak - Show the Profile name and ID in Contact Profile shortcode select profile dropdown
+* Tweak - Create new ID database table
 
 = 3.4.9 - 2020/12/30 =
 * This is an important maintenance release that updates our scripts for compatibility with the latest version of jQuery released in WordPress 5.6
@@ -622,6 +631,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.5.0 =
+This feature release adds the option to add a unique text ID to each Profile. This is for admin use when a Profile has multiple contact cards that have different contact forms.
 
 = 3.4.9 =
 This is an important maintenance release that updates our scripts for compatibility with the latest version of jQuery released in WordPress 5.6

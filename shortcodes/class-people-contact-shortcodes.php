@@ -89,8 +89,18 @@ class Shortcode{
                         if( is_array($contacts) && count($contacts) > 0 ){
                             foreach ($contacts as $key=>$value) {
                                 $profile_name =  trim( esc_attr( stripslashes($value['c_name']) ) );
-                                if ($profile_name == '') $profile_name = trim( esc_attr( stripslashes($value['c_title']) ) ); 
-                                echo '<option value="'.$value['id'].'">'.$profile_name.'</option>';
+                                if ($profile_name == '') $profile_name = trim( esc_attr( stripslashes($value['c_title']) ) );
+
+                                $c_identitier =  trim( esc_attr( stripslashes( $value['c_identitier'] ) ) );
+								if ( strlen( $c_identitier ) > 30 ) {
+									$c_identitier = substr( $c_identitier, 0, 30 ) . '...';
+								}
+
+								if ( '' !== $c_identitier ) {
+									$c_identitier = ' - ' . $c_identitier;
+								}
+
+                                echo '<option value="'.$value['id'].'">'.$profile_name . $c_identitier .'</option>';
                             }
                         } 
                     ?>

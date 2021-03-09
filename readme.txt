@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.0
-Tested up to: 5.6
-Stable tag: 3.5.0
+Tested up to: 5.7
+Stable tag: 3.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,11 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.5.1 - 2021/03/09 =
+* This maintenance release is for compatibility with WordPress 5.7 and Gutenberg 10.0
+* Tweak - Test for compatibility with WordPress 5.7
+* Tweak - Test for compatibility with Gutenberg 10.0
 
 = 3.5.0 - 2021/01/15 =
 * This feature release adds the option to add a unique text ID to each Profile. This is for admin use when a Profile has multiple contact cards that have different contact forms.
@@ -631,6 +636,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.5.1 =
+* This maintenance release is for compatibility with WordPress 5.7 and Gutenberg 10.0
 
 = 3.5.0 =
 This feature release adds the option to add a unique text ID to each Profile. This is for admin use when a Profile has multiple contact cards that have different contact forms.

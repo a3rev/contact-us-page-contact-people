@@ -500,7 +500,7 @@ class Main {
 					if (sites[12] != '') {
 						google.maps.event.addListener(marker, "click", function () {
 						var c_id = this.c_id;
-							jQuery( '#contact_people_bt_'+c_id+'_<?php echo $unique_id; ?>' ).click();
+							jQuery( '#contact_people_bt_'+c_id+'_<?php echo $unique_id; ?>' ).trigger('click');
 
 							return false;
 						})
@@ -566,7 +566,7 @@ class Main {
 				});
 			});
 		});
-		jQuery(window).resize(function() {
+		jQuery(window).on('resize', function() {
 			var grid_view_col = <?php echo $grid_view_col;?>;
 			var screen_width = jQuery('body').width();
 			if(screen_width <= 750 && screen_width >= 481 ){

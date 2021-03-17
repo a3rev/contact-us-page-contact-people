@@ -478,7 +478,7 @@ class AddNew
 					$(this).addClass('google_map_canvas_resized');
 				});
 
-				$("#c_address").focus(function() {
+				$("#c_address").on('focus',function() {
 					$(this).removeClass('input_error');
 				});
 

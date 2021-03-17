@@ -280,9 +280,9 @@ class Widget extends \WP_Widget {
 		<script type="text/javascript">
 			<!--//--><![CDATA[//><!--
 			jQuery(document).ready(function() {
-				jQuery( 'form#contactForm').submit(function() {
+				jQuery( 'form#contactForm').on('submit', function() {
 					jQuery( 'form#contactForm .error').remove();
-					jQuery( 'form#contactForm input.submit').attr('disabled', 'disabled');
+					jQuery( 'form#contactForm input.submit').prop('disabled', true);
 					var hasError = false;
 
 					jQuery( '.requiredField').each(function() {
@@ -324,7 +324,7 @@ class Widget extends \WP_Widget {
 							});
 						});
 					} else {
-						jQuery( 'form#contactForm input.submit').removeAttr('disabled');
+						jQuery( 'form#contactForm input.submit').prop('disabled',false);
 					}
 
 					return false;

@@ -218,6 +218,10 @@ class Shortcode{
 			 'wrap'				=> 'false'
         ), $atts));
 
+		// XSS ok
+		$id    = esc_attr( $id );
+		$style = esc_attr( $style );
+
 		return $people_contact->create_people_contact($id, $style, $wrap);
 	}
 	

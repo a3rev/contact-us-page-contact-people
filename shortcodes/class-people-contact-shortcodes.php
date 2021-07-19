@@ -204,7 +204,6 @@ class Shortcode{
 	
 	public function people_contacts_html( $atts ) {
 		global $people_contact;
-		extract( shortcode_atts( array(), $atts ) );
 		$contacts = Data\Profile::get_results('show_on_main_page=1', 'c_order ASC', '', 'ARRAY_A');
 		return '<div id="people_contacts_container">'.$people_contact->create_contact_maps($contacts).'</div>';
 	}
@@ -212,17 +211,17 @@ class Shortcode{
 	public function people_contact_html( $atts ) {
 		global $people_contact;
 		
-		extract(array_merge(array(
+		$atts = array_merge(array(
 			 'id' 				=> 0,
 			 'style' 			=> 'float:none;width:300px;padding-top:10px;padding-bottom:10px;padding-left:0px;padding-right:0px;',
 			 'wrap'				=> 'false'
-        ), $atts));
+        ), $atts );
 
-		// XSS ok
-		$id    = esc_attr( $id );
-		$style = esc_attr( $style );
+        // XSS ok
+		$id    = esc_attr( $atts['id'] );
+		$style = esc_attr( $atts['style'] );
 
-		return $people_contact->create_people_contact($id, $style, $wrap);
+		return $people_contact->create_people_contact($id, $style, $atts['wrap'] );
 	}
 	
 }

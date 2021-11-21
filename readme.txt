@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 3.5.4
+Stable tag: 3.5.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,11 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.5.5 - 2021/11/20 =
+* This maintenance release has a bug fix for compatibility with PHP 8.x
+* Tweak - Test for compatibility with PHP 8.x
+* Fix - Update some defined functions without an optional parameter when followed by a required parameter. This is deprecated as of PHP 8.0.0
 
 = 3.5.4 - 2021/07/19 =
 * This maintenance release has code tweaks for WordPress 5.8 compatibility plus Security hardening
@@ -674,6 +679,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.5.5 =
+This maintenance release has a bug fix for compatibility with PHP 8.x
 
 = 3.5.4 =
 This maintenance release has code tweaks for WordPress 5.8 compatibility plus Security hardening

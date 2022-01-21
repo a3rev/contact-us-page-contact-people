@@ -288,6 +288,7 @@ class Global_Panel extends FrameWork\Admin_UI
            	),
 			array(
                 'type' 		=> 'google_map_api_key',
+                'desc'		=> sprintf( __( "Enter your Google Maps API Key and save changes, or go to <a href='%s' target='_blank'>Google Maps API</a> to create a new key. The key must have the Geocoding API, Maps Embed API and Maps JavaScript API as a minimum.", 'contact-us-page-contact-people' ), 'https://developers.google.com/maps/documentation/javascript/get-api-key' ),
            	),
 			array(
             	'name' 		=> __( 'Contact Page Google Map', 'contact-us-page-contact-people' ),

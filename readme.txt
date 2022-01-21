@@ -2,9 +2,9 @@
 	
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
-Requires at least: 5.0
-Tested up to: 5.8
-Stable tag: 3.5.5
+Requires at least: 5.6
+Tested up to: 5.9
+Stable tag: 3.6.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,8 +105,8 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 	
 = Minimum Requirements =
 	
-* WordPress 5.0
-* PHP version 7.0 or greater
+* WordPress 5.6
+* PHP version 7.4 or greater
 * MySQL version 5.6.0 or greater
 	
 == Screenshots ==
@@ -134,6 +134,14 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.6.0 - 2022/01/21 =
+* This release has a new Google Maps and Google Fonts API Validation features plus compatibility with WordPress major version 5.9
+* Feature - Add Ajax Validate button for the Google Map API and Google Font API fields, for quick and easy Validation of API keys
+* Dev - Add dynamic help text to Google Map API and Google Font API fields
+* Tweak - Test for compatibility with WordPress 5.9
+* Tweak - Test for compatibility with latest version of Gutenberg from WordPress 5.9
+* Framework - Update a3rev Plugin Framework to version 2.5.0
 
 = 3.5.5 - 2021/11/20 =
 * This maintenance release has a bug fix for compatibility with PHP 8.x
@@ -679,6 +687,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.6.0 =
+This release has a new Google Maps and Google Fonts API Validation features plus compatibility with WordPress major version 5.9
 
 = 3.5.5 =
 This maintenance release has a bug fix for compatibility with PHP 8.x

@@ -2,11 +2,11 @@
 /*
 Plugin Name: Contact Us page - Contact people LITE
 Description: Instantly and easily create a simply stunning Contact Us page on almost any theme. Google location map, People Contact Profiles and a fully featured Contact Us widget. Fully responsive and easy to customize. Ultimate Version upgrade for even more features.
-Version: 3.5.5
+Version: 3.60
 Author: a3rev Software
 Author URI: https://a3rev.com/
-Requires at least: 5.0
-Tested up to: 5.8
+Requires at least: 5.6
+Tested up to: 5.9
 Text Domain: contact-us-page-contact-people
 Domain Path: /languages
 License: GPLv2 or later
@@ -41,7 +41,7 @@ if (!defined("PEOPLE_CONTACT_ULTIMATE_URI")) define("PEOPLE_CONTACT_ULTIMATE_URI
 
 define( 'PEOPLE_CONTACT_KEY', 'contact_us_page_contact_people' );
 define( 'PEOPLE_CONTACT_PREFIX', 'people_contact_' );
-define( 'PEOPLE_CONTACT_VERSION', '3.5.5' );
+define( 'PEOPLE_CONTACT_VERSION', '3.6.0' );
 define( 'PEOPLE_CONTACT_G_FONTS', true );
 
 use \A3Rev\ContactPeople\FrameWork;

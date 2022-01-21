@@ -46,12 +46,17 @@ class Blocks {
 		);
 
 		// Styles.
-		wp_enqueue_style(
-			'contact-people-block-editor-css', // Handle.
-			plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
-			array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
-			// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
-		);
+		// wp_enqueue_style(
+		// 	'contact-people-block-editor-css', // Handle.
+		// 	plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
+		// 	array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
+		// 	// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
+		// );
+
+		$styles = file_get_contents(plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ) );
+	
+		// Add editor styles.
+		wp_add_inline_style( 'wp-edit-blocks', $styles );
 		
 		$contacts = Data\Profile::get_results('', 'c_order ASC', '', 'ARRAY_A');
 		

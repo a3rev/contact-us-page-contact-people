@@ -105,9 +105,8 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 	
 = Minimum Requirements =
 	
-* WordPress 5.6
-* PHP version 7.4 or greater
-* MySQL version 5.6.0 or greater
+* PHP version 7.4 or greater is recommended
+* MySQL version 5.6 or greater is recommended
 	
 == Screenshots ==
 

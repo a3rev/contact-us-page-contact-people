@@ -312,11 +312,11 @@ class Global_Panel extends FrameWork\Admin_UI
 
 			array(
 				'class'		=> 'global_maps_container',
+				'desc'		=> __( 'The Contact Us Page map feature auto zoom sets the map so all profile markers are visible in the map viewer on first load. Only use this setting if you want to make the first load zoom wider than the focus (the spread of profile location markers). Move the slider to the left to do this with zoom level 1 being the world map.', 'contact-us-page-contact-people' ),
                 'type' 		=> 'heading',
            	),
 			array(  
 				'name' 		=> __( 'Maximum Zoom Level', 'contact-us-page-contact-people' ),
-				'desc'		=> '</span></div></div><span class="description" style="clear: both;">' . __( 'The Contact Us Page map feature auto zoom sets the map so all profile markers are visible in the map viewer on first load. Only use this setting if you want to make the first load zoom wider than the focus (the spread of profile location markers). Move the slider to the left to do this with zoom level 1 being the world map.', 'contact-us-page-contact-people' ) . '</span><div><div><span>',
 				'id' 		=> 'people_contact_location_map_settings[zoom_level]',
 				'type' 		=> 'slider',
 				'min'		=> 1,

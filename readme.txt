@@ -137,7 +137,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 = 3.6.2 - 2022/11/01 =
 * This maintenance release has a security vulnerability patch, plus compatibility with WordPress major version 6.1.0
 * Tweak - Test for compatibility with WordPress 6.1
-* Security – This release has a patch for a security vulnerability
+* Security - This release has a patch for a security vulnerability
 
 = 3.6.1 - 2022/05/24 =
 * This maintenance release is for compatibility with WordPress major version 6.0 and includes various code tweaks, bug fixes plus tweaks to harden code security. 

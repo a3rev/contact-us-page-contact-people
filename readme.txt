@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 3.6.2
+Stable tag: 3.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,6 +133,10 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.6.3 - 2022/11/21 =
+* This maintenance release has 1 bug fix
+* Fix - Show the panel settings page if have combine of premium and free options on same page.
 
 = 3.6.2 - 2022/11/01 =
 * This maintenance release has a security vulnerability patch, plus compatibility with WordPress major version 6.1.0
@@ -705,6 +709,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.6.3 =
+This maintenance release has 1 bug fix
 
 = 3.6.2 =
 This maintenance release has a security vulnerability patch, plus compatibility with WordPress major version 6.1.0

@@ -15,7 +15,8 @@ use A3Rev\ContactPeople\Data as Data;
 class AddNew
 {
 	public static function profile_form_action() {
-		if ( !is_admin() ) return ;
+
+		if ( !is_admin() && ! current_user_can( 'manage_options' ) ) return ;
 
 		$correct_address = false;
 		if ( isset( $_POST['update_contact'] ) || isset( $_POST['add_new_contact'] ) ) {
@@ -25,6 +26,8 @@ class AddNew
 		}
 
 		if ( isset( $_POST['update_contact'] ) ) {
+
+			check_admin_referer( 'wp_peopel_contact_addnew' );
 
 			if ( ! $correct_address ) {
 				update_option( 'a3_people_profile_save_failure', 1 );
@@ -54,6 +57,8 @@ class AddNew
 			exit();
 
 		} elseif ( isset( $_POST['add_new_contact'] ) ) {
+			check_admin_referer( 'wp_peopel_contact_addnew' );
+			
 			if ( ! $correct_address ) {
 				update_option( 'a3_people_profile_save_failure', 1 );
 				return;
@@ -529,6 +534,7 @@ class AddNew
 			</script>
 			<div style="clear:both"></div>
 			<p class="submit" style="margin-bottom:0;padding-bottom:0;">
+						<?php wp_nonce_field( 'wp_peopel_contact_addnew' ); ?>
             <input type="hidden" value="<?php echo $bt_type;?>" name="<?php echo $bt_type;?>" />
             <input type="submit" value="<?php echo $bt_value;?>" class="button button-primary" id="add_edit_buttom" name="add_edit_buttom"> <?php echo $bt_cancel;?></p>
 			</form>

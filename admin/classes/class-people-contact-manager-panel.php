@@ -18,9 +18,11 @@ class Profile_Manager
 	public static function admin_screen () {
 		global $people_contact_grid_view_icon;
 		$message = '';
-		if( isset($_GET['action']) && $_GET['action'] == 'del' && isset($_GET['id']) && $_GET['id'] >= 0){
-			Data\Profile::delete_row( absint( $_GET['id'] ) );
-			$message = '<div class="updated" id=""><p>'.__('Profile Successfully deleted.', 'contact-us-page-contact-people' ).'</p></div>';
+		if ( isset($_GET['action']) && $_GET['action'] == 'del' && isset($_GET['id']) && $_GET['id'] >= 0 ) {
+			if ( isset($_GET['wp_peopel_contact_nonce']) && wp_verify_nonce($_GET['wp_peopel_contact_nonce'], 'wp_peopel_contact_delete') ) {
+				Data\Profile::delete_row( absint( $_GET['id'] ) );
+				$message = '<div class="updated" id=""><p>'.__('Profile Successfully deleted.', 'contact-us-page-contact-people' ).'</p></div>';
+			}
 		} elseif ( isset($_GET['edited_profile']) ) {
 			$message = '<div class="updated" id=""><p>'.__('Profile Successfully updated.', 'contact-us-page-contact-people' ).'</p></div>';
 		} elseif ( isset($_GET['created_profile']) ) {
@@ -85,7 +87,7 @@ class Profile_Manager
 				<td valign="middle" class="phone column-email"><?php esc_attr_e( stripslashes( $value['c_email']) );?></td>
 				<td valign="middle" class="phone column-phone"><?php esc_attr_e( stripslashes( $value['c_phone']) );?></td>
 				<td valign="middle" class="address column-location"><?php esc_attr_e( stripslashes( $value['c_address']) );?></td>
-				<td valign="middle" class="column-actions" align="center"><a title="<?php _e('Edit', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-contact&action=edit&id='.$value['id'], 'relative');?>"><?php _e('Edit', 'contact-us-page-contact-people' ); ?></a> | <a title="<?php _e('Delete', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-contact-manager&action=del&id='.$value['id'], 'relative');?>" onclick="if(!confirm('<?php _e('Are you sure delete this profile?', 'contact-us-page-contact-people' ); ?>')){return false;}else{return true;}"><?php _e('Delete', 'contact-us-page-contact-people' ); ?></a></td>
+				<td valign="middle" class="column-actions" align="center"><a title="<?php _e('Edit', 'contact-us-page-contact-people' ); ?>" href="<?php echo admin_url('admin.php?page=people-contact&action=edit&id='.$value['id'], 'relative');?>"><?php _e('Edit', 'contact-us-page-contact-people' ); ?></a> | <a title="<?php _e('Delete', 'contact-us-page-contact-people' ); ?>" href="<?php echo wp_nonce_url( admin_url('admin.php?page=people-contact-manager&action=del&id='.$value['id'], 'relative'), 'wp_peopel_contact_delete', 'wp_peopel_contact_nonce' );?>" onclick="if(!confirm('<?php _e('Are you sure delete this profile?', 'contact-us-page-contact-people' ); ?>')){return false;}else{return true;}"><?php _e('Delete', 'contact-us-page-contact-people' ); ?></a></td>
 			  </tr>
 			  <?php
 				}

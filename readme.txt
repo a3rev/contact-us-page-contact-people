@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 3.7.0
+Stable tag: 3.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,6 +133,10 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.7.1 - 2023/01/14 =
+* This release has a patch for a security vulnerability - please run it now.
+* Props to security dev Rio Darmawan who responsibly reported the vulnerability via PatchStack.
 
 = 3.7.0 - 2023/01/03 =
 * This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls.
@@ -718,6 +722,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.7.1 =
+This release has a patch for a security vulnerability - please run it now.
 
 = 3.7.0 =
 This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls.

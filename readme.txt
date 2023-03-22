@@ -3,7 +3,7 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 5.6
-Tested up to: 6.1
+Tested up to: 6.2
 Stable tag: 3.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

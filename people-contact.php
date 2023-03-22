@@ -6,7 +6,7 @@ Version: 3.7.1
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Requires at least: 5.6
-Tested up to: 6.1
+Tested up to: 6.2
 Text Domain: contact-us-page-contact-people
 Domain Path: /languages
 License: GPLv2 or later

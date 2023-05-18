@@ -461,10 +461,12 @@ class Contact_Functions
 		if ( $page_data == null )
 			$page_data = $wpdb->get_row( "SELECT ID FROM `" . $wpdb->posts . "` WHERE `post_content` LIKE '%[{$shortcode}]%' AND `post_type` = 'page' ORDER BY post_date DESC LIMIT 1" );
 
-		$page_id = $page_data->ID;
+		if ( ! empty( $page_data ) ) {
+			$page_id = $page_data->ID;
+		}
 
 		// For WPML
-		if ( class_exists('SitePress') ) {
+		if ( class_exists('SitePress') && ! empty( $page_id ) ) {
 			global $sitepress;
 			$translation_page_data = null;
 			$trid = $sitepress->get_element_trid( $page_id, 'post_page' );

@@ -506,7 +506,7 @@ class Contact_Widget extends FrameWork\Admin_UI
         ));
 	}
 
-	public function include_script() {
+	public function include_google_map() {
 		$widget_hide_maps_frontend = get_option( 'widget_hide_maps_frontend' );
 		if ( 1 == $widget_hide_maps_frontend ) return;
 
@@ -517,6 +517,8 @@ class Contact_Widget extends FrameWork\Admin_UI
 
 		if ( ! empty( $google_map_api_key ) ) {
 			$google_map_api_key = '&key=' . $google_map_api_key;
+		} else {
+			return;
 		}
 
 		wp_enqueue_script('jquery-ui-autocomplete', '', array('jquery-ui-widget', 'jquery-ui-position'), '1.8.6');
@@ -666,6 +668,18 @@ jQuery(document).ready(function ($) {
 		}, 600 );
 	});
 
+});
+})(jQuery);
+</script>
+    <?php
+	}
+
+	public function include_script() {
+		$this->include_google_map();
+?>
+<script type="text/javascript">
+(function($) {
+jQuery(document).ready(function ($) {
 	if ( $("input.acceptance:checked").val() != 'yes') {
 		$(".show_acceptance_yes").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
 	}
@@ -709,7 +723,7 @@ jQuery(document).ready(function ($) {
 });
 })(jQuery);
 </script>
-    <?php
+<?php
 	}
 }
 

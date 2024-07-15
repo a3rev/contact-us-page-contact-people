@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 6.0
-Tested up to: 6.4.1
-Stable tag: 3.7.3
+Tested up to: 6.6
+Stable tag: 3.7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,6 +133,11 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.7.4 - 2024/07/15 =
+* This release has various tweaks for compatibility with WordPress 6.6
+* Tweak - Tested for compatibility with WordPress 6.6
+* Tweak - Validate and correct block.json based schema from WordPress Block
 
 = 3.7.3 - 2023/11/23 =
 * This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, a Google Maps Bug fix and compatibility with WordPress 6.4.1
@@ -734,6 +739,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.7.4 =
+This release has various tweaks for compatibility with WordPress 6.6
 
 = 3.7.3 =
 This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, a Google Maps Bug fix and compatibility with WordPress 6.4.1

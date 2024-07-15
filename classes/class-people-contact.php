@@ -825,7 +825,7 @@ class Main {
 					}
 				}
 
-				if ( $use_modal_popup && $have_modal_popup && ! in_array( $profile_id, $people_contact_form_ids ) ) {
+				if ( ( $use_modal_popup && $have_modal_popup && ! in_array( $profile_id, $people_contact_form_ids ) )  || is_singular( 'a3-portfolio' ) ) {
 					$people_contact_form_ids[] = $profile_id;
 					$html .= '<div class="modal fade contact_people_modal" id="'.$profile_modal_id.'" tabindex="-1" role="dialog" aria-labelledby="'.$profile_modal_id.'Title" aria-hidden="true" style="display: none;">';
 

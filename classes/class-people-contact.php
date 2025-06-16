@@ -57,7 +57,7 @@ class Main {
 			$alt = $data['c_name'];
 		}
 
-		$img_output = '<img width="80" class="a3-notlazy wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
+		$img_output = '<img width="80" class="a3-notlazy wp-image-'.esc_attr( $c_attachment_id ).'" src="'.esc_url( $src ).'" alt="'.esc_attr( $alt ).'" />';
 		if ( function_exists( 'wp_filter_content_tags' ) ) {
 			$img_output = wp_filter_content_tags( $img_output );
 		} elseif ( function_exists( 'wp_make_content_images_responsive' ) ) {
@@ -80,32 +80,32 @@ class Main {
 		$message_label   = people_ict_t__( 'Default Form - Contact Message', __( 'Message', 'contact-us-page-contact-people' ) );
 		$send_copy_label = people_ict_t__( 'Default Form - Send Copy', __( 'Send a copy of this email to myself.', 'contact-us-page-contact-people' ) );
 
-		if ( isset( $people_email_inquiry_global_settings['name_required'] ) 
+		if ( isset( $people_email_inquiry_global_settings['name_required'] )
 			&& 'no' !== $people_email_inquiry_global_settings['name_required'] ) {
 			$name_required = true;
 		}
 
-		if ( isset( $people_email_inquiry_global_settings['show_phone'] ) 
+		if ( isset( $people_email_inquiry_global_settings['show_phone'] )
 			&& 'no' !== $people_email_inquiry_global_settings['show_phone'] ) {
 			$show_phone = true;
 		}
 
-		if ( isset( $people_email_inquiry_global_settings['phone_required'] ) 
+		if ( isset( $people_email_inquiry_global_settings['phone_required'] )
 			&& 'no' !== $people_email_inquiry_global_settings['phone_required'] ) {
 			$phone_required = true;
 		}
 
-		if ( isset( $people_email_inquiry_global_settings['show_subject'] ) 
+		if ( isset( $people_email_inquiry_global_settings['show_subject'] )
 			&& 'no' !== $people_email_inquiry_global_settings['show_subject'] ) {
 			$show_subject = true;
 		}
 
-		if ( isset( $people_email_inquiry_global_settings['subject_required'] ) 
+		if ( isset( $people_email_inquiry_global_settings['subject_required'] )
 			&& 'no' !== $people_email_inquiry_global_settings['subject_required'] ) {
 			$subject_required = true;
 		}
 
-		if ( isset( $people_email_inquiry_global_settings['message_required'] ) 
+		if ( isset( $people_email_inquiry_global_settings['message_required'] )
 			&& 'no' !== $people_email_inquiry_global_settings['message_required'] ) {
 			$message_required = true;
 		}
@@ -114,28 +114,27 @@ class Main {
 			$send_copy = true;
 		}
 
-		if ( isset( $people_email_inquiry_global_settings['acceptance'] ) 
+		if ( isset( $people_email_inquiry_global_settings['acceptance'] )
 			&& 'no' === $people_email_inquiry_global_settings['acceptance'] ) {
 			$show_acceptance = false;
 		}
 
 		ob_start();
 		?>
-<div class="custom_contact_popup <?php echo $inquiry_contact_form_class; ?>">
+<div class="custom_contact_popup <?php echo esc_attr( $inquiry_contact_form_class ); ?>">
 
 	<div>
 
 		<div style="clear:both"></div>
 
-        <div class="people_email_inquiry_site_name"><?php echo $people_email_inquiry_global_settings['inquiry_form_site_name']; ?></div>
+        <div class="people_email_inquiry_site_name"><?php echo esc_html( $people_email_inquiry_global_settings['inquiry_form_site_name'] ); ?></div>
 
         <div style="clear:both; margin-top:5px"></div>
-
-		<div style="float:left; margin-right:20px;" class="people_email_inquiry_default_image_container"><?php echo $img_output; ?></div>
+		<div style="float:left; margin-right:20px;" class="people_email_inquiry_default_image_container"><?php echo esc_html( $img_output ); ?></div>
 
         <div style="display:block; margin-bottom:10px; padding-left:22%;" class="people_email_inquiry_product_heading_container">
-			<div class="people_email_inquiry_profile_position"><?php esc_attr_e( stripslashes(  $data['c_title']) );?></div>
-            <div class="people_email_inquiry_profile_name"><?php esc_attr_e( stripslashes(  $data['c_name']) );?></div>
+			<div class="people_email_inquiry_profile_position"><?php echo esc_html( stripslashes(  $data['c_title']) );?></div>
+            <div class="people_email_inquiry_profile_name"><?php echo esc_html( stripslashes(  $data['c_name']) );?></div>
         </div>
 
 		<div style="clear:both;height:1em;"></div>
@@ -147,7 +146,7 @@ class Main {
 
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">
-                	<?php echo $name_label; ?> 
+                	<?php echo esc_html( $name_label ); ?>
 
                 	<?php if ( $name_required ) { ?>
                 	<span class="gfield_required">*</span>
@@ -160,7 +159,7 @@ class Main {
 
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">
-                	<?php echo $email_label; ?> 
+                	<?php echo esc_html( $email_label ); ?>
 
                 	<span class="gfield_required">*</span>
                 </label>
@@ -172,11 +171,11 @@ class Main {
 
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">
-                	<?php echo $phone_label; ?>
+                	<?php echo esc_html( $phone_label ); ?>
 
                 	<?php if ( $phone_required ) { ?>
                 	<span class="gfield_required">*</span>
-                	<?php } ?> 
+                	<?php } ?>
                 </label>
 
                 <input type="text" name="c_phone" class="c_phone" value="" title="<?php echo esc_attr( $phone_label ); ?>">
@@ -188,7 +187,7 @@ class Main {
 
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">
-                	<?php echo $subject_label; ?>
+                	<?php echo esc_html( $subject_label ); ?>
 
                 	<?php if ( $subject_required ) { ?>
                 	<span class="gfield_required">*</span>
@@ -202,7 +201,7 @@ class Main {
 
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">
-                	<?php echo $message_label; ?> 
+                	<?php echo esc_html( $message_label ); ?>
 
                 	<?php if ( $message_required ) { ?>
                 	<span class="gfield_required">*</span>
@@ -217,7 +216,7 @@ class Main {
 			<div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">&nbsp;</label>
                 <label class="people_email_inquiry_send_copy">
-                	<input type="checkbox" name="send_copy" class="send_copy" value="1"> <?php echo $send_copy_label; ?>
+                	<input type="checkbox" name="send_copy" class="send_copy" value="1"> <?php echo esc_html( $send_copy_label ); ?>
                 </label>
             </div>
 
@@ -231,7 +230,7 @@ class Main {
             <?php if ( ! empty( $information_text ) ) { ?>
 
 			<div class="people_email_inquiry_field">
-				<?php echo stripslashes( $information_text ); ?>
+				<?php echo esc_html( stripslashes( $information_text ) ); ?>
 			</div>
 
 			<?php } ?>
@@ -240,7 +239,7 @@ class Main {
 			<?php if ( empty( $condition_text ) ) { $condition_text = __( 'I have read and agree to the website terms and conditions', 'contact-us-page-contact-people' ); } ?>
 			<div class="people_email_inquiry_field">
 				<label class="people_email_inquiry_send_copy">
-					<input type="checkbox" name="agree_terms" class="agree_terms" value="1"> <?php echo stripslashes( $condition_text ); ?>
+					<input type="checkbox" name="agree_terms" class="agree_terms" value="1"> <?php echo esc_html( stripslashes( $condition_text ) ); ?>
 				</label>
 			</div>
 
@@ -249,9 +248,9 @@ class Main {
 			<?php } ?>
 
             <div class="people_email_inquiry_field">
-                <a class="people_email_inquiry_form_button <?php echo $inquiry_contact_button_class; ?>"
-                	data-contact_id="<?php echo $contact_id; ?>"
-                	data-from_page_id="<?php echo $from_page_id; ?>"
+                <a class="people_email_inquiry_form_button <?php echo esc_attr( $inquiry_contact_button_class ); ?>"
+                	data-contact_id="<?php echo esc_attr( $contact_id ); ?>"
+                	data-from_page_id="<?php echo esc_attr( $from_page_id ); ?>"
                 	data-name_required="<?php echo ( $name_required ? 1 : 0 ); ?>"
 	            	data-show_phone="<?php echo ( $show_phone ? 1 : 0 ); ?>"
 	            	data-phone_required="<?php echo ( $phone_required ? 1 : 0 ); ?>"
@@ -259,7 +258,7 @@ class Main {
 	            	data-subject_required="<?php echo ( $subject_required ? 1 : 0 ); ?>"
 	            	data-message_required="<?php echo ( $message_required ? 1 : 0 ); ?>"
 	            	data-show_acceptance="<?php echo ( $show_acceptance ? 1 : 0 ); ?>"
-                ><?php echo $inquiry_contact_text_button; ?></a>
+                ><?php echo esc_html( $inquiry_contact_text_button ); ?></a>
             </div>
 
             <div style="clear:both"></div>
@@ -591,7 +590,7 @@ class Main {
 			$html .= '<div class="people-entry">';
 			$html .= '<div style="clear:both"></div>';
 
-			$html .= '<div id="map_canvas'.$unique_id.'" class="map_canvas_container" style="width: '.$map_width.$map_width_type.'; height: '.$map_height.'px;float:left;"></div>';
+			$html .= '<div id="map_canvas'.esc_attr( $unique_id ).'" class="map_canvas_container" style="width: '.esc_attr( $map_width ).esc_attr( $map_width_type ).'; height: '.esc_attr( $map_height ).'px;float:left;"></div>';
 			$html .= '<div style="clear:both;margin-bottom:0em;" class="custom_title"></div>';
 			$html .= '<div style="clear:both;height:15px;"></div>';
 			$html .= '</div>';
@@ -600,10 +599,10 @@ class Main {
 		$grid_view_team_title = trim($people_contact_global_settings['grid_view_team_title']);
 
 		if ( $grid_view_team_title != '' ) {
-			$html .= '<div class="custom_box_title"><h1 class="p_title">'.$grid_view_team_title.'</h1></div>';
+			$html .= '<div class="custom_box_title"><h1 class="p_title">'.esc_html( $grid_view_team_title ).'</h1></div>';
 		}
 		$html .= '<div style="clear:both;margin-bottom:1em;"></div>';
-		$html .= '<div class="people_box_content people_box_content'.$unique_id.' pcol'.$grid_view_col.' '.( $show_map != 0 ? 'has_map' : '' ).'"><div class="people-grid-sizer"></div>';
+		$html .= '<div class="people_box_content people_box_content'.esc_attr( $unique_id ).' pcol'.esc_attr( $grid_view_col ).' '.( $show_map != 0 ? 'has_map' : '' ).'"><div class="people-grid-sizer"></div>';
 		if(is_array($contacts) && count($contacts) > 0 ){
 			foreach($contacts as $key=>$value){
 				$profile_id = $value['id'];
@@ -621,12 +620,12 @@ class Main {
 					$alt = $value['c_name'];
 				}
 
-				$html .= '<div class="people_item people_item'.$unique_id.' people_item_id'.$profile_id.' '.( 0 != $value['enable_map_marker'] && '' != trim( $value['c_latitude'] ) && '' != trim( $value['c_longitude'] ) ? 'has_marker' : '' ).'">';
+				$html .= '<div class="people_item people_item'.esc_attr( $unique_id ).' people_item_id'.esc_attr( $profile_id ).' '.( 0 != $value['enable_map_marker'] && '' != trim( $value['c_latitude'] ) && '' != trim( $value['c_longitude'] ) ? 'has_marker' : '' ).'">';
 				$html .= '<div class="people-entry-item">';
 				$html .= '<div style="clear:both;"></div>';
 				$html .= '<div class="people-content-item">';
 
-				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
+				$img_output = '<img class="contact-people-image wp-image-'.esc_attr( $c_attachment_id ).'" src="'.esc_url( $src ).'" alt="'.esc_attr( $alt ).'" />';
 				if ( function_exists( 'wp_filter_content_tags' ) ) {
 					$img_output = wp_filter_content_tags( $img_output );
 				} elseif ( function_exists( 'wp_make_content_images_responsive' ) ) {
@@ -634,14 +633,14 @@ class Main {
 				}
 
 				if ( $people_contact_grid_view_layout['thumb_image_position'] == 'top' && $people_contact_grid_view_layout['item_title_position'] == 'below' ) {
-					$html .= '<div class="p_content_left">'.$img_output.'</div>';
-					$html .= '<h3 class="p_item_title">'.esc_attr( stripslashes( $value['c_title'])).'</h3>';
+					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
+					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $value['c_title'])).'</h3>';
 				} else {
-					$html .= '<h3 class="p_item_title">'.esc_attr( stripslashes( $value['c_title'])).'</h3>';
-					$html .= '<div class="p_content_left">'.$img_output.'</div>';
+					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $value['c_title'])).'</h3>';
+					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
 				}
 				$html .= '<div class="p_content_right">';
-				$html .= '<h3 class="p_item_name">'.esc_attr( stripslashes( $value['c_name'])).'</h3>';
+				$html .= '<h3 class="p_item_name">'.esc_html( stripslashes( $value['c_name'])).'</h3>';
 				if ( trim($value['c_about']) != '') {
 				$html .= '<div class="p_about_profile fixed_height">';
 				$html .= wpautop(wptexturize( stripslashes( $value['c_about'] ) ) );
@@ -650,16 +649,16 @@ class Main {
 
 				$html .= '<div class="p_contact_details">';
 				if ( trim($value['c_phone']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_phone"><img src="'.$phone_icon.'" style="width:auto;height:auto" /></span> '. esc_attr( stripslashes( $value['c_phone'] ) ).'</p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_phone"><img src="'.esc_url( $phone_icon ).'" style="width:auto;height:auto" /></span> '. esc_html( stripslashes( $value['c_phone'] ) ).'</p>';
 				}
 				if ( trim($value['c_fax']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_fax"><img src="'.$fax_icon.'" style="width:auto;height:auto" /></span> '. esc_attr( stripslashes( $value['c_fax'] ) ).'</p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_fax"><img src="'.esc_url( $fax_icon ).'" style="width:auto;height:auto" /></span> '. esc_html( stripslashes( $value['c_fax'] ) ).'</p>';
 				}
 				if ( trim($value['c_mobile']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.$mobile_icon.'" style="width:auto;height:auto" /></span> '. esc_attr( stripslashes($value['c_mobile'] ) ).'</p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.esc_url( $mobile_icon ).'" style="width:auto;height:auto" /></span> '. esc_html( stripslashes($value['c_mobile'] ) ).'</p>';
 				}
 				if ( trim($value['c_website']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a rel="noopener" href="'. esc_url( stripslashes($value['c_website'] ) ).'" target="_blank">'.( function_exists('icl_t') ? icl_t( 'a3 Contact People', 'Profile Cards - Website Link Text', __('Visit Website', 'contact-us-page-contact-people' ) ) : __('Visit Website', 'contact-us-page-contact-people' ) ).'</a></p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.esc_url( $website_icon ).'" style="width:auto;height:auto" /></span> <a rel="noopener" href="'. esc_url( stripslashes($value['c_website'] ) ).'" target="_blank">'.( function_exists('icl_t') ? icl_t( 'a3 Contact People', 'Profile Cards - Website Link Text', __('Visit Website', 'contact-us-page-contact-people' ) ) : __('Visit Website', 'contact-us-page-contact-people' ) ).'</a></p>';
 				}
 
 				$have_modal_popup = false;
@@ -668,12 +667,12 @@ class Main {
 				if ( trim($value['c_email']) != '') {
 
 					$have_modal_popup = true;
-					$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" data-from_page_id="'.$post->ID.'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+					$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.esc_url( $email_icon ).'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.esc_attr( $profile_id ).'_'.esc_attr( $unique_id ).'" data-from_page_id="'.esc_attr( $post->ID ).'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.esc_attr( $profile_modal_id ).'">'.esc_html( $people_contact_grid_view_icon['grid_view_email_text'] ).'</a></p>';
 				}
 
 				if ( $use_modal_popup && $have_modal_popup && ! in_array( $profile_id, $people_contact_form_ids ) ) {
 					$people_contact_form_ids[] = $profile_id;
-					$html .= '<div class="modal fade contact_people_modal" id="'.$profile_modal_id.'" tabindex="-1" role="dialog" aria-labelledby="'.$profile_modal_id.'Title" aria-hidden="true" style="display: none;">';
+					$html .= '<div class="modal fade contact_people_modal" id="'.esc_attr( $profile_modal_id ).'" tabindex="-1" role="dialog" aria-labelledby="'.esc_attr( $profile_modal_id ).'Title" aria-hidden="true" style="display: none;">';
 
 					if ( class_exists( __NAMESPACE__ . '\Addons\Party_ContactForm_Functions' ) && Addons\Party_ContactForm_Functions::check_enable_3rd_contact_form() ) {
 						$html .= Addons\Party_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );
@@ -740,7 +739,7 @@ class Main {
 
 		$html = '';
 		$break_div = '<div style="clear:both;"></div>';
-		$html .= '<div class="people_box_content pcol'.$grid_view_col.'" style="'.$style.'">';
+		$html .= '<div class="people_box_content pcol'.esc_attr( $grid_view_col ).'" style="'.esc_attr( $style ).'">';
 		if ( is_array($peoples) ) {
 				if ($peoples['c_avatar'] != '') {
 					$src = $peoples['c_avatar'];
@@ -759,21 +758,21 @@ class Main {
 				$html .= '<div class="people-entry-item">';
 				$html .= '<div style="clear:both;"></div>';
 				$html .= '<div class="people-content-item">';
-				$img_output = '<img class="contact-people-image wp-image-'.$c_attachment_id.'" src="'.$src.'" alt="'.$alt.'" />';
+				$img_output = '<img class="contact-people-image wp-image-'.esc_attr( $c_attachment_id ).'" src="'.esc_url( $src ).'" alt="'.esc_attr( $alt ).'" />';
 				if ( function_exists( 'wp_filter_content_tags' ) ) {
 					$img_output = wp_filter_content_tags( $img_output );
 				} elseif ( function_exists( 'wp_make_content_images_responsive' ) ) {
 					$img_output = wp_make_content_images_responsive( $img_output );
 				}
 				if ( $people_contact_grid_view_layout['thumb_image_position'] == 'top' && $people_contact_grid_view_layout['item_title_position'] == 'below' ) {
-					$html .= '<div class="p_content_left">'.$img_output.'</div>';
-					$html .= '<h3 class="p_item_title">'.esc_attr( stripslashes( $peoples['c_title'])).'</h3>';
+					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
+					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $peoples['c_title'])).'</h3>';
 				} else {
-					$html .= '<h3 class="p_item_title">'.esc_attr( stripslashes( $peoples['c_title'])).'</h3>';
-					$html .= '<div class="p_content_left">'.$img_output.'</div>';
+					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $peoples['c_title'])).'</h3>';
+					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
 				}
 				$html .= '<div class="p_content_right">';
-				$html .= '<h3 class="p_item_name">'.esc_attr( stripslashes( $peoples['c_name'])).'</h3>';
+				$html .= '<h3 class="p_item_name">'.esc_html( stripslashes( $peoples['c_name'])).'</h3>';
 				if ( trim($peoples['c_about']) != '') {
 				$html .= '<div class="p_about_profile fixed_height">';
 				$html .= wpautop(wptexturize( stripslashes( $peoples['c_about'] ) ) );
@@ -782,16 +781,16 @@ class Main {
 
 				$html .= '<div class="p_contact_details">';
 				if ( trim($peoples['c_phone']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_phone"><img src="'.$phone_icon.'" style="width:auto;height:auto" /></span> '.esc_attr( stripslashes( $peoples['c_phone'])).'</p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_phone"><img src="'.esc_url( $phone_icon ).'" style="width:auto;height:auto" /></span> '.esc_html( stripslashes( $peoples['c_phone'])).'</p>';
 				}
 				if ( trim($peoples['c_fax']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_fax"><img src="'.$fax_icon.'" style="width:auto;height:auto" /></span> '.esc_attr( stripslashes( $peoples['c_fax'])).'</p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_fax"><img src="'.esc_url( $fax_icon ).'" style="width:auto;height:auto" /></span> '.esc_html( stripslashes( $peoples['c_fax'])).'</p>';
 				}
 				if ( trim($peoples['c_mobile']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.$mobile_icon.'" style="width:auto;height:auto" /></span> '.esc_attr( stripslashes( $peoples['c_mobile'])).'</p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_mobile"><img src="'.esc_url( $mobile_icon ).'" style="width:auto;height:auto" /></span> '.esc_html( stripslashes( $peoples['c_mobile'])).'</p>';
 				}
 				if ( trim($peoples['c_website']) != '') {
-				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.$website_icon.'" style="width:auto;height:auto" /></span> <a rel="noopener" href="'.esc_url( stripslashes( $peoples['c_website'])).'" target="_blank">'.$people_contact_grid_view_icon['grid_view_website_text'].'</a></p>';
+				$html .= '<p style="margin-bottom:5px;"><span class="p_icon_website"><img src="'.esc_url( $website_icon ).'" style="width:auto;height:auto" /></span> <a rel="noopener" href="'.esc_url( stripslashes( $peoples['c_website'])).'" target="_blank">'.esc_html( $people_contact_grid_view_icon['grid_view_website_text'] ).'</a></p>';
 				}
 
 				if ( $people_email_inquiry_global_settings['contact_form_type_other'] == 1 ) {
@@ -809,25 +808,25 @@ class Main {
 						if ( '' != trim( $peoples['c_shortcode'] ) || '' != trim($people_email_inquiry_global_settings['contact_form_type_shortcode']) ) {
 							if ( $people_email_inquiry_global_settings['contact_form_3rd_open_type'] == 'popup' ) {
 								$have_modal_popup = true;
-								$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="party" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" data-from_page_id="'.$post->ID.'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+								$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.esc_url( $email_icon ).'" style="width:auto;height:auto" /></span> <a data-form_type="party" data-toggle="modal" id="contact_people_bt_'.esc_attr( $profile_id ).'_'.esc_attr( $unique_id ).'" data-from_page_id="'.esc_attr( $post->ID ).'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.esc_attr( $profile_modal_id ).'">'.esc_html( $people_contact_grid_view_icon['grid_view_email_text'] ).'</a></p>';
 							} else {
 								$target_link = 'target="_blank"';
 								if ( $people_email_inquiry_global_settings['contact_form_3rd_open_type'] == 'new_page_same_window' ) {
 									$target_link = 'target="_parent"';
 								}
 
-								$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a href="'.$profile_email_page_link.$profile_id.'" '.$target_link.'>'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+								$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.esc_url( $email_icon ).'" style="width:auto;height:auto" /></span> <a href="'.esc_url( $profile_email_page_link.$profile_id ).'" '.$target_link.'>'.esc_html( $people_contact_grid_view_icon['grid_view_email_text'] ).'</a></p>';
 							}
 						}
 					} else {
 						$have_modal_popup = true;
-						$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.$email_icon.'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.$profile_id.'_'.$unique_id.'" data-from_page_id="'.$post->ID.'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.$profile_modal_id.'">'.$people_contact_grid_view_icon['grid_view_email_text'].'</a></p>';
+						$html .= '<p style="margin-bottom:0px;"><span class="p_icon_email"><img src="'.esc_url( $email_icon ).'" style="width:auto;height:auto" /></span> <a data-form_type="default" data-toggle="modal" id="contact_people_bt_'.esc_attr( $profile_id ).'_'.esc_attr( $unique_id ).'" data-from_page_id="'.esc_attr( $post->ID ).'" data-from_page_title="'.esc_attr( get_the_title( $post->ID ) ).'" data-from_page_url="'.esc_url( get_permalink( $post->ID ) ).'" href="#'.esc_attr( $profile_modal_id ).'">'.esc_html( $people_contact_grid_view_icon['grid_view_email_text'] ).'</a></p>';
 					}
 				}
 
 				if ( ( $use_modal_popup && $have_modal_popup && ! in_array( $profile_id, $people_contact_form_ids ) )  || is_singular( 'a3-portfolio' ) ) {
 					$people_contact_form_ids[] = $profile_id;
-					$html .= '<div class="modal fade contact_people_modal" id="'.$profile_modal_id.'" tabindex="-1" role="dialog" aria-labelledby="'.$profile_modal_id.'Title" aria-hidden="true" style="display: none;">';
+					$html .= '<div class="modal fade contact_people_modal" id="'.esc_attr( $profile_modal_id ).'" tabindex="-1" role="dialog" aria-labelledby="'.esc_attr( $profile_modal_id ).'Title" aria-hidden="true" style="display: none;">';
 
 					if ( class_exists( __NAMESPACE__ . '\Addons\Party_ContactForm_Functions' ) && Addons\Party_ContactForm_Functions::check_enable_3rd_contact_form() ) {
 						$html .= Addons\Party_ContactForm_Functions::people_contact_profile_email_show_form( $profile_id, $post->ID );

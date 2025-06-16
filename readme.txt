@@ -1,26 +1,26 @@
 === Contact Us Page - Contact People ===
-	
+
 Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 6.0
-Tested up to: 6.6
-Stable tag: 3.7.4
+Tested up to: 6.8.1
+Stable tag: 3.7.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Easily and instantly create an interesting, stylish, professional and highly functional Contact Us Page for any WordPress Theme.
-	
+
 == Description ==
-	
-Contact Us Page - Contact People allows you to easily transform your themes dull and boring contact us page into a stunning and vibrant, ultra-professional Contact Us Page not only for your General sites contact us but for individual profiles.	
+
+Contact Us Page - Contact People allows you to easily transform your themes dull and boring contact us page into a stunning and vibrant, ultra-professional Contact Us Page not only for your General sites contact us but for individual profiles.
 
 Features include:
-	
+
 = PROFILES =
 The first thing the plugin does is allow you to create an unlimited number of profiles. Profiles can be anything you want - People, Head Offices, branch Offices. Profile card are displayed in rows on the Contact Us Page under the Google map if you have activated the map.
 
 Profile Features are:
-	
+
 * Title / Position, name, Phone, fax, mobile, web address, and description
 * Profile image or use the default no image
 * Option to show or don't show profile location on the Contact Us Page Google map
@@ -46,13 +46,13 @@ Profile Features are:
 Insert Profile contact cards in any page or post. Support for
 
 * Legacy Editor - via shortcode
-* Gutenberg Editor - via Contact Profile Block 
- 
-		
+* Gutenberg Editor - via Contact Profile Block
+
+
 = CONTACT US PAGE =
 
 The plugin when installed auto creates a stunning contact us page with this huge list of features:
-	
+
 * Optional Google Location Map that shows at the top with each contacts location (if required)
 * Create unlimited Contact Profile Cards. Display each person, department, store or branch office on a profile card on the Contact Us Page.
 * Features direct email submission from users to each contact profile card.
@@ -69,26 +69,26 @@ The plugin when installed auto creates a stunning contact us page with this huge
 * Click to email. Contact form with smooth email pop-up forms for easy and quick submission.
 * Pop-up submission success confirmation.
 * Mobile device optimized, all tablets and phones.
-		
+
 = CONTACT US WIDGET =
-	
+
 The plugin includes a fully customizable Contact Widget that can be used in any theme widgetized area. Features include
-	
+
 * Apply all Widget content from the plugins admin panel.
 * Enable/Disable google location map and map co-ordinate settings.
 * 2 Content areas for adding information.
 * Business / Organization address and contact fields.
 * Default widget email contact form
 * Add email contact from any plugin via shortcode.
-	
+
 = Languages =
-	
+
 * Full support for Right to Left RTL layout on mobile first admin dashboard.
 * Full support for WPML
 * Translation ready
 
 = PREMIUM VERSION =
-	
+
 This plugin features a an [Ultimate version upgrade](https://a3rev.com/shop/contact-people-ultimate/) that adds 3 advanced functionalities:
 
 * Custom Profile Contact Forms
@@ -99,15 +99,15 @@ This plugin features a an [Ultimate version upgrade](https://a3rev.com/shop/cont
 When you download Contact Us Page - Contact People, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of this plugin head over to the Contact Us Page - Contact People [GitHub Repository](https://github.com/a3rev/contact-us-page-contact-people) to find out how you can contribute.
 
 Want to add a new language to WP Email Template! You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/contact-us-page-contact-people)
-	
+
 
 == Installation ==
-	
+
 = Minimum Requirements =
-	
+
 * PHP version 7.4 or greater is recommended
 * MySQL version 5.6 or greater is recommended
-	
+
 == Screenshots ==
 
 1. Contact Us Page
@@ -116,10 +116,10 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 4. Add Profiles
 5. Profiles
 6. Profile cards admin panel
-	
-	
+
+
 == Usage ==
-	
+
 1. Install and activate the plugin
 2. On wp-admin click on Contact Us menu
 3. Profiles Menu > Add New, Add some profiles.
@@ -128,11 +128,16 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 6. Settings Menu > Profile Email Tab where you style the contact form
 7. Settings Menu > Contact Us Widget tab where you set layout and content for the widget
 8. WordPress Appearance Menu > Widgets and add contact widget to sidebar.
-9. WordPress Appearance > Menus and add the Page Contact Us page to your menu.	
+9. WordPress Appearance > Menus and add the Page Contact Us page to your menu.
 10. Enjoy your dynamite looking contact us page.
 
 
 == Changelog ==
+
+= 3.7.5 - 2025/06/16 =
+* This maintenance release has 1 bug fix and compatibility with WordPress 6.8.1
+* Tweak - Tested for compatibility with WordPress 6.8.1
+* Security - Escape all variable before output
 
 = 3.7.4 - 2024/07/15 =
 * This release has various tweaks for compatibility with WordPress 6.6
@@ -149,7 +154,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 = 3.7.2 - 2023/05/18 =
 * This release has 1 page validation bug fix and compatibility with WordPress 6.2.1
 * Tweak - Test for compatibility with WordPress version 6.2.1
-* Fix - Validate page is exists before get ID of the page 
+* Fix - Validate page is exists before get ID of the page
 
 = 3.7.1 - 2023/01/14 =
 * This release has a patch for a security vulnerability - please run it now.
@@ -174,7 +179,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Security - This release has a patch for a security vulnerability
 
 = 3.6.1 - 2022/05/24 =
-* This maintenance release is for compatibility with WordPress major version 6.0 and includes various code tweaks, bug fixes plus tweaks to harden code security. 
+* This maintenance release is for compatibility with WordPress major version 6.0 and includes various code tweaks, bug fixes plus tweaks to harden code security.
 * Tweak - Test for compatibility with WordPress 6.0
 * Tweak - Add filter on generate_border_style_css
 * Tweak - Add filter on generate_border_corner_css
@@ -214,28 +219,28 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 = 3.5.2 - 2021/03/17 =
 * This maintenance release updates 23 deprecated jQuery functions for compatibility with the latest version of jQuery in WordPress 5.7
 * Tweak - Update JavaScript on plugin framework for compatibility with latest version of jQuery and resolve PHP warning event shorthand is deprecated.
-* Tweak - Replace deprecated .change( handler ) with .on( 'change', handler ) 
-* Tweak - Replace deprecated .change() with .trigger('change') 
+* Tweak - Replace deprecated .change( handler ) with .on( 'change', handler )
+* Tweak - Replace deprecated .change() with .trigger('change')
 * Tweak - Replace deprecated .focus( handler ) with .on( 'focus', handler )
 * Tweak - Replace deprecated .focus() with .trigger('focus')
 * Tweak - Replace deprecated .click( handler ) with .on( 'click', handler )
 * Tweak - Replace deprecated .click() with .trigger('click')
 * Tweak - Replace deprecated .select( handler ) with .on( 'select', handler )
-* Tweak - Replace deprecated .select() with .trigger('select') 
-* Tweak - Replace deprecated .blur( handler ) with .on( 'blur', handler ) 
-* Tweak - Replace deprecated .blur() with .trigger('blur') 
-* Tweak - Replace deprecated .resize( handler ) with .on( 'resize', handler ) 
-* Tweak - Replace deprecated .submit( handler ) with .on( 'submit', handler ) 
-* Tweak - Replace deprecated .scroll( handler ) with .on( 'scroll', handler ) 
-* Tweak - Replace deprecated .mousedown( handler ) with .on( 'mousedown', handler ) 
-* Tweak - Replace deprecated .mouseover( handler ) with .on( 'mouseover', handler ) 
+* Tweak - Replace deprecated .select() with .trigger('select')
+* Tweak - Replace deprecated .blur( handler ) with .on( 'blur', handler )
+* Tweak - Replace deprecated .blur() with .trigger('blur')
+* Tweak - Replace deprecated .resize( handler ) with .on( 'resize', handler )
+* Tweak - Replace deprecated .submit( handler ) with .on( 'submit', handler )
+* Tweak - Replace deprecated .scroll( handler ) with .on( 'scroll', handler )
+* Tweak - Replace deprecated .mousedown( handler ) with .on( 'mousedown', handler )
+* Tweak - Replace deprecated .mouseover( handler ) with .on( 'mouseover', handler )
 * Tweak - Replace deprecated .mouseout( handler ) with .on( 'mouseout', handler )
-* Tweak - Replace deprecated .keydown( handler ) with .on( 'keydown', handler ) 
-* Tweak - Replace deprecated .attr('disabled', 'disabled') with .prop('disabled', true) 
-* Tweak - Replace deprecated .removeAttr('disabled') with .prop('disabled', false) 
-* Tweak - Replace deprecated .attr('selected', 'selected') with .prop('selected', true) 
-* Tweak - Replace deprecated .removeAttr('selected') with .prop('selected', false) 
-* Tweak - Replace deprecated .attr('checked', 'checked') with .prop('checked', true) 
+* Tweak - Replace deprecated .keydown( handler ) with .on( 'keydown', handler )
+* Tweak - Replace deprecated .attr('disabled', 'disabled') with .prop('disabled', true)
+* Tweak - Replace deprecated .removeAttr('disabled') with .prop('disabled', false)
+* Tweak - Replace deprecated .attr('selected', 'selected') with .prop('selected', true)
+* Tweak - Replace deprecated .removeAttr('selected') with .prop('selected', false)
+* Tweak - Replace deprecated .attr('checked', 'checked') with .prop('checked', true)
 * Tweak - Replace deprecated .removeAttr('checked') with .prop('checked', false)
 
 = 3.5.1 - 2021/03/09 =
@@ -334,10 +339,10 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Tweak - Test for compatibility with WordPress 5.2.3
 
 = 3.3.0 - 2019/08/21 =
-* This feature upgrade adds 2 new features. Add profile cards to post and pages via shortcode for legacy editor and via Contact Profile block in the Gutenberg editor 
+* This feature upgrade adds 2 new features. Add profile cards to post and pages via shortcode for legacy editor and via Contact Profile block in the Gutenberg editor
 * Feature - Add Contact Profile Card by block in Gutenberg editor
 * Feature - Add Contact Profile Card by Shortcode in legacy editor
-* Tweak - Icon alignment style on Profile Card 
+* Tweak - Icon alignment style on Profile Card
 * Tweak - Add rel=noopener to Profile Card website link
 
 = 3.2.6 - 2019/06/29 =
@@ -367,7 +372,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Tweak - Remove custom Gravity Forms style that was added in 2015. Does not work with latest version of Gravity Forms
 * Tweak - Move Google Maps API settings onto its own options box for greater clarity
 * Tweak - Update Google Maps API settings with ON | OFF switch and Error display if Key is invalid.
-* Tweak - Add Warning Notification if Maps are On but an valid key is not set. 
+* Tweak - Add Warning Notification if Maps are On but an valid key is not set.
 * Tweak - Test for compatibility with WordPress 4.9.8
 * Tweak - Test for compatibility with WooCommerce 3.4.4
 * Tweak - Test form compatibility with Gravity Forms v 2.3.3
@@ -383,18 +388,18 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Maintenance update with fixes for when profile card is embedded on a page in shortcode plus tweaks for modal pop up in mobile and added background colour for third party forms pop up
 * Tweak - Auto scroll to top of modal popup when it opens for better UI in mobile
 * Tweak - Show Profile Image and Profile Name on same line on pop up for mobile
-* Framework - Fix for Framework Global Box Settings not working 
+* Framework - Fix for Framework Global Box Settings not working
 * Framework - Update a3rev Plugin Framework to version 2.0.5
 * Fix - Get correct From Page Title when embed contact profile shortcode multiple times on a page
 * Fix - Get correct From Page URL when embed contact profile shortcode multiple times on a page
 
 = 3.2.0 - 2018/06/16 =
-* This is a major upgrade to the Default Email Inquiry form with 7 new features. Upgrade of the modal popup script for enhanced UI and UX 
+* This is a major upgrade to the Default Email Inquiry form with 7 new features. Upgrade of the modal popup script for enhanced UI and UX
 * Feature - Default Email Form. Added Form Field Options box
 * Feature - Default Email Form.  Name field has option to turn ON or OFF Required field
-* Feature - Default Email Form.  Telephone field has ON or OFF option to show. 
+* Feature - Default Email Form.  Telephone field has ON or OFF option to show.
 * Feature - Default Email Form. Telephone field IF showing has option for Required field ON or OFF
-* Feature - Default Email Form. Subject field has ON or OFF option to show. 
+* Feature - Default Email Form. Subject field has ON or OFF option to show.
 * Feature - Default Emil Form. Subject field IF showing has option for Required field ON or OFF
 * Feature - Default Email Form. Message Field has option to turn ON or OFF Required field
 * Tweak - Default Email Form.  Update plugin admin page sidebar Place card links for support and more plugins
@@ -404,9 +409,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Framework - Update a3rev Plugin Framework to version 2.0.4
 
 = 3.1.6 - 2018/05/26 =
-* This maintenance update is for compatibility with WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU 
+* This maintenance update is for compatibility with WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU
 * Tweak - Default Profile and Contact Us Widget Email Inquiry Form. Add new GDPR Compliance Options Box with option to turn Acceptance notice ON or OFF for default form.
-* Tweak - When Acceptance notice is ON option shows to edit the default text that shows to the right of the acceptance box. 
+* Tweak - When Acceptance notice is ON option shows to edit the default text that shows to the right of the acceptance box.
 * Tweak - When Acceptance Notice is ON option shows to add information text to the bottom of the form. Leave the text edit empty on and nothing shows on the form footer.
 * Tweak - Test for compatibility with WordPress 4.9.6
 
@@ -423,7 +428,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Fix - Settings no saving. Set variable is_plugin_free to TRUE to resolve the issue.
 
 = 3.1.3 - 2018/02/13 =
-* Maintenance Update. Under the bonnet tweaks to keep your plugin running smoothly and is the foundation for new features to be developed this year 
+* Maintenance Update. Under the bonnet tweaks to keep your plugin running smoothly and is the foundation for new features to be developed this year
 * Framework - Update a3rev Plugin Framework to version 2.0.2
 * Framework - Add Framework version for all style and script files
 * Tweak - Update for full compatibility with a3rev Dashboard plugin
@@ -462,14 +467,14 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Tweak - Removed Fancybox and Colorbox pop up scripts and replaced with Bootstrap Modal pop up
 * Tweak - Removed all pop up style options
 * Tweak - Move Profile Cards tab on admin panel to same position that it is on Ultimate version
-* Tweak - Update Pro version text and links to Ultimate Version 
+* Tweak - Update Pro version text and links to Ultimate Version
 * Tweak - Change global $$variable to global ${$variable} for compatibility with PHP 7.0
 * Tweak - Update a3 Revolution to a3rev Software on plugins description
-* Tweak - Added Settings link to plugins description on plugins menu 
+* Tweak - Added Settings link to plugins description on plugins menu
 * Tweak - Update plugins readme description text
 * Tweak - Tested for full compatibility with WordPress version 4.7.5
 * Fix - Upgrade Profile admin page mobile responsive display
-* Fix - Profile Card upload card icons 
+* Fix - Profile Card upload card icons
 
 = 2.3.0 - 2016/07/06 =
 * Feature - Added 'Google Map API' option into Plugin Framework Global Settings box for enter google map api key
@@ -523,7 +528,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Feature - Introducing opening and closing Setting Boxes on admin panels.
 * Feature - Added Plugin Framework Customization settings. Control how the admin panel settings show when editing.
 * Feature - New interface has allowed us to do away with the Email Inquiry menu and its 4 tabs, it has been added as 1 tab on Settings menu
-* Feature - New interface means that all 10 sub menus have been removed from the Setting tabs. 
+* Feature - New interface means that all 10 sub menus have been removed from the Setting tabs.
 * Feature - Includes a script to automatically combine removed tab settings into Tabs main table when upgrading
 * Feature - Added Option to set a Google Fonts API key to directly access latest fonts and font updates from Google
 * Feature - Separated all Google map Settings. Now have 4 map types, Contact Page map, Profile map, Widget Map and Groups Maps
@@ -535,7 +540,7 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 * Feature - Profile Create / Edit - Added option to switch ON | OFF the profile display on the Contact Us Page
 * Feature - Profile Location Address is now required. Profile cannot be created or edited without a map location being set.
 * Feature - Create or update a Profile without a location map generates an error message and instructions to enter an address
-* Feature - Profile location map opens showing world map with drag and drop marker and map zoom for setting location 
+* Feature - Profile location map opens showing world map with drag and drop marker and map zoom for setting location
 * Feature - Default Email Form. Added Dynamic settings to set custom email From name and From email address
 * Feature - Default Email Form. Added Send a Copy to Sender with ON | OFF switch
 * Feature - Default Email Form. Added Form Background Dynamic colour selector
@@ -740,6 +745,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 == Upgrade Notice ==
 
+= 3.7.5 =
+This maintenance release has 1 bug fix and compatibility with WordPress 6.8.1
+
 = 3.7.4 =
 This release has various tweaks for compatibility with WordPress 6.6
 
@@ -762,7 +770,7 @@ This maintenance release has 1 bug fix
 This maintenance release has a security vulnerability patch, plus compatibility with WordPress major version 6.1.0
 
 = 3.6.1 =
-This maintenance release is for compatibility with WordPress major version 6.0 and includes various code tweaks, bug fixes plus tweaks to harden code security. 
+This maintenance release is for compatibility with WordPress major version 6.0 and includes various code tweaks, bug fixes plus tweaks to harden code security.
 
 = 3.6.0 =
 This release has a new Google Maps and Google Fonts API Validation features plus compatibility with WordPress major version 5.9
@@ -855,7 +863,7 @@ Maintenance Update. This version updates the Plugin Framework to v 2.0.2, adds f
 Maintenance Update. 1 bug fix for bootstrap modal pop up
 
 = 3.1.1 =
-Maintenance Update. Update of Bootstrap Modal pop up script - Important - be sure to clear all caching after you run this upgrade! 
+Maintenance Update. Update of Bootstrap Modal pop up script - Important - be sure to clear all caching after you run this upgrade!
 
 = 3.1.0 =
 Feature Upgrade. Tweaks for compatibility with WordPress major version 4.8.0 plus launch of plugins public Github repo

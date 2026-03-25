@@ -130,7 +130,7 @@ class Main {
         <div class="people_email_inquiry_site_name"><?php echo esc_html( $people_email_inquiry_global_settings['inquiry_form_site_name'] ); ?></div>
 
         <div style="clear:both; margin-top:5px"></div>
-		<div style="float:left; margin-right:20px;" class="people_email_inquiry_default_image_container"><?php echo esc_html( $img_output ); ?></div>
+		<div style="float:left; margin-right:20px;" class="people_email_inquiry_default_image_container"><?php echo wp_kses_post( $img_output ); ?></div>
 
         <div style="display:block; margin-bottom:10px; padding-left:22%;" class="people_email_inquiry_product_heading_container">
 			<div class="people_email_inquiry_profile_position"><?php echo esc_html( stripslashes(  $data['c_title']) );?></div>
@@ -633,11 +633,11 @@ class Main {
 				}
 
 				if ( $people_contact_grid_view_layout['thumb_image_position'] == 'top' && $people_contact_grid_view_layout['item_title_position'] == 'below' ) {
-					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
+					$html .= '<div class="p_content_left">'. wp_kses_post( $img_output ).'</div>';
 					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $value['c_title'])).'</h3>';
 				} else {
 					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $value['c_title'])).'</h3>';
-					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
+					$html .= '<div class="p_content_left">'. wp_kses_post( $img_output ).'</div>';
 				}
 				$html .= '<div class="p_content_right">';
 				$html .= '<h3 class="p_item_name">'.esc_html( stripslashes( $value['c_name'])).'</h3>';
@@ -765,11 +765,11 @@ class Main {
 					$img_output = wp_make_content_images_responsive( $img_output );
 				}
 				if ( $people_contact_grid_view_layout['thumb_image_position'] == 'top' && $people_contact_grid_view_layout['item_title_position'] == 'below' ) {
-					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
+					$html .= '<div class="p_content_left">'. wp_kses_post( $img_output ).'</div>';
 					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $peoples['c_title'])).'</h3>';
 				} else {
 					$html .= '<h3 class="p_item_title">'.esc_html( stripslashes( $peoples['c_title'])).'</h3>';
-					$html .= '<div class="p_content_left">'.esc_html( $img_output ).'</div>';
+					$html .= '<div class="p_content_left">'. wp_kses_post( $img_output ).'</div>';
 				}
 				$html .= '<div class="p_content_right">';
 				$html .= '<h3 class="p_item_name">'.esc_html( stripslashes( $peoples['c_name'])).'</h3>';

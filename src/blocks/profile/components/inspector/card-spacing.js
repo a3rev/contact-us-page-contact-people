@@ -7,7 +7,13 @@ import { PaddingControl, SpacingAttributes, IconBox } from '@bit/a3revsoftware.b
 
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { PanelBody, BaseControl, ButtonGroup, Button, RangeControl } = wp.components;
+const {
+	PanelBody,
+	BaseControl,
+	RangeControl,
+	__experimentalToggleGroupControl: ToggleGroupControl,
+	__experimentalToggleGroupControlOption: ToggleGroupControlOption,
+} = wp.components;
 
 const fieldName = '';
 const cardSpacingAttributes = SpacingAttributes( fieldName );
@@ -31,22 +37,25 @@ export default class InspectorCardSpacing extends Component {
 				title={ __( 'Card Style' ) }
 				initialOpen={ false }
 			>
-				<ButtonGroup className="a3-blockpress-size-type-options" aria-label={ __( 'Card Width Type' ) }>
-					{ map( widthUnitList, ( { name, key } ) => (
-						<Button
-							key={ key }
-							className="size-type-btn"
-							isSmall
-							isPrimary={ widthUnit === key }
-							aria-pressed={ widthUnit === key }
-							onClick={ () => setAttributes( { widthUnit: key } ) }
-						>
-							{ name }
-						</Button>
-					) ) }
-				</ButtonGroup>
-				<RangeControl
-					label={ __( 'Card Width' ) }
+			<ToggleGroupControl
+				__next40pxDefaultSize
+				__nextHasNoMarginBottom
+				label={ __( 'Card Width Type' ) }
+				value={ widthUnit }
+				onChange={ ( value ) => setAttributes( { widthUnit: value } ) }
+				isBlock
+			>
+				{ map( widthUnitList, ( { name, key } ) => (
+					<ToggleGroupControlOption
+						key={ key }
+						value={ key }
+						label={ name }
+					/>
+				) ) }
+			</ToggleGroupControl>
+			<RangeControl
+				__next40pxDefaultSize
+				label={ __( 'Card Width' ) }
 					value={ width ? width : 300 }
 					onChange={ value => setAttributes( { width: value } ) }
 					min={ 'px' === widthUnit ? 300 : 10 }

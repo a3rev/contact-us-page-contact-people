@@ -32,15 +32,15 @@ const { Fragment } = wp.element;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'contact-people/profile', {
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Contact Profile' ), // Block title.
+registerBlockType('contact-people/profile', {
+	apiVersion: 3,
+	title: __('Contact Profile'), // Block title.
 	icon: {
 		src: IconContact,
 		foreground: '#24b6f1',
 	}, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'a3rev-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-	keywords: [ __( 'Contact People' ), __( 'Contact Profile' ), __( 'Single Profile' ), __( 'a3rev' ) ],
+	keywords: [__('Contact People'), __('Contact Profile'), __('Single Profile'), __('a3rev')],
 	example: {
 		attributes: {
 			isPreview: true,
@@ -58,23 +58,25 @@ registerBlockType( 'contact-people/profile', {
 	},
 
 	// The "edit" property must be a valid function.
-	edit( props ) {
+	edit(props) {
 		const { attributes } = props;
 
-		if ( attributes.isPreview ) {
-			return ( <img
-				src={ contact_people_vars.profile_preview }
-				alt={ __( 'Contact Profile Preview' ) }
-				style={ {
-					width: '100%',
-					height: 'auto',
-				} }
-			/> );
+		if (attributes.isPreview) {
+			return (
+				<img
+					src={contact_people_vars.profile_preview}
+					alt={__('Contact Profile Preview')}
+					style={{
+						width: '100%',
+						height: 'auto',
+					}}
+				/>
+			);
 		}
 
 		return (
 			<Fragment>
-				<BlockEdit { ...props } />
+				<BlockEdit {...props} />
 			</Fragment>
 		);
 	},
@@ -84,4 +86,4 @@ registerBlockType( 'contact-people/profile', {
 		// Rendering in PHP
 		return null;
 	},
-} );
+});

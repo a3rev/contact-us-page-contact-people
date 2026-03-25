@@ -21,8 +21,9 @@ export default class InspectorGlobalSettings extends Component {
 
 		return (
 			<PanelBody title={ __( 'Contact Profile' ) }>
-				<SelectControl
-					label={ __( 'Profile' ) }
+			<SelectControl
+				__next40pxDefaultSize
+				label={ __( 'Profile' ) }
 					value={ contactID ? contactID : '' }
 					onChange={ value => setAttributes( { contactID: value } ) }
 					options={ contactProfileList }

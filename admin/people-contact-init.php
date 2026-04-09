@@ -32,12 +32,12 @@ function wp_people_contact_init() {
 		$GLOBALS[PEOPLE_CONTACT_PREFIX.'less']->plugin_build_sass();
 	}
 
-	wp_people_contact_plugin_textdomain();
-
 	if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'people-contact-settings', 'people-contact' ) ) ) {
 		add_action( 'admin_notices', array( '\A3Rev\ContactPeople\Hook_Filter', 'map_notice' ), 11 );
 	}
 }
+
+add_action( 'after_setup_theme', 'wp_people_contact_plugin_textdomain' );
 
 // Add language
 add_action('init', 'wp_people_contact_init');
@@ -168,13 +168,13 @@ function a3_people_contact_lite_upgrade_plugin () {
 function people_ict_t_e( $name, $string ) {
 	global $people_contact_wpml;
 	$string = ( function_exists('icl_t') ? icl_t( $people_contact_wpml->plugin_wpml_name, $name, $string ) : $string );
-	
+
 	echo $string;
 }
 
 function people_ict_t__( $name, $string ) {
 	global $people_contact_wpml;
 	$string = ( function_exists('icl_t') ? icl_t( $people_contact_wpml->plugin_wpml_name, $name, $string ) : $string );
-	
+
 	return $string;
 }

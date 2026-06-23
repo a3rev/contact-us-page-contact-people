@@ -249,6 +249,9 @@ class Hook_Filter
 
 	public static function people_update_orders() {
 		check_ajax_referer( 'people_update_orders', 'security' );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( null, 403 );
+		}
 		$updateRecordsArray  = $_REQUEST['recordsArray'];
 		$i = 0;
 		foreach ($updateRecordsArray as $recordIDValue) {

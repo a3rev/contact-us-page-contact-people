@@ -32,7 +32,8 @@ class Profile
 		}
 	
 		$table_cup_cp_profiles = $wpdb->prefix. "cup_cp_profiles";
-		if ($wpdb->get_var("SHOW TABLES LIKE '$table_cup_cp_profiles'") != $table_cup_cp_profiles) {
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- table name is internal, not user input
+		if ( $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $table_cup_cp_profiles ) ) != $table_cup_cp_profiles ) {
 			$sql = "CREATE TABLE IF NOT EXISTS `{$table_cup_cp_profiles}` (
 				  `id` int(11) NOT NULL auto_increment,
 				  `c_title` blob NOT NULL,
@@ -64,7 +65,8 @@ class Profile
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
 		if (trim($where) != '')
 			$where = ' AND '.$where;
-		$result = $wpdb->get_row("SELECT * FROM {$table_name} WHERE id='$id' {$where}", $output_type);
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $where is an internal SQL fragment built by plugin code, not user input
+		$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table_name} WHERE id=%d {$where}", absint( $id ) ), $output_type );
 		return $result;
 	}
 
@@ -73,6 +75,7 @@ class Profile
 		$table_name = $wpdb->prefix . "cup_cp_profiles";
 		if (trim($where) != '')
 			$where = " WHERE {$where} ";
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $where is an internal SQL fragment built by plugin code, not user input
 		$maximum = $wpdb->get_var("SELECT MAX(c_order) FROM {$table_name} {$where}");
 
 		return $maximum;
@@ -83,6 +86,7 @@ class Profile
 		$table_name = $wpdb->prefix . "cup_cp_profiles";
 		if (trim($where) != '')
 			$where = " WHERE {$where} ";
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $where is an internal SQL fragment built by plugin code, not user input
 		$count = $wpdb->get_var("SELECT COUNT(id) FROM {$table_name} {$where}");
 
 		return $count;
@@ -97,6 +101,7 @@ class Profile
 			$order = " ORDER BY {$order} ";
 		if (trim($limit) != '')
 			$limit = " LIMIT {$limit} ";
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $where/$order/$limit are internal SQL fragments built by plugin code, not user input
 		$result = $wpdb->get_results("SELECT * FROM {$table_name} {$where} {$order} {$limit}", $output_type);
 		return $result;
 	}
@@ -105,25 +110,35 @@ class Profile
 		global $wpdb;
 		extract($args);
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
-		$c_title = strip_tags( addslashes( $c_title ) );
-		$c_name = strip_tags( addslashes( $c_name ) );
-		$c_identitier = strip_tags( addslashes( $c_identitier ) );
-		$c_avatar = strip_tags( addslashes( $c_avatar ) );
-		$c_email = strip_tags( addslashes( $c_email ) );
-		$c_phone = strip_tags( addslashes( $c_phone ) );
-		$c_fax = strip_tags( addslashes( $c_fax ) );
-		$c_mobile = strip_tags( addslashes( $c_mobile ) );
-		$c_website = strip_tags( addslashes( $c_website ) );
-		$c_about = addslashes( $c_about );
-		$show_on_main_page = $show_on_main_page;
-		$enable_map_marker = $enable_map_marker;
-		$c_address = strip_tags( addslashes( $c_address ) );
-		$c_latitude = strip_tags( addslashes( $c_latitude ) );
-		$c_longitude = strip_tags( addslashes( $c_longitude ) );
-		
+
 		$c_order = self::get_maximum_order();
 		$c_order++;
-		$query = $wpdb->query("INSERT INTO {$table_name}( c_title, c_name, c_identitier, c_avatar, c_attachment_id, c_email, c_phone, c_fax, c_mobile, c_website, c_about, show_on_main_page, enable_map_marker, c_address, c_latitude, c_longitude, c_shortcode, c_order ) VALUES('$c_title', '$c_name', '$c_identitier', '$c_avatar', '$c_attachment_id', '$c_email', '$c_phone', '$c_fax', '$c_mobile', '$c_website', '$c_about', '$show_on_main_page', '$enable_map_marker', '$c_address', '$c_latitude', '$c_longitude', '', '$c_order' )");
+
+		$query = $wpdb->insert(
+			$table_name,
+			array(
+				'c_title'           => strip_tags( $c_title ),
+				'c_name'            => strip_tags( $c_name ),
+				'c_identitier'      => strip_tags( $c_identitier ),
+				'c_avatar'          => strip_tags( $c_avatar ),
+				'c_attachment_id'   => absint( $c_attachment_id ),
+				'c_email'           => strip_tags( $c_email ),
+				'c_phone'           => strip_tags( $c_phone ),
+				'c_fax'             => strip_tags( $c_fax ),
+				'c_mobile'          => strip_tags( $c_mobile ),
+				'c_website'         => strip_tags( $c_website ),
+				'c_about'           => $c_about,
+				'show_on_main_page' => absint( $show_on_main_page ),
+				'enable_map_marker' => absint( $enable_map_marker ),
+				'c_address'         => strip_tags( $c_address ),
+				'c_latitude'        => strip_tags( $c_latitude ),
+				'c_longitude'       => strip_tags( $c_longitude ),
+				'c_shortcode'       => '',
+				'c_order'           => absint( $c_order ),
+			),
+			array( '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s', '%d' )
+		);
+
 		if ($query) {
 			$profile_id = $wpdb->insert_id;
 			return $profile_id;
@@ -136,25 +151,33 @@ class Profile
 		global $wpdb;
 		extract($args);
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
-		$c_title = strip_tags( addslashes( $c_title ) );
-		$c_name = strip_tags( addslashes( $c_name ) );
-		$c_identitier = strip_tags( addslashes( $c_identitier ) );
-		$c_avatar = strip_tags( addslashes( $c_avatar ) );
-		$c_email = strip_tags( addslashes( $c_email ) );
-		$c_phone = strip_tags( addslashes( $c_phone ) );
-		$c_fax = strip_tags( addslashes( $c_fax ) );
-		$c_mobile = strip_tags( addslashes( $c_mobile ) );
-		$c_website = strip_tags( addslashes( $c_website ) );
-		$c_about = addslashes( $c_about );
-		$show_on_main_page = $show_on_main_page;
-		$enable_map_marker = $enable_map_marker;
-		$c_address = strip_tags( addslashes( $c_address ) );
-		$c_latitude = strip_tags( addslashes( $c_latitude ) );
-		$c_longitude = strip_tags( addslashes( $c_longitude ) );
-		$c_shortcode = strip_tags( addslashes( $c_shortcode ) );
-		$query = $wpdb->query("UPDATE {$table_name} SET c_title='$c_title', c_name='$c_name', c_identitier='$c_identitier', c_avatar='$c_avatar', c_attachment_id='$c_attachment_id', c_email='$c_email', c_phone='$c_phone', c_fax='$c_fax', c_mobile='$c_mobile', c_website='$c_website', c_about='$c_about', show_on_main_page='$show_on_main_page', enable_map_marker='$enable_map_marker', c_address='$c_address', c_latitude='$c_latitude', c_longitude='$c_longitude', c_shortcode='' WHERE id='$profile_id'");
-		return $query;
 
+		$query = $wpdb->update(
+			$table_name,
+			array(
+				'c_title'           => strip_tags( $c_title ),
+				'c_name'            => strip_tags( $c_name ),
+				'c_identitier'      => strip_tags( $c_identitier ),
+				'c_avatar'          => strip_tags( $c_avatar ),
+				'c_attachment_id'   => absint( $c_attachment_id ),
+				'c_email'           => strip_tags( $c_email ),
+				'c_phone'           => strip_tags( $c_phone ),
+				'c_fax'             => strip_tags( $c_fax ),
+				'c_mobile'          => strip_tags( $c_mobile ),
+				'c_website'         => strip_tags( $c_website ),
+				'c_about'           => $c_about,
+				'show_on_main_page' => absint( $show_on_main_page ),
+				'enable_map_marker' => absint( $enable_map_marker ),
+				'c_address'         => strip_tags( $c_address ),
+				'c_latitude'        => strip_tags( $c_latitude ),
+				'c_longitude'       => strip_tags( $c_longitude ),
+				'c_shortcode'       => '',
+			),
+			array( 'id' => absint( $profile_id ) ),
+			array( '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s' ),
+			array( '%d' )
+		);
+		return $query;
 	}
 
 	public static function set_lat_lng( $profile_id, $c_latitude, $c_longitude ) {
@@ -162,8 +185,17 @@ class Profile
 
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
 
-		$query = $wpdb->query("UPDATE {$table_name} SET c_latitude='$c_latitude', c_longitude='$c_longitude' WHERE id='$profile_id'");
-		
+		$query = $wpdb->update(
+			$table_name,
+			array(
+				'c_latitude'  => strip_tags( $c_latitude ),
+				'c_longitude' => strip_tags( $c_longitude ),
+			),
+			array( 'id' => absint( $profile_id ) ),
+			array( '%s', '%s' ),
+			array( '%d' )
+		);
+
 		return $query;
 	}
 	
@@ -171,7 +203,9 @@ class Profile
 		global $wpdb;
 		global $people_email_inquiry_global_settings;
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
-		$query = $wpdb->query("UPDATE {$table_name} SET c_shortcode='".$people_email_inquiry_global_settings['contact_form_type_shortcode']."' ");
+		$shortcode = strip_tags( $people_email_inquiry_global_settings['contact_form_type_shortcode'] );
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $table_name is derived from $wpdb->prefix, not user input
+		$wpdb->query( $wpdb->prepare( "UPDATE {$table_name} SET c_shortcode=%s", $shortcode ) );
 	}
 
 	public static function update_items_order( $item_orders=array() ) {
@@ -185,7 +219,13 @@ class Profile
 	public static function update_order($profile_id, $c_order=0) {
 		global $wpdb;
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
-		$query = $wpdb->query("UPDATE {$table_name} SET c_order='$c_order' WHERE id='$profile_id'");
+		$query = $wpdb->update(
+			$table_name,
+			array( 'c_order' => absint( $c_order ) ),
+			array( 'id'      => absint( $profile_id ) ),
+			array( '%d' ),
+			array( '%d' )
+		);
 		return $query;
 	}
 
@@ -200,7 +240,7 @@ class Profile
 	public static function delete_row($profile_id) {
 		global $wpdb;
 		$table_name = $wpdb->prefix. "cup_cp_profiles";
-		$result = $wpdb->query("DELETE FROM {$table_name} WHERE id='{$profile_id}'");
+		$result = $wpdb->delete( $table_name, array( 'id' => absint( $profile_id ) ), array( '%d' ) );
 		return $result;
 	}
 }

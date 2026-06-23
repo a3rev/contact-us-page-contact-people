@@ -34,6 +34,10 @@ class AddNew
 				return;
 			}
 
+			if ( isset( $_REQUEST['contact_arr']['c_about'] ) ) {
+				$_REQUEST['contact_arr']['c_about'] = wp_kses_post( $_REQUEST['contact_arr']['c_about'] );
+			}
+
 			$_REQUEST['contact_arr']['c_avatar'] = sanitize_text_field( $_REQUEST['c_avatar'] );
 			$_REQUEST['contact_arr']['c_attachment_id'] = absint( $_REQUEST['c_avatar_attachment_id'] );
 
@@ -62,6 +66,10 @@ class AddNew
 			if ( ! $correct_address ) {
 				update_option( 'a3_people_profile_save_failure', 1 );
 				return;
+			}
+
+			if ( isset( $_REQUEST['contact_arr']['c_about'] ) ) {
+				$_REQUEST['contact_arr']['c_about'] = wp_kses_post( $_REQUEST['contact_arr']['c_about'] );
 			}
 
 			$_REQUEST['contact_arr']['c_avatar'] = sanitize_text_field( $_REQUEST['c_avatar'] );

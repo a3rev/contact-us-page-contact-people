@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.8.0
+Stable tag: 3.8.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,6 +133,12 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.8.1 - 2026/06/23 =
+* This maintenance release has an SEO improvement and security hardening.
+* Tweak - Profile name heading changed from an H3 heading tag to a div element on profile cards to prevent duplicate H3 headings on pages where multiple profiles are displayed, improving the page SEO heading hierarchy and accessibility compliance.
+* Security - Strengthened sanitization of the profile About content on both display and save to prevent potential cross-site scripting on profile cards.
+* Security - Added administrator capability check to profile order update requests to ensure only authorised administrators can change profile display order.
 
 = 3.8.0 - 2026/03/31 =
 * This maintenance release has bug fixes and compatibility with WordPress 7.0
@@ -753,6 +759,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.8.1 =
+* This maintenance release has an SEO improvement and security hardening.
 
 = 3.8.0 =
 This maintenance release has bug fixes and compatibility with WordPress 7.0

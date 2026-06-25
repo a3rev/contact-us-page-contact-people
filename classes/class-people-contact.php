@@ -640,7 +640,7 @@ class Main {
 					$html .= '<div class="p_content_left">'. wp_kses_post( $img_output ).'</div>';
 				}
 				$html .= '<div class="p_content_right">';
-				$html .= '<h3 class="p_item_name">'.esc_html( stripslashes( $value['c_name'])).'</h3>';
+				$html .= '<div class="p_item_name">'.esc_html( stripslashes( $value['c_name'])).'</div>';
 			if ( trim($value['c_about']) != '') {
 			$html .= '<div class="p_about_profile fixed_height">';
 			$html .= wp_kses_post( wpautop( wptexturize( stripslashes( $value['c_about'] ) ) ) );
@@ -772,7 +772,7 @@ class Main {
 					$html .= '<div class="p_content_left">'. wp_kses_post( $img_output ).'</div>';
 				}
 				$html .= '<div class="p_content_right">';
-				$html .= '<h3 class="p_item_name">'.esc_html( stripslashes( $peoples['c_name'])).'</h3>';
+				$html .= '<div class="p_item_name">'.esc_html( stripslashes( $peoples['c_name'])).'</div>';
 			if ( trim($peoples['c_about']) != '') {
 			$html .= '<div class="p_about_profile fixed_height">';
 			$html .= wp_kses_post( wpautop( wptexturize( stripslashes( $peoples['c_about'] ) ) ) );

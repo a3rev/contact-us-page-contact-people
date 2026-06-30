@@ -61,7 +61,7 @@ class Widget extends \WP_Widget {
 
 		wp_enqueue_script('maps-googleapis','https://maps.googleapis.com/maps/api/js?v=3.exp' . $google_map_api_key );
 		?>
-		<div id="single_map_people_contact" style="width:100%; height: <?php echo $map_height; ?>px"></div>
+		<div id="single_map_people_contact" style="width:100%; height: <?php echo (int) $map_height; ?>px"></div>
 		<script src="<?php echo PEOPLE_CONTACT_JS_URL; ?>/markers.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function(){
@@ -99,7 +99,7 @@ class Widget extends \WP_Widget {
 					?>
 					var myLatlng = new google.maps.LatLng(<?php echo $latlng_center; ?>);
 					var myOptions = {
-					  zoom: <?php echo $zoom; ?>,
+					  zoom: <?php echo (int) $zoom; ?>,
 					  center: myLatlng,
 					  mapTypeId: google.maps.MapTypeId.<?php echo $type; ?>
 					};
@@ -117,7 +117,7 @@ class Widget extends \WP_Widget {
 
 						var point = new google.maps.LatLng(<?php echo $latlng_center; ?>);
 						var root = "<?php echo PEOPLE_CONTACT_URL.'/assets'; ?>";
-						var callout = '<?php echo preg_replace("/[\n\r]/","<br/>",$people_contact_widget_maps['widget_maps_callout_text']); ?>';
+						var callout = '<?php echo esc_js( preg_replace("/[\n\r]/","<br/>",$people_contact_widget_maps['widget_maps_callout_text']) ); ?>';
 						var the_link = '<?php echo get_permalink(get_the_id()); ?>';
 						<?php $title = str_replace(array('&#8220;','&#8221;'),'"', $marker_title); ?>
 						<?php $title = str_replace('&#8211;','-',$title); ?>
@@ -138,10 +138,10 @@ class Widget extends \WP_Widget {
 							}
 						}
 					?>
-						var color = '<?php echo $color; ?>';
+						var color = '<?php echo esc_js( $color ); ?>';
 						createMarker(map,point,root,the_link,the_title,color,callout);
 					<?php } else { ?>
-						var color = '<?php echo get_option('woo_cat_colors_pages'); ?>';
+						var color = '<?php echo esc_js( get_option('woo_cat_colors_pages') ); ?>';
 						createMarker(map,point,root,the_link,the_title,color,callout);
 					<?php
 					}
@@ -149,7 +149,7 @@ class Widget extends \WP_Widget {
 
 						directionsPanel = document.getElementById("featured-route");
 						directions = new GDirections(map, directionsPanel);
-						directions.load("from: <?php echo htmlspecialchars($_POST['woo_maps_directions_search']); ?> to: <?php echo $address; ?>" <?php if($walking == 'on'){ echo $extra_params;} ?>);
+						directions.load("from: <?php echo esc_js( sanitize_text_field( wp_unslash( $_POST['woo_maps_directions_search'] ) ) ); ?> to: <?php echo $address; ?>" <?php if($walking == 'on'){ echo $extra_params;} ?>);
 
 
 
@@ -162,7 +162,7 @@ class Widget extends \WP_Widget {
 						<?php } else { ?>
 						var travelmodesetting = google.maps.DirectionsTravelMode.DRIVING;
 						<?php } ?>
-						var start = '<?php echo htmlspecialchars($_POST['woo_maps_directions_search']); ?>';
+						var start = '<?php echo esc_js( sanitize_text_field( wp_unslash( $_POST['woo_maps_directions_search'] ) ) ); ?>';
 						var end = '<?php echo $address; ?>';
 						var request = {
 							origin:start,
@@ -216,7 +216,9 @@ class Widget extends \WP_Widget {
 		$contactError    = '';
 		$agreeTermsError = '';
 		//If the form is submitted
-		if( isset( $_POST['submitted'] ) ) {
+		if( isset( $_POST['submitted'] )
+			&& isset( $_POST['people_contact_widget_nonce'] )
+			&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['people_contact_widget_nonce'] ) ), 'people_contact_widget_form' ) ) {
 
 
 				//Check to make sure that the name field is not empty
@@ -367,27 +369,27 @@ class Widget extends \WP_Widget {
 					  <section id="office-location">
 						<ul>
 						  <?php if (isset($people_contact_widget_information['widget_info_address']) && $people_contact_widget_information['widget_info_address'] != '' ) { ?>
-						  <li><h4 style="margin-bottom:10px;"><?php echo $people_contact_widget_information['widget_info_address']; ?></h4></li>
+						  <li><h4 style="margin-bottom:10px;"><?php echo esc_html( $people_contact_widget_information['widget_info_address'] ); ?></h4></li>
 						  <?php } ?>
 						  <?php if (isset($people_contact_widget_information['widget_info_phone']) && $people_contact_widget_information['widget_info_phone'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $phone_icon;?>" /></span><?php _e('Phone:', 'contact-us-page-contact-people' ); ?>
-							<?php echo $people_contact_widget_information['widget_info_phone']; ?></li>
+							<span><img src="<?php echo esc_url( $phone_icon );?>" /></span><?php _e('Phone:', 'contact-us-page-contact-people' ); ?>
+							<?php echo esc_html( $people_contact_widget_information['widget_info_phone'] ); ?></li>
 						  <?php } ?>
 						  <?php if (isset($people_contact_widget_information['widget_info_fax']) && $people_contact_widget_information['widget_info_fax'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $fax_icon;?>" /></span><?php _e('Fax:', 'contact-us-page-contact-people' ); ?>
-							<?php echo $people_contact_widget_information['widget_info_fax']; ?></li>
+							<span><img src="<?php echo esc_url( $fax_icon );?>" /></span><?php _e('Fax:', 'contact-us-page-contact-people' ); ?>
+							<?php echo esc_html( $people_contact_widget_information['widget_info_fax'] ); ?></li>
 						  <?php } ?>
 	                      <?php if (isset($people_contact_widget_information['widget_info_mobile']) && $people_contact_widget_information['widget_info_mobile'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $mobile_icon;?>" /></span><?php _e('Mobile:', 'contact-us-page-contact-people' ); ?>
-							<?php echo $people_contact_widget_information['widget_info_mobile']; ?></li>
+							<span><img src="<?php echo esc_url( $mobile_icon );?>" /></span><?php _e('Mobile:', 'contact-us-page-contact-people' ); ?>
+							<?php echo esc_html( $people_contact_widget_information['widget_info_mobile'] ); ?></li>
 						  <?php } ?>
 						  <?php if (isset($people_contact_widget_information['widget_info_email']) && $people_contact_widget_information['widget_info_email'] != '' ) { ?>
 						  <li>
-							<span><img src="<?php echo $email_icon;?>" /></span><?php _e('Email:', 'contact-us-page-contact-people' ); ?>
-							<a href="mailto:<?php echo $people_contact_widget_information['widget_info_email']; ?>"><?php echo $people_contact_widget_information['widget_info_email']; ?></a></li>
+							<span><img src="<?php echo esc_url( $email_icon );?>" /></span><?php _e('Email:', 'contact-us-page-contact-people' ); ?>
+							<a href="mailto:<?php echo esc_attr( antispambot( $people_contact_widget_information['widget_info_email'] ) ); ?>"><?php echo esc_html( antispambot( $people_contact_widget_information['widget_info_email'] ) ); ?></a></li>
 						  <?php } ?>
 						</ul>
 					  </section>
@@ -472,6 +474,7 @@ class Widget extends \WP_Widget {
 
 						<li class="buttons">
 						  <input type="hidden" name="submitted" id="submitted" value="true" />
+						  <?php wp_nonce_field( 'people_contact_widget_form', 'people_contact_widget_nonce' ); ?>
 						  <input class="submit button" type="submit" value="<?php esc_attr_e( 'Send', 'contact-us-page-contact-people' ); ?>" /> <img class="contact-site-ajax-wait" src="<?php echo PEOPLE_CONTACT_IMAGE_URL; ?>/ajax-loader2.gif" border="0" style="display:none; padding:0; margin:0; vertical-align: middle;" />
 						</li>
 					  </ol>

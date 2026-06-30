@@ -75,7 +75,6 @@ add_filter( 'plugin_row_meta', array('\A3Rev\ContactPeople\Hook_Filter', 'plugin
 
 	//Ajax Sort Contact
 	add_action('wp_ajax_people_update_orders', array( '\A3Rev\ContactPeople\Hook_Filter', 'people_update_orders') );
-	add_action('wp_ajax_nopriv_people_update_orders', array( '\A3Rev\ContactPeople\Hook_Filter', 'people_update_orders') );
 
 	// Include script admin plugin
 	if ( in_array( basename ($_SERVER['PHP_SELF']), array('admin.php', 'edit.php') ) && isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], array('people-contact-manager', 'people-contact', 'people-contact-settings', 'people-category-manager' ) ) ) {

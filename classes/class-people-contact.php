@@ -141,9 +141,6 @@ class Main {
 
         <div class="people_email_inquiry_content">
 
-        	<input type="hidden" value="<?php esc_attr_e( stripslashes( $data['c_email'] ) );?>" class="profile_email" name="profile_email" />
-        	<input type="hidden" value="<?php esc_attr_e( stripslashes(  $data['c_title']) );?> <?php esc_attr_e( stripslashes( $data['c_name'] ) );?>" class="profile_name" name="profile_name" />
-
             <div class="people_email_inquiry_field">
                 <label class="people_email_inquiry_label">
                 	<?php echo esc_html( $name_label ); ?>
@@ -230,7 +227,7 @@ class Main {
             <?php if ( ! empty( $information_text ) ) { ?>
 
 			<div class="people_email_inquiry_field">
-				<?php echo esc_html( stripslashes( $information_text ) ); ?>
+				<?php echo wp_kses( stripslashes( $information_text ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ); ?>
 			</div>
 
 			<?php } ?>
@@ -239,7 +236,7 @@ class Main {
 			<?php if ( empty( $condition_text ) ) { $condition_text = __( 'I have read and agree to the website terms and conditions', 'contact-us-page-contact-people' ); } ?>
 			<div class="people_email_inquiry_field">
 				<label class="people_email_inquiry_send_copy">
-					<input type="checkbox" name="agree_terms" class="agree_terms" value="1"> <?php echo esc_html( stripslashes( $condition_text ) ); ?>
+					<input type="checkbox" name="agree_terms" class="agree_terms" value="1"> <?php echo wp_kses( stripslashes( $condition_text ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ); ?>
 				</label>
 			</div>
 
@@ -383,7 +380,7 @@ class Main {
 				if ( sites<?php echo $unique_id; ?>.length < 1 ) return false;
 
 				var myOptions = {
-					zoom: <?php echo $zoom_level;?>,
+					zoom: <?php echo (int) $zoom_level;?>,
 					mapTypeId: google.maps.MapTypeId.<?php echo $map_type;?>
 				}
 				var map = new google.maps.Map(document.getElementById("map_canvas<?php echo $unique_id; ?>"), myOptions);
@@ -467,7 +464,7 @@ class Main {
 
 					if (sites[12] != '') {
 						infotext += '<p><span class="p_icon_email"><img src="<?php echo $email_icon;?>" style="width:auto;height:auto" /></span> ';
-						infotext += '<a data-form_type="default" data-toggle="modal"  data-from_page_id="<?php echo $post->ID; ?>" data-from_page_title="<?php echo esc_attr( get_the_title( $post->ID ) ); ?>" data-from_page_url="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" href="#contact_people_modal_'+sites[5]+'"><?php echo $people_contact_grid_view_icon['grid_view_email_text']; ?></a>';
+						infotext += '<a data-form_type="default" data-toggle="modal"  data-from_page_id="<?php echo $post->ID; ?>" data-from_page_title="<?php echo esc_attr( get_the_title( $post->ID ) ); ?>" data-from_page_url="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" href="#contact_people_modal_'+sites[5]+'"><?php echo esc_js( $people_contact_grid_view_icon['grid_view_email_text'] ); ?></a>';
 						infotext += '</p>';
 					}
 
@@ -520,7 +517,7 @@ class Main {
 
 				google.maps.event.addListenerOnce(map, 'idle', function(){
 					if( map.getZoom() > <?php echo (int) $zoom_level; ?> ){
-						map.setZoom(<?php echo $zoom_level;?>);
+						map.setZoom(<?php echo (int) $zoom_level;?>);
 					}
 				});
 			}
@@ -549,7 +546,7 @@ class Main {
 			people_box.masonry();
 		});
         jQuery(window).on( 'load', function(){
-			var grid_view_col = <?php echo $grid_view_col;?>;
+			var grid_view_col = <?php echo (int) $grid_view_col;?>;
 			var screen_width = jQuery('body').width();
 			if(screen_width <= 750 && screen_width >= 481 ){
 				grid_view_col = 2;
@@ -566,7 +563,7 @@ class Main {
 			});
 		});
 		jQuery(window).on('resize', function() {
-			var grid_view_col = <?php echo $grid_view_col;?>;
+			var grid_view_col = <?php echo (int) $grid_view_col;?>;
 			var screen_width = jQuery('body').width();
 			if(screen_width <= 750 && screen_width >= 481 ){
 				grid_view_col = 2;

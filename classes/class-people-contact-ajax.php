@@ -38,16 +38,27 @@ class Ajax
 			'message' => people_ict_t__( 'Default Form - Contact Not Allow', __( "Sorry, you can't contact at this time.", 'contact-us-page-contact-people' ) ),
 		);
 
-		$contact_id         = absint( $_POST['contact_id'] );
+		// Verify the request originated from our form (the front-end localizes this nonce).
+		if ( ! check_ajax_referer( 'people-ei-default-form', 'security', false ) ) {
+			wp_send_json( $json_var );
+		}
+
+		$contact_id         = isset( $_POST['contact_id'] ) ? absint( $_POST['contact_id'] ) : 0;
 		$from_page_id       = isset( $_POST['from_page_id'] ) ? absint( $_POST['from_page_id'] ) : 0;
-		$profile_email      = sanitize_text_field( wp_unslash( $_POST['profile_email'] ) );
-		$profile_name       = sanitize_text_field( wp_unslash( $_POST['profile_name'] ) );
-		$your_name          = sanitize_text_field( wp_unslash( $_POST['your_name'] ) );
-		$your_email         = sanitize_text_field( wp_unslash( $_POST['your_email'] ) );
-		$your_phone         = sanitize_text_field( wp_unslash( $_POST['your_phone'] ) );
-		$your_subject       = sanitize_text_field( wp_unslash( $_POST['your_subject'] ) );
-		$your_message       = sanitize_textarea_field( wp_unslash( $_POST['your_message'] ) );
-		$send_copy_yourself = sanitize_text_field( wp_unslash( $_POST['send_copy'] ) );
+		$your_name          = isset( $_POST['your_name'] ) ? sanitize_text_field( wp_unslash( $_POST['your_name'] ) ) : '';
+		$your_email         = isset( $_POST['your_email'] ) ? sanitize_text_field( wp_unslash( $_POST['your_email'] ) ) : '';
+		$your_phone         = isset( $_POST['your_phone'] ) ? sanitize_text_field( wp_unslash( $_POST['your_phone'] ) ) : '';
+		$your_subject       = isset( $_POST['your_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['your_subject'] ) ) : '';
+		$your_message       = isset( $_POST['your_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['your_message'] ) ) : '';
+		$send_copy_yourself = isset( $_POST['send_copy'] ) ? sanitize_text_field( wp_unslash( $_POST['send_copy'] ) ) : '';
+
+		// Derive the recipient from the stored profile, never from the request body.
+		$profile = Data\Profile::get_row( $contact_id, '', 'ARRAY_A' );
+		if ( ! is_array( $profile ) || '' === trim( $profile['c_email'] ) ) {
+			wp_send_json( $json_var );
+		}
+		$profile_email = $profile['c_email'];
+		$profile_name  = trim( $profile['c_title'] . ' ' . $profile['c_name'] );
 
 		if ( '' != trim( $your_subject ) ) {
 			$subject = trim( $your_subject ). ' ' . people_ict_t__( 'Email Inquiry - from', __('from', 'contact-us-page-contact-people' ) ) . ' ' . ( function_exists('icl_t') ? icl_t( 'WP',__('Blog Title','wpml-string-translation'), get_option('blogname') ) : get_option('blogname') );
@@ -66,6 +77,11 @@ class Ajax
 			'message'			=> $your_message,
 			'from_page_id'		=> $from_page_id,
 		);
+
+		// Only mail a copy to the submitter when they gave a valid address (prevents relaying to arbitrary recipients).
+		if ( 1 == $send_copy_yourself && ! is_email( $your_email ) ) {
+			$send_copy_yourself = 0;
+		}
 
 		$email_result = Contact_Functions::contact_to_people( $profile_data, $send_copy_yourself );
 

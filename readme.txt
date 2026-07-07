@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: Contact Us, Contact Us Page, WordPress Contact Us, People Contact, Contact Forms
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.8.2
+Stable tag: 3.8.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,6 +133,12 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Changelog ==
+
+= 3.8.3 - 2026/06/30 =
+* This maintenance release has security hardening and minor bug fixes.
+* Security - Hardened the email enquiry and contact widget form submissions, the admin settings event handler and several database lookups.
+* Tweak - Improved output escaping across the contact widget and profile map output.
+* Fix - Corrected the WPML translated page lookup query.
 
 = 3.8.2 - 2026/06/25 =
 * This maintenance release has an SEO improvement.
@@ -763,6 +769,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 
 == Upgrade Notice ==
+
+= 3.8.3 =
+* This maintenance release has security hardening and minor bug fixes. Update recommended.
 
 = 3.8.2 =
 * This maintenance release has an SEO improvement.
